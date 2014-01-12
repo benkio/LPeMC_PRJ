@@ -30,6 +30,8 @@ public class PlusNode extends Node {
 		&& (MiniFunLib.isCompatible(right, new IntTypeNode())))
 	    return MiniFunLib.INT;
 
+	System.out
+		.println("TypeCheck Error: Minus operands are incompatible, shutdown parser");
 	System.exit(0);
 	return "";
     }

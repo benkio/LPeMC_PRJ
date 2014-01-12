@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g 2014-01-11 11:26:43
+// $ANTLR 3.5.1 /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g 2014-01-12 10:10:27
 
 package highLevelLanguage;
 
@@ -17,9 +17,9 @@ public class MiniFunParser extends Parser {
 	public static final String[] tokenNames = new String[] {
 		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "ASS", "BOOLTYPE", "CLPAR", "COL", 
 		"COMMA", "CRPAR", "DOUBLECOL", "ELSE", "EMPTY", "EQ", "ERR", "FALSE", 
-		"FIRST", "FUN", "ID", "IF", "IN", "INTTYPE", "LET", "LPAR", "NAT", "PLUS", 
-		"PRINT", "REST", "RPAR", "SEMIC", "SLPAR", "SRPAR", "THEN", "TIMES", "TRUE", 
-		"VAR", "WHITESP"
+		"FIRST", "FUN", "ID", "IF", "IN", "INTTYPE", "LET", "LPAR", "MINUS", "NAT", 
+		"PLUS", "PRINT", "REST", "RPAR", "SEMIC", "SLPAR", "SRPAR", "THEN", "TIMES", 
+		"TRUE", "VAR", "WHITESP"
 	};
 	public static final int EOF=-1;
 	public static final int ASS=4;
@@ -42,19 +42,20 @@ public class MiniFunParser extends Parser {
 	public static final int INTTYPE=21;
 	public static final int LET=22;
 	public static final int LPAR=23;
-	public static final int NAT=24;
-	public static final int PLUS=25;
-	public static final int PRINT=26;
-	public static final int REST=27;
-	public static final int RPAR=28;
-	public static final int SEMIC=29;
-	public static final int SLPAR=30;
-	public static final int SRPAR=31;
-	public static final int THEN=32;
-	public static final int TIMES=33;
-	public static final int TRUE=34;
-	public static final int VAR=35;
-	public static final int WHITESP=36;
+	public static final int MINUS=24;
+	public static final int NAT=25;
+	public static final int PLUS=26;
+	public static final int PRINT=27;
+	public static final int REST=28;
+	public static final int RPAR=29;
+	public static final int SEMIC=30;
+	public static final int SLPAR=31;
+	public static final int SRPAR=32;
+	public static final int THEN=33;
+	public static final int TIMES=34;
+	public static final int TRUE=35;
+	public static final int VAR=36;
+	public static final int WHITESP=37;
 
 	// delegates
 	public Parser[] getDelegates() {
@@ -487,7 +488,7 @@ public class MiniFunParser extends Parser {
 
 
 	// $ANTLR start "term"
-	// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:159:1: term returns [Node ast] : r= value ( PLUS l= value )* ;
+	// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:159:1: term returns [Node ast] : r= value ( PLUS l= value | MINUS l= value )* ;
 	public final Node term() throws RecognitionException {
 		Node ast = null;
 
@@ -496,33 +497,47 @@ public class MiniFunParser extends Parser {
 		Node l =null;
 
 		try {
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:160:2: (r= value ( PLUS l= value )* )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:160:4: r= value ( PLUS l= value )*
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:160:2: (r= value ( PLUS l= value | MINUS l= value )* )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:160:4: r= value ( PLUS l= value | MINUS l= value )*
 			{
 			pushFollow(FOLLOW_value_in_term311);
 			r=value();
 			state._fsp--;
 
 			ast = r;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:161:2: ( PLUS l= value )*
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:161:2: ( PLUS l= value | MINUS l= value )*
 			loop6:
 			while (true) {
-				int alt6=2;
+				int alt6=3;
 				int LA6_0 = input.LA(1);
 				if ( (LA6_0==PLUS) ) {
 					alt6=1;
 				}
+				else if ( (LA6_0==MINUS) ) {
+					alt6=2;
+				}
 
 				switch (alt6) {
 				case 1 :
-					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:161:3: PLUS l= value
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:161:4: PLUS l= value
 					{
-					match(input,PLUS,FOLLOW_PLUS_in_term317); 
-					pushFollow(FOLLOW_value_in_term321);
+					match(input,PLUS,FOLLOW_PLUS_in_term318); 
+					pushFollow(FOLLOW_value_in_term322);
 					l=value();
 					state._fsp--;
 
 					ast = new PlusNode(ast, l);
+					}
+					break;
+				case 2 :
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:162:4: MINUS l= value
+					{
+					match(input,MINUS,FOLLOW_MINUS_in_term329); 
+					pushFollow(FOLLOW_value_in_term333);
+					l=value();
+					state._fsp--;
+
+					ast = new MinusNode(ast, l);
 					}
 					break;
 
@@ -632,47 +647,47 @@ public class MiniFunParser extends Parser {
 				case 1 :
 					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:165:4: n= NAT
 					{
-					n=(Token)match(input,NAT,FOLLOW_NAT_in_fatt344); 
+					n=(Token)match(input,NAT,FOLLOW_NAT_in_fatt352); 
 					ast = new NatNode(Integer.parseInt((n!=null?n.getText():null)));
 					}
 					break;
 				case 2 :
 					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:166:4: TRUE
 					{
-					match(input,TRUE,FOLLOW_TRUE_in_fatt351); 
+					match(input,TRUE,FOLLOW_TRUE_in_fatt359); 
 					ast = new BoolNode(true);
 					}
 					break;
 				case 3 :
 					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:167:4: FALSE
 					{
-					match(input,FALSE,FOLLOW_FALSE_in_fatt359); 
+					match(input,FALSE,FOLLOW_FALSE_in_fatt367); 
 					ast = new BoolNode(false);
 					}
 					break;
 				case 4 :
 					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:168:4: EMPTY
 					{
-					match(input,EMPTY,FOLLOW_EMPTY_in_fatt366); 
+					match(input,EMPTY,FOLLOW_EMPTY_in_fatt374); 
 					ast = new EmptyNode();
 					}
 					break;
 				case 5 :
 					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:169:4: LPAR e= exp RPAR
 					{
-					match(input,LPAR,FOLLOW_LPAR_in_fatt373); 
-					pushFollow(FOLLOW_exp_in_fatt377);
+					match(input,LPAR,FOLLOW_LPAR_in_fatt381); 
+					pushFollow(FOLLOW_exp_in_fatt385);
 					e=exp();
 					state._fsp--;
 
-					match(input,RPAR,FOLLOW_RPAR_in_fatt379); 
+					match(input,RPAR,FOLLOW_RPAR_in_fatt387); 
 					ast = e;
 					}
 					break;
 				case 6 :
 					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:170:4: i= ID ( LPAR (p1= exp ( COMMA p= exp )* )? RPAR )?
 					{
-					i=(Token)match(input,ID,FOLLOW_ID_in_fatt388); 
+					i=(Token)match(input,ID,FOLLOW_ID_in_fatt396); 
 
 							STentry entry = null;
 							/*
@@ -703,7 +718,7 @@ public class MiniFunParser extends Parser {
 						case 1 :
 							// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:190:4: LPAR (p1= exp ( COMMA p= exp )* )? RPAR
 							{
-							match(input,LPAR,FOLLOW_LPAR_in_fatt395); 
+							match(input,LPAR,FOLLOW_LPAR_in_fatt403); 
 
 									/*
 										Capisco che si tratta di una chiamata a funzione
@@ -717,14 +732,14 @@ public class MiniFunParser extends Parser {
 							// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:201:2: (p1= exp ( COMMA p= exp )* )?
 							int alt8=2;
 							int LA8_0 = input.LA(1);
-							if ( (LA8_0==EMPTY||(LA8_0 >= FALSE && LA8_0 <= FIRST)||(LA8_0 >= ID && LA8_0 <= IF)||(LA8_0 >= LPAR && LA8_0 <= NAT)||(LA8_0 >= PRINT && LA8_0 <= REST)||LA8_0==SLPAR||LA8_0==TRUE) ) {
+							if ( (LA8_0==EMPTY||(LA8_0 >= FALSE && LA8_0 <= FIRST)||(LA8_0 >= ID && LA8_0 <= IF)||LA8_0==LPAR||LA8_0==NAT||(LA8_0 >= PRINT && LA8_0 <= REST)||LA8_0==SLPAR||LA8_0==TRUE) ) {
 								alt8=1;
 							}
 							switch (alt8) {
 								case 1 :
 									// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:201:3: p1= exp ( COMMA p= exp )*
 									{
-									pushFollow(FOLLOW_exp_in_fatt405);
+									pushFollow(FOLLOW_exp_in_fatt413);
 									p1=exp();
 									state._fsp--;
 
@@ -744,8 +759,8 @@ public class MiniFunParser extends Parser {
 										case 1 :
 											// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:205:3: COMMA p= exp
 											{
-											match(input,COMMA,FOLLOW_COMMA_in_fatt413); 
-											pushFollow(FOLLOW_exp_in_fatt417);
+											match(input,COMMA,FOLLOW_COMMA_in_fatt421); 
+											pushFollow(FOLLOW_exp_in_fatt425);
 											p=exp();
 											state._fsp--;
 
@@ -763,7 +778,7 @@ public class MiniFunParser extends Parser {
 
 							}
 
-							match(input,RPAR,FOLLOW_RPAR_in_fatt428); 
+							match(input,RPAR,FOLLOW_RPAR_in_fatt436); 
 
 								 	ast = new FunNode(entry, nestingLevel-declNL, params);
 								 
@@ -777,81 +792,81 @@ public class MiniFunParser extends Parser {
 				case 7 :
 					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:211:4: IF x= exp THEN CLPAR y= exp CRPAR ELSE CLPAR z= exp CRPAR
 					{
-					match(input,IF,FOLLOW_IF_in_fatt444); 
-					pushFollow(FOLLOW_exp_in_fatt448);
+					match(input,IF,FOLLOW_IF_in_fatt452); 
+					pushFollow(FOLLOW_exp_in_fatt456);
 					x=exp();
 					state._fsp--;
 
-					match(input,THEN,FOLLOW_THEN_in_fatt450); 
-					match(input,CLPAR,FOLLOW_CLPAR_in_fatt452); 
-					pushFollow(FOLLOW_exp_in_fatt456);
+					match(input,THEN,FOLLOW_THEN_in_fatt458); 
+					match(input,CLPAR,FOLLOW_CLPAR_in_fatt460); 
+					pushFollow(FOLLOW_exp_in_fatt464);
 					y=exp();
 					state._fsp--;
 
-					match(input,CRPAR,FOLLOW_CRPAR_in_fatt458); 
-					match(input,ELSE,FOLLOW_ELSE_in_fatt466); 
-					match(input,CLPAR,FOLLOW_CLPAR_in_fatt468); 
-					pushFollow(FOLLOW_exp_in_fatt472);
+					match(input,CRPAR,FOLLOW_CRPAR_in_fatt466); 
+					match(input,ELSE,FOLLOW_ELSE_in_fatt474); 
+					match(input,CLPAR,FOLLOW_CLPAR_in_fatt476); 
+					pushFollow(FOLLOW_exp_in_fatt480);
 					z=exp();
 					state._fsp--;
 
-					match(input,CRPAR,FOLLOW_CRPAR_in_fatt474); 
+					match(input,CRPAR,FOLLOW_CRPAR_in_fatt482); 
 					ast = new IfNode(x,y,z);
 					}
 					break;
 				case 8 :
 					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:214:4: SLPAR e1= exp DOUBLECOL e2= exp SRPAR
 					{
-					match(input,SLPAR,FOLLOW_SLPAR_in_fatt484); 
-					pushFollow(FOLLOW_exp_in_fatt488);
+					match(input,SLPAR,FOLLOW_SLPAR_in_fatt492); 
+					pushFollow(FOLLOW_exp_in_fatt496);
 					e1=exp();
 					state._fsp--;
 
-					match(input,DOUBLECOL,FOLLOW_DOUBLECOL_in_fatt490); 
-					pushFollow(FOLLOW_exp_in_fatt494);
+					match(input,DOUBLECOL,FOLLOW_DOUBLECOL_in_fatt498); 
+					pushFollow(FOLLOW_exp_in_fatt502);
 					e2=exp();
 					state._fsp--;
 
-					match(input,SRPAR,FOLLOW_SRPAR_in_fatt496); 
+					match(input,SRPAR,FOLLOW_SRPAR_in_fatt504); 
 					ast = new ListNode(e1,e2);
 					}
 					break;
 				case 9 :
 					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:216:5: FIRST LPAR e= exp RPAR
 					{
-					match(input,FIRST,FOLLOW_FIRST_in_fatt509); 
-					match(input,LPAR,FOLLOW_LPAR_in_fatt511); 
-					pushFollow(FOLLOW_exp_in_fatt515);
+					match(input,FIRST,FOLLOW_FIRST_in_fatt517); 
+					match(input,LPAR,FOLLOW_LPAR_in_fatt519); 
+					pushFollow(FOLLOW_exp_in_fatt523);
 					e=exp();
 					state._fsp--;
 
-					match(input,RPAR,FOLLOW_RPAR_in_fatt517); 
+					match(input,RPAR,FOLLOW_RPAR_in_fatt525); 
 					ast = new FirstNode(e);
 					}
 					break;
 				case 10 :
 					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:217:5: REST LPAR e= exp RPAR
 					{
-					match(input,REST,FOLLOW_REST_in_fatt524); 
-					match(input,LPAR,FOLLOW_LPAR_in_fatt526); 
-					pushFollow(FOLLOW_exp_in_fatt530);
+					match(input,REST,FOLLOW_REST_in_fatt532); 
+					match(input,LPAR,FOLLOW_LPAR_in_fatt534); 
+					pushFollow(FOLLOW_exp_in_fatt538);
 					e=exp();
 					state._fsp--;
 
-					match(input,RPAR,FOLLOW_RPAR_in_fatt532); 
+					match(input,RPAR,FOLLOW_RPAR_in_fatt540); 
 					ast = new RestNode(e);
 					}
 					break;
 				case 11 :
 					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:218:4: PRINT LPAR p= exp RPAR
 					{
-					match(input,PRINT,FOLLOW_PRINT_in_fatt538); 
-					match(input,LPAR,FOLLOW_LPAR_in_fatt541); 
-					pushFollow(FOLLOW_exp_in_fatt545);
+					match(input,PRINT,FOLLOW_PRINT_in_fatt546); 
+					match(input,LPAR,FOLLOW_LPAR_in_fatt549); 
+					pushFollow(FOLLOW_exp_in_fatt553);
 					p=exp();
 					state._fsp--;
 
-					match(input,RPAR,FOLLOW_RPAR_in_fatt547); 
+					match(input,RPAR,FOLLOW_RPAR_in_fatt555); 
 					ast = new PrintNode(p);
 					}
 					break;
@@ -898,14 +913,14 @@ public class MiniFunParser extends Parser {
 				case 1 :
 					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:223:4: INTTYPE
 					{
-					match(input,INTTYPE,FOLLOW_INTTYPE_in_type574); 
+					match(input,INTTYPE,FOLLOW_INTTYPE_in_type582); 
 					ast = new IntTypeNode();
 					}
 					break;
 				case 2 :
 					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:224:4: BOOLTYPE
 					{
-					match(input,BOOLTYPE,FOLLOW_BOOLTYPE_in_type581); 
+					match(input,BOOLTYPE,FOLLOW_BOOLTYPE_in_type589); 
 					ast = new BoolTypeNode();
 					}
 					break;
@@ -927,84 +942,86 @@ public class MiniFunParser extends Parser {
 
 
 
-	public static final BitSet FOLLOW_LET_in_prog33 = new BitSet(new long[]{0x0000000800120000L});
+	public static final BitSet FOLLOW_LET_in_prog33 = new BitSet(new long[]{0x0000001000120000L});
 	public static final BitSet FOLLOW_declist_in_prog46 = new BitSet(new long[]{0x0000000000100000L});
-	public static final BitSet FOLLOW_IN_in_prog52 = new BitSet(new long[]{0x000000044D8D9000L});
-	public static final BitSet FOLLOW_exp_in_prog56 = new BitSet(new long[]{0x0000000020000000L});
+	public static final BitSet FOLLOW_IN_in_prog52 = new BitSet(new long[]{0x000000089A8D9000L});
+	public static final BitSet FOLLOW_exp_in_prog56 = new BitSet(new long[]{0x0000000040000000L});
 	public static final BitSet FOLLOW_SEMIC_in_prog58 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_VAR_in_declist90 = new BitSet(new long[]{0x0000000000040000L});
 	public static final BitSet FOLLOW_ID_in_declist94 = new BitSet(new long[]{0x0000000000000080L});
 	public static final BitSet FOLLOW_COL_in_declist96 = new BitSet(new long[]{0x0000000000200020L});
 	public static final BitSet FOLLOW_type_in_declist100 = new BitSet(new long[]{0x0000000000000010L});
-	public static final BitSet FOLLOW_ASS_in_declist102 = new BitSet(new long[]{0x000000044D8D9000L});
-	public static final BitSet FOLLOW_exp_in_declist106 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_SEMIC_in_declist108 = new BitSet(new long[]{0x0000000800020002L});
+	public static final BitSet FOLLOW_ASS_in_declist102 = new BitSet(new long[]{0x000000089A8D9000L});
+	public static final BitSet FOLLOW_exp_in_declist106 = new BitSet(new long[]{0x0000000040000000L});
+	public static final BitSet FOLLOW_SEMIC_in_declist108 = new BitSet(new long[]{0x0000001000020002L});
 	public static final BitSet FOLLOW_FUN_in_declist119 = new BitSet(new long[]{0x0000000000040000L});
 	public static final BitSet FOLLOW_ID_in_declist123 = new BitSet(new long[]{0x0000000000000080L});
 	public static final BitSet FOLLOW_COL_in_declist125 = new BitSet(new long[]{0x0000000000200020L});
 	public static final BitSet FOLLOW_type_in_declist129 = new BitSet(new long[]{0x0000000000800000L});
-	public static final BitSet FOLLOW_LPAR_in_declist136 = new BitSet(new long[]{0x0000000010040000L});
+	public static final BitSet FOLLOW_LPAR_in_declist136 = new BitSet(new long[]{0x0000000020040000L});
 	public static final BitSet FOLLOW_ID_in_declist147 = new BitSet(new long[]{0x0000000000000080L});
 	public static final BitSet FOLLOW_COL_in_declist149 = new BitSet(new long[]{0x0000000000200020L});
-	public static final BitSet FOLLOW_type_in_declist153 = new BitSet(new long[]{0x0000000010000100L});
+	public static final BitSet FOLLOW_type_in_declist153 = new BitSet(new long[]{0x0000000020000100L});
 	public static final BitSet FOLLOW_COMMA_in_declist161 = new BitSet(new long[]{0x0000000000040000L});
 	public static final BitSet FOLLOW_ID_in_declist165 = new BitSet(new long[]{0x0000000000000080L});
 	public static final BitSet FOLLOW_COL_in_declist167 = new BitSet(new long[]{0x0000000000200020L});
-	public static final BitSet FOLLOW_type_in_declist171 = new BitSet(new long[]{0x0000000010000100L});
+	public static final BitSet FOLLOW_type_in_declist171 = new BitSet(new long[]{0x0000000020000100L});
 	public static final BitSet FOLLOW_RPAR_in_declist190 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_CLPAR_in_declist195 = new BitSet(new long[]{0x000000044D8D9000L});
+	public static final BitSet FOLLOW_CLPAR_in_declist195 = new BitSet(new long[]{0x000000089A8D9000L});
 	public static final BitSet FOLLOW_exp_in_declist203 = new BitSet(new long[]{0x0000000000000200L});
-	public static final BitSet FOLLOW_CRPAR_in_declist211 = new BitSet(new long[]{0x0000000020000000L});
-	public static final BitSet FOLLOW_SEMIC_in_declist217 = new BitSet(new long[]{0x0000000800020002L});
+	public static final BitSet FOLLOW_CRPAR_in_declist211 = new BitSet(new long[]{0x0000000040000000L});
+	public static final BitSet FOLLOW_SEMIC_in_declist217 = new BitSet(new long[]{0x0000001000020002L});
 	public static final BitSet FOLLOW_term_in_exp245 = new BitSet(new long[]{0x0000000000002002L});
-	public static final BitSet FOLLOW_EQ_in_exp251 = new BitSet(new long[]{0x000000044D8D9000L});
+	public static final BitSet FOLLOW_EQ_in_exp251 = new BitSet(new long[]{0x000000089A8D9000L});
 	public static final BitSet FOLLOW_term_in_exp255 = new BitSet(new long[]{0x0000000000002002L});
-	public static final BitSet FOLLOW_fatt_in_value278 = new BitSet(new long[]{0x0000000200000002L});
-	public static final BitSet FOLLOW_TIMES_in_value284 = new BitSet(new long[]{0x000000044D8D9000L});
-	public static final BitSet FOLLOW_fatt_in_value288 = new BitSet(new long[]{0x0000000200000002L});
-	public static final BitSet FOLLOW_value_in_term311 = new BitSet(new long[]{0x0000000002000002L});
-	public static final BitSet FOLLOW_PLUS_in_term317 = new BitSet(new long[]{0x000000044D8D9000L});
-	public static final BitSet FOLLOW_value_in_term321 = new BitSet(new long[]{0x0000000002000002L});
-	public static final BitSet FOLLOW_NAT_in_fatt344 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TRUE_in_fatt351 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FALSE_in_fatt359 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_EMPTY_in_fatt366 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LPAR_in_fatt373 = new BitSet(new long[]{0x000000044D8D9000L});
-	public static final BitSet FOLLOW_exp_in_fatt377 = new BitSet(new long[]{0x0000000010000000L});
-	public static final BitSet FOLLOW_RPAR_in_fatt379 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_fatt388 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_LPAR_in_fatt395 = new BitSet(new long[]{0x000000045D8D9000L});
-	public static final BitSet FOLLOW_exp_in_fatt405 = new BitSet(new long[]{0x0000000010000100L});
-	public static final BitSet FOLLOW_COMMA_in_fatt413 = new BitSet(new long[]{0x000000044D8D9000L});
-	public static final BitSet FOLLOW_exp_in_fatt417 = new BitSet(new long[]{0x0000000010000100L});
-	public static final BitSet FOLLOW_RPAR_in_fatt428 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_IF_in_fatt444 = new BitSet(new long[]{0x000000044D8D9000L});
-	public static final BitSet FOLLOW_exp_in_fatt448 = new BitSet(new long[]{0x0000000100000000L});
-	public static final BitSet FOLLOW_THEN_in_fatt450 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_CLPAR_in_fatt452 = new BitSet(new long[]{0x000000044D8D9000L});
-	public static final BitSet FOLLOW_exp_in_fatt456 = new BitSet(new long[]{0x0000000000000200L});
-	public static final BitSet FOLLOW_CRPAR_in_fatt458 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_ELSE_in_fatt466 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_CLPAR_in_fatt468 = new BitSet(new long[]{0x000000044D8D9000L});
-	public static final BitSet FOLLOW_exp_in_fatt472 = new BitSet(new long[]{0x0000000000000200L});
-	public static final BitSet FOLLOW_CRPAR_in_fatt474 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_SLPAR_in_fatt484 = new BitSet(new long[]{0x000000044D8D9000L});
-	public static final BitSet FOLLOW_exp_in_fatt488 = new BitSet(new long[]{0x0000000000000400L});
-	public static final BitSet FOLLOW_DOUBLECOL_in_fatt490 = new BitSet(new long[]{0x000000044D8D9000L});
-	public static final BitSet FOLLOW_exp_in_fatt494 = new BitSet(new long[]{0x0000000080000000L});
-	public static final BitSet FOLLOW_SRPAR_in_fatt496 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_FIRST_in_fatt509 = new BitSet(new long[]{0x0000000000800000L});
-	public static final BitSet FOLLOW_LPAR_in_fatt511 = new BitSet(new long[]{0x000000044D8D9000L});
-	public static final BitSet FOLLOW_exp_in_fatt515 = new BitSet(new long[]{0x0000000010000000L});
-	public static final BitSet FOLLOW_RPAR_in_fatt517 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_REST_in_fatt524 = new BitSet(new long[]{0x0000000000800000L});
-	public static final BitSet FOLLOW_LPAR_in_fatt526 = new BitSet(new long[]{0x000000044D8D9000L});
-	public static final BitSet FOLLOW_exp_in_fatt530 = new BitSet(new long[]{0x0000000010000000L});
-	public static final BitSet FOLLOW_RPAR_in_fatt532 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_PRINT_in_fatt538 = new BitSet(new long[]{0x0000000000800000L});
-	public static final BitSet FOLLOW_LPAR_in_fatt541 = new BitSet(new long[]{0x000000044D8D9000L});
-	public static final BitSet FOLLOW_exp_in_fatt545 = new BitSet(new long[]{0x0000000010000000L});
-	public static final BitSet FOLLOW_RPAR_in_fatt547 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_INTTYPE_in_type574 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_BOOLTYPE_in_type581 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_fatt_in_value278 = new BitSet(new long[]{0x0000000400000002L});
+	public static final BitSet FOLLOW_TIMES_in_value284 = new BitSet(new long[]{0x000000089A8D9000L});
+	public static final BitSet FOLLOW_fatt_in_value288 = new BitSet(new long[]{0x0000000400000002L});
+	public static final BitSet FOLLOW_value_in_term311 = new BitSet(new long[]{0x0000000005000002L});
+	public static final BitSet FOLLOW_PLUS_in_term318 = new BitSet(new long[]{0x000000089A8D9000L});
+	public static final BitSet FOLLOW_value_in_term322 = new BitSet(new long[]{0x0000000005000002L});
+	public static final BitSet FOLLOW_MINUS_in_term329 = new BitSet(new long[]{0x000000089A8D9000L});
+	public static final BitSet FOLLOW_value_in_term333 = new BitSet(new long[]{0x0000000005000002L});
+	public static final BitSet FOLLOW_NAT_in_fatt352 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TRUE_in_fatt359 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FALSE_in_fatt367 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_EMPTY_in_fatt374 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LPAR_in_fatt381 = new BitSet(new long[]{0x000000089A8D9000L});
+	public static final BitSet FOLLOW_exp_in_fatt385 = new BitSet(new long[]{0x0000000020000000L});
+	public static final BitSet FOLLOW_RPAR_in_fatt387 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ID_in_fatt396 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_LPAR_in_fatt403 = new BitSet(new long[]{0x00000008BA8D9000L});
+	public static final BitSet FOLLOW_exp_in_fatt413 = new BitSet(new long[]{0x0000000020000100L});
+	public static final BitSet FOLLOW_COMMA_in_fatt421 = new BitSet(new long[]{0x000000089A8D9000L});
+	public static final BitSet FOLLOW_exp_in_fatt425 = new BitSet(new long[]{0x0000000020000100L});
+	public static final BitSet FOLLOW_RPAR_in_fatt436 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_IF_in_fatt452 = new BitSet(new long[]{0x000000089A8D9000L});
+	public static final BitSet FOLLOW_exp_in_fatt456 = new BitSet(new long[]{0x0000000200000000L});
+	public static final BitSet FOLLOW_THEN_in_fatt458 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_CLPAR_in_fatt460 = new BitSet(new long[]{0x000000089A8D9000L});
+	public static final BitSet FOLLOW_exp_in_fatt464 = new BitSet(new long[]{0x0000000000000200L});
+	public static final BitSet FOLLOW_CRPAR_in_fatt466 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_ELSE_in_fatt474 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_CLPAR_in_fatt476 = new BitSet(new long[]{0x000000089A8D9000L});
+	public static final BitSet FOLLOW_exp_in_fatt480 = new BitSet(new long[]{0x0000000000000200L});
+	public static final BitSet FOLLOW_CRPAR_in_fatt482 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_SLPAR_in_fatt492 = new BitSet(new long[]{0x000000089A8D9000L});
+	public static final BitSet FOLLOW_exp_in_fatt496 = new BitSet(new long[]{0x0000000000000400L});
+	public static final BitSet FOLLOW_DOUBLECOL_in_fatt498 = new BitSet(new long[]{0x000000089A8D9000L});
+	public static final BitSet FOLLOW_exp_in_fatt502 = new BitSet(new long[]{0x0000000100000000L});
+	public static final BitSet FOLLOW_SRPAR_in_fatt504 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_FIRST_in_fatt517 = new BitSet(new long[]{0x0000000000800000L});
+	public static final BitSet FOLLOW_LPAR_in_fatt519 = new BitSet(new long[]{0x000000089A8D9000L});
+	public static final BitSet FOLLOW_exp_in_fatt523 = new BitSet(new long[]{0x0000000020000000L});
+	public static final BitSet FOLLOW_RPAR_in_fatt525 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_REST_in_fatt532 = new BitSet(new long[]{0x0000000000800000L});
+	public static final BitSet FOLLOW_LPAR_in_fatt534 = new BitSet(new long[]{0x000000089A8D9000L});
+	public static final BitSet FOLLOW_exp_in_fatt538 = new BitSet(new long[]{0x0000000020000000L});
+	public static final BitSet FOLLOW_RPAR_in_fatt540 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_PRINT_in_fatt546 = new BitSet(new long[]{0x0000000000800000L});
+	public static final BitSet FOLLOW_LPAR_in_fatt549 = new BitSet(new long[]{0x000000089A8D9000L});
+	public static final BitSet FOLLOW_exp_in_fatt553 = new BitSet(new long[]{0x0000000020000000L});
+	public static final BitSet FOLLOW_RPAR_in_fatt555 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_INTTYPE_in_type582 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_BOOLTYPE_in_type589 = new BitSet(new long[]{0x0000000000000002L});
 }

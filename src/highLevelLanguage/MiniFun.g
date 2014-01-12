@@ -158,8 +158,8 @@ value	returns [Node ast]
 
 term	returns [Node ast]
 	: r=value {$ast = $r.ast;}
-	(PLUS l=value {$ast = new PlusNode($ast, $l.ast);} )* 
-	;
+	(	PLUS l=value {$ast = new PlusNode($ast, $l.ast);}
+	|	MINUS l=value {$ast = new MinusNode($ast, $l.ast);})*;
 
 fatt	returns [Node ast]
 	: n=NAT {$ast = new NatNode(Integer.parseInt($n.text));}
@@ -237,6 +237,7 @@ SEMIC	 : ';';
 ASS	 : '=';
 TIMES	 : '*';
 PLUS	 : '+';
+MINUS	 : '-';
 LPAR	 : '(';
 RPAR	 : ')';
 CRPAR	 : '}';
