@@ -1,118 +1,24 @@
-push 10
+push 1
 push 3
-add
-push 11
-lfp
-push 1
-sub
-lw
-mult
-push 1
-push labelFun0
-push labelFun1
-lfp
-push 1
-sub
-lw
-lfp
-push 2
-sub
-lw
-beq EQLabel8 
-push 0 
-b NEQLabel9 
-EQLabel8 : 
-push 1 
-NEQLabel9 : 
-push 0 
-beq ELSELabel6 
-lfp
-lfp
-push 1
-sub
-lw
-lfp
-lfp
-push 4
-sub
-lw
-js
-lfp
-push 2
-sub
-lw
-mult
-print
-b ENDIFLabel7 
-ELSELabel6 : 
-lfp
-lfp
-push 3
-sub
-lw
-lfp
-lfp
+push 25
 push 5
-sub
-lw
-js
-push 0 
-beq ELSELabel10 
-lfp
-lfp
-push 2
-sub
-lw
-push 1
+div
 add
-lfp
-lfp
-push 4
-sub
-lw
-js
 push 2
-mult
-print
-b ENDIFLabel11 
-ELSELabel10 : 
-lfp
-lfp
+push 2
+add
+push 2
+add
 push 3
-sub
-lw
-lfp
-lfp
-push 4
-sub
-lw
-js
-print
-ENDIFLabel11 : 
-ENDIFLabel7 : 
-halt
-labelFun0 :
-cfp
-lra
-lfp
-push -1
-sub
-lw
-push 5
+div
 add
-srv
-sra
-pop
-pop
-sfp
-lrv
-lra
-js
-labelFun1 :
-cfp
-lra
+push 2
+push 6
+mult
+push 4
+div
 lfp
-push -1
+push 1
 sub
 lw
 push 1
@@ -122,18 +28,48 @@ b NEQLabel5
 EQLabel4 : 
 push 1 
 NEQLabel5 : 
+push 1
+beq TRUELabel2
+lfp
+push 2
+sub
+lw
+push 3
+beq EQLabel6 
 push 0 
-beq ELSELabel2 
+b NEQLabel7 
+EQLabel6 : 
 push 1 
-b ENDIFLabel3 
-ELSELabel2 : 
+NEQLabel7 : 
+push 1
+beq TRUELabel2
+push 0
+b FALSELabel3
+TRUELabel2: 
+push 1
+FALSELabel3: 
 push 0 
-ENDIFLabel3 : 
-srv
-sra
-pop
-pop
-sfp
-lrv
-lra
-js
+beq ELSELabel0 
+lfp
+push 1
+sub
+lw
+push 4
+add
+lfp
+push 2
+sub
+lw
+sub
+lfp
+push 3
+sub
+lw
+add
+print
+b ENDIFLabel1 
+ELSELabel0 : 
+push 10
+print
+ENDIFLabel1 : 
+halt

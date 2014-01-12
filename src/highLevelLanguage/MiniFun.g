@@ -153,13 +153,15 @@ exp	returns [Node ast]
 
 value	returns [Node ast]
 	: r=fatt {$ast = $r.ast;}
-	(TIMES l=fatt {$ast = new TimesNode($ast, $l.ast);} )* 
+	(	TIMES l=fatt {$ast = new TimesNode($ast, $l.ast);}
+	|	DIV l=fatt {$ast = new DivNode($ast, $l.ast);})* 
 	;
 
 term	returns [Node ast]
 	: r=value {$ast = $r.ast;}
-	(	PLUS l=value {$ast = new PlusNode($ast, $l.ast);}
-	|	MINUS l=value {$ast = new MinusNode($ast, $l.ast);})*;
+	(	PLUS 	l=value {$ast = new PlusNode($ast, $l.ast);}
+	|	MINUS	l=value {$ast = new MinusNode($ast, $l.ast);}
+	|	OR 	l=value {$ast = new OrNode($ast, $l.ast);})*;
 
 fatt	returns [Node ast]
 	: n=NAT {$ast = new NatNode(Integer.parseInt($n.text));}
@@ -236,6 +238,7 @@ COL	 : ':';
 SEMIC	 : ';';
 ASS	 : '=';
 TIMES	 : '*';
+DIV	 : '/';
 PLUS	 : '+';
 MINUS	 : '-';
 LPAR	 : '(';
@@ -244,6 +247,7 @@ CRPAR	 : '}';
 CLPAR	 : '{';
 SLPAR	 : '[';
 SRPAR	 : ']';
+OR	 : '||';
 EQ	 : '==';
 DOUBLECOL: '::';
 IF	 : 'if';

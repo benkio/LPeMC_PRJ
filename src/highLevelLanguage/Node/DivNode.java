@@ -3,12 +3,12 @@ package highLevelLanguage.Node;
 import highLevelLanguage.utils.MiniFunLib;
 import highLevelLanguage.utils.VMCommands;
 
-public class MinusNode extends Node {
+public class DivNode extends Node {
 
     private Node left;
     private Node right;
 
-    public MinusNode(Node l, Node r) {
+    public DivNode(Node l, Node r) {
 	left = l;
 	right = r;
     }
@@ -16,9 +16,9 @@ public class MinusNode extends Node {
     @Override
     public String toPrint() {
 	// TODO Auto-generated method stub
-	return "<MinusNode><MinusNodeLeft>" + left.toPrint()
-		+ "</MinusNodeLeft><MinusNodeRight>" + right.toPrint()
-		+ "</MinusNodeRight></MinusNode>";
+	return "<DivNode><DivNodeLeft>" + left.toPrint()
+		+ "</DivNodeLeft><DivNodeRight>" + right.toPrint()
+		+ "</DivNodeRight></DivNode>";
     }
 
     @Override
@@ -28,7 +28,7 @@ public class MinusNode extends Node {
 		&& (MiniFunLib.isCompatible(right, new IntTypeNode())))
 	    return MiniFunLib.INT;
 
-	System.out.println("TypeCheck Error: Minus operands are incompatible: "
+	System.out.println("TypeCheck Error: Div operands are incompatible: "
 		+ left.typeCheck() + ", " + right.typeCheck()
 		+ ".Shutdown parser");
 	System.exit(0);
@@ -38,7 +38,7 @@ public class MinusNode extends Node {
     @Override
     public String codeGen() {
 	// TODO Auto-generated method stub
-	return left.codeGen() + right.codeGen() + VMCommands.sub.name() + "\n";
+	return left.codeGen() + right.codeGen() + VMCommands.div.name() + "\n";
     }
 
 }

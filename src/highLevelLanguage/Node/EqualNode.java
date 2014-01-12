@@ -31,6 +31,9 @@ public class EqualNode extends Node {
 	else if (MiniFunLib.isCompatible(right, left))
 	    return MiniFunLib.BOOL;
 
+	System.out.println("TypeCheck Error: Equal operands are incompatible: "
+		+ left.typeCheck() + ", " + right.typeCheck()
+		+ ".Shutdown parser");
 	System.exit(0);
 	return "";
     }

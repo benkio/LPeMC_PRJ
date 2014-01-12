@@ -29,6 +29,9 @@ public class TimesNode extends Node {
 		&& (MiniFunLib.isCompatible(right, new IntTypeNode())))
 	    return MiniFunLib.INT;
 
+	System.out.println("TypeCheck Error: Times operands are incompatible: "
+		+ left.typeCheck() + ", " + right.typeCheck()
+		+ ".Shutdown parser");
 	System.exit(0);
 	return "";
     }
