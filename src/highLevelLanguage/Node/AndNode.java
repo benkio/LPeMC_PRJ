@@ -3,12 +3,12 @@ package highLevelLanguage.Node;
 import highLevelLanguage.utils.MiniFunLib;
 import highLevelLanguage.utils.VMCommands;
 
-public class OrNode extends Node {
+public class AndNode extends Node {
 
     private Node left;
     private Node right;
 
-    public OrNode(Node l, Node r) {
+    public AndNode(Node l, Node r) {
 	left = l;
 	right = r;
     }
@@ -16,9 +16,9 @@ public class OrNode extends Node {
     @Override
     public String toPrint() {
 	// TODO Auto-generated method stub
-	return "<OrNode><OrNodeLeft>" + left.toPrint()
-		+ "</OrNodeLeft><OrNodeRight>" + right.toPrint()
-		+ "</OrNodeRight></OrNode>";
+	return "<AndNode><AndNodeLeft>" + left.toPrint()
+		+ "</AndNodeLeft><AndNodeRight>" + right.toPrint()
+		+ "</AndNodeRight></AndNode>";
     }
 
     @Override
@@ -28,7 +28,7 @@ public class OrNode extends Node {
 		&& (MiniFunLib.isCompatible(right, new BoolTypeNode())))
 	    return MiniFunLib.BOOL;
 
-	System.out.println("TypeCheck Error: Or operands are incompatible: "
+	System.out.println("TypeCheck Error: And operands are incompatible: "
 		+ left.typeCheck() + ", " + right.typeCheck()
 		+ ".Shutdown parser");
 	System.exit(0);
@@ -41,14 +41,15 @@ public class OrNode extends Node {
 	String falseLabel = "FALSELabel" + MiniFunLib.getLabIndex();
 
 	// TODO Auto-generated method stub
-	return left.codeGen() + VMCommands.push.name() + " " + MiniFunLib.TRUE
-		+ "\n" + VMCommands.beq.name() + " " + trueLabel + "\n"
+	return left.codeGen() + VMCommands.push.name() + " " + MiniFunLib.FALSE
+		+ "\n " + VMCommands.beq.name() + " " + falseLabel + "\n "
 		+ right.codeGen() + VMCommands.push.name() + " "
-		+ MiniFunLib.TRUE + "\n" + VMCommands.beq.name() + " "
-		+ trueLabel + "\n" + VMCommands.push.name() + " "
-		+ MiniFunLib.FALSE + "\n" + VMCommands.b.name() + " "
-		+ falseLabel + "\n" + trueLabel + ": \n"
-		+ VMCommands.push.name() + " " + MiniFunLib.TRUE + "\n"
-		+ falseLabel + ": \n";
+		+ MiniFunLib.FALSE + "\n " + VMCommands.beq.name() + " "
+		+ falseLabel + "\n " + VMCommands.push.name() + " "
+		+ MiniFunLib.TRUE + "\n " + VMCommands.b.name() + " "
+		+ trueLabel + "\n " + falseLabel + ": \n"
+		+ VMCommands.push.name() + " " + MiniFunLib.FALSE + "\n "
+		+ trueLabel + ": \n";
     }
+
 }

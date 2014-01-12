@@ -17,39 +17,65 @@ push 6
 mult
 push 4
 div
-lfp
-push 1
-sub
-lw
-push 1
-beq EQLabel4 
-push 0 
-b NEQLabel5 
-EQLabel4 : 
 push 1 
-NEQLabel5 : 
-push 1
-beq TRUELabel2
-lfp
-push 2
-sub
-lw
-push 3
-beq EQLabel6 
-push 0 
-b NEQLabel7 
-EQLabel6 : 
-push 1 
-NEQLabel7 : 
-push 1
-beq TRUELabel2
 push 0
-b FALSELabel3
-TRUELabel2: 
+ beq FALSELabel1
+ lfp
 push 1
-FALSELabel3: 
+sub
+lw
+lfp
+push 3
+sub
+lw
+add
+push 4
+beq EQLabel2 
 push 0 
-beq ELSELabel0 
+b NEQLabel3 
+EQLabel2 : 
+push 1 
+NEQLabel3 : 
+push 0
+ beq FALSELabel1
+ push 1
+ b TRUELabel0
+ FALSELabel1: 
+push 0
+ TRUELabel0: 
+lfp
+push 4
+sub
+lw
+push 0
+ beq FALSELabel7
+ lfp
+push 3
+sub
+lw
+push 4
+beq EQLabel10 
+push 0 
+b NEQLabel11 
+EQLabel10 : 
+push 1 
+NEQLabel11 : 
+push 0
+ beq NotLabel8
+ push 0
+ b FALSELabel9
+ NotLabel8: 
+push 1
+ FALSELabel9: 
+push 0
+ beq FALSELabel7
+ push 1
+ b TRUELabel6
+ FALSELabel7: 
+push 0
+ TRUELabel6: 
+push 0 
+beq ELSELabel4 
 lfp
 push 1
 sub
@@ -67,9 +93,9 @@ sub
 lw
 add
 print
-b ENDIFLabel1 
-ELSELabel0 : 
+b ENDIFLabel5 
+ELSELabel4 : 
 push 10
 print
-ENDIFLabel1 : 
+ENDIFLabel5 : 
 halt

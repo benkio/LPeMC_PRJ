@@ -154,7 +154,8 @@ exp	returns [Node ast]
 value	returns [Node ast]
 	: r=fatt {$ast = $r.ast;}
 	(	TIMES l=fatt {$ast = new TimesNode($ast, $l.ast);}
-	|	DIV l=fatt {$ast = new DivNode($ast, $l.ast);})* 
+	|	DIV l=fatt {$ast = new DivNode($ast, $l.ast);}
+	|	AND l=fatt {$ast = new AndNode($ast, $l.ast);}	)* 
 	;
 
 term	returns [Node ast]
@@ -215,11 +216,11 @@ fatt	returns [Node ast]
 	  {$ast = new IfNode($x.ast,$y.ast,$z.ast);}
 	| SLPAR e1=exp DOUBLECOL e2=exp SRPAR  
 	  {$ast = new ListNode($e1.ast,$e2.ast);}
-	 | FIRST LPAR e=exp RPAR{$ast = new FirstNode($e.ast);}
-	 | REST LPAR e=exp RPAR{$ast = new RestNode($e.ast);}
+	| FIRST LPAR e=exp RPAR{$ast = new FirstNode($e.ast);}
+	| REST LPAR e=exp RPAR{$ast = new RestNode($e.ast);}
 	| PRINT  LPAR p=exp RPAR
 	  {$ast = new PrintNode($p.ast);}    
-	  ;
+	| NOT LPAR e=exp RPAR {$ast = new NotNode($e.ast);} ;
 	
 type	returns [Node ast]
 	: INTTYPE {$ast = new IntTypeNode();}
@@ -248,6 +249,7 @@ CLPAR	 : '{';
 SLPAR	 : '[';
 SRPAR	 : ']';
 OR	 : '||';
+AND	 : '&&';
 EQ	 : '==';
 DOUBLECOL: '::';
 IF	 : 'if';
@@ -256,6 +258,7 @@ LET	 : 'let';
 INTTYPE	 : 'int';
 VAR	 : 'var';
 FUN	 : 'fun';
+NOT	 : 'not';
 BOOLTYPE : 'bool';	
 THEN	 : 'then';
 ELSE	 : 'else';
