@@ -148,7 +148,9 @@ declist returns [ArrayList<Node> astList]
 
 exp	returns [Node ast]
 	: r=term {$ast = $r.ast;}
-	(EQ l=term  {$ast = new EqualNode($ast, $l.ast);} )*
+	(EQ l=term  {$ast = new EqualNode($ast, $l.ast);} 
+	|GREATEQ l=term  {$ast = new GreatEqualNode($ast, $l.ast);} 
+	|LESSEQ l=term  {$ast = new LessEqualNode($ast, $l.ast);} )*
 	;
 
 value	returns [Node ast]
@@ -251,6 +253,8 @@ SRPAR	 : ']';
 OR	 : '||';
 AND	 : '&&';
 EQ	 : '==';
+GREATEQ	 : '>=';
+LESSEQ	 : '<=';
 DOUBLECOL: '::';
 IF	 : 'if';
 IN	 : 'in';

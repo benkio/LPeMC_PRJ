@@ -41,14 +41,14 @@ public class EqualNode extends Node {
     @Override
     public String codeGen() {
 	// TODO Auto-generated method stub
-	String Label1 = "EQLabel" + MiniFunLib.getLabIndex();
-	String Label2 = "NEQLabel" + MiniFunLib.getLabIndex();
+	String EQLabel = "EQLabel" + MiniFunLib.getLabIndex();
+	String NEQLabel = "NEQLabel" + MiniFunLib.getLabIndex();
 
 	return left.codeGen() + right.codeGen() + VMCommands.beq.name() + " "
-		+ Label1 + " \n" + VMCommands.push.name() + " "
-		+ MiniFunLib.FALSE + " \n" + VMCommands.b.name() + " " + Label2
-		+ " \n" + Label1 + " : \n" + VMCommands.push.name() + " "
-		+ MiniFunLib.TRUE + " \n" + Label2 + " : \n";
+		+ EQLabel + " \n" + VMCommands.push.name() + " "
+		+ MiniFunLib.FALSE + " \n" + VMCommands.b.name() + " "
+		+ NEQLabel + " \n" + EQLabel + " : \n" + VMCommands.push.name()
+		+ " " + MiniFunLib.TRUE + " \n" + NEQLabel + " : \n";
     }
 
 }

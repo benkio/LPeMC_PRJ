@@ -44,36 +44,19 @@ push 0
 push 0
  TRUELabel0: 
 lfp
-push 4
-sub
-lw
-push 0
- beq FALSELabel7
- lfp
 push 3
 sub
 lw
-push 4
-beq EQLabel10 
-push 0 
-b NEQLabel11 
-EQLabel10 : 
-push 1 
-NEQLabel11 : 
-push 0
- beq NotLabel8
+lfp
+push 2
+sub
+lw
+bgreat GEQLabel6
  push 0
- b FALSELabel9
- NotLabel8: 
+ b ContinueLabel7
+ GEQLabel6: 
 push 1
- FALSELabel9: 
-push 0
- beq FALSELabel7
- push 1
- b TRUELabel6
- FALSELabel7: 
-push 0
- TRUELabel6: 
+ ContinueLabel7: 
 push 0 
 beq ELSELabel4 
 lfp

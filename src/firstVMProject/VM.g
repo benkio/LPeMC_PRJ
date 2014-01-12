@@ -72,6 +72,11 @@ assembly: ( PUSH e=NUMBER   {code[i++] = PUSH;
 	  	  	     labels.add($e.text);
 	  		     addresses.add(new Integer(i)); 
 	  		     code[i++] = 0;}
+	  | BRANCHGREAT e=LABEL
+	  		    {code[i++] = BRANCHGREAT;
+	  	  	     labels.add($e.text);
+	  		     addresses.add(new Integer(i)); 
+	  		     code[i++] = 0;}
 	  | PRINT           {code[i++] = PRINT;}
 	  | HALT            {code[i++] = HALT;}
 	  )* {  for (int ind=0; ind<labels.size(); ind++) {
@@ -93,7 +98,7 @@ SUB	 : 'sub' ;	// add two values from the stack
 MULT	 : 'mult' ;  	// add two values from the stack
 DIV	 : 'div' ;	// add two values from the stack
 BRANCH	 : 'b' ;	// jump to label
-BRANCHLESS:'bless' ;	// jump to label if top < next
+BRANCHLESS:'bless' ;	// jump to label if top <= next
 PRINT	 : 'print' ;	// print top of stack
 HALT	 : 'halt' ;	// stop executions
 
@@ -111,6 +116,8 @@ SHP	 : 'shp';	// Set the hp register with the top of the stack
 LFP	 : 'lfp';	// Push the fp register at the top of the stack
 SFP	 : 'sfp';	// Set the fp register with the top of the stack
 CFP	 : 'cfp';	// Copy the stack pointer value in the fp register
+BRANCHGREAT
+	: 'bgreat';
 
 COL	 : ':' ;
 LABEL	 : ('a'..'z'|'A'..'Z')('a'..'z' | 'A'..'Z' | '0'..'9')* ;
