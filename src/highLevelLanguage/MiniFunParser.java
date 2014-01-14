@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g 2014-01-12 14:14:09
+// $ANTLR 3.5.1 /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g 2014-01-14 18:38:31
 
 package highLevelLanguage;
 
@@ -44,53 +44,54 @@ import org.antlr.runtime.TokenStream;
 @SuppressWarnings("all")
 public class MiniFunParser extends Parser {
     public static final String[] tokenNames = new String[] { "<invalid>",
-	    "<EOR>", "<DOWN>", "<UP>", "AND", "ASS", "BOOLTYPE", "CLPAR",
-	    "COL", "COMMA", "CRPAR", "DIV", "DOUBLECOL", "ELSE", "EMPTY", "EQ",
-	    "ERR", "FALSE", "FIRST", "FUN", "GREATEQ", "ID", "IF", "IN",
-	    "INTTYPE", "LESSEQ", "LET", "LPAR", "MINUS", "NAT", "NOT", "OR",
-	    "PLUS", "PRINT", "REST", "RPAR", "SEMIC", "SLPAR", "SRPAR", "THEN",
-	    "TIMES", "TRUE", "VAR", "WHITESP" };
+	    "<EOR>", "<DOWN>", "<UP>", "AND", "ARROW", "ASS", "BOOLTYPE",
+	    "CLPAR", "COL", "COMMA", "CRPAR", "DIVIDE", "DOUBLECOL", "ELSE",
+	    "EMPTY", "EQ", "ERR", "FALSE", "FIRST", "FUN", "GREATEREQ", "ID",
+	    "IF", "IN", "INTTYPE", "LESSEQ", "LET", "LPAR", "MINUS", "NAT",
+	    "NOT", "OR", "PLUS", "PRINT", "REST", "RPAR", "SEMIC", "SLPAR",
+	    "SRPAR", "THEN", "TIMES", "TRUE", "VAR", "WHITESP" };
     public static final int EOF = -1;
     public static final int AND = 4;
-    public static final int ASS = 5;
-    public static final int BOOLTYPE = 6;
-    public static final int CLPAR = 7;
-    public static final int COL = 8;
-    public static final int COMMA = 9;
-    public static final int CRPAR = 10;
-    public static final int DIV = 11;
-    public static final int DOUBLECOL = 12;
-    public static final int ELSE = 13;
-    public static final int EMPTY = 14;
-    public static final int EQ = 15;
-    public static final int ERR = 16;
-    public static final int FALSE = 17;
-    public static final int FIRST = 18;
-    public static final int FUN = 19;
-    public static final int GREATEQ = 20;
-    public static final int ID = 21;
-    public static final int IF = 22;
-    public static final int IN = 23;
-    public static final int INTTYPE = 24;
-    public static final int LESSEQ = 25;
-    public static final int LET = 26;
-    public static final int LPAR = 27;
-    public static final int MINUS = 28;
-    public static final int NAT = 29;
-    public static final int NOT = 30;
-    public static final int OR = 31;
-    public static final int PLUS = 32;
-    public static final int PRINT = 33;
-    public static final int REST = 34;
-    public static final int RPAR = 35;
-    public static final int SEMIC = 36;
-    public static final int SLPAR = 37;
-    public static final int SRPAR = 38;
-    public static final int THEN = 39;
-    public static final int TIMES = 40;
-    public static final int TRUE = 41;
-    public static final int VAR = 42;
-    public static final int WHITESP = 43;
+    public static final int ARROW = 5;
+    public static final int ASS = 6;
+    public static final int BOOLTYPE = 7;
+    public static final int CLPAR = 8;
+    public static final int COL = 9;
+    public static final int COMMA = 10;
+    public static final int CRPAR = 11;
+    public static final int DIVIDE = 12;
+    public static final int DOUBLECOL = 13;
+    public static final int ELSE = 14;
+    public static final int EMPTY = 15;
+    public static final int EQ = 16;
+    public static final int ERR = 17;
+    public static final int FALSE = 18;
+    public static final int FIRST = 19;
+    public static final int FUN = 20;
+    public static final int GREATEREQ = 21;
+    public static final int ID = 22;
+    public static final int IF = 23;
+    public static final int IN = 24;
+    public static final int INTTYPE = 25;
+    public static final int LESSEQ = 26;
+    public static final int LET = 27;
+    public static final int LPAR = 28;
+    public static final int MINUS = 29;
+    public static final int NAT = 30;
+    public static final int NOT = 31;
+    public static final int OR = 32;
+    public static final int PLUS = 33;
+    public static final int PRINT = 34;
+    public static final int REST = 35;
+    public static final int RPAR = 36;
+    public static final int SEMIC = 37;
+    public static final int SLPAR = 38;
+    public static final int SRPAR = 39;
+    public static final int THEN = 40;
+    public static final int TIMES = 41;
+    public static final int TRUE = 42;
+    public static final int VAR = 43;
+    public static final int WHITESP = 44;
 
     // delegates
     public Parser[] getDelegates() {
@@ -117,26 +118,12 @@ public class MiniFunParser extends Parser {
 	return "/home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g";
     }
 
-    /*
-     * private int[] code = new int[ExecuteVM.CODESIZE]; private int i = 0;
-     * private HashMap<String,Integer> labelAddress = new
-     * HashMap<String,Integer>(); private ArrayList<String> labels = new
-     * ArrayList<String>(); private ArrayList<Integer> addresses = new
-     * ArrayList<Integer>();
-     * 
-     * public int[] createCode() throws Exception { assembly(); return code; }
-     */
-
-    /*
-     * SymbleTable che � diventato un Arraylist per gestire tutti i vari
-     * possibili scoping
-     */
     private ArrayList<HashMap<String, STentry>> symTable = new ArrayList<HashMap<String, STentry>>();
-    private int nestingLevel; // Tiene traccia a quale livello di nesting siamo
+    private int nestingLevel = 0;
 
     // $ANTLR start "prog"
     // /home/benkio/workspace/LPeMC Lab
-    // Project/src/highLevelLanguage/MiniFun.g:35:2: prog returns [Node ast] :
+    // Project/src/highLevelLanguage/MiniFun.g:20:1: prog returns [Node ast] :
     // LET d= declist IN e= exp SEMIC ;
     public final Node prog() throws RecognitionException {
 	Node ast = null;
@@ -146,28 +133,30 @@ public class MiniFunParser extends Parser {
 
 	try {
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:36:3: ( LET d= declist IN
+	    // Project/src/highLevelLanguage/MiniFun.g:21:2: ( LET d= declist IN
 	    // e= exp SEMIC )
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:36:5: LET d= declist IN
+	    // Project/src/highLevelLanguage/MiniFun.g:21:4: LET d= declist IN
 	    // e= exp SEMIC
 	    {
-		match(input, LET, FOLLOW_LET_in_prog33);
-		/* Instanziazione della prima symble table globale */
+		match(input, LET, FOLLOW_LET_in_prog30);
+
 		HashMap<String, STentry> hm = new HashMap<String, STentry>();
 		symTable.add(hm);
 
-		pushFollow(FOLLOW_declist_in_prog46);
+		pushFollow(FOLLOW_declist_in_prog52);
 		d = declist();
 		state._fsp--;
 
-		match(input, IN, FOLLOW_IN_in_prog52);
-		pushFollow(FOLLOW_exp_in_prog56);
+		match(input, IN, FOLLOW_IN_in_prog55);
+		pushFollow(FOLLOW_exp_in_prog59);
 		e = exp();
 		state._fsp--;
 
-		match(input, SEMIC, FOLLOW_SEMIC_in_prog58);
+		match(input, SEMIC, FOLLOW_SEMIC_in_prog61);
+
 		ast = new ProgNode(d, e);
+
 	    }
 
 	} catch (RecognitionException re) {
@@ -183,271 +172,392 @@ public class MiniFunParser extends Parser {
 
     // $ANTLR start "declist"
     // /home/benkio/workspace/LPeMC Lab
-    // Project/src/highLevelLanguage/MiniFun.g:55:1: declist returns
+    // Project/src/highLevelLanguage/MiniFun.g:33:1: declist returns
     // [ArrayList<Node> astList] : ( VAR i= ID COL t= type ASS e= exp SEMIC |
-    // FUN i= ID COL t= type LPAR (p1= ID COL t1= type ( COMMA p= ID COL t= type
-    // )* )? RPAR CLPAR e= exp CRPAR SEMIC )* ;
+    // FUN i= ID COL (rt= type LPAR (fpi= ID ( COL fpt= type )? ( COMMA pi= ID (
+    // COL pt= type )? )* )? RPAR |at= arrowType LPAR ( ID ( COMMA ID )* )? RPAR
+    // ) CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC )* ;
     public final ArrayList<Node> declist() throws RecognitionException {
 	ArrayList<Node> astList = null;
 
 	Token i = null;
-	Token p1 = null;
-	Token p = null;
+	Token fpi = null;
+	Token pi = null;
 	Node t = null;
 	Node e = null;
-	Node t1 = null;
+	Node rt = null;
+	Node fpt = null;
+	Node pt = null;
+	Node at = null;
+	ArrayList<Node> dec = null;
 
 	try {
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:56:2: ( ( VAR i= ID COL
-	    // t= type ASS e= exp SEMIC | FUN i= ID COL t= type LPAR (p1= ID COL
-	    // t1= type ( COMMA p= ID COL t= type )* )? RPAR CLPAR e= exp CRPAR
-	    // SEMIC )* )
+	    // Project/src/highLevelLanguage/MiniFun.g:34:3: ( ( VAR i= ID COL
+	    // t= type ASS e= exp SEMIC | FUN i= ID COL (rt= type LPAR (fpi= ID
+	    // ( COL fpt= type )? ( COMMA pi= ID ( COL pt= type )? )* )? RPAR
+	    // |at= arrowType LPAR ( ID ( COMMA ID )* )? RPAR ) CLPAR ( (dec=
+	    // declist ) e= exp ) CRPAR SEMIC )* )
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:56:4: ( VAR i= ID COL t=
-	    // type ASS e= exp SEMIC | FUN i= ID COL t= type LPAR (p1= ID COL
-	    // t1= type ( COMMA p= ID COL t= type )* )? RPAR CLPAR e= exp CRPAR
-	    // SEMIC )*
+	    // Project/src/highLevelLanguage/MiniFun.g:34:4: ( VAR i= ID COL t=
+	    // type ASS e= exp SEMIC | FUN i= ID COL (rt= type LPAR (fpi= ID (
+	    // COL fpt= type )? ( COMMA pi= ID ( COL pt= type )? )* )? RPAR |at=
+	    // arrowType LPAR ( ID ( COMMA ID )* )? RPAR ) CLPAR ( (dec= declist
+	    // ) e= exp ) CRPAR SEMIC )*
 	    {
+
 		astList = new ArrayList<Node>();
 		int offSet = 1;
+
 		// /home/benkio/workspace/LPeMC Lab
-		// Project/src/highLevelLanguage/MiniFun.g:58:4: ( VAR i= ID COL
-		// t= type ASS e= exp SEMIC | FUN i= ID COL t= type LPAR (p1= ID
-		// COL t1= type ( COMMA p= ID COL t= type )* )? RPAR CLPAR e=
-		// exp CRPAR SEMIC )*
-		loop3: while (true) {
-		    int alt3 = 3;
-		    int LA3_0 = input.LA(1);
-		    if ((LA3_0 == VAR)) {
-			alt3 = 1;
-		    } else if ((LA3_0 == FUN)) {
-			alt3 = 2;
+		// Project/src/highLevelLanguage/MiniFun.g:39:5: ( VAR i= ID COL
+		// t= type ASS e= exp SEMIC | FUN i= ID COL (rt= type LPAR (fpi=
+		// ID ( COL fpt= type )? ( COMMA pi= ID ( COL pt= type )? )* )?
+		// RPAR |at= arrowType LPAR ( ID ( COMMA ID )* )? RPAR ) CLPAR (
+		// (dec= declist ) e= exp ) CRPAR SEMIC )*
+		loop8: while (true) {
+		    int alt8 = 3;
+		    int LA8_0 = input.LA(1);
+		    if ((LA8_0 == VAR)) {
+			alt8 = 1;
+		    } else if ((LA8_0 == FUN)) {
+			alt8 = 2;
 		    }
 
-		    switch (alt3) {
+		    switch (alt8) {
 		    case 1:
 		    // /home/benkio/workspace/LPeMC Lab
-		    // Project/src/highLevelLanguage/MiniFun.g:58:5: VAR i= ID
+		    // Project/src/highLevelLanguage/MiniFun.g:39:6: VAR i= ID
 		    // COL t= type ASS e= exp SEMIC
 		    {
-			match(input, VAR, FOLLOW_VAR_in_declist90);
-			i = (Token) match(input, ID, FOLLOW_ID_in_declist94);
-			match(input, COL, FOLLOW_COL_in_declist96);
-			pushFollow(FOLLOW_type_in_declist100);
+			match(input, VAR, FOLLOW_VAR_in_declist91);
+			i = (Token) match(input, ID, FOLLOW_ID_in_declist95);
+			match(input, COL, FOLLOW_COL_in_declist97);
+			pushFollow(FOLLOW_type_in_declist101);
 			t = type();
 			state._fsp--;
 
-			match(input, ASS, FOLLOW_ASS_in_declist102);
-			pushFollow(FOLLOW_exp_in_declist106);
+			match(input, ASS, FOLLOW_ASS_in_declist103);
+			pushFollow(FOLLOW_exp_in_declist107);
 			e = exp();
 			state._fsp--;
 
-			match(input, SEMIC, FOLLOW_SEMIC_in_declist108);
+			match(input, SEMIC, FOLLOW_SEMIC_in_declist109);
 
 			DecVarNode vn = new DecVarNode((i != null ? i.getText()
 				: null), t, e);
-			STentry entry = new STentry(vn, offSet++); /*
-								    * Metto il
-								    * puntatore
-								    * a quel
-								    * nodo e il
-								    * suo
-								    * relativo
-								    * offSet
-								    */
-			/*
-			 * Inserisco il STentry nella symbol table incui ci sar�
-			 * il puntatore a quel nodo associandolo al nome dell
-			 * ID. Se ci restituisce null va bene perch� ho inserito
-			 * un nuovo valore Se invece � != null allora avevo gi�
-			 * la variabile presente. ERRORE.
-			 */
+			STentry entry = new STentry(vn, offSet++);
 			HashMap<String, STentry> hm = symTable
 				.get(nestingLevel);
-			if (hm.put((i != null ? i.getText() : null), entry) != null) // Controllo
-										     // semantico
-										     // [Multiple
-										     // Declaration]
-			{
-			    System.out.println("identifer "
+
+			if (hm.put((i != null ? i.getText() : null), entry) != null) {
+			    System.out.println("Identifier "
 				    + (i != null ? i.getText() : null)
 				    + " at line "
 				    + (i != null ? i.getLine() : 0)
-				    + "already defined.");
+				    + " already defined");
 			    System.exit(0);
 			}
+
 			astList.add(vn);
 
 		    }
 			break;
 		    case 2:
 		    // /home/benkio/workspace/LPeMC Lab
-		    // Project/src/highLevelLanguage/MiniFun.g:76:5: FUN i= ID
-		    // COL t= type LPAR (p1= ID COL t1= type ( COMMA p= ID COL
-		    // t= type )* )? RPAR CLPAR e= exp CRPAR SEMIC
+		    // Project/src/highLevelLanguage/MiniFun.g:53:6: FUN i= ID
+		    // COL (rt= type LPAR (fpi= ID ( COL fpt= type )? ( COMMA
+		    // pi= ID ( COL pt= type )? )* )? RPAR |at= arrowType LPAR (
+		    // ID ( COMMA ID )* )? RPAR ) CLPAR ( (dec= declist ) e= exp
+		    // ) CRPAR SEMIC
 		    {
-			match(input, FUN, FOLLOW_FUN_in_declist119);
-			i = (Token) match(input, ID, FOLLOW_ID_in_declist123);
-			match(input, COL, FOLLOW_COL_in_declist125);
-			pushFollow(FOLLOW_type_in_declist129);
-			t = type();
-			state._fsp--;
-
-			/*
-			 * Introdotto il caricamento e controllo sulla simble
-			 * table principale del symble entry della funzione
-			 * creato il nodo del AST associato al nodo della
-			 * funzione, ma non completamente, queste informazioni
-			 * verranno leggendo poi i singoli parametri.
-			 */
-
-			DecFunNode fn = new DecFunNode((i != null ? i.getText()
-				: null), t);
-			STentry entry = new STentry(fn, offSet++);
-
-			HashMap<String, STentry> ParentHm = symTable
-				.get(nestingLevel);
-			if (ParentHm.put((i != null ? i.getText() : null),
-				entry) != null) // Controllo semantico [Multiple
-						// Declaration]
-			{
-			    System.out.println("identifer "
-				    + (i != null ? i.getText() : null)
-				    + " at line "
-				    + (i != null ? i.getLine() : 0)
-				    + "already defined.");
-			    System.exit(0);
-			}
-
-			match(input, LPAR, FOLLOW_LPAR_in_declist136);
-
-			/*
-			 * Instanziata una nuova simble table che conterr� i
-			 * parametri della funzione Aumentato il nesting level
-			 */
-			int parOffSet = -1;
-			HashMap<String, STentry> FunHm = new HashMap<String, STentry>();
-			symTable.add(FunHm);
-			nestingLevel++;
-
+			match(input, FUN, FOLLOW_FUN_in_declist129);
+			i = (Token) match(input, ID, FOLLOW_ID_in_declist133);
+			match(input, COL, FOLLOW_COL_in_declist135);
+			DecFunNode fn = null;
 			// /home/benkio/workspace/LPeMC Lab
-			// Project/src/highLevelLanguage/MiniFun.g:103:5: (p1=
-			// ID COL t1= type ( COMMA p= ID COL t= type )* )?
-			int alt2 = 2;
-			int LA2_0 = input.LA(1);
-			if ((LA2_0 == ID)) {
-			    alt2 = 1;
+			// Project/src/highLevelLanguage/MiniFun.g:54:6: (rt=
+			// type LPAR (fpi= ID ( COL fpt= type )? ( COMMA pi= ID
+			// ( COL pt= type )? )* )? RPAR |at= arrowType LPAR ( ID
+			// ( COMMA ID )* )? RPAR )
+			int alt7 = 2;
+			int LA7_0 = input.LA(1);
+			if ((LA7_0 == BOOLTYPE || LA7_0 == INTTYPE)) {
+			    alt7 = 1;
+			} else if ((LA7_0 == LPAR)) {
+			    alt7 = 2;
 			}
-			switch (alt2) {
+
+			else {
+			    NoViableAltException nvae = new NoViableAltException(
+				    "", 7, 0, input);
+			    throw nvae;
+			}
+
+			switch (alt7) {
 			case 1:
 			// /home/benkio/workspace/LPeMC Lab
-			// Project/src/highLevelLanguage/MiniFun.g:103:6: p1= ID
-			// COL t1= type ( COMMA p= ID COL t= type )*
+			// Project/src/highLevelLanguage/MiniFun.g:55:6: rt=
+			// type LPAR (fpi= ID ( COL fpt= type )? ( COMMA pi= ID
+			// ( COL pt= type )? )* )? RPAR
 			{
-			    p1 = (Token) match(input, ID,
-				    FOLLOW_ID_in_declist147);
-			    match(input, COL, FOLLOW_COL_in_declist149);
 			    pushFollow(FOLLOW_type_in_declist153);
-			    t1 = type();
+			    rt = type();
 			    state._fsp--;
 
-			    /*
-			     * Introdurre nella hashmap della funzione, quindi
-			     * annidata, i parametri Aggiornato l'AST della
-			     * funzione
-			     */
-			    ParamNode param = new ParamNode(
-				    (p1 != null ? p1.getText() : null), t1);
-			    entry = new STentry(param, parOffSet--);
-			    FunHm.put((p1 != null ? p1.getText() : null), entry);
-			    fn.addParam(param);
+			    fn = new DecFunNode(
+				    (i != null ? i.getText() : null), rt);
+			    STentry entry = new STentry(fn, offSet++);
+			    HashMap<String, STentry> hm = symTable
+				    .get(nestingLevel);
+
+			    if (hm.put((i != null ? i.getText() : null), entry) != null) {
+				System.out.println("Identifier "
+					+ (i != null ? i.getText() : null)
+					+ " at line "
+					+ (i != null ? i.getLine() : 0)
+					+ " already defined");
+				System.exit(0);
+			    }
+
+			    match(input, LPAR, FOLLOW_LPAR_in_declist168);
+
+			    int parOffSet = -1;
+			    hm = new HashMap<String, STentry>();
+			    symTable.add(hm);
+			    nestingLevel++;
 
 			    // /home/benkio/workspace/LPeMC Lab
-			    // Project/src/highLevelLanguage/MiniFun.g:113:5: (
-			    // COMMA p= ID COL t= type )*
-			    loop1: while (true) {
+			    // Project/src/highLevelLanguage/MiniFun.g:74:7:
+			    // (fpi= ID ( COL fpt= type )? ( COMMA pi= ID ( COL
+			    // pt= type )? )* )?
+			    int alt4 = 2;
+			    int LA4_0 = input.LA(1);
+			    if ((LA4_0 == ID)) {
+				alt4 = 1;
+			    }
+			    switch (alt4) {
+			    case 1:
+			    // /home/benkio/workspace/LPeMC Lab
+			    // Project/src/highLevelLanguage/MiniFun.g:75:8:
+			    // fpi= ID ( COL fpt= type )? ( COMMA pi= ID ( COL
+			    // pt= type )? )*
+			    {
+				fpi = (Token) match(input, ID,
+					FOLLOW_ID_in_declist197);
+				// /home/benkio/workspace/LPeMC Lab
+				// Project/src/highLevelLanguage/MiniFun.g:75:15:
+				// ( COL fpt= type )?
 				int alt1 = 2;
 				int LA1_0 = input.LA(1);
-				if ((LA1_0 == COMMA)) {
+				if ((LA1_0 == COL)) {
 				    alt1 = 1;
 				}
-
 				switch (alt1) {
 				case 1:
 				// /home/benkio/workspace/LPeMC Lab
-				// Project/src/highLevelLanguage/MiniFun.g:113:6:
-				// COMMA p= ID COL t= type
+				// Project/src/highLevelLanguage/MiniFun.g:75:16:
+				// COL fpt= type
 				{
-				    match(input, COMMA,
-					    FOLLOW_COMMA_in_declist161);
-				    p = (Token) match(input, ID,
-					    FOLLOW_ID_in_declist165);
-				    match(input, COL, FOLLOW_COL_in_declist167);
-				    pushFollow(FOLLOW_type_in_declist171);
-				    t = type();
+				    match(input, COL, FOLLOW_COL_in_declist200);
+				    pushFollow(FOLLOW_type_in_declist204);
+				    fpt = type();
 				    state._fsp--;
-
-				    /*
-				     * Introdurre nella hashmap della funzione,
-				     * quindi annidata, i parametri Aggiornato
-				     * l'AST della funzione
-				     */
-				    param = new ParamNode(
-					    (p != null ? p.getText() : null), t);
-				    entry = new STentry(param, parOffSet--);
-				    if (FunHm.put((p != null ? p.getText()
-					    : null), entry) != null) {
-					System.out.println("Param "
-						+ (p != null ? p.getText()
-							: null) + " at line "
-						+ (p != null ? p.getLine() : 0)
-						+ "already defined.");
-					System.exit(0);
-				    }
-				    fn.addParam(param);
 
 				}
 				    break;
 
-				default:
-				    break loop1;
 				}
+
+				ParamNode pn = new ParamNode(
+					(fpi != null ? fpi.getText() : null),
+					fpt);
+				entry = new STentry(pn, parOffSet--);
+				hm.put((fpi != null ? fpi.getText() : null),
+					entry);
+				fn.addParam(pn);
+
+				// /home/benkio/workspace/LPeMC Lab
+				// Project/src/highLevelLanguage/MiniFun.g:82:8:
+				// ( COMMA pi= ID ( COL pt= type )? )*
+				loop3: while (true) {
+				    int alt3 = 2;
+				    int LA3_0 = input.LA(1);
+				    if ((LA3_0 == COMMA)) {
+					alt3 = 1;
+				    }
+
+				    switch (alt3) {
+				    case 1:
+				    // /home/benkio/workspace/LPeMC Lab
+				    // Project/src/highLevelLanguage/MiniFun.g:82:9:
+				    // COMMA pi= ID ( COL pt= type )?
+				    {
+					match(input, COMMA,
+						FOLLOW_COMMA_in_declist226);
+					pi = (Token) match(input, ID,
+						FOLLOW_ID_in_declist230);
+					// /home/benkio/workspace/LPeMC Lab
+					// Project/src/highLevelLanguage/MiniFun.g:82:21:
+					// ( COL pt= type )?
+					int alt2 = 2;
+					int LA2_0 = input.LA(1);
+					if ((LA2_0 == COL)) {
+					    alt2 = 1;
+					}
+					switch (alt2) {
+					case 1:
+					// /home/benkio/workspace/LPeMC Lab
+					// Project/src/highLevelLanguage/MiniFun.g:82:22:
+					// COL pt= type
+					{
+					    match(input, COL,
+						    FOLLOW_COL_in_declist233);
+					    pushFollow(FOLLOW_type_in_declist237);
+					    pt = type();
+					    state._fsp--;
+
+					}
+					    break;
+
+					}
+
+					pn = new ParamNode(
+						(pi != null ? pi.getText()
+							: null), pt);
+					entry = new STentry(pn, parOffSet--);
+					if (hm.put((pi != null ? pi.getText()
+						: null), entry) != null) {
+					    System.out.println("Identifier "
+						    + (pi != null ? pi
+							    .getText() : null)
+						    + " at line "
+						    + (pi != null ? pi
+							    .getLine() : 0)
+						    + " already defined");
+					    System.exit(0);
+					}
+					fn.addParam(pn);
+
+				    }
+					break;
+
+				    default:
+					break loop3;
+				    }
+				}
+
+			    }
+				break;
+
 			    }
 
+			    match(input, RPAR, FOLLOW_RPAR_in_declist269);
+			}
+			    break;
+			case 2:
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:94:6: at=
+			// arrowType LPAR ( ID ( COMMA ID )* )? RPAR
+			{
+			    pushFollow(FOLLOW_arrowType_in_declist286);
+			    at = arrowType();
+			    state._fsp--;
+
+			    fn = new DecFunNode(
+				    (i != null ? i.getText() : null), at);
+			    match(input, LPAR, FOLLOW_LPAR_in_declist295);
+			    // /home/benkio/workspace/LPeMC Lab
+			    // Project/src/highLevelLanguage/MiniFun.g:96:7: (
+			    // ID ( COMMA ID )* )?
+			    int alt6 = 2;
+			    int LA6_0 = input.LA(1);
+			    if ((LA6_0 == ID)) {
+				alt6 = 1;
+			    }
+			    switch (alt6) {
+			    case 1:
+			    // /home/benkio/workspace/LPeMC Lab
+			    // Project/src/highLevelLanguage/MiniFun.g:96:8: ID
+			    // ( COMMA ID )*
+			    {
+				match(input, ID, FOLLOW_ID_in_declist304);
+				// /home/benkio/workspace/LPeMC Lab
+				// Project/src/highLevelLanguage/MiniFun.g:96:11:
+				// ( COMMA ID )*
+				loop5: while (true) {
+				    int alt5 = 2;
+				    int LA5_0 = input.LA(1);
+				    if ((LA5_0 == COMMA)) {
+					alt5 = 1;
+				    }
+
+				    switch (alt5) {
+				    case 1:
+				    // /home/benkio/workspace/LPeMC Lab
+				    // Project/src/highLevelLanguage/MiniFun.g:96:12:
+				    // COMMA ID
+				    {
+					match(input, COMMA,
+						FOLLOW_COMMA_in_declist307);
+					match(input, ID,
+						FOLLOW_ID_in_declist309);
+				    }
+					break;
+
+				    default:
+					break loop5;
+				    }
+				}
+
+			    }
+				break;
+
+			    }
+
+			    match(input, RPAR, FOLLOW_RPAR_in_declist321);
 			}
 			    break;
 
 			}
 
-			match(input, RPAR, FOLLOW_RPAR_in_declist190);
-			match(input, CLPAR, FOLLOW_CLPAR_in_declist195);
-			pushFollow(FOLLOW_exp_in_declist203);
-			e = exp();
-			state._fsp--;
+			match(input, CLPAR, FOLLOW_CLPAR_in_declist336);
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:100:6: (
+			// (dec= declist ) e= exp )
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:101:7: (dec=
+			// declist ) e= exp
+			{
+			    // /home/benkio/workspace/LPeMC Lab
+			    // Project/src/highLevelLanguage/MiniFun.g:101:7:
+			    // (dec= declist )
+			    // /home/benkio/workspace/LPeMC Lab
+			    // Project/src/highLevelLanguage/MiniFun.g:101:8:
+			    // dec= declist
+			    {
+				pushFollow(FOLLOW_declist_in_declist355);
+				dec = declist();
+				state._fsp--;
 
-			/*
-			 * Introdurre nel nodo funzione il valore del nodo della
-			 * expressione Aggiungere al nodo decVarList il nodo
-			 * della dichiarazione di funzione
-			 */
-			fn.addExpValue(e);
-			astList.add(fn);
+			    }
 
-			match(input, CRPAR, FOLLOW_CRPAR_in_declist211);
-			match(input, SEMIC, FOLLOW_SEMIC_in_declist217);
+			    pushFollow(FOLLOW_exp_in_declist380);
+			    e = exp();
+			    state._fsp--;
+			    fn.addExpValue(e);
+			    symTable.remove(nestingLevel--);
+			    astList.add(fn);
 
-			/*
-			 * Elimino l'hashmap perch� non mi serve pi� avendo
-			 * finito il lifetime della funzione.
-			 */
-			symTable.remove(nestingLevel--);
+			}
 
+			match(input, CRPAR, FOLLOW_CRPAR_in_declist406);
+			match(input, SEMIC, FOLLOW_SEMIC_in_declist413);
 		    }
 			break;
 
 		    default:
-			break loop3;
+			break loop8;
 		    }
 		}
 
@@ -466,88 +576,117 @@ public class MiniFunParser extends Parser {
 
     // $ANTLR start "exp"
     // /home/benkio/workspace/LPeMC Lab
-    // Project/src/highLevelLanguage/MiniFun.g:149:1: exp returns [Node ast] :
-    // r= term ( EQ l= term | GREATEQ l= term | LESSEQ l= term )* ;
+    // Project/src/highLevelLanguage/MiniFun.g:113:1: exp returns [Node ast] :
+    // f= term ( ( EQ l= term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )*
+    // ;
     public final Node exp() throws RecognitionException {
 	Node ast = null;
 
-	Node r = null;
+	Node f = null;
 	Node l = null;
 
 	try {
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:150:2: (r= term ( EQ l=
-	    // term | GREATEQ l= term | LESSEQ l= term )* )
+	    // Project/src/highLevelLanguage/MiniFun.g:114:4: (f= term ( ( EQ l=
+	    // term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )* )
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:150:4: r= term ( EQ l=
-	    // term | GREATEQ l= term | LESSEQ l= term )*
+	    // Project/src/highLevelLanguage/MiniFun.g:114:6: f= term ( ( EQ l=
+	    // term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )*
 	    {
-		pushFollow(FOLLOW_term_in_exp245);
-		r = term();
+		pushFollow(FOLLOW_term_in_exp434);
+		f = term();
 		state._fsp--;
 
-		ast = r;
+		ast = f;
 		// /home/benkio/workspace/LPeMC Lab
-		// Project/src/highLevelLanguage/MiniFun.g:151:2: ( EQ l= term |
-		// GREATEQ l= term | LESSEQ l= term )*
-		loop4: while (true) {
-		    int alt4 = 4;
+		// Project/src/highLevelLanguage/MiniFun.g:115:7: ( ( EQ l= term
+		// ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )*
+		loop9: while (true) {
+		    int alt9 = 4;
 		    switch (input.LA(1)) {
 		    case EQ: {
-			alt4 = 1;
-		    }
-			break;
-		    case GREATEQ: {
-			alt4 = 2;
+			alt9 = 1;
 		    }
 			break;
 		    case LESSEQ: {
-			alt4 = 3;
+			alt9 = 2;
+		    }
+			break;
+		    case GREATEREQ: {
+			alt9 = 3;
 		    }
 			break;
 		    }
-		    switch (alt4) {
+		    switch (alt9) {
 		    case 1:
 		    // /home/benkio/workspace/LPeMC Lab
-		    // Project/src/highLevelLanguage/MiniFun.g:151:3: EQ l= term
+		    // Project/src/highLevelLanguage/MiniFun.g:115:8: ( EQ l=
+		    // term )
 		    {
-			match(input, EQ, FOLLOW_EQ_in_exp251);
-			pushFollow(FOLLOW_term_in_exp255);
-			l = term();
-			state._fsp--;
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:115:8: ( EQ
+			// l= term )
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:116:8: EQ l=
+			// term
+			{
+			    match(input, EQ, FOLLOW_EQ_in_exp454);
+			    pushFollow(FOLLOW_term_in_exp458);
+			    l = term();
+			    state._fsp--;
 
-			ast = new EqualNode(ast, l);
+			    ast = new EqualNode(ast, l);
+			}
+
 		    }
 			break;
 		    case 2:
 		    // /home/benkio/workspace/LPeMC Lab
-		    // Project/src/highLevelLanguage/MiniFun.g:152:3: GREATEQ l=
-		    // term
+		    // Project/src/highLevelLanguage/MiniFun.g:119:9: ( LESSEQ
+		    // l= term )
 		    {
-			match(input, GREATEQ, FOLLOW_GREATEQ_in_exp263);
-			pushFollow(FOLLOW_term_in_exp267);
-			l = term();
-			state._fsp--;
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:119:9: (
+			// LESSEQ l= term )
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:120:9: LESSEQ
+			// l= term
+			{
+			    match(input, LESSEQ, FOLLOW_LESSEQ_in_exp498);
+			    pushFollow(FOLLOW_term_in_exp502);
+			    l = term();
+			    state._fsp--;
 
-			ast = new GreatEqualNode(ast, l);
+			    ast = new LessEqualNode(ast, l);
+			}
+
 		    }
 			break;
 		    case 3:
 		    // /home/benkio/workspace/LPeMC Lab
-		    // Project/src/highLevelLanguage/MiniFun.g:153:3: LESSEQ l=
-		    // term
+		    // Project/src/highLevelLanguage/MiniFun.g:123:9: (
+		    // GREATEREQ l= term )
 		    {
-			match(input, LESSEQ, FOLLOW_LESSEQ_in_exp275);
-			pushFollow(FOLLOW_term_in_exp279);
-			l = term();
-			state._fsp--;
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:123:9: (
+			// GREATEREQ l= term )
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:123:11:
+			// GREATEREQ l= term
+			{
+			    match(input, GREATEREQ, FOLLOW_GREATEREQ_in_exp533);
+			    pushFollow(FOLLOW_term_in_exp537);
+			    l = term();
+			    state._fsp--;
 
-			ast = new LessEqualNode(ast, l);
+			    ast = new GreatEqualNode(ast, l);
+			}
+
 		    }
 			break;
 
 		    default:
-			break loop4;
+			break loop9;
 		    }
 		}
 
@@ -564,192 +703,118 @@ public class MiniFunParser extends Parser {
 
     // $ANTLR end "exp"
 
-    // $ANTLR start "value"
-    // /home/benkio/workspace/LPeMC Lab
-    // Project/src/highLevelLanguage/MiniFun.g:156:1: value returns [Node ast] :
-    // r= fatt ( TIMES l= fatt | DIV l= fatt | AND l= fatt )* ;
-    public final Node value() throws RecognitionException {
-	Node ast = null;
-
-	Node r = null;
-	Node l = null;
-
-	try {
-	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:157:2: (r= fatt ( TIMES
-	    // l= fatt | DIV l= fatt | AND l= fatt )* )
-	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:157:4: r= fatt ( TIMES l=
-	    // fatt | DIV l= fatt | AND l= fatt )*
-	    {
-		pushFollow(FOLLOW_fatt_in_value302);
-		r = fatt();
-		state._fsp--;
-
-		ast = r;
-		// /home/benkio/workspace/LPeMC Lab
-		// Project/src/highLevelLanguage/MiniFun.g:158:2: ( TIMES l=
-		// fatt | DIV l= fatt | AND l= fatt )*
-		loop5: while (true) {
-		    int alt5 = 4;
-		    switch (input.LA(1)) {
-		    case TIMES: {
-			alt5 = 1;
-		    }
-			break;
-		    case DIV: {
-			alt5 = 2;
-		    }
-			break;
-		    case AND: {
-			alt5 = 3;
-		    }
-			break;
-		    }
-		    switch (alt5) {
-		    case 1:
-		    // /home/benkio/workspace/LPeMC Lab
-		    // Project/src/highLevelLanguage/MiniFun.g:158:4: TIMES l=
-		    // fatt
-		    {
-			match(input, TIMES, FOLLOW_TIMES_in_value309);
-			pushFollow(FOLLOW_fatt_in_value313);
-			l = fatt();
-			state._fsp--;
-
-			ast = new TimesNode(ast, l);
-		    }
-			break;
-		    case 2:
-		    // /home/benkio/workspace/LPeMC Lab
-		    // Project/src/highLevelLanguage/MiniFun.g:159:4: DIV l=
-		    // fatt
-		    {
-			match(input, DIV, FOLLOW_DIV_in_value320);
-			pushFollow(FOLLOW_fatt_in_value324);
-			l = fatt();
-			state._fsp--;
-
-			ast = new DivNode(ast, l);
-		    }
-			break;
-		    case 3:
-		    // /home/benkio/workspace/LPeMC Lab
-		    // Project/src/highLevelLanguage/MiniFun.g:160:4: AND l=
-		    // fatt
-		    {
-			match(input, AND, FOLLOW_AND_in_value331);
-			pushFollow(FOLLOW_fatt_in_value335);
-			l = fatt();
-			state._fsp--;
-
-			ast = new AndNode(ast, l);
-		    }
-			break;
-
-		    default:
-			break loop5;
-		    }
-		}
-
-	    }
-
-	} catch (RecognitionException re) {
-	    reportError(re);
-	    recover(input, re);
-	} finally {
-	    // do for sure before leaving
-	}
-	return ast;
-    }
-
-    // $ANTLR end "value"
-
     // $ANTLR start "term"
     // /home/benkio/workspace/LPeMC Lab
-    // Project/src/highLevelLanguage/MiniFun.g:163:1: term returns [Node ast] :
-    // r= value ( PLUS l= value | MINUS l= value | OR l= value )* ;
+    // Project/src/highLevelLanguage/MiniFun.g:128:1: term returns [Node ast] :
+    // f= value ( ( PLUS l= value ) | ( MINUS l= value ) | ( OR l= value ) )* ;
     public final Node term() throws RecognitionException {
 	Node ast = null;
 
-	Node r = null;
+	Node f = null;
 	Node l = null;
 
 	try {
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:164:2: (r= value ( PLUS
-	    // l= value | MINUS l= value | OR l= value )* )
+	    // Project/src/highLevelLanguage/MiniFun.g:129:2: (f= value ( ( PLUS
+	    // l= value ) | ( MINUS l= value ) | ( OR l= value ) )* )
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:164:4: r= value ( PLUS l=
-	    // value | MINUS l= value | OR l= value )*
+	    // Project/src/highLevelLanguage/MiniFun.g:129:4: f= value ( ( PLUS
+	    // l= value ) | ( MINUS l= value ) | ( OR l= value ) )*
 	    {
-		pushFollow(FOLLOW_value_in_term358);
-		r = value();
+		pushFollow(FOLLOW_value_in_term582);
+		f = value();
 		state._fsp--;
 
-		ast = r;
+		ast = f;
 		// /home/benkio/workspace/LPeMC Lab
-		// Project/src/highLevelLanguage/MiniFun.g:165:2: ( PLUS l=
-		// value | MINUS l= value | OR l= value )*
-		loop6: while (true) {
-		    int alt6 = 4;
+		// Project/src/highLevelLanguage/MiniFun.g:130:6: ( ( PLUS l=
+		// value ) | ( MINUS l= value ) | ( OR l= value ) )*
+		loop10: while (true) {
+		    int alt10 = 4;
 		    switch (input.LA(1)) {
 		    case PLUS: {
-			alt6 = 1;
+			alt10 = 1;
 		    }
 			break;
 		    case MINUS: {
-			alt6 = 2;
+			alt10 = 2;
 		    }
 			break;
 		    case OR: {
-			alt6 = 3;
+			alt10 = 3;
 		    }
 			break;
 		    }
-		    switch (alt6) {
+		    switch (alt10) {
 		    case 1:
 		    // /home/benkio/workspace/LPeMC Lab
-		    // Project/src/highLevelLanguage/MiniFun.g:165:4: PLUS l=
-		    // value
+		    // Project/src/highLevelLanguage/MiniFun.g:131:5: ( PLUS l=
+		    // value )
 		    {
-			match(input, PLUS, FOLLOW_PLUS_in_term365);
-			pushFollow(FOLLOW_value_in_term370);
-			l = value();
-			state._fsp--;
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:131:5: ( PLUS
+			// l= value )
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:132:6: PLUS
+			// l= value
+			{
+			    match(input, PLUS, FOLLOW_PLUS_in_term604);
+			    pushFollow(FOLLOW_value_in_term608);
+			    l = value();
+			    state._fsp--;
 
-			ast = new PlusNode(ast, l);
+			    ast = new PlusNode(ast, l);
+			}
+
 		    }
 			break;
 		    case 2:
 		    // /home/benkio/workspace/LPeMC Lab
-		    // Project/src/highLevelLanguage/MiniFun.g:166:4: MINUS l=
-		    // value
+		    // Project/src/highLevelLanguage/MiniFun.g:135:9: ( MINUS l=
+		    // value )
 		    {
-			match(input, MINUS, FOLLOW_MINUS_in_term377);
-			pushFollow(FOLLOW_value_in_term381);
-			l = value();
-			state._fsp--;
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:135:9: (
+			// MINUS l= value )
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:136:9: MINUS
+			// l= value
+			{
+			    match(input, MINUS, FOLLOW_MINUS_in_term647);
+			    pushFollow(FOLLOW_value_in_term651);
+			    l = value();
+			    state._fsp--;
 
-			ast = new MinusNode(ast, l);
+			    ast = new MinusNode(ast, l);
+			}
+
 		    }
 			break;
 		    case 3:
 		    // /home/benkio/workspace/LPeMC Lab
-		    // Project/src/highLevelLanguage/MiniFun.g:167:4: OR l=
-		    // value
+		    // Project/src/highLevelLanguage/MiniFun.g:139:9: ( OR l=
+		    // value )
 		    {
-			match(input, OR, FOLLOW_OR_in_term388);
-			pushFollow(FOLLOW_value_in_term393);
-			l = value();
-			state._fsp--;
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:139:9: ( OR
+			// l= value )
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:140:9: OR l=
+			// value
+			{
+			    match(input, OR, FOLLOW_OR_in_term690);
+			    pushFollow(FOLLOW_value_in_term694);
+			    l = value();
+			    state._fsp--;
 
-			ast = new OrNode(ast, l);
+			    ast = new OrNode(ast, l);
+			}
+
 		    }
 			break;
 
 		    default:
-			break loop6;
+			break loop10;
 		    }
 		}
 
@@ -766,13 +831,141 @@ public class MiniFunParser extends Parser {
 
     // $ANTLR end "term"
 
+    // $ANTLR start "value"
+    // /home/benkio/workspace/LPeMC Lab
+    // Project/src/highLevelLanguage/MiniFun.g:146:1: value returns [Node ast] :
+    // f= fatt ( ( TIMES l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )* ;
+    public final Node value() throws RecognitionException {
+	Node ast = null;
+
+	Node f = null;
+	Node l = null;
+
+	try {
+	    // /home/benkio/workspace/LPeMC Lab
+	    // Project/src/highLevelLanguage/MiniFun.g:147:3: (f= fatt ( ( TIMES
+	    // l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )* )
+	    // /home/benkio/workspace/LPeMC Lab
+	    // Project/src/highLevelLanguage/MiniFun.g:147:5: f= fatt ( ( TIMES
+	    // l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )*
+	    {
+		pushFollow(FOLLOW_fatt_in_value740);
+		f = fatt();
+		state._fsp--;
+
+		ast = f;
+		// /home/benkio/workspace/LPeMC Lab
+		// Project/src/highLevelLanguage/MiniFun.g:148:6: ( ( TIMES l=
+		// fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )*
+		loop11: while (true) {
+		    int alt11 = 4;
+		    switch (input.LA(1)) {
+		    case TIMES: {
+			alt11 = 1;
+		    }
+			break;
+		    case DIVIDE: {
+			alt11 = 2;
+		    }
+			break;
+		    case AND: {
+			alt11 = 3;
+		    }
+			break;
+		    }
+		    switch (alt11) {
+		    case 1:
+		    // /home/benkio/workspace/LPeMC Lab
+		    // Project/src/highLevelLanguage/MiniFun.g:149:7: ( TIMES l=
+		    // fatt )
+		    {
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:149:7: (
+			// TIMES l= fatt )
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:150:8: TIMES
+			// l= fatt
+			{
+			    match(input, TIMES, FOLLOW_TIMES_in_value766);
+			    pushFollow(FOLLOW_fatt_in_value770);
+			    l = fatt();
+			    state._fsp--;
+
+			    ast = new TimesNode(ast, l);
+			}
+
+		    }
+			break;
+		    case 2:
+		    // /home/benkio/workspace/LPeMC Lab
+		    // Project/src/highLevelLanguage/MiniFun.g:153:9: ( DIVIDE
+		    // l= fatt )
+		    {
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:153:9: (
+			// DIVIDE l= fatt )
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:154:9: DIVIDE
+			// l= fatt
+			{
+			    match(input, DIVIDE, FOLLOW_DIVIDE_in_value810);
+			    pushFollow(FOLLOW_fatt_in_value814);
+			    l = fatt();
+			    state._fsp--;
+
+			    ast = new DivNode(ast, l);
+			}
+
+		    }
+			break;
+		    case 3:
+		    // /home/benkio/workspace/LPeMC Lab
+		    // Project/src/highLevelLanguage/MiniFun.g:157:9: ( AND l=
+		    // fatt )
+		    {
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:157:9: ( AND
+			// l= fatt )
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:158:9: AND l=
+			// fatt
+			{
+			    match(input, AND, FOLLOW_AND_in_value853);
+			    pushFollow(FOLLOW_fatt_in_value857);
+			    l = fatt();
+			    state._fsp--;
+
+			    ast = new AndNode(ast, l);
+			}
+
+		    }
+			break;
+
+		    default:
+			break loop11;
+		    }
+		}
+
+	    }
+
+	} catch (RecognitionException re) {
+	    reportError(re);
+	    recover(input, re);
+	} finally {
+	    // do for sure before leaving
+	}
+	return ast;
+    }
+
+    // $ANTLR end "value"
+
     // $ANTLR start "fatt"
     // /home/benkio/workspace/LPeMC Lab
-    // Project/src/highLevelLanguage/MiniFun.g:169:1: fatt returns [Node ast] :
-    // (n= NAT | TRUE | FALSE | EMPTY | LPAR e= exp RPAR |i= ID ( LPAR (p1= exp
+    // Project/src/highLevelLanguage/MiniFun.g:163:1: fatt returns [Node ast] :
+    // (n= NAT | TRUE | FALSE | EMPTY | LPAR e= exp RPAR |i= ID ( LPAR (fp= exp
     // ( COMMA p= exp )* )? RPAR )? | IF x= exp THEN CLPAR y= exp CRPAR ELSE
     // CLPAR z= exp CRPAR | SLPAR e1= exp DOUBLECOL e2= exp SRPAR | FIRST LPAR
-    // e= exp RPAR | REST LPAR e= exp RPAR | PRINT LPAR p= exp RPAR | NOT LPAR
+    // e= exp RPAR | REST LPAR e= exp RPAR | PRINT LPAR e= exp RPAR | NOT LPAR
     // e= exp RPAR );
     public final Node fatt() throws RecognitionException {
 	Node ast = null;
@@ -780,7 +973,7 @@ public class MiniFunParser extends Parser {
 	Token n = null;
 	Token i = null;
 	Node e = null;
-	Node p1 = null;
+	Node fp = null;
 	Node p = null;
 	Node x = null;
 	Node y = null;
@@ -790,230 +983,208 @@ public class MiniFunParser extends Parser {
 
 	try {
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:170:2: (n= NAT | TRUE |
-	    // FALSE | EMPTY | LPAR e= exp RPAR |i= ID ( LPAR (p1= exp ( COMMA
+	    // Project/src/highLevelLanguage/MiniFun.g:164:2: (n= NAT | TRUE |
+	    // FALSE | EMPTY | LPAR e= exp RPAR |i= ID ( LPAR (fp= exp ( COMMA
 	    // p= exp )* )? RPAR )? | IF x= exp THEN CLPAR y= exp CRPAR ELSE
 	    // CLPAR z= exp CRPAR | SLPAR e1= exp DOUBLECOL e2= exp SRPAR |
-	    // FIRST LPAR e= exp RPAR | REST LPAR e= exp RPAR | PRINT LPAR p=
+	    // FIRST LPAR e= exp RPAR | REST LPAR e= exp RPAR | PRINT LPAR e=
 	    // exp RPAR | NOT LPAR e= exp RPAR )
-	    int alt10 = 12;
+	    int alt15 = 12;
 	    switch (input.LA(1)) {
 	    case NAT: {
-		alt10 = 1;
+		alt15 = 1;
 	    }
 		break;
 	    case TRUE: {
-		alt10 = 2;
+		alt15 = 2;
 	    }
 		break;
 	    case FALSE: {
-		alt10 = 3;
+		alt15 = 3;
 	    }
 		break;
 	    case EMPTY: {
-		alt10 = 4;
+		alt15 = 4;
 	    }
 		break;
 	    case LPAR: {
-		alt10 = 5;
+		alt15 = 5;
 	    }
 		break;
 	    case ID: {
-		alt10 = 6;
+		alt15 = 6;
 	    }
 		break;
 	    case IF: {
-		alt10 = 7;
+		alt15 = 7;
 	    }
 		break;
 	    case SLPAR: {
-		alt10 = 8;
+		alt15 = 8;
 	    }
 		break;
 	    case FIRST: {
-		alt10 = 9;
+		alt15 = 9;
 	    }
 		break;
 	    case REST: {
-		alt10 = 10;
+		alt15 = 10;
 	    }
 		break;
 	    case PRINT: {
-		alt10 = 11;
+		alt15 = 11;
 	    }
 		break;
 	    case NOT: {
-		alt10 = 12;
+		alt15 = 12;
 	    }
 		break;
 	    default:
-		NoViableAltException nvae = new NoViableAltException("", 10, 0,
+		NoViableAltException nvae = new NoViableAltException("", 15, 0,
 			input);
 		throw nvae;
 	    }
-	    switch (alt10) {
+	    switch (alt15) {
 	    case 1:
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:170:4: n= NAT
+	    // Project/src/highLevelLanguage/MiniFun.g:164:4: n= NAT
 	    {
-		n = (Token) match(input, NAT, FOLLOW_NAT_in_fatt412);
+		n = (Token) match(input, NAT, FOLLOW_NAT_in_fatt904);
 		ast = new NatNode(Integer.parseInt((n != null ? n.getText()
 			: null)));
 	    }
 		break;
 	    case 2:
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:171:4: TRUE
+	    // Project/src/highLevelLanguage/MiniFun.g:166:4: TRUE
 	    {
-		match(input, TRUE, FOLLOW_TRUE_in_fatt419);
+		match(input, TRUE, FOLLOW_TRUE_in_fatt920);
 		ast = new BoolNode(true);
 	    }
 		break;
 	    case 3:
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:172:4: FALSE
+	    // Project/src/highLevelLanguage/MiniFun.g:168:4: FALSE
 	    {
-		match(input, FALSE, FOLLOW_FALSE_in_fatt427);
+		match(input, FALSE, FOLLOW_FALSE_in_fatt934);
 		ast = new BoolNode(false);
 	    }
 		break;
 	    case 4:
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:173:4: EMPTY
+	    // Project/src/highLevelLanguage/MiniFun.g:170:4: EMPTY
 	    {
-		match(input, EMPTY, FOLLOW_EMPTY_in_fatt434);
+		match(input, EMPTY, FOLLOW_EMPTY_in_fatt946);
 		ast = new EmptyNode();
 	    }
 		break;
 	    case 5:
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:174:4: LPAR e= exp RPAR
+	    // Project/src/highLevelLanguage/MiniFun.g:172:4: LPAR e= exp RPAR
 	    {
-		match(input, LPAR, FOLLOW_LPAR_in_fatt441);
-		pushFollow(FOLLOW_exp_in_fatt445);
+		match(input, LPAR, FOLLOW_LPAR_in_fatt960);
+		pushFollow(FOLLOW_exp_in_fatt964);
 		e = exp();
 		state._fsp--;
 
-		match(input, RPAR, FOLLOW_RPAR_in_fatt447);
+		match(input, RPAR, FOLLOW_RPAR_in_fatt966);
 		ast = e;
 	    }
 		break;
 	    case 6:
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:175:4: i= ID ( LPAR (p1=
+	    // Project/src/highLevelLanguage/MiniFun.g:174:4: i= ID ( LPAR (fp=
 	    // exp ( COMMA p= exp )* )? RPAR )?
 	    {
-		i = (Token) match(input, ID, FOLLOW_ID_in_fatt456);
+		i = (Token) match(input, ID, FOLLOW_ID_in_fatt981);
 
+		HashMap<String, STentry> hm;
 		STentry entry = null;
-		/*
-		 * Attenzione, non bisogna accontentarsi di guardare alla
-		 * hashmap corrente ma tramite un ciclo controllare se la
-		 * variabile � globale, solo nel caso non esistesse anche cos�
-		 * allora bisogna dare errore.
-		 */
 		int declNL;
 		for (declNL = nestingLevel; declNL >= 0; declNL--) {
-		    HashMap<String, STentry> hm = symTable.get(declNL);
+		    hm = symTable.get(declNL);
 		    entry = hm.get((i != null ? i.getText() : null));
 		    if (entry != null)
 			break;
 		}
 		if (entry == null) {
 		    System.out
-			    .println("identifer "
+			    .println("Identifier "
 				    + (i != null ? i.getText() : null)
 				    + " at line "
 				    + (i != null ? i.getLine() : 0)
-				    + "is not defined.");
+				    + " is not defined");
 		    System.exit(0);
 		}
-		ast = new VarNode(entry, nestingLevel - declNL); /*
-								  * Il secondo
-								  * parametro mi
-								  * dice a che
-								  * livello ho
-								  * trovato la
-								  * variabile
-								  */
+		ast = new VarNode(entry, nestingLevel - declNL);
 
 		// /home/benkio/workspace/LPeMC Lab
-		// Project/src/highLevelLanguage/MiniFun.g:195:2: ( LPAR (p1=
+		// Project/src/highLevelLanguage/MiniFun.g:190:2: ( LPAR (fp=
 		// exp ( COMMA p= exp )* )? RPAR )?
-		int alt9 = 2;
-		int LA9_0 = input.LA(1);
-		if ((LA9_0 == LPAR)) {
-		    alt9 = 1;
+		int alt14 = 2;
+		int LA14_0 = input.LA(1);
+		if ((LA14_0 == LPAR)) {
+		    alt14 = 1;
 		}
-		switch (alt9) {
+		switch (alt14) {
 		case 1:
 		// /home/benkio/workspace/LPeMC Lab
-		// Project/src/highLevelLanguage/MiniFun.g:195:4: LPAR (p1= exp
+		// Project/src/highLevelLanguage/MiniFun.g:191:3: LPAR (fp= exp
 		// ( COMMA p= exp )* )? RPAR
 		{
-		    match(input, LPAR, FOLLOW_LPAR_in_fatt463);
-
-		    /*
-		     * Capisco che si tratta di una chiamata a funzione
-		     * Controllo se effettivamente � presente una dichiarazione
-		     * di funzione e quindi creo una arraylist di parametri da
-		     * aggiungere al nodo, questa mi servir� poi per effettuare
-		     * il type checking e per passare adeguatamente i parametri
-		     * al corpo della funzione
-		     */
-		    ArrayList<Node> params = new ArrayList<Node>();
-
+		    match(input, LPAR, FOLLOW_LPAR_in_fatt993);
+		    ArrayList<Node> parList = new ArrayList<Node>();
 		    // /home/benkio/workspace/LPeMC Lab
-		    // Project/src/highLevelLanguage/MiniFun.g:206:2: (p1= exp (
+		    // Project/src/highLevelLanguage/MiniFun.g:194:3: (fp= exp (
 		    // COMMA p= exp )* )?
-		    int alt8 = 2;
-		    int LA8_0 = input.LA(1);
-		    if ((LA8_0 == EMPTY || (LA8_0 >= FALSE && LA8_0 <= FIRST)
-			    || (LA8_0 >= ID && LA8_0 <= IF) || LA8_0 == LPAR
-			    || (LA8_0 >= NAT && LA8_0 <= NOT)
-			    || (LA8_0 >= PRINT && LA8_0 <= REST)
-			    || LA8_0 == SLPAR || LA8_0 == TRUE)) {
-			alt8 = 1;
+		    int alt13 = 2;
+		    int LA13_0 = input.LA(1);
+		    if ((LA13_0 == EMPTY
+			    || (LA13_0 >= FALSE && LA13_0 <= FIRST)
+			    || (LA13_0 >= ID && LA13_0 <= IF) || LA13_0 == LPAR
+			    || (LA13_0 >= NAT && LA13_0 <= NOT)
+			    || (LA13_0 >= PRINT && LA13_0 <= REST)
+			    || LA13_0 == SLPAR || LA13_0 == TRUE)) {
+			alt13 = 1;
 		    }
-		    switch (alt8) {
+		    switch (alt13) {
 		    case 1:
 		    // /home/benkio/workspace/LPeMC Lab
-		    // Project/src/highLevelLanguage/MiniFun.g:206:3: p1= exp (
+		    // Project/src/highLevelLanguage/MiniFun.g:195:4: fp= exp (
 		    // COMMA p= exp )*
 		    {
-			pushFollow(FOLLOW_exp_in_fatt473);
-			p1 = exp();
+			pushFollow(FOLLOW_exp_in_fatt1012);
+			fp = exp();
 			state._fsp--;
 
-			params.add(p1);
-
+			parList.add(fp);
 			// /home/benkio/workspace/LPeMC Lab
-			// Project/src/highLevelLanguage/MiniFun.g:210:2: (
+			// Project/src/highLevelLanguage/MiniFun.g:196:4: (
 			// COMMA p= exp )*
-			loop7: while (true) {
-			    int alt7 = 2;
-			    int LA7_0 = input.LA(1);
-			    if ((LA7_0 == COMMA)) {
-				alt7 = 1;
+			loop12: while (true) {
+			    int alt12 = 2;
+			    int LA12_0 = input.LA(1);
+			    if ((LA12_0 == COMMA)) {
+				alt12 = 1;
 			    }
 
-			    switch (alt7) {
+			    switch (alt12) {
 			    case 1:
 			    // /home/benkio/workspace/LPeMC Lab
-			    // Project/src/highLevelLanguage/MiniFun.g:210:3:
+			    // Project/src/highLevelLanguage/MiniFun.g:196:5:
 			    // COMMA p= exp
 			    {
-				match(input, COMMA, FOLLOW_COMMA_in_fatt481);
-				pushFollow(FOLLOW_exp_in_fatt485);
+				match(input, COMMA, FOLLOW_COMMA_in_fatt1020);
+				pushFollow(FOLLOW_exp_in_fatt1024);
 				p = exp();
 				state._fsp--;
 
-				params.add(p);
+				parList.add(p);
 			    }
 				break;
 
 			    default:
-				break loop7;
+				break loop12;
 			    }
 			}
 
@@ -1022,10 +1193,8 @@ public class MiniFunParser extends Parser {
 
 		    }
 
-		    match(input, RPAR, FOLLOW_RPAR_in_fatt496);
-
-		    ast = new FunNode(entry, nestingLevel - declNL, params);
-
+		    match(input, RPAR, FOLLOW_RPAR_in_fatt1038);
+		    ast = new FunNode(entry, nestingLevel - declNL, parList);
 		}
 		    break;
 
@@ -1035,107 +1204,107 @@ public class MiniFunParser extends Parser {
 		break;
 	    case 7:
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:216:4: IF x= exp THEN
+	    // Project/src/highLevelLanguage/MiniFun.g:200:4: IF x= exp THEN
 	    // CLPAR y= exp CRPAR ELSE CLPAR z= exp CRPAR
 	    {
-		match(input, IF, FOLLOW_IF_in_fatt512);
-		pushFollow(FOLLOW_exp_in_fatt516);
+		match(input, IF, FOLLOW_IF_in_fatt1049);
+		pushFollow(FOLLOW_exp_in_fatt1053);
 		x = exp();
 		state._fsp--;
 
-		match(input, THEN, FOLLOW_THEN_in_fatt518);
-		match(input, CLPAR, FOLLOW_CLPAR_in_fatt520);
-		pushFollow(FOLLOW_exp_in_fatt524);
+		match(input, THEN, FOLLOW_THEN_in_fatt1055);
+		match(input, CLPAR, FOLLOW_CLPAR_in_fatt1057);
+		pushFollow(FOLLOW_exp_in_fatt1061);
 		y = exp();
 		state._fsp--;
 
-		match(input, CRPAR, FOLLOW_CRPAR_in_fatt526);
-		match(input, ELSE, FOLLOW_ELSE_in_fatt534);
-		match(input, CLPAR, FOLLOW_CLPAR_in_fatt536);
-		pushFollow(FOLLOW_exp_in_fatt540);
+		match(input, CRPAR, FOLLOW_CRPAR_in_fatt1063);
+		match(input, ELSE, FOLLOW_ELSE_in_fatt1068);
+		match(input, CLPAR, FOLLOW_CLPAR_in_fatt1070);
+		pushFollow(FOLLOW_exp_in_fatt1074);
 		z = exp();
 		state._fsp--;
 
-		match(input, CRPAR, FOLLOW_CRPAR_in_fatt542);
+		match(input, CRPAR, FOLLOW_CRPAR_in_fatt1076);
 		ast = new IfNode(x, y, z);
 	    }
 		break;
 	    case 8:
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:219:4: SLPAR e1= exp
+	    // Project/src/highLevelLanguage/MiniFun.g:204:4: SLPAR e1= exp
 	    // DOUBLECOL e2= exp SRPAR
 	    {
-		match(input, SLPAR, FOLLOW_SLPAR_in_fatt552);
-		pushFollow(FOLLOW_exp_in_fatt556);
+		match(input, SLPAR, FOLLOW_SLPAR_in_fatt1090);
+		pushFollow(FOLLOW_exp_in_fatt1094);
 		e1 = exp();
 		state._fsp--;
 
-		match(input, DOUBLECOL, FOLLOW_DOUBLECOL_in_fatt558);
-		pushFollow(FOLLOW_exp_in_fatt562);
+		match(input, DOUBLECOL, FOLLOW_DOUBLECOL_in_fatt1096);
+		pushFollow(FOLLOW_exp_in_fatt1100);
 		e2 = exp();
 		state._fsp--;
 
-		match(input, SRPAR, FOLLOW_SRPAR_in_fatt564);
+		match(input, SRPAR, FOLLOW_SRPAR_in_fatt1102);
 		ast = new ListNode(e1, e2);
 	    }
 		break;
 	    case 9:
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:221:4: FIRST LPAR e= exp
+	    // Project/src/highLevelLanguage/MiniFun.g:207:4: FIRST LPAR e= exp
 	    // RPAR
 	    {
-		match(input, FIRST, FOLLOW_FIRST_in_fatt576);
-		match(input, LPAR, FOLLOW_LPAR_in_fatt578);
-		pushFollow(FOLLOW_exp_in_fatt582);
+		match(input, FIRST, FOLLOW_FIRST_in_fatt1115);
+		match(input, LPAR, FOLLOW_LPAR_in_fatt1117);
+		pushFollow(FOLLOW_exp_in_fatt1121);
 		e = exp();
 		state._fsp--;
 
-		match(input, RPAR, FOLLOW_RPAR_in_fatt584);
+		match(input, RPAR, FOLLOW_RPAR_in_fatt1123);
 		ast = new FirstNode(e);
 	    }
 		break;
 	    case 10:
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:222:4: REST LPAR e= exp
+	    // Project/src/highLevelLanguage/MiniFun.g:210:4: REST LPAR e= exp
 	    // RPAR
 	    {
-		match(input, REST, FOLLOW_REST_in_fatt590);
-		match(input, LPAR, FOLLOW_LPAR_in_fatt592);
-		pushFollow(FOLLOW_exp_in_fatt596);
+		match(input, REST, FOLLOW_REST_in_fatt1140);
+		match(input, LPAR, FOLLOW_LPAR_in_fatt1142);
+		pushFollow(FOLLOW_exp_in_fatt1146);
 		e = exp();
 		state._fsp--;
 
-		match(input, RPAR, FOLLOW_RPAR_in_fatt598);
+		match(input, RPAR, FOLLOW_RPAR_in_fatt1148);
 		ast = new RestNode(e);
 	    }
 		break;
 	    case 11:
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:223:4: PRINT LPAR p= exp
+	    // Project/src/highLevelLanguage/MiniFun.g:213:4: PRINT LPAR e= exp
 	    // RPAR
 	    {
-		match(input, PRINT, FOLLOW_PRINT_in_fatt604);
-		match(input, LPAR, FOLLOW_LPAR_in_fatt607);
-		pushFollow(FOLLOW_exp_in_fatt611);
-		p = exp();
+		match(input, PRINT, FOLLOW_PRINT_in_fatt1165);
+		match(input, LPAR, FOLLOW_LPAR_in_fatt1167);
+		pushFollow(FOLLOW_exp_in_fatt1171);
+		e = exp();
 		state._fsp--;
 
-		match(input, RPAR, FOLLOW_RPAR_in_fatt613);
-		ast = new PrintNode(p);
+		match(input, RPAR, FOLLOW_RPAR_in_fatt1173);
+		ast = new PrintNode(e);
 	    }
 		break;
 	    case 12:
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:225:4: NOT LPAR e= exp
+	    // Project/src/highLevelLanguage/MiniFun.g:216:4: NOT LPAR e= exp
 	    // RPAR
 	    {
-		match(input, NOT, FOLLOW_NOT_in_fatt627);
-		match(input, LPAR, FOLLOW_LPAR_in_fatt629);
-		pushFollow(FOLLOW_exp_in_fatt633);
+		match(input, NOT, FOLLOW_NOT_in_fatt1190);
+		match(input, LPAR, FOLLOW_LPAR_in_fatt1192);
+		pushFollow(FOLLOW_exp_in_fatt1196);
 		e = exp();
 		state._fsp--;
 
-		match(input, RPAR, FOLLOW_RPAR_in_fatt635);
+		match(input, RPAR, FOLLOW_RPAR_in_fatt1198);
 		ast = new NotNode(e);
 	    }
 		break;
@@ -1154,43 +1323,43 @@ public class MiniFunParser extends Parser {
 
     // $ANTLR start "type"
     // /home/benkio/workspace/LPeMC Lab
-    // Project/src/highLevelLanguage/MiniFun.g:227:1: type returns [Node ast] :
+    // Project/src/highLevelLanguage/MiniFun.g:220:1: type returns [Node ast] :
     // ( INTTYPE | BOOLTYPE );
     public final Node type() throws RecognitionException {
 	Node ast = null;
 
 	try {
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:228:2: ( INTTYPE |
+	    // Project/src/highLevelLanguage/MiniFun.g:221:2: ( INTTYPE |
 	    // BOOLTYPE )
-	    int alt11 = 2;
-	    int LA11_0 = input.LA(1);
-	    if ((LA11_0 == INTTYPE)) {
-		alt11 = 1;
-	    } else if ((LA11_0 == BOOLTYPE)) {
-		alt11 = 2;
+	    int alt16 = 2;
+	    int LA16_0 = input.LA(1);
+	    if ((LA16_0 == INTTYPE)) {
+		alt16 = 1;
+	    } else if ((LA16_0 == BOOLTYPE)) {
+		alt16 = 2;
 	    }
 
 	    else {
-		NoViableAltException nvae = new NoViableAltException("", 11, 0,
+		NoViableAltException nvae = new NoViableAltException("", 16, 0,
 			input);
 		throw nvae;
 	    }
 
-	    switch (alt11) {
+	    switch (alt16) {
 	    case 1:
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:228:4: INTTYPE
+	    // Project/src/highLevelLanguage/MiniFun.g:221:4: INTTYPE
 	    {
-		match(input, INTTYPE, FOLLOW_INTTYPE_in_type652);
+		match(input, INTTYPE, FOLLOW_INTTYPE_in_type1223);
 		ast = new IntTypeNode();
 	    }
 		break;
 	    case 2:
 	    // /home/benkio/workspace/LPeMC Lab
-	    // Project/src/highLevelLanguage/MiniFun.g:229:4: BOOLTYPE
+	    // Project/src/highLevelLanguage/MiniFun.g:222:6: BOOLTYPE
 	    {
-		match(input, BOOLTYPE, FOLLOW_BOOLTYPE_in_type659);
+		match(input, BOOLTYPE, FOLLOW_BOOLTYPE_in_type1235);
 		ast = new BoolTypeNode();
 	    }
 		break;
@@ -1207,198 +1376,358 @@ public class MiniFunParser extends Parser {
 
     // $ANTLR end "type"
 
+    // $ANTLR start "arrowType"
+    // /home/benkio/workspace/LPeMC Lab
+    // Project/src/highLevelLanguage/MiniFun.g:225:1: arrowType returns [Node
+    // ast] : LPAR ( (t1= type ( COMMA tn= type )* )? | arrowType ) RPAR ARROW
+    // type ;
+    public final Node arrowType() throws RecognitionException {
+	Node ast = null;
+
+	Node t1 = null;
+	Node tn = null;
+
+	try {
+	    // /home/benkio/workspace/LPeMC Lab
+	    // Project/src/highLevelLanguage/MiniFun.g:226:3: ( LPAR ( (t1= type
+	    // ( COMMA tn= type )* )? | arrowType ) RPAR ARROW type )
+	    // /home/benkio/workspace/LPeMC Lab
+	    // Project/src/highLevelLanguage/MiniFun.g:226:5: LPAR ( (t1= type (
+	    // COMMA tn= type )* )? | arrowType ) RPAR ARROW type
+	    {
+		match(input, LPAR, FOLLOW_LPAR_in_arrowType1256);
+		// /home/benkio/workspace/LPeMC Lab
+		// Project/src/highLevelLanguage/MiniFun.g:226:10: ( (t1= type (
+		// COMMA tn= type )* )? | arrowType )
+		int alt19 = 2;
+		int LA19_0 = input.LA(1);
+		if ((LA19_0 == BOOLTYPE || LA19_0 == INTTYPE || LA19_0 == RPAR)) {
+		    alt19 = 1;
+		} else if ((LA19_0 == LPAR)) {
+		    alt19 = 2;
+		}
+
+		else {
+		    NoViableAltException nvae = new NoViableAltException("",
+			    19, 0, input);
+		    throw nvae;
+		}
+
+		switch (alt19) {
+		case 1:
+		// /home/benkio/workspace/LPeMC Lab
+		// Project/src/highLevelLanguage/MiniFun.g:226:11: (t1= type (
+		// COMMA tn= type )* )?
+		{
+		    // /home/benkio/workspace/LPeMC Lab
+		    // Project/src/highLevelLanguage/MiniFun.g:226:11: (t1= type
+		    // ( COMMA tn= type )* )?
+		    int alt18 = 2;
+		    int LA18_0 = input.LA(1);
+		    if ((LA18_0 == BOOLTYPE || LA18_0 == INTTYPE)) {
+			alt18 = 1;
+		    }
+		    switch (alt18) {
+		    case 1:
+		    // /home/benkio/workspace/LPeMC Lab
+		    // Project/src/highLevelLanguage/MiniFun.g:226:12: t1= type
+		    // ( COMMA tn= type )*
+		    {
+			pushFollow(FOLLOW_type_in_arrowType1262);
+			t1 = type();
+			state._fsp--;
+
+			// /home/benkio/workspace/LPeMC Lab
+			// Project/src/highLevelLanguage/MiniFun.g:226:23: (
+			// COMMA tn= type )*
+			loop17: while (true) {
+			    int alt17 = 2;
+			    int LA17_0 = input.LA(1);
+			    if ((LA17_0 == COMMA)) {
+				alt17 = 1;
+			    }
+
+			    switch (alt17) {
+			    case 1:
+			    // /home/benkio/workspace/LPeMC Lab
+			    // Project/src/highLevelLanguage/MiniFun.g:226:24:
+			    // COMMA tn= type
+			    {
+				match(input, COMMA,
+					FOLLOW_COMMA_in_arrowType1266);
+				pushFollow(FOLLOW_type_in_arrowType1270);
+				tn = type();
+				state._fsp--;
+
+			    }
+				break;
+
+			    default:
+				break loop17;
+			    }
+			}
+
+		    }
+			break;
+
+		    }
+
+		}
+		    break;
+		case 2:
+		// /home/benkio/workspace/LPeMC Lab
+		// Project/src/highLevelLanguage/MiniFun.g:226:44: arrowType
+		{
+		    pushFollow(FOLLOW_arrowType_in_arrowType1278);
+		    arrowType();
+		    state._fsp--;
+
+		}
+		    break;
+
+		}
+
+		match(input, RPAR, FOLLOW_RPAR_in_arrowType1281);
+		match(input, ARROW, FOLLOW_ARROW_in_arrowType1283);
+		pushFollow(FOLLOW_type_in_arrowType1285);
+		type();
+		state._fsp--;
+
+	    }
+
+	} catch (RecognitionException re) {
+	    reportError(re);
+	    recover(input, re);
+	} finally {
+	    // do for sure before leaving
+	}
+	return ast;
+    }
+
+    // $ANTLR end "arrowType"
+
     // Delegated rules
 
-    public static final BitSet FOLLOW_LET_in_prog33 = new BitSet(
-	    new long[] { 0x0000040000880000L });
-    public static final BitSet FOLLOW_declist_in_prog46 = new BitSet(
-	    new long[] { 0x0000000000800000L });
-    public static final BitSet FOLLOW_IN_in_prog52 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_exp_in_prog56 = new BitSet(
-	    new long[] { 0x0000001000000000L });
-    public static final BitSet FOLLOW_SEMIC_in_prog58 = new BitSet(
+    public static final BitSet FOLLOW_LET_in_prog30 = new BitSet(
+	    new long[] { 0x0000080001100000L });
+    public static final BitSet FOLLOW_declist_in_prog52 = new BitSet(
+	    new long[] { 0x0000000001000000L });
+    public static final BitSet FOLLOW_IN_in_prog55 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_exp_in_prog59 = new BitSet(
+	    new long[] { 0x0000002000000000L });
+    public static final BitSet FOLLOW_SEMIC_in_prog61 = new BitSet(
 	    new long[] { 0x0000000000000002L });
-    public static final BitSet FOLLOW_VAR_in_declist90 = new BitSet(
-	    new long[] { 0x0000000000200000L });
-    public static final BitSet FOLLOW_ID_in_declist94 = new BitSet(
-	    new long[] { 0x0000000000000100L });
-    public static final BitSet FOLLOW_COL_in_declist96 = new BitSet(
-	    new long[] { 0x0000000001000040L });
-    public static final BitSet FOLLOW_type_in_declist100 = new BitSet(
-	    new long[] { 0x0000000000000020L });
-    public static final BitSet FOLLOW_ASS_in_declist102 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_exp_in_declist106 = new BitSet(
-	    new long[] { 0x0000001000000000L });
-    public static final BitSet FOLLOW_SEMIC_in_declist108 = new BitSet(
-	    new long[] { 0x0000040000080002L });
-    public static final BitSet FOLLOW_FUN_in_declist119 = new BitSet(
-	    new long[] { 0x0000000000200000L });
-    public static final BitSet FOLLOW_ID_in_declist123 = new BitSet(
-	    new long[] { 0x0000000000000100L });
-    public static final BitSet FOLLOW_COL_in_declist125 = new BitSet(
-	    new long[] { 0x0000000001000040L });
-    public static final BitSet FOLLOW_type_in_declist129 = new BitSet(
-	    new long[] { 0x0000000008000000L });
-    public static final BitSet FOLLOW_LPAR_in_declist136 = new BitSet(
-	    new long[] { 0x0000000800200000L });
-    public static final BitSet FOLLOW_ID_in_declist147 = new BitSet(
-	    new long[] { 0x0000000000000100L });
-    public static final BitSet FOLLOW_COL_in_declist149 = new BitSet(
-	    new long[] { 0x0000000001000040L });
+    public static final BitSet FOLLOW_VAR_in_declist91 = new BitSet(
+	    new long[] { 0x0000000000400000L });
+    public static final BitSet FOLLOW_ID_in_declist95 = new BitSet(
+	    new long[] { 0x0000000000000200L });
+    public static final BitSet FOLLOW_COL_in_declist97 = new BitSet(
+	    new long[] { 0x0000000002000080L });
+    public static final BitSet FOLLOW_type_in_declist101 = new BitSet(
+	    new long[] { 0x0000000000000040L });
+    public static final BitSet FOLLOW_ASS_in_declist103 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_exp_in_declist107 = new BitSet(
+	    new long[] { 0x0000002000000000L });
+    public static final BitSet FOLLOW_SEMIC_in_declist109 = new BitSet(
+	    new long[] { 0x0000080000100002L });
+    public static final BitSet FOLLOW_FUN_in_declist129 = new BitSet(
+	    new long[] { 0x0000000000400000L });
+    public static final BitSet FOLLOW_ID_in_declist133 = new BitSet(
+	    new long[] { 0x0000000000000200L });
+    public static final BitSet FOLLOW_COL_in_declist135 = new BitSet(
+	    new long[] { 0x0000000012000080L });
     public static final BitSet FOLLOW_type_in_declist153 = new BitSet(
-	    new long[] { 0x0000000800000200L });
-    public static final BitSet FOLLOW_COMMA_in_declist161 = new BitSet(
-	    new long[] { 0x0000000000200000L });
-    public static final BitSet FOLLOW_ID_in_declist165 = new BitSet(
+	    new long[] { 0x0000000010000000L });
+    public static final BitSet FOLLOW_LPAR_in_declist168 = new BitSet(
+	    new long[] { 0x0000001000400000L });
+    public static final BitSet FOLLOW_ID_in_declist197 = new BitSet(
+	    new long[] { 0x0000001000000600L });
+    public static final BitSet FOLLOW_COL_in_declist200 = new BitSet(
+	    new long[] { 0x0000000002000080L });
+    public static final BitSet FOLLOW_type_in_declist204 = new BitSet(
+	    new long[] { 0x0000001000000400L });
+    public static final BitSet FOLLOW_COMMA_in_declist226 = new BitSet(
+	    new long[] { 0x0000000000400000L });
+    public static final BitSet FOLLOW_ID_in_declist230 = new BitSet(
+	    new long[] { 0x0000001000000600L });
+    public static final BitSet FOLLOW_COL_in_declist233 = new BitSet(
+	    new long[] { 0x0000000002000080L });
+    public static final BitSet FOLLOW_type_in_declist237 = new BitSet(
+	    new long[] { 0x0000001000000400L });
+    public static final BitSet FOLLOW_RPAR_in_declist269 = new BitSet(
 	    new long[] { 0x0000000000000100L });
-    public static final BitSet FOLLOW_COL_in_declist167 = new BitSet(
-	    new long[] { 0x0000000001000040L });
-    public static final BitSet FOLLOW_type_in_declist171 = new BitSet(
-	    new long[] { 0x0000000800000200L });
-    public static final BitSet FOLLOW_RPAR_in_declist190 = new BitSet(
-	    new long[] { 0x0000000000000080L });
-    public static final BitSet FOLLOW_CLPAR_in_declist195 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_exp_in_declist203 = new BitSet(
-	    new long[] { 0x0000000000000400L });
-    public static final BitSet FOLLOW_CRPAR_in_declist211 = new BitSet(
+    public static final BitSet FOLLOW_arrowType_in_declist286 = new BitSet(
+	    new long[] { 0x0000000010000000L });
+    public static final BitSet FOLLOW_LPAR_in_declist295 = new BitSet(
+	    new long[] { 0x0000001000400000L });
+    public static final BitSet FOLLOW_ID_in_declist304 = new BitSet(
+	    new long[] { 0x0000001000000400L });
+    public static final BitSet FOLLOW_COMMA_in_declist307 = new BitSet(
+	    new long[] { 0x0000000000400000L });
+    public static final BitSet FOLLOW_ID_in_declist309 = new BitSet(
+	    new long[] { 0x0000001000000400L });
+    public static final BitSet FOLLOW_RPAR_in_declist321 = new BitSet(
+	    new long[] { 0x0000000000000100L });
+    public static final BitSet FOLLOW_CLPAR_in_declist336 = new BitSet(
+	    new long[] { 0x00000C4CD0DC8000L });
+    public static final BitSet FOLLOW_declist_in_declist355 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_exp_in_declist380 = new BitSet(
+	    new long[] { 0x0000000000000800L });
+    public static final BitSet FOLLOW_CRPAR_in_declist406 = new BitSet(
+	    new long[] { 0x0000002000000000L });
+    public static final BitSet FOLLOW_SEMIC_in_declist413 = new BitSet(
+	    new long[] { 0x0000080000100002L });
+    public static final BitSet FOLLOW_term_in_exp434 = new BitSet(
+	    new long[] { 0x0000000004210002L });
+    public static final BitSet FOLLOW_EQ_in_exp454 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_term_in_exp458 = new BitSet(
+	    new long[] { 0x0000000004210002L });
+    public static final BitSet FOLLOW_LESSEQ_in_exp498 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_term_in_exp502 = new BitSet(
+	    new long[] { 0x0000000004210002L });
+    public static final BitSet FOLLOW_GREATEREQ_in_exp533 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_term_in_exp537 = new BitSet(
+	    new long[] { 0x0000000004210002L });
+    public static final BitSet FOLLOW_value_in_term582 = new BitSet(
+	    new long[] { 0x0000000320000002L });
+    public static final BitSet FOLLOW_PLUS_in_term604 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_value_in_term608 = new BitSet(
+	    new long[] { 0x0000000320000002L });
+    public static final BitSet FOLLOW_MINUS_in_term647 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_value_in_term651 = new BitSet(
+	    new long[] { 0x0000000320000002L });
+    public static final BitSet FOLLOW_OR_in_term690 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_value_in_term694 = new BitSet(
+	    new long[] { 0x0000000320000002L });
+    public static final BitSet FOLLOW_fatt_in_value740 = new BitSet(
+	    new long[] { 0x0000020000001012L });
+    public static final BitSet FOLLOW_TIMES_in_value766 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_fatt_in_value770 = new BitSet(
+	    new long[] { 0x0000020000001012L });
+    public static final BitSet FOLLOW_DIVIDE_in_value810 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_fatt_in_value814 = new BitSet(
+	    new long[] { 0x0000020000001012L });
+    public static final BitSet FOLLOW_AND_in_value853 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_fatt_in_value857 = new BitSet(
+	    new long[] { 0x0000020000001012L });
+    public static final BitSet FOLLOW_NAT_in_fatt904 = new BitSet(
+	    new long[] { 0x0000000000000002L });
+    public static final BitSet FOLLOW_TRUE_in_fatt920 = new BitSet(
+	    new long[] { 0x0000000000000002L });
+    public static final BitSet FOLLOW_FALSE_in_fatt934 = new BitSet(
+	    new long[] { 0x0000000000000002L });
+    public static final BitSet FOLLOW_EMPTY_in_fatt946 = new BitSet(
+	    new long[] { 0x0000000000000002L });
+    public static final BitSet FOLLOW_LPAR_in_fatt960 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_exp_in_fatt964 = new BitSet(
 	    new long[] { 0x0000001000000000L });
-    public static final BitSet FOLLOW_SEMIC_in_declist217 = new BitSet(
-	    new long[] { 0x0000040000080002L });
-    public static final BitSet FOLLOW_term_in_exp245 = new BitSet(
-	    new long[] { 0x0000000002108002L });
-    public static final BitSet FOLLOW_EQ_in_exp251 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_term_in_exp255 = new BitSet(
-	    new long[] { 0x0000000002108002L });
-    public static final BitSet FOLLOW_GREATEQ_in_exp263 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_term_in_exp267 = new BitSet(
-	    new long[] { 0x0000000002108002L });
-    public static final BitSet FOLLOW_LESSEQ_in_exp275 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_term_in_exp279 = new BitSet(
-	    new long[] { 0x0000000002108002L });
-    public static final BitSet FOLLOW_fatt_in_value302 = new BitSet(
-	    new long[] { 0x0000010000000812L });
-    public static final BitSet FOLLOW_TIMES_in_value309 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_fatt_in_value313 = new BitSet(
-	    new long[] { 0x0000010000000812L });
-    public static final BitSet FOLLOW_DIV_in_value320 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_fatt_in_value324 = new BitSet(
-	    new long[] { 0x0000010000000812L });
-    public static final BitSet FOLLOW_AND_in_value331 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_fatt_in_value335 = new BitSet(
-	    new long[] { 0x0000010000000812L });
-    public static final BitSet FOLLOW_value_in_term358 = new BitSet(
-	    new long[] { 0x0000000190000002L });
-    public static final BitSet FOLLOW_PLUS_in_term365 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_value_in_term370 = new BitSet(
-	    new long[] { 0x0000000190000002L });
-    public static final BitSet FOLLOW_MINUS_in_term377 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_value_in_term381 = new BitSet(
-	    new long[] { 0x0000000190000002L });
-    public static final BitSet FOLLOW_OR_in_term388 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_value_in_term393 = new BitSet(
-	    new long[] { 0x0000000190000002L });
-    public static final BitSet FOLLOW_NAT_in_fatt412 = new BitSet(
+    public static final BitSet FOLLOW_RPAR_in_fatt966 = new BitSet(
 	    new long[] { 0x0000000000000002L });
-    public static final BitSet FOLLOW_TRUE_in_fatt419 = new BitSet(
+    public static final BitSet FOLLOW_ID_in_fatt981 = new BitSet(
+	    new long[] { 0x0000000010000002L });
+    public static final BitSet FOLLOW_LPAR_in_fatt993 = new BitSet(
+	    new long[] { 0x0000045CD0CC8000L });
+    public static final BitSet FOLLOW_exp_in_fatt1012 = new BitSet(
+	    new long[] { 0x0000001000000400L });
+    public static final BitSet FOLLOW_COMMA_in_fatt1020 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_exp_in_fatt1024 = new BitSet(
+	    new long[] { 0x0000001000000400L });
+    public static final BitSet FOLLOW_RPAR_in_fatt1038 = new BitSet(
 	    new long[] { 0x0000000000000002L });
-    public static final BitSet FOLLOW_FALSE_in_fatt427 = new BitSet(
+    public static final BitSet FOLLOW_IF_in_fatt1049 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_exp_in_fatt1053 = new BitSet(
+	    new long[] { 0x0000010000000000L });
+    public static final BitSet FOLLOW_THEN_in_fatt1055 = new BitSet(
+	    new long[] { 0x0000000000000100L });
+    public static final BitSet FOLLOW_CLPAR_in_fatt1057 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_exp_in_fatt1061 = new BitSet(
+	    new long[] { 0x0000000000000800L });
+    public static final BitSet FOLLOW_CRPAR_in_fatt1063 = new BitSet(
+	    new long[] { 0x0000000000004000L });
+    public static final BitSet FOLLOW_ELSE_in_fatt1068 = new BitSet(
+	    new long[] { 0x0000000000000100L });
+    public static final BitSet FOLLOW_CLPAR_in_fatt1070 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_exp_in_fatt1074 = new BitSet(
+	    new long[] { 0x0000000000000800L });
+    public static final BitSet FOLLOW_CRPAR_in_fatt1076 = new BitSet(
 	    new long[] { 0x0000000000000002L });
-    public static final BitSet FOLLOW_EMPTY_in_fatt434 = new BitSet(
-	    new long[] { 0x0000000000000002L });
-    public static final BitSet FOLLOW_LPAR_in_fatt441 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_exp_in_fatt445 = new BitSet(
-	    new long[] { 0x0000000800000000L });
-    public static final BitSet FOLLOW_RPAR_in_fatt447 = new BitSet(
-	    new long[] { 0x0000000000000002L });
-    public static final BitSet FOLLOW_ID_in_fatt456 = new BitSet(
-	    new long[] { 0x0000000008000002L });
-    public static final BitSet FOLLOW_LPAR_in_fatt463 = new BitSet(
-	    new long[] { 0x0000022E68664000L });
-    public static final BitSet FOLLOW_exp_in_fatt473 = new BitSet(
-	    new long[] { 0x0000000800000200L });
-    public static final BitSet FOLLOW_COMMA_in_fatt481 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_exp_in_fatt485 = new BitSet(
-	    new long[] { 0x0000000800000200L });
-    public static final BitSet FOLLOW_RPAR_in_fatt496 = new BitSet(
-	    new long[] { 0x0000000000000002L });
-    public static final BitSet FOLLOW_IF_in_fatt512 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_exp_in_fatt516 = new BitSet(
-	    new long[] { 0x0000008000000000L });
-    public static final BitSet FOLLOW_THEN_in_fatt518 = new BitSet(
-	    new long[] { 0x0000000000000080L });
-    public static final BitSet FOLLOW_CLPAR_in_fatt520 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_exp_in_fatt524 = new BitSet(
-	    new long[] { 0x0000000000000400L });
-    public static final BitSet FOLLOW_CRPAR_in_fatt526 = new BitSet(
+    public static final BitSet FOLLOW_SLPAR_in_fatt1090 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_exp_in_fatt1094 = new BitSet(
 	    new long[] { 0x0000000000002000L });
-    public static final BitSet FOLLOW_ELSE_in_fatt534 = new BitSet(
-	    new long[] { 0x0000000000000080L });
-    public static final BitSet FOLLOW_CLPAR_in_fatt536 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_exp_in_fatt540 = new BitSet(
-	    new long[] { 0x0000000000000400L });
-    public static final BitSet FOLLOW_CRPAR_in_fatt542 = new BitSet(
+    public static final BitSet FOLLOW_DOUBLECOL_in_fatt1096 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_exp_in_fatt1100 = new BitSet(
+	    new long[] { 0x0000008000000000L });
+    public static final BitSet FOLLOW_SRPAR_in_fatt1102 = new BitSet(
 	    new long[] { 0x0000000000000002L });
-    public static final BitSet FOLLOW_SLPAR_in_fatt552 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_exp_in_fatt556 = new BitSet(
-	    new long[] { 0x0000000000001000L });
-    public static final BitSet FOLLOW_DOUBLECOL_in_fatt558 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_exp_in_fatt562 = new BitSet(
-	    new long[] { 0x0000004000000000L });
-    public static final BitSet FOLLOW_SRPAR_in_fatt564 = new BitSet(
+    public static final BitSet FOLLOW_FIRST_in_fatt1115 = new BitSet(
+	    new long[] { 0x0000000010000000L });
+    public static final BitSet FOLLOW_LPAR_in_fatt1117 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_exp_in_fatt1121 = new BitSet(
+	    new long[] { 0x0000001000000000L });
+    public static final BitSet FOLLOW_RPAR_in_fatt1123 = new BitSet(
 	    new long[] { 0x0000000000000002L });
-    public static final BitSet FOLLOW_FIRST_in_fatt576 = new BitSet(
-	    new long[] { 0x0000000008000000L });
-    public static final BitSet FOLLOW_LPAR_in_fatt578 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_exp_in_fatt582 = new BitSet(
-	    new long[] { 0x0000000800000000L });
-    public static final BitSet FOLLOW_RPAR_in_fatt584 = new BitSet(
+    public static final BitSet FOLLOW_REST_in_fatt1140 = new BitSet(
+	    new long[] { 0x0000000010000000L });
+    public static final BitSet FOLLOW_LPAR_in_fatt1142 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_exp_in_fatt1146 = new BitSet(
+	    new long[] { 0x0000001000000000L });
+    public static final BitSet FOLLOW_RPAR_in_fatt1148 = new BitSet(
 	    new long[] { 0x0000000000000002L });
-    public static final BitSet FOLLOW_REST_in_fatt590 = new BitSet(
-	    new long[] { 0x0000000008000000L });
-    public static final BitSet FOLLOW_LPAR_in_fatt592 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_exp_in_fatt596 = new BitSet(
-	    new long[] { 0x0000000800000000L });
-    public static final BitSet FOLLOW_RPAR_in_fatt598 = new BitSet(
+    public static final BitSet FOLLOW_PRINT_in_fatt1165 = new BitSet(
+	    new long[] { 0x0000000010000000L });
+    public static final BitSet FOLLOW_LPAR_in_fatt1167 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_exp_in_fatt1171 = new BitSet(
+	    new long[] { 0x0000001000000000L });
+    public static final BitSet FOLLOW_RPAR_in_fatt1173 = new BitSet(
 	    new long[] { 0x0000000000000002L });
-    public static final BitSet FOLLOW_PRINT_in_fatt604 = new BitSet(
-	    new long[] { 0x0000000008000000L });
-    public static final BitSet FOLLOW_LPAR_in_fatt607 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_exp_in_fatt611 = new BitSet(
-	    new long[] { 0x0000000800000000L });
-    public static final BitSet FOLLOW_RPAR_in_fatt613 = new BitSet(
+    public static final BitSet FOLLOW_NOT_in_fatt1190 = new BitSet(
+	    new long[] { 0x0000000010000000L });
+    public static final BitSet FOLLOW_LPAR_in_fatt1192 = new BitSet(
+	    new long[] { 0x0000044CD0CC8000L });
+    public static final BitSet FOLLOW_exp_in_fatt1196 = new BitSet(
+	    new long[] { 0x0000001000000000L });
+    public static final BitSet FOLLOW_RPAR_in_fatt1198 = new BitSet(
 	    new long[] { 0x0000000000000002L });
-    public static final BitSet FOLLOW_NOT_in_fatt627 = new BitSet(
-	    new long[] { 0x0000000008000000L });
-    public static final BitSet FOLLOW_LPAR_in_fatt629 = new BitSet(
-	    new long[] { 0x0000022668664000L });
-    public static final BitSet FOLLOW_exp_in_fatt633 = new BitSet(
-	    new long[] { 0x0000000800000000L });
-    public static final BitSet FOLLOW_RPAR_in_fatt635 = new BitSet(
+    public static final BitSet FOLLOW_INTTYPE_in_type1223 = new BitSet(
 	    new long[] { 0x0000000000000002L });
-    public static final BitSet FOLLOW_INTTYPE_in_type652 = new BitSet(
+    public static final BitSet FOLLOW_BOOLTYPE_in_type1235 = new BitSet(
 	    new long[] { 0x0000000000000002L });
-    public static final BitSet FOLLOW_BOOLTYPE_in_type659 = new BitSet(
+    public static final BitSet FOLLOW_LPAR_in_arrowType1256 = new BitSet(
+	    new long[] { 0x0000001012000080L });
+    public static final BitSet FOLLOW_type_in_arrowType1262 = new BitSet(
+	    new long[] { 0x0000001000000400L });
+    public static final BitSet FOLLOW_COMMA_in_arrowType1266 = new BitSet(
+	    new long[] { 0x0000000002000080L });
+    public static final BitSet FOLLOW_type_in_arrowType1270 = new BitSet(
+	    new long[] { 0x0000001000000400L });
+    public static final BitSet FOLLOW_arrowType_in_arrowType1278 = new BitSet(
+	    new long[] { 0x0000001000000000L });
+    public static final BitSet FOLLOW_RPAR_in_arrowType1281 = new BitSet(
+	    new long[] { 0x0000000000000020L });
+    public static final BitSet FOLLOW_ARROW_in_arrowType1283 = new BitSet(
+	    new long[] { 0x0000000002000080L });
+    public static final BitSet FOLLOW_type_in_arrowType1285 = new BitSet(
 	    new long[] { 0x0000000000000002L });
 }

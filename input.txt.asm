@@ -43,6 +43,7 @@ push 0
  FALSELabel1: 
 push 0
  TRUELabel0: 
+push labelFun4
 lfp
 push 3
 sub
@@ -51,19 +52,29 @@ lfp
 push 2
 sub
 lw
-bgreat GEQLabel6
+bless LEQLabel7
  push 0
- b ContinueLabel7
- GEQLabel6: 
+ b ContinueLabel8
+ LEQLabel7: 
 push 1
- ContinueLabel7: 
+ ContinueLabel8: 
 push 0 
-beq ELSELabel4 
+beq ELSELabel5 
 lfp
 push 1
 sub
 lw
+lfp
+lfp
 push 4
+sub
+lw
+lfp
+lfp
+push 5
+sub
+lw
+js
 add
 lfp
 push 2
@@ -76,9 +87,21 @@ sub
 lw
 add
 print
-b ENDIFLabel5 
-ELSELabel4 : 
+b ENDIFLabel6 
+ELSELabel5 : 
 push 10
 print
-ENDIFLabel5 : 
+ENDIFLabel6 : 
 halt
+labelFun4 :
+cfp
+lra
+push 4
+srv
+sra
+pop
+pop
+sfp
+lrv
+lra
+js
