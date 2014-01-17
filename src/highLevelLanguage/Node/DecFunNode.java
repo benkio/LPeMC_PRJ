@@ -23,6 +23,10 @@ public class DecFunNode extends Node {
 	this.typeString = "";
     }
 
+    public Node getFunType() {
+	return funType;
+    }
+
     @Override
     public String toPrint() {
 
@@ -43,10 +47,16 @@ public class DecFunNode extends Node {
 	// TODO Auto-generated method stub
 	if (!typeChecked) {
 	    if (MiniFunLib.isCompatible(funType, funBody)) {
-		typeChecked = true;
 		typeString = funBody.typeCheck();
-	    } else
+		typeChecked = true;
+	    } else {
+		System.out
+			.println("TypeCheck Error: funtype and funBody are incompatible: "
+				+ funType.typeCheck()
+				+ ", "
+				+ funBody.typeCheck() + ".Shutdown parser");
 		System.exit(0);
+	    }
 	}
 	return typeString;
     }
@@ -100,4 +110,7 @@ public class DecFunNode extends Node {
 	return funParams;
     }
 
+    public boolean isTypeChecked() {
+	return typeChecked;
+    }
 }

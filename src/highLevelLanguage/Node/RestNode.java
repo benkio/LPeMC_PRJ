@@ -26,7 +26,7 @@ public class RestNode extends Node {
     @Override
     public String codeGen() {
 	// TODO Auto-generated method stub
-	return restBody.codeGen() + VMCommands.push.name() + " 1\n"
+	return restBody.codeGen() + VMCommands.push.name() + " 1 \n"
 		+ VMCommands.add.name() + "\n" + VMCommands.lw.name() + "\n";
     }
 

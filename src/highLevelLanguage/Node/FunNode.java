@@ -31,7 +31,8 @@ public class FunNode extends Node {
 	// TODO Auto-generated method stub
 
 	// ATTENZIONE SI POTREBBE ANDARE IN LOOP!!!! FUNZIONE CHE CHIAMA SE
-	// STESSA E QUINDI NON SI FINISCE?
+	// STESSA E QUINDI NON SI FINISCE? PER QUESTO INSERISCO L'OFFSET E NON
+	// RICHIAMO LA FUNZIONE.
 	return "<FunNode><FunDiffNesting>" + diffNesting + "</FunDiffNesting>"
 		+ "<FunSTEntryOffset>" + funEntry.getOffSet()
 		+ "</FunSTEntryOffset>" + funParamsToPrint + "</FunNode>";
@@ -46,15 +47,36 @@ public class FunNode extends Node {
 	    if (decFunNodeParams.size() == funParams.size()) {
 		for (int i = 0; i < funParams.size(); i++)
 		    if (!MiniFunLib.isCompatible(decFunNodeParams.get(i),
-			    funParams.get(i)))
+			    funParams.get(i))) {
+			System.out
+				.println("TypeCheck Error: decFunNodeParam and funParam are incompatible: "
+					+ decFunNodeParams.get(i).typeCheck()
+					+ ", "
+					+ funParams.get(i).typeCheck()
+					+ ".Shutdown parser");
 			System.exit(0);
+		    }
 
-		return funEntry.getNode().typeCheck();
+		// Per evitare che si abbia l'autoricorsione della funzione.
+		if (((DecFunNode) funEntry.getNode()).isTypeChecked())
+		    return funEntry.getNode().typeCheck();
+		else
+		    return ((DecFunNode) funEntry.getNode()).getFunType()
+			    .typeCheck();
 	    }
 
+	    System.out
+		    .println("TypeCheck Error: wrong function parameter number: "
+			    + decFunNodeParams.size()
+			    + ", "
+			    + funParams.size()
+			    + ".Shutdown parser");
 	    System.exit(0);
 	    return "";
 	} else {
+	    System.out
+		    .println("TypeCheck Error: Function node without DecFunNode"
+			    + ".Shutdown parser");
 	    System.exit(0);
 	    return "";
 	}

@@ -1,5 +1,6 @@
 package highLevelLanguage.Node;
 
+import highLevelLanguage.utils.MiniFunLib;
 import highLevelLanguage.utils.VMCommands;
 
 /**
@@ -38,7 +39,18 @@ public class ListNode extends Node {
     @Override
     public String typeCheck() {
 	// TODO Auto-generated method stub
+	if (MiniFunLib.isCompatible(first, rest))
+	    if (first.typeCheck() == MiniFunLib.EMPTY)
+		return rest.typeCheck();
+	    else
+		return first.typeCheck();
+
+	System.out.println("TypeCheck Error: List operands are incompatible: "
+		+ first.typeCheck() + ", " + rest.typeCheck()
+		+ ".Shutdown parser");
+	System.exit(0);
 	return "";
+
     }
 
     @Override

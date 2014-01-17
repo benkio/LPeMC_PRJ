@@ -30,7 +30,8 @@ public class MiniFunLib {
      * subtyping.
      */
     public static boolean isCompatible(Node n1, Node n2) {
-	if (n1.typeCheck().equals(n2.typeCheck()))
+	if (n1.typeCheck().equals(n2.typeCheck()) || n1.typeCheck() == EMPTY
+		|| n2.typeCheck() == EMPTY)
 	    return true;
 	return false;
     }

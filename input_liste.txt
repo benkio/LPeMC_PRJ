@@ -1,6 +1,0 @@
-let fun length:int (l:int) 
-    {if (l==empty) 
-       then {0} 
-       else {1+length(rest(l))}
-    };
-  in print(length([ [1::empty] :: empty]));

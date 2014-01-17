@@ -1,6 +1,6 @@
-let var x:int = 1;
-    var y:int = 3+ 25/5 + (2+2+2)/3;
-    var z:int = (2*6)/4;
-    var b:bool = true && (x+z == 4);
-    fun pippo:int (a:bool){4};
-in if ( z <= y ) then{ print(x+pippo(b)-y+z) } else { print(10) } ;
+let fun length:int (l:bool) 
+    {if (l==empty) 
+       then {0} 
+       else { 1 + length(rest(l)) }
+    };
+  in print(length([ true :: [false :: [true :: empty]]]));
