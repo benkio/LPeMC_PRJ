@@ -1,6 +1,14 @@
-let fun length:int (l:bool) 
-    {if (l==empty) 
-       then {0} 
-       else { 1 + length(rest(l)) }
-    };
-  in print(length([ true :: [false :: [true :: empty]]]));
+let fun prova:int (l:int, check:bool)
+	{
+		var x:int = (l/2)*4;
+		var y:int= l*2;
+		fun nested:int (x:int)
+		{
+			var y:int = l+(x-(y/2));
+			x-(y/2)
+		};
+		if ( (check==true) && ( nested(x) <= l-1 ) )
+		then {	y-x	}
+		else {	x+y	}
+	};
+in print(prova(10,true));

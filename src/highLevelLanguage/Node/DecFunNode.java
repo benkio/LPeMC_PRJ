@@ -10,6 +10,7 @@ public class DecFunNode extends Node {
     private String funName;
     private Node funType;
     private ArrayList<Node> funParams;
+    private ArrayList<Node> funLocalVariables;
     private Node funBody;
     private boolean typeChecked;
     private String typeString;
@@ -21,6 +22,7 @@ public class DecFunNode extends Node {
 	funParams = new ArrayList<Node>();
 	this.typeChecked = false;
 	this.typeString = "";
+	funLocalVariables = new ArrayList<Node>();
     }
 
     public Node getFunType() {
@@ -46,6 +48,9 @@ public class DecFunNode extends Node {
     public String typeCheck() {
 	// TODO Auto-generated method stub
 	if (!typeChecked) {
+	    for (Node localVariable : funLocalVariables)
+		localVariable.typeCheck();
+
 	    if (MiniFunLib.isCompatible(funType, funBody)) {
 		typeString = funBody.typeCheck();
 		typeChecked = true;
@@ -67,10 +72,16 @@ public class DecFunNode extends Node {
 
 	String labelFun = "labelFun" + MiniFunLib.getLabIndex();
 	String popParSequence = "";
+	String popLocalVariable = "";
+	String localVariableCodeGen = "";
 
 	for (int i = 0; i < funParams.size(); i++) {
 	    popParSequence += VMCommands.pop.name() + "\n";
+	}
 
+	for (int i = 0; i < funLocalVariables.size(); i++) {
+	    localVariableCodeGen += funLocalVariables.get(i).codeGen();
+	    popLocalVariable += VMCommands.pop.name() + "\n";
 	}
 
 	// Preparo la parte alta dell'activation record
@@ -84,11 +95,12 @@ public class DecFunNode extends Node {
 	// Salto al chiamante
 
 	String code = labelFun + " :\n" + VMCommands.cfp.name() + "\n"
-		+ VMCommands.lra.name() + "\n" + funBody.codeGen()
-		+ VMCommands.srv.name() + "\n" + VMCommands.sra.name() + "\n"
-		+ VMCommands.pop.name() + "\n" + popParSequence
-		+ VMCommands.sfp.name() + "\n" + VMCommands.lrv.name() + "\n"
-		+ VMCommands.lra.name() + "\n" + VMCommands.js.name() + "\n";
+		+ localVariableCodeGen + VMCommands.lra.name() + "\n"
+		+ funBody.codeGen() + VMCommands.srv.name() + "\n"
+		+ VMCommands.sra.name() + "\n" + VMCommands.pop.name() + "\n"
+		+ popParSequence + popLocalVariable + VMCommands.sfp.name()
+		+ "\n" + VMCommands.lrv.name() + "\n" + VMCommands.lra.name()
+		+ "\n" + VMCommands.js.name() + "\n";
 
 	MiniFunLib.addFunctionCode(code);
 
@@ -112,5 +124,10 @@ public class DecFunNode extends Node {
 
     public boolean isTypeChecked() {
 	return typeChecked;
+    }
+
+    public void addLocalDeclarationList(ArrayList<Node> dec) {
+	// TODO Auto-generated method stub
+	funLocalVariables = dec;
     }
 }

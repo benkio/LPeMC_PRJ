@@ -17,19 +17,7 @@ import java.util.ArrayList;
  * PARSER RULES
  *------------------------------------------------------------------*/
 
-prog	returns [Node ast]
-	: LET 
-	{
-	  	HashMap<String,STentry> hm = new HashMap<String,STentry>();
-	   	symTable.add(hm);
-	} 
-          
- 	d=declist
-	IN e=exp SEMIC	
-	{
-		$ast= new ProgNode($d.astList,$e.ast);
-	};
-	
+
 declist returns [ArrayList<Node> astList]
 		:{
 			$astList= new ArrayList<Node>();
@@ -38,7 +26,7 @@ declist returns [ArrayList<Node> astList]
 	  	
 	  	(VAR i=ID COL t=type ASS e=exp SEMIC
 	   	{
-	   		DecVarNode vn = new DecVarNode($i.text,$t.ast,$e.ast);
+	   	DecVarNode vn = new DecVarNode($i.text,$t.ast,$e.ast);
 	    	STentry entry = new STentry(vn,offSet++);
 	    	HashMap<String,STentry> hm= symTable.get(nestingLevel);
 	    	
@@ -54,7 +42,7 @@ declist returns [ArrayList<Node> astList]
 	   	(
 	   	rt=type 
 	   	{
-	   		fn = new DecFunNode($i.text,$rt.ast);
+	   	fn = new DecFunNode($i.text,$rt.ast);
 	    	STentry entry = new STentry(fn,offSet++);
 	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);
 	    	
@@ -63,7 +51,7 @@ declist returns [ArrayList<Node> astList]
 	      		System.exit(0);
 	      	}
 	  	}
-	    LPAR 
+	  	LPAR 
 		   	{
 		   		
 		        int parOffSet=-1;
@@ -91,7 +79,17 @@ declist returns [ArrayList<Node> astList]
 		   	)?  
 	    RPAR 
 	    |
-	    at=arrowType { fn = new DecFunNode($i.text,$at.ast); }
+	    at=arrowType 
+	    { 
+	    	fn = new DecFunNode($i.text,$at.ast);
+	    	STentry entry = new STentry(fn,offSet++);
+	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);
+	    	
+	    	if (hm.put($i.text,entry) != null){
+	    		System.out.println("Identifier "+$i.text+" at line "+$i.line+" already defined");
+	      		System.exit(0);
+	      	}
+	    }
 	    LPAR
 	    	(ID (COMMA ID)*)? 
 	    RPAR 
@@ -99,7 +97,9 @@ declist returns [ArrayList<Node> astList]
 	    CLPAR 
 	    (
 	    	(dec=declist)
-	        	
+	    	{
+	    		fn.addLocalDeclarationList($dec.astList);
+	    	}
 	       	e=exp
 	        {
 	        	fn.addExpValue($e.ast);
@@ -109,6 +109,20 @@ declist returns [ArrayList<Node> astList]
 	    ) 
 	  	CRPAR
 	    SEMIC)*;
+	    
+prog	returns [Node ast]
+	: LET 
+	{
+	  	HashMap<String,STentry> hm = new HashMap<String,STentry>();
+	   	symTable.add(hm);
+	} 
+          
+ 	d=declist
+	IN e=exp SEMIC	
+	{
+		$ast= new ProgNode($d.astList,$e.ast);
+	};
+	
  	
 exp	returns [Node ast]
  		: f=term {$ast= $f.ast;}
@@ -129,7 +143,7 @@ term	returns [Node ast]
 	: f=value {$ast= $f.ast;}
 	    (
 	 		(
-	 			PLUS l=value
+	 		PLUS l=value
 	     		{$ast= new PlusNode ($ast,$l.ast);}
 	     	)
 	     	|(
@@ -164,7 +178,7 @@ fatt	returns [Node ast]
 	: n=NAT   
 	  	{$ast= new NatNode(Integer.parseInt($n.text));}  
 	| TRUE 
-	  	{$ast= new BoolNode(true);}  
+		  	{$ast= new BoolNode(true);}  
 	| FALSE
 	  	{$ast= new BoolNode(false);} 
 	| EMPTY
@@ -229,27 +243,27 @@ arrowType returns [Node ast]
  * LEXER RULES
  *------------------------------------------------------------------*/
 LET 		: 'let' ;
-IN			: 'in' ;
+IN		: 'in' ;
 SEMIC		: ';' ;
-COL			: ':' ;
+COL		: ':' ;
 DOUBLECOL	: '::' ;
 COMMA		: ',' ;
-ASS			: '=' ;
-EQ			: '==' ;
+ASS		: '=' ;
+EQ		: '==' ;
 LESSEQ 		: '<=';
 GREATEREQ	: '>=';		 
 PLUS		: '+' ;
 MINUS		: '-';
 ARROW		: '->';
-OR			: '||';
+OR		: '||';
 TIMES		: '*' ;
-DIVIDE		:	'/';
-AND			: '&&';
-NAT			: (('1'..'9')('0'..'9')*) | '0';
+DIVIDE		: '/';
+AND		: '&&';
+NAT		: (('1'..'9')('0'..'9')*) | '0';
 TRUE		: 'true' ;
 FALSE		: 'false' ;
 EMPTY   	: 'empty' ;
-NOT			: 'not';
+NOT		: 'not';
 VAR 		: 'var' ;
 FUN 		: 'fun' ;
 LPAR 		: '(' ;
@@ -258,7 +272,7 @@ CLPAR 		: '{' ;
 CRPAR		: '}' ;
 SLPAR 		: '[' ;
 SRPAR		: ']' ;
-IF 			: 'if' ;
+IF 		: 'if' ;
 THEN 		: 'then' ;
 ELSE 		: 'else' ;
 PRINT		: 'print' ;
@@ -267,7 +281,7 @@ REST    	: 'rest' ;
 INTTYPE 	: 'int' ;
 BOOLTYPE	: 'bool' ;
 
-ID 			: ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'0'..'9')* ;
+ID 		: ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'0'..'9')* ;
 
 WHITESP  	: ( '\t' | ' ' | '\r' | '\n' )+    { skip(); } ;
  

@@ -15,49 +15,51 @@ import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.CommonTokenStream;
 
 public class Test {
-	public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
-		// First VM exercitation lexer/parser
-		/*
-		 * ANTLRFileStream input = new ANTLRFileStream(args[0]);
-		 * 
-		 * VMLexer lexer = new VMLexer(input); CommonTokenStream tokens = new
-		 * CommonTokenStream(lexer); VMParser parser = new VMParser(tokens);
-		 * 
-		 * ExecuteVM vm = new ExecuteVM(parser.createCode()); vm.cpu();
-		 */
+	// First VM exercitation lexer/parser
+	/*
+	 * ANTLRFileStream input = new ANTLRFileStream(args[0]);
+	 * 
+	 * VMLexer lexer = new VMLexer(input); CommonTokenStream tokens = new
+	 * CommonTokenStream(lexer); VMParser parser = new VMParser(tokens);
+	 * 
+	 * ExecuteVM vm = new ExecuteVM(parser.createCode()); vm.cpu();
+	 */
 
-		ANTLRFileStream input = new ANTLRFileStream(args[0]);
-		MiniFunLexer lexer = new MiniFunLexer(input);
-		CommonTokenStream tokens = new CommonTokenStream(lexer);
-		MiniFunParser parser = new MiniFunParser(tokens);
+	ANTLRFileStream input = new ANTLRFileStream(args[0]);
+	MiniFunLexer lexer = new MiniFunLexer(input);
+	CommonTokenStream tokens = new CommonTokenStream(lexer);
+	MiniFunParser parser = new MiniFunParser(tokens);
 
-		// Print the AST
+	// Print the AST
 
-		// System.out
-		// .println(new XmlFormatter((parser.prog()).toPrint()).getXML());
+	// System.out
+	// .println(new XmlFormatter((parser.prog()).toPrint()).getXML());
 
-		Node ast = parser.prog();
-		System.out.println(new XmlFormatter(ast.toPrint()).getXML());
-		System.out.println(ast.typeCheck());
+	Node ast = parser.prog();
 
-		// System.out.println((parser.prog()).toPrint());
-		// Node ast = parser.prog();
-		// System.out.println(ast.typeCheck());
-		//
-		String asm = ast.codeGen();
+	System.out.println(new XmlFormatter().format(ast.toPrint()));
 
-		FileWriter fstream = new FileWriter(args[0] + ".asm");
-		BufferedWriter out = new BufferedWriter(fstream);
-		out.write(asm);
-		out.close();
+	System.out.println(ast.typeCheck());
 
-		VMLexer lex = new VMLexer(new ANTLRFileStream(args[0] + ".asm"));
-		CommonTokenStream tokensVM = new CommonTokenStream(lex);
-		VMParser parserVM = new VMParser(tokensVM);
+	// System.out.println((parser.prog()).toPrint());
+	// Node ast = parser.prog();
+	// System.out.println(ast.typeCheck());
+	//
+	String asm = ast.codeGen();
 
-		ExecuteVM vm = new ExecuteVM(parserVM.createCode());
-		vm.cpu();
+	FileWriter fstream = new FileWriter(args[0] + ".asm");
+	BufferedWriter out = new BufferedWriter(fstream);
+	out.write(asm);
+	out.close();
 
-	}
+	VMLexer lex = new VMLexer(new ANTLRFileStream(args[0] + ".asm"));
+	CommonTokenStream tokensVM = new CommonTokenStream(lex);
+	VMParser parserVM = new VMParser(tokensVM);
+
+	ExecuteVM vm = new ExecuteVM(parserVM.createCode());
+	vm.cpu();
+
+    }
 }
