@@ -260,7 +260,7 @@ type	returns [Node ast]
   	;
  
 arrowType returns [Node ast]
- 	: 	LPAR{ArrowTypeNode atn=null;} 
+ 	: 	LPAR{ArrowTypeNode atn= new ArrowTypeNode();} 
  			((t1=type{atn.addParType($t1.ast); } (COMMA tn=type {atn.addParType($tn.ast);})*)? | at=arrowType) 
  		RPAR ARROW rt=type
  		{ 

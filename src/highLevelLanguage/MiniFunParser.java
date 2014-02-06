@@ -1282,7 +1282,7 @@ public class MiniFunParser extends Parser {
             // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:263:6: LPAR ( (t1= type ( COMMA tn= type )* )? | at= arrowType ) RPAR ARROW rt= type
             {
             match(input,LPAR,FOLLOW_LPAR_in_arrowType1314); 
-            ArrowTypeNode atn=null;
+            ArrowTypeNode atn= new ArrowTypeNode();
             // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:264:5: ( (t1= type ( COMMA tn= type )* )? | at= arrowType )
             int alt17=2;
             int LA17_0 = input.LA(1);

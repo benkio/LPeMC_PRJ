@@ -37,9 +37,14 @@ public class DecFunNode extends Node {
 		}
 		funParamsToPrint += "</FunParams>";
 
+		String funLocalVarToPrint="<FunLocalVar>";
+		for (Node p : funLocalVariables) {
+			funLocalVarToPrint += p.toPrint();
+		}
+		funLocalVarToPrint += "</FunLocalVar>";
 
 		return "<DecFunNode><FunName>" + funName + "</FunName>" + "<FunType>"
-		+ funType.toPrint() + "</FunType>" + funParamsToPrint
+		+ funType.toPrint() + "</FunType>" + funParamsToPrint+funLocalVarToPrint
 		+ "<FunBody>" + funBody.toPrint() + "</FunBody></DecFunNode>";
 	}
 
