@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g 2014-02-06 11:32:30
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g 2014-02-07 10:14:56
 
 package highLevelLanguage;
 
@@ -341,9 +341,8 @@ public class MiniFunParser extends Parser {
 
             	            state._fsp--;
 
-            	            ArrowTypeNode atn = (ArrowTypeNode)at;
             	             
-            	            	    	fn = new DecFunNode((i!=null?i.getText():null),atn.getRetType());
+            	            	    	fn = new DecFunNode((i!=null?i.getText():null),at);
             	            	    	STentry entry = new STentry(fn,offSet++);
             	            	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);
             	            	    	
@@ -352,7 +351,7 @@ public class MiniFunParser extends Parser {
             	            	      		System.exit(0);
             	            	      	}
             	            	    
-            	            match(input,LPAR,FOLLOW_LPAR_in_declist295); 
+            	            match(input,LPAR,FOLLOW_LPAR_in_declist294); 
 
             	            	    	int parOffSet=-1;
             	            		    hm = new HashMap<String,STentry>();
@@ -371,15 +370,14 @@ public class MiniFunParser extends Parser {
             	                case 1 :
             	                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:114:7: fpi= ID ( COMMA pi= ID )*
             	                    {
-            	                    fpi=(Token)match(input,ID,FOLLOW_ID_in_declist320); 
+            	                    fpi=(Token)match(input,ID,FOLLOW_ID_in_declist319); 
 
-            	                    	    		ParamNode pn = new ParamNode((fpi!=null?fpi.getText():null),atn.getParType(parIndex));
+            	                    	    		ParamNode pn = new ParamNode((fpi!=null?fpi.getText():null));
             	                    			    entry = new STentry(pn,parOffSet--);
             	                    			    hm.put((fpi!=null?fpi.getText():null),entry);
-            	                    			    fn.addParam(pn);	
-            	                    			    parIndex++;
+            	                    			    fn.addParam(pn);
             	                    	    	
-            	                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:122:7: ( COMMA pi= ID )*
+            	                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:121:7: ( COMMA pi= ID )*
             	                    loop3:
             	                    do {
             	                        int alt3=2;
@@ -392,16 +390,15 @@ public class MiniFunParser extends Parser {
 
             	                        switch (alt3) {
             	                    	case 1 :
-            	                    	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:122:8: COMMA pi= ID
+            	                    	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:121:8: COMMA pi= ID
             	                    	    {
-            	                    	    match(input,COMMA,FOLLOW_COMMA_in_declist338); 
-            	                    	    pi=(Token)match(input,ID,FOLLOW_ID_in_declist342); 
+            	                    	    match(input,COMMA,FOLLOW_COMMA_in_declist337); 
+            	                    	    pi=(Token)match(input,ID,FOLLOW_ID_in_declist341); 
 
-            	                    	    	    		pn = new ParamNode((fpi!=null?fpi.getText():null),atn.getParType(parIndex));
+            	                    	    	    		pn = new ParamNode((pi!=null?pi.getText():null));
             	                    	    			    entry = new STentry(pn,parOffSet--);
-            	                    	    			    hm.put((fpi!=null?fpi.getText():null),entry);
-            	                    	    			    fn.addParam(pn);	
-            	                    	    			    parIndex++;
+            	                    	    			    hm.put((pi!=null?pi.getText():null),entry);
+            	                    	    			    fn.addParam(pn);
             	                    	    	    	
 
             	                    	    }
@@ -418,21 +415,21 @@ public class MiniFunParser extends Parser {
 
             	            }
 
-            	            match(input,RPAR,FOLLOW_RPAR_in_declist375); 
+            	            match(input,RPAR,FOLLOW_RPAR_in_declist374); 
 
             	            }
             	            break;
 
             	    }
 
-            	    match(input,CLPAR,FOLLOW_CLPAR_in_declist390); 
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:135:6: ( (dec= declist ) e= exp )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:136:7: (dec= declist ) e= exp
+            	    match(input,CLPAR,FOLLOW_CLPAR_in_declist389); 
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:133:6: ( (dec= declist ) e= exp )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:134:7: (dec= declist ) e= exp
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:136:7: (dec= declist )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:136:8: dec= declist
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:134:7: (dec= declist )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:134:8: dec= declist
             	    {
-            	    pushFollow(FOLLOW_declist_in_declist409);
+            	    pushFollow(FOLLOW_declist_in_declist408);
             	    dec=declist();
 
             	    state._fsp--;
@@ -443,7 +440,7 @@ public class MiniFunParser extends Parser {
 
             	    	    		fn.addLocalDeclarationList(dec);
             	    	    	
-            	    pushFollow(FOLLOW_exp_in_declist431);
+            	    pushFollow(FOLLOW_exp_in_declist430);
             	    e=exp();
 
             	    state._fsp--;
@@ -456,8 +453,8 @@ public class MiniFunParser extends Parser {
 
             	    }
 
-            	    match(input,CRPAR,FOLLOW_CRPAR_in_declist457); 
-            	    match(input,SEMIC,FOLLOW_SEMIC_in_declist464); 
+            	    match(input,CRPAR,FOLLOW_CRPAR_in_declist456); 
+            	    match(input,SEMIC,FOLLOW_SEMIC_in_declist463); 
 
             	    }
             	    break;
@@ -483,7 +480,7 @@ public class MiniFunParser extends Parser {
 
 
     // $ANTLR start "exp"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:150:1: exp returns [Node ast] : f= term ( ( EQ l= term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )* ;
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:148:1: exp returns [Node ast] : f= term ( ( EQ l= term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )* ;
     public final Node exp() throws RecognitionException {
         Node ast = null;
 
@@ -493,16 +490,16 @@ public class MiniFunParser extends Parser {
 
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:151:4: (f= term ( ( EQ l= term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )* )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:151:6: f= term ( ( EQ l= term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )*
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:149:4: (f= term ( ( EQ l= term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )* )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:149:6: f= term ( ( EQ l= term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )*
             {
-            pushFollow(FOLLOW_term_in_exp491);
+            pushFollow(FOLLOW_term_in_exp490);
             f=term();
 
             state._fsp--;
 
             ast = f;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:152:7: ( ( EQ l= term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )*
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:150:7: ( ( EQ l= term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )*
             loop7:
             do {
                 int alt7=4;
@@ -527,13 +524,13 @@ public class MiniFunParser extends Parser {
 
                 switch (alt7) {
             	case 1 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:152:8: ( EQ l= term )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:150:8: ( EQ l= term )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:152:8: ( EQ l= term )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:153:8: EQ l= term
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:150:8: ( EQ l= term )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:151:8: EQ l= term
             	    {
-            	    match(input,EQ,FOLLOW_EQ_in_exp511); 
-            	    pushFollow(FOLLOW_term_in_exp515);
+            	    match(input,EQ,FOLLOW_EQ_in_exp510); 
+            	    pushFollow(FOLLOW_term_in_exp514);
             	    l=term();
 
             	    state._fsp--;
@@ -546,13 +543,13 @@ public class MiniFunParser extends Parser {
             	    }
             	    break;
             	case 2 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:156:9: ( LESSEQ l= term )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:154:9: ( LESSEQ l= term )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:156:9: ( LESSEQ l= term )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:157:9: LESSEQ l= term
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:154:9: ( LESSEQ l= term )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:155:9: LESSEQ l= term
             	    {
-            	    match(input,LESSEQ,FOLLOW_LESSEQ_in_exp555); 
-            	    pushFollow(FOLLOW_term_in_exp559);
+            	    match(input,LESSEQ,FOLLOW_LESSEQ_in_exp554); 
+            	    pushFollow(FOLLOW_term_in_exp558);
             	    l=term();
 
             	    state._fsp--;
@@ -565,13 +562,13 @@ public class MiniFunParser extends Parser {
             	    }
             	    break;
             	case 3 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:160:9: ( GREATEREQ l= term )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:158:9: ( GREATEREQ l= term )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:160:9: ( GREATEREQ l= term )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:160:11: GREATEREQ l= term
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:158:9: ( GREATEREQ l= term )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:158:11: GREATEREQ l= term
             	    {
-            	    match(input,GREATEREQ,FOLLOW_GREATEREQ_in_exp590); 
-            	    pushFollow(FOLLOW_term_in_exp594);
+            	    match(input,GREATEREQ,FOLLOW_GREATEREQ_in_exp589); 
+            	    pushFollow(FOLLOW_term_in_exp593);
             	    l=term();
 
             	    state._fsp--;
@@ -605,7 +602,7 @@ public class MiniFunParser extends Parser {
 
 
     // $ANTLR start "term"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:165:1: term returns [Node ast] : f= value ( ( PLUS l= value ) | ( MINUS l= value ) | ( OR l= value ) )* ;
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:163:1: term returns [Node ast] : f= value ( ( PLUS l= value ) | ( MINUS l= value ) | ( OR l= value ) )* ;
     public final Node term() throws RecognitionException {
         Node ast = null;
 
@@ -615,16 +612,16 @@ public class MiniFunParser extends Parser {
 
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:166:2: (f= value ( ( PLUS l= value ) | ( MINUS l= value ) | ( OR l= value ) )* )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:166:4: f= value ( ( PLUS l= value ) | ( MINUS l= value ) | ( OR l= value ) )*
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:164:2: (f= value ( ( PLUS l= value ) | ( MINUS l= value ) | ( OR l= value ) )* )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:164:4: f= value ( ( PLUS l= value ) | ( MINUS l= value ) | ( OR l= value ) )*
             {
-            pushFollow(FOLLOW_value_in_term639);
+            pushFollow(FOLLOW_value_in_term638);
             f=value();
 
             state._fsp--;
 
             ast = f;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:167:6: ( ( PLUS l= value ) | ( MINUS l= value ) | ( OR l= value ) )*
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:165:6: ( ( PLUS l= value ) | ( MINUS l= value ) | ( OR l= value ) )*
             loop8:
             do {
                 int alt8=4;
@@ -649,13 +646,13 @@ public class MiniFunParser extends Parser {
 
                 switch (alt8) {
             	case 1 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:168:5: ( PLUS l= value )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:166:5: ( PLUS l= value )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:168:5: ( PLUS l= value )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:169:5: PLUS l= value
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:166:5: ( PLUS l= value )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:167:5: PLUS l= value
             	    {
-            	    match(input,PLUS,FOLLOW_PLUS_in_term660); 
-            	    pushFollow(FOLLOW_value_in_term664);
+            	    match(input,PLUS,FOLLOW_PLUS_in_term659); 
+            	    pushFollow(FOLLOW_value_in_term663);
             	    l=value();
 
             	    state._fsp--;
@@ -668,13 +665,13 @@ public class MiniFunParser extends Parser {
             	    }
             	    break;
             	case 2 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:172:9: ( MINUS l= value )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:170:9: ( MINUS l= value )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:172:9: ( MINUS l= value )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:173:9: MINUS l= value
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:170:9: ( MINUS l= value )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:171:9: MINUS l= value
             	    {
-            	    match(input,MINUS,FOLLOW_MINUS_in_term703); 
-            	    pushFollow(FOLLOW_value_in_term707);
+            	    match(input,MINUS,FOLLOW_MINUS_in_term702); 
+            	    pushFollow(FOLLOW_value_in_term706);
             	    l=value();
 
             	    state._fsp--;
@@ -687,13 +684,13 @@ public class MiniFunParser extends Parser {
             	    }
             	    break;
             	case 3 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:176:9: ( OR l= value )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:174:9: ( OR l= value )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:176:9: ( OR l= value )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:177:9: OR l= value
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:174:9: ( OR l= value )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:175:9: OR l= value
             	    {
-            	    match(input,OR,FOLLOW_OR_in_term746); 
-            	    pushFollow(FOLLOW_value_in_term750);
+            	    match(input,OR,FOLLOW_OR_in_term745); 
+            	    pushFollow(FOLLOW_value_in_term749);
             	    l=value();
 
             	    state._fsp--;
@@ -727,7 +724,7 @@ public class MiniFunParser extends Parser {
 
 
     // $ANTLR start "value"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:183:1: value returns [Node ast] : f= fatt ( ( TIMES l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )* ;
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:181:1: value returns [Node ast] : f= fatt ( ( TIMES l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )* ;
     public final Node value() throws RecognitionException {
         Node ast = null;
 
@@ -737,16 +734,16 @@ public class MiniFunParser extends Parser {
 
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:184:3: (f= fatt ( ( TIMES l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )* )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:184:5: f= fatt ( ( TIMES l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )*
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:182:3: (f= fatt ( ( TIMES l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )* )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:182:5: f= fatt ( ( TIMES l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )*
             {
-            pushFollow(FOLLOW_fatt_in_value796);
+            pushFollow(FOLLOW_fatt_in_value795);
             f=fatt();
 
             state._fsp--;
 
             ast = f;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:185:6: ( ( TIMES l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )*
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:183:6: ( ( TIMES l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )*
             loop9:
             do {
                 int alt9=4;
@@ -771,13 +768,13 @@ public class MiniFunParser extends Parser {
 
                 switch (alt9) {
             	case 1 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:186:7: ( TIMES l= fatt )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:184:7: ( TIMES l= fatt )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:186:7: ( TIMES l= fatt )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:187:8: TIMES l= fatt
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:184:7: ( TIMES l= fatt )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:185:8: TIMES l= fatt
             	    {
-            	    match(input,TIMES,FOLLOW_TIMES_in_value822); 
-            	    pushFollow(FOLLOW_fatt_in_value826);
+            	    match(input,TIMES,FOLLOW_TIMES_in_value821); 
+            	    pushFollow(FOLLOW_fatt_in_value825);
             	    l=fatt();
 
             	    state._fsp--;
@@ -790,13 +787,13 @@ public class MiniFunParser extends Parser {
             	    }
             	    break;
             	case 2 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:190:9: ( DIVIDE l= fatt )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:188:9: ( DIVIDE l= fatt )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:190:9: ( DIVIDE l= fatt )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:191:9: DIVIDE l= fatt
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:188:9: ( DIVIDE l= fatt )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:189:9: DIVIDE l= fatt
             	    {
-            	    match(input,DIVIDE,FOLLOW_DIVIDE_in_value866); 
-            	    pushFollow(FOLLOW_fatt_in_value870);
+            	    match(input,DIVIDE,FOLLOW_DIVIDE_in_value865); 
+            	    pushFollow(FOLLOW_fatt_in_value869);
             	    l=fatt();
 
             	    state._fsp--;
@@ -809,13 +806,13 @@ public class MiniFunParser extends Parser {
             	    }
             	    break;
             	case 3 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:194:9: ( AND l= fatt )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:192:9: ( AND l= fatt )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:194:9: ( AND l= fatt )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:195:9: AND l= fatt
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:192:9: ( AND l= fatt )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:193:9: AND l= fatt
             	    {
-            	    match(input,AND,FOLLOW_AND_in_value909); 
-            	    pushFollow(FOLLOW_fatt_in_value913);
+            	    match(input,AND,FOLLOW_AND_in_value908); 
+            	    pushFollow(FOLLOW_fatt_in_value912);
             	    l=fatt();
 
             	    state._fsp--;
@@ -849,7 +846,7 @@ public class MiniFunParser extends Parser {
 
 
     // $ANTLR start "fatt"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:200:1: fatt returns [Node ast] : (n= NAT | TRUE | FALSE | EMPTY | LPAR e= exp RPAR | i= ID ( LPAR (fp= exp ( COMMA p= exp )* )? RPAR )? | IF x= exp THEN CLPAR y= exp CRPAR ELSE CLPAR z= exp CRPAR | SLPAR e1= exp DOUBLECOL e2= exp SRPAR | FIRST LPAR e= exp RPAR | REST LPAR e= exp RPAR | PRINT LPAR e= exp RPAR | NOT LPAR e= exp RPAR );
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:198:1: fatt returns [Node ast] : (n= NAT | TRUE | FALSE | EMPTY | LPAR e= exp RPAR | i= ID ( LPAR (fp= exp ( COMMA p= exp )* )? RPAR )? | IF x= exp THEN CLPAR y= exp CRPAR ELSE CLPAR z= exp CRPAR | SLPAR e1= exp DOUBLECOL e2= exp SRPAR | FIRST LPAR e= exp RPAR | REST LPAR e= exp RPAR | PRINT LPAR e= exp RPAR | NOT LPAR e= exp RPAR );
     public final Node fatt() throws RecognitionException {
         Node ast = null;
 
@@ -873,7 +870,7 @@ public class MiniFunParser extends Parser {
 
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:201:2: (n= NAT | TRUE | FALSE | EMPTY | LPAR e= exp RPAR | i= ID ( LPAR (fp= exp ( COMMA p= exp )* )? RPAR )? | IF x= exp THEN CLPAR y= exp CRPAR ELSE CLPAR z= exp CRPAR | SLPAR e1= exp DOUBLECOL e2= exp SRPAR | FIRST LPAR e= exp RPAR | REST LPAR e= exp RPAR | PRINT LPAR e= exp RPAR | NOT LPAR e= exp RPAR )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:199:2: (n= NAT | TRUE | FALSE | EMPTY | LPAR e= exp RPAR | i= ID ( LPAR (fp= exp ( COMMA p= exp )* )? RPAR )? | IF x= exp THEN CLPAR y= exp CRPAR ELSE CLPAR z= exp CRPAR | SLPAR e1= exp DOUBLECOL e2= exp SRPAR | FIRST LPAR e= exp RPAR | REST LPAR e= exp RPAR | PRINT LPAR e= exp RPAR | NOT LPAR e= exp RPAR )
             int alt13=12;
             switch ( input.LA(1) ) {
             case NAT:
@@ -945,55 +942,55 @@ public class MiniFunParser extends Parser {
 
             switch (alt13) {
                 case 1 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:201:4: n= NAT
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:199:4: n= NAT
                     {
-                    n=(Token)match(input,NAT,FOLLOW_NAT_in_fatt960); 
+                    n=(Token)match(input,NAT,FOLLOW_NAT_in_fatt959); 
                     ast = new NatNode(Integer.parseInt((n!=null?n.getText():null)));
 
                     }
                     break;
                 case 2 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:203:4: TRUE
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:201:4: TRUE
                     {
-                    match(input,TRUE,FOLLOW_TRUE_in_fatt976); 
+                    match(input,TRUE,FOLLOW_TRUE_in_fatt975); 
                     ast = new BoolNode(true);
 
                     }
                     break;
                 case 3 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:205:4: FALSE
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:203:4: FALSE
                     {
-                    match(input,FALSE,FOLLOW_FALSE_in_fatt991); 
+                    match(input,FALSE,FOLLOW_FALSE_in_fatt990); 
                     ast = new BoolNode(false);
 
                     }
                     break;
                 case 4 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:207:4: EMPTY
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:205:4: EMPTY
                     {
-                    match(input,EMPTY,FOLLOW_EMPTY_in_fatt1003); 
+                    match(input,EMPTY,FOLLOW_EMPTY_in_fatt1002); 
                     ast = new EmptyNode();
 
                     }
                     break;
                 case 5 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:209:4: LPAR e= exp RPAR
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:207:4: LPAR e= exp RPAR
                     {
-                    match(input,LPAR,FOLLOW_LPAR_in_fatt1017); 
-                    pushFollow(FOLLOW_exp_in_fatt1021);
+                    match(input,LPAR,FOLLOW_LPAR_in_fatt1016); 
+                    pushFollow(FOLLOW_exp_in_fatt1020);
                     e=exp();
 
                     state._fsp--;
 
-                    match(input,RPAR,FOLLOW_RPAR_in_fatt1023); 
+                    match(input,RPAR,FOLLOW_RPAR_in_fatt1022); 
                     ast = e;
 
                     }
                     break;
                 case 6 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:211:4: i= ID ( LPAR (fp= exp ( COMMA p= exp )* )? RPAR )?
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:209:4: i= ID ( LPAR (fp= exp ( COMMA p= exp )* )? RPAR )?
                     {
-                    i=(Token)match(input,ID,FOLLOW_ID_in_fatt1038); 
+                    i=(Token)match(input,ID,FOLLOW_ID_in_fatt1037); 
 
                     	  	HashMap<String,STentry> hm;
                     	   	STentry entry=null;
@@ -1009,7 +1006,7 @@ public class MiniFunParser extends Parser {
                     	    }
                     	   	ast = new VarNode(entry,nestingLevel-declNL);   
                     	
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:227:2: ( LPAR (fp= exp ( COMMA p= exp )* )? RPAR )?
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:225:2: ( LPAR (fp= exp ( COMMA p= exp )* )? RPAR )?
                     int alt12=2;
                     int LA12_0 = input.LA(1);
 
@@ -1018,11 +1015,11 @@ public class MiniFunParser extends Parser {
                     }
                     switch (alt12) {
                         case 1 :
-                            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:228:3: LPAR (fp= exp ( COMMA p= exp )* )? RPAR
+                            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:226:3: LPAR (fp= exp ( COMMA p= exp )* )? RPAR
                             {
-                            match(input,LPAR,FOLLOW_LPAR_in_fatt1050); 
+                            match(input,LPAR,FOLLOW_LPAR_in_fatt1049); 
                             ArrayList<Node> parList = new ArrayList<Node>();
-                            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:231:3: (fp= exp ( COMMA p= exp )* )?
+                            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:229:3: (fp= exp ( COMMA p= exp )* )?
                             int alt11=2;
                             int LA11_0 = input.LA(1);
 
@@ -1031,15 +1028,15 @@ public class MiniFunParser extends Parser {
                             }
                             switch (alt11) {
                                 case 1 :
-                                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:232:4: fp= exp ( COMMA p= exp )*
+                                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:230:4: fp= exp ( COMMA p= exp )*
                                     {
-                                    pushFollow(FOLLOW_exp_in_fatt1069);
+                                    pushFollow(FOLLOW_exp_in_fatt1068);
                                     fp=exp();
 
                                     state._fsp--;
 
                                     parList.add(fp);
-                                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:233:4: ( COMMA p= exp )*
+                                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:231:4: ( COMMA p= exp )*
                                     loop10:
                                     do {
                                         int alt10=2;
@@ -1052,10 +1049,10 @@ public class MiniFunParser extends Parser {
 
                                         switch (alt10) {
                                     	case 1 :
-                                    	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:233:5: COMMA p= exp
+                                    	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:231:5: COMMA p= exp
                                     	    {
-                                    	    match(input,COMMA,FOLLOW_COMMA_in_fatt1077); 
-                                    	    pushFollow(FOLLOW_exp_in_fatt1081);
+                                    	    match(input,COMMA,FOLLOW_COMMA_in_fatt1076); 
+                                    	    pushFollow(FOLLOW_exp_in_fatt1080);
                                     	    p=exp();
 
                                     	    state._fsp--;
@@ -1076,7 +1073,7 @@ public class MiniFunParser extends Parser {
 
                             }
 
-                            match(input,RPAR,FOLLOW_RPAR_in_fatt1095); 
+                            match(input,RPAR,FOLLOW_RPAR_in_fatt1094); 
                             ast = new FunNode(entry,nestingLevel-declNL,parList);
 
                             }
@@ -1088,110 +1085,110 @@ public class MiniFunParser extends Parser {
                     }
                     break;
                 case 7 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:237:4: IF x= exp THEN CLPAR y= exp CRPAR ELSE CLPAR z= exp CRPAR
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:235:4: IF x= exp THEN CLPAR y= exp CRPAR ELSE CLPAR z= exp CRPAR
                     {
-                    match(input,IF,FOLLOW_IF_in_fatt1106); 
-                    pushFollow(FOLLOW_exp_in_fatt1110);
+                    match(input,IF,FOLLOW_IF_in_fatt1105); 
+                    pushFollow(FOLLOW_exp_in_fatt1109);
                     x=exp();
 
                     state._fsp--;
 
-                    match(input,THEN,FOLLOW_THEN_in_fatt1112); 
-                    match(input,CLPAR,FOLLOW_CLPAR_in_fatt1114); 
-                    pushFollow(FOLLOW_exp_in_fatt1118);
+                    match(input,THEN,FOLLOW_THEN_in_fatt1111); 
+                    match(input,CLPAR,FOLLOW_CLPAR_in_fatt1113); 
+                    pushFollow(FOLLOW_exp_in_fatt1117);
                     y=exp();
 
                     state._fsp--;
 
-                    match(input,CRPAR,FOLLOW_CRPAR_in_fatt1120); 
-                    match(input,ELSE,FOLLOW_ELSE_in_fatt1125); 
-                    match(input,CLPAR,FOLLOW_CLPAR_in_fatt1127); 
-                    pushFollow(FOLLOW_exp_in_fatt1131);
+                    match(input,CRPAR,FOLLOW_CRPAR_in_fatt1119); 
+                    match(input,ELSE,FOLLOW_ELSE_in_fatt1124); 
+                    match(input,CLPAR,FOLLOW_CLPAR_in_fatt1126); 
+                    pushFollow(FOLLOW_exp_in_fatt1130);
                     z=exp();
 
                     state._fsp--;
 
-                    match(input,CRPAR,FOLLOW_CRPAR_in_fatt1133); 
+                    match(input,CRPAR,FOLLOW_CRPAR_in_fatt1132); 
                     ast = new IfNode(x,y,z);
 
                     }
                     break;
                 case 8 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:241:4: SLPAR e1= exp DOUBLECOL e2= exp SRPAR
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:239:4: SLPAR e1= exp DOUBLECOL e2= exp SRPAR
                     {
-                    match(input,SLPAR,FOLLOW_SLPAR_in_fatt1147); 
-                    pushFollow(FOLLOW_exp_in_fatt1151);
+                    match(input,SLPAR,FOLLOW_SLPAR_in_fatt1146); 
+                    pushFollow(FOLLOW_exp_in_fatt1150);
                     e1=exp();
 
                     state._fsp--;
 
-                    match(input,DOUBLECOL,FOLLOW_DOUBLECOL_in_fatt1153); 
-                    pushFollow(FOLLOW_exp_in_fatt1157);
+                    match(input,DOUBLECOL,FOLLOW_DOUBLECOL_in_fatt1152); 
+                    pushFollow(FOLLOW_exp_in_fatt1156);
                     e2=exp();
 
                     state._fsp--;
 
-                    match(input,SRPAR,FOLLOW_SRPAR_in_fatt1159); 
+                    match(input,SRPAR,FOLLOW_SRPAR_in_fatt1158); 
                     ast = new ListNode(e1,e2);
 
                     }
                     break;
                 case 9 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:244:4: FIRST LPAR e= exp RPAR
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:242:4: FIRST LPAR e= exp RPAR
                     {
-                    match(input,FIRST,FOLLOW_FIRST_in_fatt1172); 
-                    match(input,LPAR,FOLLOW_LPAR_in_fatt1174); 
-                    pushFollow(FOLLOW_exp_in_fatt1178);
+                    match(input,FIRST,FOLLOW_FIRST_in_fatt1171); 
+                    match(input,LPAR,FOLLOW_LPAR_in_fatt1173); 
+                    pushFollow(FOLLOW_exp_in_fatt1177);
                     e=exp();
 
                     state._fsp--;
 
-                    match(input,RPAR,FOLLOW_RPAR_in_fatt1180); 
+                    match(input,RPAR,FOLLOW_RPAR_in_fatt1179); 
                     ast = new FirstNode(e);
 
                     }
                     break;
                 case 10 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:247:4: REST LPAR e= exp RPAR
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:245:4: REST LPAR e= exp RPAR
                     {
-                    match(input,REST,FOLLOW_REST_in_fatt1197); 
-                    match(input,LPAR,FOLLOW_LPAR_in_fatt1199); 
-                    pushFollow(FOLLOW_exp_in_fatt1203);
+                    match(input,REST,FOLLOW_REST_in_fatt1196); 
+                    match(input,LPAR,FOLLOW_LPAR_in_fatt1198); 
+                    pushFollow(FOLLOW_exp_in_fatt1202);
                     e=exp();
 
                     state._fsp--;
 
-                    match(input,RPAR,FOLLOW_RPAR_in_fatt1205); 
+                    match(input,RPAR,FOLLOW_RPAR_in_fatt1204); 
                     ast = new RestNode(e);
 
                     }
                     break;
                 case 11 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:250:4: PRINT LPAR e= exp RPAR
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:248:4: PRINT LPAR e= exp RPAR
                     {
-                    match(input,PRINT,FOLLOW_PRINT_in_fatt1222); 
-                    match(input,LPAR,FOLLOW_LPAR_in_fatt1224); 
-                    pushFollow(FOLLOW_exp_in_fatt1228);
+                    match(input,PRINT,FOLLOW_PRINT_in_fatt1221); 
+                    match(input,LPAR,FOLLOW_LPAR_in_fatt1223); 
+                    pushFollow(FOLLOW_exp_in_fatt1227);
                     e=exp();
 
                     state._fsp--;
 
-                    match(input,RPAR,FOLLOW_RPAR_in_fatt1230); 
+                    match(input,RPAR,FOLLOW_RPAR_in_fatt1229); 
                     ast = new PrintNode(e);
 
                     }
                     break;
                 case 12 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:253:4: NOT LPAR e= exp RPAR
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:251:4: NOT LPAR e= exp RPAR
                     {
-                    match(input,NOT,FOLLOW_NOT_in_fatt1247); 
-                    match(input,LPAR,FOLLOW_LPAR_in_fatt1249); 
-                    pushFollow(FOLLOW_exp_in_fatt1253);
+                    match(input,NOT,FOLLOW_NOT_in_fatt1246); 
+                    match(input,LPAR,FOLLOW_LPAR_in_fatt1248); 
+                    pushFollow(FOLLOW_exp_in_fatt1252);
                     e=exp();
 
                     state._fsp--;
 
-                    match(input,RPAR,FOLLOW_RPAR_in_fatt1255); 
+                    match(input,RPAR,FOLLOW_RPAR_in_fatt1254); 
                     ast = new NotNode(e);
 
                     }
@@ -1211,12 +1208,12 @@ public class MiniFunParser extends Parser {
 
 
     // $ANTLR start "type"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:257:1: type returns [Node ast] : ( INTTYPE | BOOLTYPE );
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:255:1: type returns [Node ast] : ( INTTYPE | BOOLTYPE );
     public final Node type() throws RecognitionException {
         Node ast = null;
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:258:2: ( INTTYPE | BOOLTYPE )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:256:2: ( INTTYPE | BOOLTYPE )
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -1234,17 +1231,17 @@ public class MiniFunParser extends Parser {
             }
             switch (alt14) {
                 case 1 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:258:4: INTTYPE
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:256:4: INTTYPE
                     {
-                    match(input,INTTYPE,FOLLOW_INTTYPE_in_type1280); 
+                    match(input,INTTYPE,FOLLOW_INTTYPE_in_type1279); 
                     ast = new IntTypeNode();
 
                     }
                     break;
                 case 2 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:259:6: BOOLTYPE
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:257:6: BOOLTYPE
                     {
-                    match(input,BOOLTYPE,FOLLOW_BOOLTYPE_in_type1292); 
+                    match(input,BOOLTYPE,FOLLOW_BOOLTYPE_in_type1291); 
                     ast = new BoolTypeNode();
 
                     }
@@ -1264,7 +1261,7 @@ public class MiniFunParser extends Parser {
 
 
     // $ANTLR start "arrowType"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:262:1: arrowType returns [Node ast] : LPAR ( (t1= type ( COMMA tn= type )* )? | at= arrowType ) RPAR ARROW rt= type ;
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:260:1: arrowType returns [Node ast] : LPAR ( (t1= type ( COMMA tn= type )* )? | at= arrowType ) RPAR ARROW rt= type ;
     public final Node arrowType() throws RecognitionException {
         Node ast = null;
 
@@ -1278,12 +1275,12 @@ public class MiniFunParser extends Parser {
 
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:263:3: ( LPAR ( (t1= type ( COMMA tn= type )* )? | at= arrowType ) RPAR ARROW rt= type )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:263:6: LPAR ( (t1= type ( COMMA tn= type )* )? | at= arrowType ) RPAR ARROW rt= type
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:261:3: ( LPAR ( (t1= type ( COMMA tn= type )* )? | at= arrowType ) RPAR ARROW rt= type )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:261:6: LPAR ( (t1= type ( COMMA tn= type )* )? | at= arrowType ) RPAR ARROW rt= type
             {
-            match(input,LPAR,FOLLOW_LPAR_in_arrowType1314); 
+            match(input,LPAR,FOLLOW_LPAR_in_arrowType1313); 
             ArrowTypeNode atn= new ArrowTypeNode();
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:264:5: ( (t1= type ( COMMA tn= type )* )? | at= arrowType )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:262:5: ( (t1= type ( COMMA tn= type )* )? | at= arrowType )
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -1301,9 +1298,9 @@ public class MiniFunParser extends Parser {
             }
             switch (alt17) {
                 case 1 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:264:6: (t1= type ( COMMA tn= type )* )?
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:262:6: (t1= type ( COMMA tn= type )* )?
                     {
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:264:6: (t1= type ( COMMA tn= type )* )?
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:262:6: (t1= type ( COMMA tn= type )* )?
                     int alt16=2;
                     int LA16_0 = input.LA(1);
 
@@ -1312,15 +1309,15 @@ public class MiniFunParser extends Parser {
                     }
                     switch (alt16) {
                         case 1 :
-                            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:264:7: t1= type ( COMMA tn= type )*
+                            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:262:7: t1= type ( COMMA tn= type )*
                             {
-                            pushFollow(FOLLOW_type_in_arrowType1326);
+                            pushFollow(FOLLOW_type_in_arrowType1325);
                             t1=type();
 
                             state._fsp--;
 
                             atn.addParType(t1); 
-                            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:264:42: ( COMMA tn= type )*
+                            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:262:42: ( COMMA tn= type )*
                             loop15:
                             do {
                                 int alt15=2;
@@ -1333,10 +1330,10 @@ public class MiniFunParser extends Parser {
 
                                 switch (alt15) {
                             	case 1 :
-                            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:264:43: COMMA tn= type
+                            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:262:43: COMMA tn= type
                             	    {
-                            	    match(input,COMMA,FOLLOW_COMMA_in_arrowType1330); 
-                            	    pushFollow(FOLLOW_type_in_arrowType1334);
+                            	    match(input,COMMA,FOLLOW_COMMA_in_arrowType1329); 
+                            	    pushFollow(FOLLOW_type_in_arrowType1333);
                             	    tn=type();
 
                             	    state._fsp--;
@@ -1361,9 +1358,9 @@ public class MiniFunParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:264:90: at= arrowType
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:262:90: at= arrowType
                     {
-                    pushFollow(FOLLOW_arrowType_in_arrowType1346);
+                    pushFollow(FOLLOW_arrowType_in_arrowType1345);
                     at=arrowType();
 
                     state._fsp--;
@@ -1374,9 +1371,9 @@ public class MiniFunParser extends Parser {
 
             }
 
-            match(input,RPAR,FOLLOW_RPAR_in_arrowType1353); 
-            match(input,ARROW,FOLLOW_ARROW_in_arrowType1355); 
-            pushFollow(FOLLOW_type_in_arrowType1359);
+            match(input,RPAR,FOLLOW_RPAR_in_arrowType1352); 
+            match(input,ARROW,FOLLOW_ARROW_in_arrowType1354); 
+            pushFollow(FOLLOW_type_in_arrowType1358);
             rt=type();
 
             state._fsp--;
@@ -1430,90 +1427,90 @@ public class MiniFunParser extends Parser {
     public static final BitSet FOLLOW_type_in_declist232 = new BitSet(new long[]{0x0000000000006000L});
     public static final BitSet FOLLOW_RPAR_in_declist262 = new BitSet(new long[]{0x0000000000008000L});
     public static final BitSet FOLLOW_arrowType_in_declist279 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_LPAR_in_declist295 = new BitSet(new long[]{0x0000000000004100L});
-    public static final BitSet FOLLOW_ID_in_declist320 = new BitSet(new long[]{0x0000000000006000L});
-    public static final BitSet FOLLOW_COMMA_in_declist338 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_ID_in_declist342 = new BitSet(new long[]{0x0000000000006000L});
-    public static final BitSet FOLLOW_RPAR_in_declist375 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_CLPAR_in_declist390 = new BitSet(new long[]{0x000000F27C001980L});
-    public static final BitSet FOLLOW_declist_in_declist409 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_exp_in_declist431 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_CRPAR_in_declist457 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_SEMIC_in_declist464 = new BitSet(new long[]{0x0000000000000882L});
-    public static final BitSet FOLLOW_term_in_exp491 = new BitSet(new long[]{0x00000000000E0002L});
-    public static final BitSet FOLLOW_EQ_in_exp511 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_term_in_exp515 = new BitSet(new long[]{0x00000000000E0002L});
-    public static final BitSet FOLLOW_LESSEQ_in_exp555 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_term_in_exp559 = new BitSet(new long[]{0x00000000000E0002L});
-    public static final BitSet FOLLOW_GREATEREQ_in_exp590 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_term_in_exp594 = new BitSet(new long[]{0x00000000000E0002L});
-    public static final BitSet FOLLOW_value_in_term639 = new BitSet(new long[]{0x0000000000700002L});
-    public static final BitSet FOLLOW_PLUS_in_term660 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_value_in_term664 = new BitSet(new long[]{0x0000000000700002L});
-    public static final BitSet FOLLOW_MINUS_in_term703 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_value_in_term707 = new BitSet(new long[]{0x0000000000700002L});
-    public static final BitSet FOLLOW_OR_in_term746 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_value_in_term750 = new BitSet(new long[]{0x0000000000700002L});
-    public static final BitSet FOLLOW_fatt_in_value796 = new BitSet(new long[]{0x0000000003800002L});
-    public static final BitSet FOLLOW_TIMES_in_value822 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_fatt_in_value826 = new BitSet(new long[]{0x0000000003800002L});
-    public static final BitSet FOLLOW_DIVIDE_in_value866 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_fatt_in_value870 = new BitSet(new long[]{0x0000000003800002L});
-    public static final BitSet FOLLOW_AND_in_value909 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_fatt_in_value913 = new BitSet(new long[]{0x0000000003800002L});
-    public static final BitSet FOLLOW_NAT_in_fatt960 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TRUE_in_fatt976 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FALSE_in_fatt991 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_EMPTY_in_fatt1003 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LPAR_in_fatt1017 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_exp_in_fatt1021 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_RPAR_in_fatt1023 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_fatt1038 = new BitSet(new long[]{0x0000000000001002L});
-    public static final BitSet FOLLOW_LPAR_in_fatt1050 = new BitSet(new long[]{0x000000F27C005100L});
-    public static final BitSet FOLLOW_exp_in_fatt1069 = new BitSet(new long[]{0x0000000000006000L});
-    public static final BitSet FOLLOW_COMMA_in_fatt1077 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_exp_in_fatt1081 = new BitSet(new long[]{0x0000000000006000L});
-    public static final BitSet FOLLOW_RPAR_in_fatt1095 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IF_in_fatt1106 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_exp_in_fatt1110 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_THEN_in_fatt1112 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_CLPAR_in_fatt1114 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_exp_in_fatt1118 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_CRPAR_in_fatt1120 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_ELSE_in_fatt1125 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_CLPAR_in_fatt1127 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_exp_in_fatt1131 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_CRPAR_in_fatt1133 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SLPAR_in_fatt1147 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_exp_in_fatt1151 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_DOUBLECOL_in_fatt1153 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_exp_in_fatt1157 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_SRPAR_in_fatt1159 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FIRST_in_fatt1172 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_LPAR_in_fatt1174 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_exp_in_fatt1178 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_RPAR_in_fatt1180 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_REST_in_fatt1197 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_LPAR_in_fatt1199 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_exp_in_fatt1203 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_RPAR_in_fatt1205 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PRINT_in_fatt1222 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_LPAR_in_fatt1224 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_exp_in_fatt1228 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_RPAR_in_fatt1230 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NOT_in_fatt1247 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_LPAR_in_fatt1249 = new BitSet(new long[]{0x000000F27C001100L});
-    public static final BitSet FOLLOW_exp_in_fatt1253 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_RPAR_in_fatt1255 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTTYPE_in_type1280 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BOOLTYPE_in_type1292 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LPAR_in_arrowType1314 = new BitSet(new long[]{0x0000030000005000L});
-    public static final BitSet FOLLOW_type_in_arrowType1326 = new BitSet(new long[]{0x0000000000006000L});
-    public static final BitSet FOLLOW_COMMA_in_arrowType1330 = new BitSet(new long[]{0x0000030000000000L});
-    public static final BitSet FOLLOW_type_in_arrowType1334 = new BitSet(new long[]{0x0000000000006000L});
-    public static final BitSet FOLLOW_arrowType_in_arrowType1346 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_RPAR_in_arrowType1353 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_ARROW_in_arrowType1355 = new BitSet(new long[]{0x0000030000000000L});
-    public static final BitSet FOLLOW_type_in_arrowType1359 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LPAR_in_declist294 = new BitSet(new long[]{0x0000000000004100L});
+    public static final BitSet FOLLOW_ID_in_declist319 = new BitSet(new long[]{0x0000000000006000L});
+    public static final BitSet FOLLOW_COMMA_in_declist337 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_ID_in_declist341 = new BitSet(new long[]{0x0000000000006000L});
+    public static final BitSet FOLLOW_RPAR_in_declist374 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_CLPAR_in_declist389 = new BitSet(new long[]{0x000000F27C001980L});
+    public static final BitSet FOLLOW_declist_in_declist408 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_exp_in_declist430 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_CRPAR_in_declist456 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_SEMIC_in_declist463 = new BitSet(new long[]{0x0000000000000882L});
+    public static final BitSet FOLLOW_term_in_exp490 = new BitSet(new long[]{0x00000000000E0002L});
+    public static final BitSet FOLLOW_EQ_in_exp510 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_term_in_exp514 = new BitSet(new long[]{0x00000000000E0002L});
+    public static final BitSet FOLLOW_LESSEQ_in_exp554 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_term_in_exp558 = new BitSet(new long[]{0x00000000000E0002L});
+    public static final BitSet FOLLOW_GREATEREQ_in_exp589 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_term_in_exp593 = new BitSet(new long[]{0x00000000000E0002L});
+    public static final BitSet FOLLOW_value_in_term638 = new BitSet(new long[]{0x0000000000700002L});
+    public static final BitSet FOLLOW_PLUS_in_term659 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_value_in_term663 = new BitSet(new long[]{0x0000000000700002L});
+    public static final BitSet FOLLOW_MINUS_in_term702 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_value_in_term706 = new BitSet(new long[]{0x0000000000700002L});
+    public static final BitSet FOLLOW_OR_in_term745 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_value_in_term749 = new BitSet(new long[]{0x0000000000700002L});
+    public static final BitSet FOLLOW_fatt_in_value795 = new BitSet(new long[]{0x0000000003800002L});
+    public static final BitSet FOLLOW_TIMES_in_value821 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_fatt_in_value825 = new BitSet(new long[]{0x0000000003800002L});
+    public static final BitSet FOLLOW_DIVIDE_in_value865 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_fatt_in_value869 = new BitSet(new long[]{0x0000000003800002L});
+    public static final BitSet FOLLOW_AND_in_value908 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_fatt_in_value912 = new BitSet(new long[]{0x0000000003800002L});
+    public static final BitSet FOLLOW_NAT_in_fatt959 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TRUE_in_fatt975 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FALSE_in_fatt990 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_EMPTY_in_fatt1002 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LPAR_in_fatt1016 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_exp_in_fatt1020 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_RPAR_in_fatt1022 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_fatt1037 = new BitSet(new long[]{0x0000000000001002L});
+    public static final BitSet FOLLOW_LPAR_in_fatt1049 = new BitSet(new long[]{0x000000F27C005100L});
+    public static final BitSet FOLLOW_exp_in_fatt1068 = new BitSet(new long[]{0x0000000000006000L});
+    public static final BitSet FOLLOW_COMMA_in_fatt1076 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_exp_in_fatt1080 = new BitSet(new long[]{0x0000000000006000L});
+    public static final BitSet FOLLOW_RPAR_in_fatt1094 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IF_in_fatt1105 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_exp_in_fatt1109 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_THEN_in_fatt1111 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_CLPAR_in_fatt1113 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_exp_in_fatt1117 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_CRPAR_in_fatt1119 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_ELSE_in_fatt1124 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_CLPAR_in_fatt1126 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_exp_in_fatt1130 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_CRPAR_in_fatt1132 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SLPAR_in_fatt1146 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_exp_in_fatt1150 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_DOUBLECOL_in_fatt1152 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_exp_in_fatt1156 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_SRPAR_in_fatt1158 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FIRST_in_fatt1171 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_LPAR_in_fatt1173 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_exp_in_fatt1177 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_RPAR_in_fatt1179 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_REST_in_fatt1196 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_LPAR_in_fatt1198 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_exp_in_fatt1202 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_RPAR_in_fatt1204 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PRINT_in_fatt1221 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_LPAR_in_fatt1223 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_exp_in_fatt1227 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_RPAR_in_fatt1229 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NOT_in_fatt1246 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_LPAR_in_fatt1248 = new BitSet(new long[]{0x000000F27C001100L});
+    public static final BitSet FOLLOW_exp_in_fatt1252 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_RPAR_in_fatt1254 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTTYPE_in_type1279 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BOOLTYPE_in_type1291 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LPAR_in_arrowType1313 = new BitSet(new long[]{0x0000030000005000L});
+    public static final BitSet FOLLOW_type_in_arrowType1325 = new BitSet(new long[]{0x0000000000006000L});
+    public static final BitSet FOLLOW_COMMA_in_arrowType1329 = new BitSet(new long[]{0x0000030000000000L});
+    public static final BitSet FOLLOW_type_in_arrowType1333 = new BitSet(new long[]{0x0000000000006000L});
+    public static final BitSet FOLLOW_arrowType_in_arrowType1345 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_RPAR_in_arrowType1352 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_ARROW_in_arrowType1354 = new BitSet(new long[]{0x0000030000000000L});
+    public static final BitSet FOLLOW_type_in_arrowType1358 = new BitSet(new long[]{0x0000000000000002L});
 
 }

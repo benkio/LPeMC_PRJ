@@ -6,28 +6,39 @@ public class ParamNode extends Node {
 	private Node paramType;
 
 	public ParamNode(String string, Node t1) {
-		// TODO Auto-generated constructor stub
 		paramName = string;
 		paramType = t1;
 	}
 
+	public ParamNode(String name){
+		this.paramName = name;
+	}
+	
+	public void addType(Node paramType){
+		this.paramType= paramType;
+	}
+	
 	@Override
 	public String toPrint() {
-		// TODO Auto-generated method stub
+		
+		String parTypeToPrint="null";
+		
+		if(paramType!=null){
+			parTypeToPrint= paramType.toPrint();
+		}
+		
 		return "<ParamNode>" + "<ParamName>" + paramName
-				+ "</ParamName><ParamType>" + paramType.toPrint()
+				+ "</ParamName><ParamType>" + parTypeToPrint
 				+ "</ParamType></ParamNode>";
 	}
 
 	@Override
 	public String typeCheck() {
-		// TODO Auto-generated method stub
 		return paramType.typeCheck();
 	}
 
 	@Override
 	public String codeGen() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

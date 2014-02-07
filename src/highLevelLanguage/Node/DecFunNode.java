@@ -8,20 +8,35 @@ import java.util.ArrayList;
 public class DecFunNode extends Node {
 
 	private String funName;
+	private ArrowTypeNode atn;
 	private Node funType;
 	private ArrayList<Node> funParams;
 	private ArrayList<Node> funLocalVariables;
 	private Node funBody;
 	private boolean typeChecked;
 	private String typeString;
+	private boolean isArrowType;
+	private int nPar;
 
 	public DecFunNode(String string, Node t) {
 		funName = string;
-		funType = t;
 		funParams = new ArrayList<Node>();
+		nPar=0;
+		
 		this.typeChecked = false;
 		this.typeString = "";
 		funLocalVariables = new ArrayList<Node>();
+		isArrowType=false;
+		
+		if(!(t instanceof ArrowTypeNode)){
+			funType = t;
+
+		}
+		else{
+			isArrowType=true;
+			atn= (ArrowTypeNode)t;
+			funType= atn.getRetType();
+		}
 	}
 
 	public Node getFunType() {
@@ -43,7 +58,10 @@ public class DecFunNode extends Node {
 		}
 		funLocalVarToPrint += "</FunLocalVar>";
 
-		return "<DecFunNode><FunName>" + funName + "</FunName>" + "<FunType>"
+		String arrowTypeToPrint="";
+		if(isArrowType) arrowTypeToPrint=atn.toPrint();
+		
+		return "<DecFunNode><FunName>" + funName + "</FunName>" +arrowTypeToPrint +"<FunType>"
 		+ funType.toPrint() + "</FunType>" + funParamsToPrint+funLocalVarToPrint
 		+ "<FunBody>" + funBody.toPrint() + "</FunBody></DecFunNode>";
 	}
@@ -52,6 +70,13 @@ public class DecFunNode extends Node {
 	public String typeCheck() {
 
 		if (!typeChecked) {
+			
+			if(isArrowType && atn.getNPar()!= this.nPar){
+				System.out.println("TypeCheck Error: n types and  n params are different "
+						+".Shutdown parser");
+				System.exit(0);
+			}
+			
 			for (Node localVariable : funLocalVariables)
 				localVariable.typeCheck();
 
@@ -66,6 +91,8 @@ public class DecFunNode extends Node {
 						+ funBody.typeCheck() + ".Shutdown parser");
 				System.exit(0);
 			}
+			
+
 		}
 		return typeString;
 	}
@@ -112,7 +139,11 @@ public class DecFunNode extends Node {
 	}
 
 	public void addParam(Node param) {
-
+		
+		if(isArrowType){
+			((ParamNode)param).addType(atn.getParType(nPar));
+			nPar++;
+		}
 		funParams.add(param);
 	}
 

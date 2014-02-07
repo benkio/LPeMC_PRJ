@@ -49,5 +49,9 @@ public class ArrowTypeNode extends Node {
 	public void addRetType(Node t){
 		this.returnType= t;
 	}
+	
+	public int getNPar(){
+		return this.parTypes.size();
+	}
 
 }

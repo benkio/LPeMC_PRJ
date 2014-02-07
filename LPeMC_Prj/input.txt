@@ -1,15 +1,15 @@
 let 
 	var a : int = 10;
 	
-	fun prova:int (l:int)
+	fun prova:int (l:int,m:int)
 	{
 		var b : int = 100;
 		
-		fun arrow : (int)->int (c)
+		fun arrow : (int,int)->int (c,d)
 		{
-			c
+			d
 		};
 		
-		arrow(3)	
+		arrow(1,1)
 	};
-in print(prova(1));
+in print(prova(1,3));

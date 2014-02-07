@@ -91,9 +91,9 @@ declist returns [ArrayList<Node> astList]
 		   	)?  
 	    RPAR 
 	    |
-	    at=arrowType{ArrowTypeNode atn = (ArrowTypeNode)$at.ast;} 
+	    at=arrowType 
 	    { 
-	    	fn = new DecFunNode($i.text,atn.getRetType());
+	    	fn = new DecFunNode($i.text,$at.ast);
 	    	STentry entry = new STentry(fn,offSet++);
 	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);
 	    	
@@ -113,19 +113,17 @@ declist returns [ArrayList<Node> astList]
 	    (
 	    	fpi=ID
 	    	{
-	    		ParamNode pn = new ParamNode($fpi.text,atn.getParType(parIndex));
+	    		ParamNode pn = new ParamNode($fpi.text);
 			    entry = new STentry(pn,parOffSet--);
 			    hm.put($fpi.text,entry);
-			    fn.addParam(pn);	
-			    parIndex++;
+			    fn.addParam(pn);
 	    	} 
 	    	(COMMA pi=ID
 	    	{
-	    		pn = new ParamNode($fpi.text,atn.getParType(parIndex));
+	    		pn = new ParamNode($pi.text);
 			    entry = new STentry(pn,parOffSet--);
-			    hm.put($fpi.text,entry);
-			    fn.addParam(pn);	
-			    parIndex++;
+			    hm.put($pi.text,entry);
+			    fn.addParam(pn);
 	    	}
 	    	)*
 	    )? 
