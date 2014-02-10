@@ -51,7 +51,7 @@ declist returns [ArrayList<Node> astList]
 	    }
 	  	|
 	   	FUN i=ID COL {DecFunNode fn = null;}
-	   	(
+	   	
 	   	rt=type 
 	   	{
 	   	fn = new DecFunNode($i.text,$rt.ast);
@@ -72,63 +72,23 @@ declist returns [ArrayList<Node> astList]
 		        nestingLevel++;
 		 	} 
 		    (
-			    fpi=ID COL fpt=type 
+			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);} (COL fpt=type {pn.addType($fpt.ast);})? 
 			    {
-			    	ParamNode pn = new ParamNode($fpi.text,$fpt.ast);
 			        entry = new STentry(pn,parOffSet--);
 			        hm.put($fpi.text,entry);
 			        fn.addParam(pn);
 			  	}
-			    (COMMA pi=ID COL pt=type 
+			    (COMMA pi=ID {pn = new ParamNode($pi.text);}  (COL pt=type{pn.addType($pt.ast);})? 
 			    {
-			    	pn = new ParamNode($pi.text,$pt.ast);
 			        entry = new STentry(pn,parOffSet--);
 			        if (hm.put($pi.text,entry) != null){
 			        	System.out.println("Identifier "+$pi.text+" at line "+$pi.line+" already defined");
-			           	System.exit(0);}
-			          	fn.addParam(pn);
+			           	System.exit(0);
+			        }
+			        fn.addParam(pn);
 			   	})*
 		   	)?  
-	    RPAR 
-	    |
-	    at=arrowType 
-	    { 
-	    	fn = new DecFunNode($i.text,$at.ast);
-	    	STentry entry = new STentry(fn,offSet++);
-	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);
-	    	
-	    	if (hm.put($i.text,entry) != null){
-	    		System.out.println("Identifier "+$i.text+" at line "+$i.line+" already defined");
-	      		System.exit(0);
-	      	}
-	    }
-	    LPAR 
-	    {
-	    	int parOffSet=-1;
-		    hm = new HashMap<String,STentry>();
-		    symTable.add(hm);
-		    nestingLevel++;
-	    	int parIndex=0;
-	    }
-	    (
-	    	fpi=ID
-	    	{
-	    		ParamNode pn = new ParamNode($fpi.text);
-			    entry = new STentry(pn,parOffSet--);
-			    hm.put($fpi.text,entry);
-			    fn.addParam(pn);
-	    	} 
-	    	(COMMA pi=ID
-	    	{
-	    		pn = new ParamNode($pi.text);
-			    entry = new STentry(pn,parOffSet--);
-			    hm.put($pi.text,entry);
-			    fn.addParam(pn);
-	    	}
-	    	)*
-	    )? 
-	    RPAR 
-	    )
+	    RPAR  
 	    CLPAR 
 	    (
 	    	(dec=declist)
@@ -255,12 +215,24 @@ fatt	returns [Node ast]
 type	returns [Node ast]
 	: INTTYPE  {$ast= new IntTypeNode();}  
   	| BOOLTYPE {$ast= new BoolTypeNode();}
+  	| at=arrowType {$ast = $at.ast;}
   	;
+ 
+returnType returns [Node ast]
+	:	INTTYPE  {$ast= new IntTypeNode();}  
+  	| 	BOOLTYPE {$ast= new BoolTypeNode();}
+  	;
+  	
  
 arrowType returns [Node ast]
  	: 	LPAR{ArrowTypeNode atn= new ArrowTypeNode();} 
- 			((t1=type{atn.addParType($t1.ast); } (COMMA tn=type {atn.addParType($tn.ast);})*)? | at=arrowType) 
- 		RPAR ARROW rt=type
+ 			(
+ 				t1=type{atn.addParType($t1.ast);}
+ 				(
+ 					COMMA tn=type {atn.addParType($tn.ast);}
+ 				)*
+ 			)? 
+ 		RPAR ARROW rt=returnType
  		{ 
  			atn.addRetType($rt.ast); 
  			$ast=atn;
