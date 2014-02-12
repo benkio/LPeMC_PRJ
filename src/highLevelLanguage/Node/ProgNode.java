@@ -50,4 +50,10 @@ public class ProgNode extends Node {
 		return code;
 	}
 
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

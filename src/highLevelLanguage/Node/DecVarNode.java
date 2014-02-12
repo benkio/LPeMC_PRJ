@@ -62,4 +62,10 @@ public class DecVarNode extends Node {
 
 	}
 
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

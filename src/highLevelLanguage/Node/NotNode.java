@@ -42,4 +42,10 @@ public class NotNode extends Node {
 				+ "\n " + continueLabel + ": \n";
 	}
 
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -47,4 +47,10 @@ public class IfNode extends Node {
 		+ " : \n" + elseBranch.codeGen() + ENDIFLabel + " : \n";
 	}
 
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

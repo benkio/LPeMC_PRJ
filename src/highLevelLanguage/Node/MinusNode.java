@@ -38,4 +38,10 @@ public class MinusNode extends Node {
 		return left.codeGen() + right.codeGen() + VMCommands.SUB + "\n";
 	}
 
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

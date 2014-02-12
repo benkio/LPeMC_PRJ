@@ -62,4 +62,10 @@ public class ListNode extends Node {
 	public Node getRest() {
 		return first;
 	}
+
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

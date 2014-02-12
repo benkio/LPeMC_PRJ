@@ -43,4 +43,10 @@ public class PlusNode extends Node {
 		return left.codeGen() + right.codeGen() + VMCommands.ADD + "\n";
 	}
 
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -50,4 +50,10 @@ public class VarNode extends Node {
 				VMCommands.SUB + "\n" + 
 				VMCommands.LW + "\n";
 	}
+
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

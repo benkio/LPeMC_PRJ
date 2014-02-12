@@ -29,4 +29,10 @@ public class FirstNode extends Node {
 	return firstBody.codeGen() + VMCommands.LW + "\n";
     }
 
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

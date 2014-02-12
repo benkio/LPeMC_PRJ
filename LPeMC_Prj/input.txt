@@ -1,11 +1,7 @@
 let 
-		fun applica : int (c: int , d : int , f: (int, int)->int) {f(c,d)};
-		
-		fun somma: int (a:int , b: int){a+b};
-		
-		fun test : int (x: int , y: int)
-		{
-			applica(10,10,somma)
-		};
+	fun uno: (int)->int (a) {a};
+	fun due: (int)->int (b) {b};
+
+	fun test: int (f1:()->int,d:int,f2:()->int, c:int) {f1(c)+f2(c)};
 	
-in print(test(10,10));
+in print(test(uno,2,due,10));

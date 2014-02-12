@@ -32,4 +32,10 @@ public class BoolNode extends Node {
 	return VMCommands.PUSH + " " + MiniFunLib.FALSE + " \n";
     }
 
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

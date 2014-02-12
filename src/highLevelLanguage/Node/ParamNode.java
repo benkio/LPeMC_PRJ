@@ -46,4 +46,9 @@ public class ParamNode extends Node {
 		return null;
 	}
 
+	@Override
+	public NodeType getNodeType() {
+		return NodeType.PARAM_NODE;
+	}
+
 }

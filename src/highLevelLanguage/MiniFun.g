@@ -1,6 +1,10 @@
 grammar MiniFun;
 
-@header {
+@lexer::header{
+package highLevelLanguage;
+
+}
+@parser::header {
 package highLevelLanguage;
 
 import highLevelLanguage.Node.*;
@@ -8,7 +12,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 }
 
-@members {
+@parser::members {
     private ArrayList<HashMap<String,STentry>> symTable = new ArrayList<HashMap<String,STentry>>();    
     private int nestingLevel=0;             
 }
@@ -38,7 +42,7 @@ declist returns [ArrayList<Node> astList]
 	  	
 	  	(VAR i=ID COL t=type ASS e=exp SEMIC
 	   	{
-	   	DecVarNode vn = new DecVarNode($i.text,$t.ast,$e.ast);
+	   		DecVarNode vn = new DecVarNode($i.text,$t.ast,$e.ast);
 	    	STentry entry = new STentry(vn,offSet++);
 	    	HashMap<String,STentry> hm= symTable.get(nestingLevel);
 	    	
@@ -53,8 +57,13 @@ declist returns [ArrayList<Node> astList]
 	   	FUN i=ID COL {DecFunNode fn = null;}
 	   	
 	   	rt=type 
+	   	
 	   	{
-	   	fn = new DecFunNode($i.text,$rt.ast);
+	   		if($rt.ast.getNodeType()==NodeType.ARROWTYPE_NODE){
+	   			fn = new DecArrowFunNode($i.text,$rt.ast);}
+	   		else{
+		   		fn = new DecFunNode($i.text,$rt.ast);
+	   		}
 	    	STentry entry = new STentry(fn,offSet++);
 	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);
 	    	
@@ -72,29 +81,17 @@ declist returns [ArrayList<Node> astList]
 		        nestingLevel++;
 		 	} 
 		    (
-			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);} (COL fpt=type {pn.addType($fpt.ast);})? 
+			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);} (COL fpt=type {pn.addType($fpt.ast); if($fpt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}})? 
 			    {
-			    	if($fpt.ast instanceof ArrowTypeNode)
-			    	{
-			        	entry = new STentry(pn,parOffSet);
-			        	parOffSet-=2;
-			        }
-			        else{
-			        	entry = new STentry(pn,parOffSet--);
-			        }
+			    	System.out.println(parOffSet);
+			       	entry = new STentry(pn,parOffSet--);
 			        hm.put($fpi.text,entry);
 			        fn.addParam(pn);
 			  	}
-			    (COMMA pi=ID {pn = new ParamNode($pi.text);}  (COL pt=type{pn.addType($pt.ast);})? 
+			    (COMMA pi=ID {pn = new ParamNode($pi.text);}  (COL pt=type{pn.addType($pt.ast); if($pt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}})? 
 			    {
-			        if($pt.ast instanceof ArrowTypeNode)
-			    	{
-			        	entry = new STentry(pn,parOffSet);
-			        	parOffSet-=2;
-			        }
-			        else{
-			        	entry = new STentry(pn,parOffSet--);
-			        }
+			    	System.out.println(parOffSet);
+			        entry = new STentry(pn,parOffSet--);
 			        if (hm.put($pi.text,entry) != null){
 			        	System.out.println("Identifier "+$pi.text+" at line "+$pi.line+" already defined");
 			           	System.exit(0);
@@ -195,7 +192,9 @@ fatt	returns [Node ast]
 	      	System.exit(0);
 	    }
 
-		if(entry.getNode() instanceof DecFunNode){
+		NodeType nt= entry.getNode().getNodeType();
+		
+		if((nt == NodeType.DECFUN_NODE)||(nt==NodeType.DECARROWFUN_NODE)){
 			$ast = new FunParNode(entry,nestingLevel-declNL);
 	   	}
 	   	else {
@@ -210,7 +209,14 @@ fatt	returns [Node ast]
 			fp=exp {parList.add($fp.ast);}
 			(COMMA p=exp {parList.add($p.ast);})*
 		)? 
-		RPAR {$ast = new FunNode(entry,nestingLevel-declNL,parList);}
+		RPAR {
+			if(entry.getNode().getNodeType()==NodeType.PARAM_NODE){
+				$ast = new HigherOrderFunNode(entry,nestingLevel-declNL,parList);
+			}
+			else{
+				$ast = new FunNode(entry,nestingLevel-declNL,parList);
+			}
+		}
 	)?
 	| IF x=exp THEN CLPAR y=exp CRPAR 
 		ELSE CLPAR z=exp CRPAR 
@@ -263,27 +269,27 @@ arrowType returns [Node ast]
  *------------------------------------------------------------------*/
 
 LET 		: 'let' ;
-IN		: 'in' ;
+IN			: 'in' ;
 SEMIC		: ';' ;
-COL		: ':' ;
+COL			: ':' ;
 DOUBLECOL	: '::' ;
 COMMA		: ',' ;
-ASS		: '=' ;
-EQ		: '==' ;
+ASS			: '=' ;
+EQ			: '==' ;
 LESSEQ 		: '<=';
 GREATEREQ	: '>=';		 
 PLUS		: '+' ;
 MINUS		: '-';
 ARROW		: '->';
-OR		: '||';
+OR			: '||';
 TIMES		: '*' ;
 DIVIDE		: '/';
-AND		: '&&';
-NAT		: (('1'..'9')('0'..'9')*) | '0';
+AND			: '&&';
+NAT			: (('1'..'9')('0'..'9')*) | '0';
 TRUE		: 'true' ;
 FALSE		: 'false' ;
 EMPTY   	: 'empty' ;
-NOT		: 'not';
+NOT			: 'not';
 VAR 		: 'var' ;
 FUN 		: 'fun' ;
 LPAR 		: '(' ;
@@ -292,7 +298,7 @@ CLPAR 		: '{' ;
 CRPAR		: '}' ;
 SLPAR 		: '[' ;
 SRPAR		: ']' ;
-IF 		: 'if' ;
+IF 			: 'if' ;
 THEN 		: 'then' ;
 ELSE 		: 'else' ;
 PRINT		: 'print' ;
@@ -301,7 +307,7 @@ REST    	: 'rest' ;
 INTTYPE 	: 'int' ;
 BOOLTYPE	: 'bool' ;
 
-ID 		: ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'0'..'9')* ;
+ID 			: ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'0'..'9')* ;
 
 WHITESP  	: ( '\t' | ' ' | '\r' | '\n' )+    { skip(); } ;
  

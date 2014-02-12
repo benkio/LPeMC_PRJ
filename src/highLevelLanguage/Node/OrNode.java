@@ -51,4 +51,10 @@ public class OrNode extends Node {
 				+ VMCommands.PUSH + " " + MiniFunLib.TRUE + "\n"
 				+ falseLabel + ": \n";
 	}
+
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

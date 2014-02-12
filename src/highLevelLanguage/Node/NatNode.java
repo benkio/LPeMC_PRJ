@@ -26,4 +26,10 @@ public class NatNode extends Node {
 		return VMCommands.PUSH + " " + value + "\n";
 	}
 
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

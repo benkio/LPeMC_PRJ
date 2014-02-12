@@ -3,7 +3,17 @@ push labelFun1
 push labelFun2
 lfp
 push 10
-push 10
+lfp
+push 2
+sub
+lw
+lfp
+push 2
+lfp
+push 1
+sub
+lw
+lfp
 lfp
 lfp
 push 3
@@ -16,27 +26,11 @@ labelFun0 :
 cfp
 lra
 lfp
-lfp
-push -2
-sub
-lw
-lfp
 push -1
 sub
 lw
-lfp
-push -3
-sub
-lfp
-push -4
-sub
-lw
-js
 srv
 sra
-pop
-pop
-pop
 pop
 pop
 sfp
@@ -50,14 +44,8 @@ lfp
 push -1
 sub
 lw
-lfp
-push -2
-sub
-lw
-add
 srv
 sra
-pop
 pop
 pop
 sfp
@@ -69,24 +57,37 @@ cfp
 lra
 lfp
 lfp
-lw
-push 2
+push -6
 sub
 lw
 lfp
-lw
-push 10
-push 10
+push -3
+sub
 lfp
-lw
-lfp
-lw
-push 1
+push -2
 sub
 lw
 js
+lfp
+lfp
+push -6
+sub
+lw
+lfp
+push -6
+sub
+lfp
+push -5
+sub
+lw
+js
+add
 srv
 sra
+pop
+pop
+pop
+pop
 pop
 pop
 pop

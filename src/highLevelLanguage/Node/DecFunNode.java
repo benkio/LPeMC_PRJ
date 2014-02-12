@@ -7,16 +7,14 @@ import java.util.ArrayList;
 
 public class DecFunNode extends Node {
 
-	private String funName;
-	private ArrowTypeNode atn;
-	private Node funType;
-	private ArrayList<Node> funParams;
-	private ArrayList<Node> funLocalVariables;
-	private Node funBody;
-	private boolean typeChecked;
-	private String typeString;
-	private boolean isArrowType;
-	private int nPar;
+	protected String funName;
+	protected Node funType;
+	protected ArrayList<ParamNode> funParams;
+	protected ArrayList<Node> funLocalVariables;
+	protected Node funBody;
+	protected boolean typeChecked;
+	protected String typeString;
+
 
 	/**
 	 * Costruttore del nodo contenente la dichiarazione di una funzione
@@ -24,24 +22,18 @@ public class DecFunNode extends Node {
 	 * @param t Nodo contenete o il tipo di ritorno o il tipo freccia
 	 */
 	public DecFunNode(String id, Node t) {
+		this(id);
+		
+		funType = t;
+	}
+	
+	protected DecFunNode(String id){
 		funName = id;
-		funParams = new ArrayList<Node>();
-		nPar=0;
+		funParams = new ArrayList<ParamNode>();
 
 		this.typeChecked = false;
 		this.typeString = "";
 		funLocalVariables = new ArrayList<Node>();
-		isArrowType=false;
-
-		if(!(t instanceof ArrowTypeNode)){
-			funType = t;
-
-		}
-		else{
-			isArrowType=true;
-			atn= (ArrowTypeNode)t;
-			funType= atn.getRetType();
-		}
 	}
 
 	/**
@@ -70,10 +62,7 @@ public class DecFunNode extends Node {
 		}
 		funLocalVarToPrint += "</FunLocalVar>";
 
-		String arrowTypeToPrint="";
-		if(isArrowType) arrowTypeToPrint=atn.toPrint();
-
-		return "<DecFunNode><FunName>" + funName + "</FunName>" +arrowTypeToPrint +"<FunType>"
+		return "<DecFunNode><FunName>" + funName + "</FunName>" +"<FunType>"
 		+ funType.toPrint() + "</FunType>" + funParamsToPrint+funLocalVarToPrint
 		+ "<FunBody>" + funBody.toPrint() + "</FunBody></DecFunNode>";
 	}
@@ -82,11 +71,6 @@ public class DecFunNode extends Node {
 	public String typeCheck() {
 
 		if (!typeChecked) {
-
-			if(isArrowType && atn.getNPar()!= this.nPar){
-				System.out.println("TypeCheck Error: types and params are different. Shutdown parser");
-				System.exit(0);
-			}
 
 			//TODO Controllare 
 			for (Node localVariable : funLocalVariables)
@@ -123,7 +107,9 @@ public class DecFunNode extends Node {
 		String localVariableCodeGen = "";
 
 		for (int i = 0; i < funParams.size(); i++) {
-			if(((ParamNode)this.funParams.get(i)).getType() instanceof ArrowTypeNode)
+			NodeType nt = this.funParams.get(i).getType().getNodeType();
+			
+			if(nt == NodeType.ARROWTYPE_NODE)
 				popParSequence += VMCommands.POP +"\n"+ VMCommands.POP + "\n";
 			else 
 				popParSequence += VMCommands.POP + "\n";
@@ -179,12 +165,8 @@ public class DecFunNode extends Node {
 	}
 
 
-	public void addParam(Node param) {
+	public void addParam(ParamNode param) {
 
-		if(isArrowType){
-			((ParamNode)param).addType(atn.getParType(nPar));
-			nPar++;
-		}
 		funParams.add(param);
 	}
 
@@ -193,7 +175,7 @@ public class DecFunNode extends Node {
 		funBody = e;
 	}
 
-	public ArrayList<Node> getParams() {
+	public ArrayList<ParamNode> getParams() {
 
 		return funParams;
 	}
@@ -205,5 +187,10 @@ public class DecFunNode extends Node {
 	public void addLocalDeclarationList(ArrayList<Node> dec) {
 
 		this.funLocalVariables = dec;
+	}
+
+	@Override
+	public NodeType getNodeType() {
+		return NodeType.DECFUN_NODE;
 	}
 }

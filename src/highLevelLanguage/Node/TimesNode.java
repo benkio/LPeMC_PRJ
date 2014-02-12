@@ -42,4 +42,10 @@ public class TimesNode extends Node {
 		return left.codeGen() + right.codeGen() + VMCommands.MULT + "\n";
 	}
 
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -3,6 +3,10 @@ package highLevelLanguage.Node;
 import highLevelLanguage.STentry;
 import highLevelLanguage.utils.VMCommands;
 
+/**
+ * Nodo che rappresenta una fuzione passata come parametro
+ *
+ */
 public class FunParNode extends Node {
 
 	private STentry entry;
@@ -29,7 +33,7 @@ public class FunParNode extends Node {
 		for (int i = 0; i < diffNesting; i++)
 			lookupAL += VMCommands.LW + "\n";
 
-		//Implementazione della Chisura
+		//Implementazione della Chisura <IndCodFunz,AL>
 		return 	//Scorro AL per recuperare codice della funzione
 				VMCommands.LFP+ "\n" + 
 				lookupAL + 
@@ -37,9 +41,15 @@ public class FunParNode extends Node {
 				VMCommands.SUB + "\n" + 
 				VMCommands.LW + "\n" + 
 				
-				//Calcolo AL da passare 
+				//L' AL da passare è quello del padre sintattico 
 				VMCommands.LFP+ "\n"+
 				lookupAL;
+	}
+
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

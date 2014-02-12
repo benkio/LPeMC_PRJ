@@ -8,21 +8,14 @@ import java.util.ArrayList;
 
 public class FunNode extends Node {
 
-	private STentry funEntry;
-	private int diffNesting;
-	private ArrayList<Node> funParams;
-	
-	private boolean higherOrderFunction;
+	protected STentry funEntry;
+	protected int diffNesting;
+	protected ArrayList<Node> funParams;
 
 	public FunNode(STentry entry, int diffNesting, ArrayList<Node> params) {
-		this.higherOrderFunction= false;
 		funEntry = entry;
 		funParams = params;
 		this.diffNesting = diffNesting;
-		
-		if(this.funEntry.getNode() instanceof ParamNode){
-			this.higherOrderFunction=true;
-		}
 	}
 
 	@Override
@@ -44,15 +37,17 @@ public class FunNode extends Node {
 
 	@Override
 	public String typeCheck() {
-		if (funEntry.getNode() instanceof DecFunNode) {
-			ArrayList<Node> decFunNodeParams = ((DecFunNode) funEntry.getNode())
-					.getParams();
+		if (funEntry.getNode().getNodeType() == NodeType.DECFUN_NODE) {
+			//Recupero parametri dalla dichiarazione della funzione
+			ArrayList<ParamNode> decFunNodeParams = ((DecFunNode) funEntry.getNode()).getParams();
+
+			//Controllo di avere lo stesso numero di parametri 
 			if (decFunNodeParams.size() == funParams.size()) {
+
+				//Controllo ad uno ad un la compatibilità dei Parametri con la loro dichiarazione
 				for (int i = 0; i < funParams.size(); i++)
-					if (!MiniFunLib.isCompatible(decFunNodeParams.get(i),
-							funParams.get(i))) {
-						System.out
-						.println("TypeCheck Error: decFunNodeParam and funParam are incompatible: "
+					if (!MiniFunLib.isCompatible(decFunNodeParams.get(i),funParams.get(i))) {
+						System.out.println("TypeCheck Error: decFunNodeParam and funParam are incompatible: "
 								+ decFunNodeParams.get(i).typeCheck()
 								+ ", "
 								+ funParams.get(i).typeCheck()
@@ -60,25 +55,24 @@ public class FunNode extends Node {
 						System.exit(0);
 					}
 
-				// Per evitare che si abbia l'autoricorsione della funzione.
+				// Per evitare che si abbia l'ricorsione infinita della funzione.
 				if (((DecFunNode) funEntry.getNode()).isTypeChecked())
 					return funEntry.getNode().typeCheck();
 				else
-					return ((DecFunNode) funEntry.getNode()).getFunType()
-							.typeCheck();
+					return ((DecFunNode) funEntry.getNode()).getFunType().typeCheck();
 			}
+			else{
 
-			System.out
-			.println("TypeCheck Error: wrong function parameter number: "
-					+ decFunNodeParams.size()
-					+ ", "
-					+ funParams.size()
-					+ ".Shutdown parser");
-			System.exit(0);
-			return "";
+				System.out.println("TypeCheck Error: wrong function parameter number: "
+						+ decFunNodeParams.size()
+						+ ", "
+						+ funParams.size()
+						+ ".Shutdown parser");
+				System.exit(0);
+				return "";
+			}
 		} else {
-			System.out
-			.println("TypeCheck Error: Function node without DecFunNode"
+			System.out.println("TypeCheck Error: Function node without DecFunNode"
 					+ ".Shutdown parser");
 			System.exit(0);
 			return "";
@@ -104,15 +98,14 @@ public class FunNode extends Node {
 		for (int i = 0; i < diffNesting; i++)
 			lookupAL += VMCommands.LW + "\n";
 
-		String code= 	//PUSH Control Link (Riferimento al record di attivazione del Chiamante)
+		String code= 	
+				//PUSH Control Link (Riferimento al record di attivazione del Chiamante)
 				VMCommands.LFP + "\n" + 
-				
+
 				//PUSH dei Parametri
-				parCode;
-		
-		if(!this.higherOrderFunction){
-				// PUSH Access Link del padre sintattico (Riferimento per localizzare dati richiesti dalla procedura corr ma situati altrove)
-				code += VMCommands.LFP + "\n"+ 
+				parCode+
+
+				VMCommands.LFP + "\n"+ 
 				lookupAL+ // Cerca l'activation Record del padre sintattico della funzione.
 
 				// Ora devo cercare la locazione di memoria su cui fare il jump per eseguire il corpo della funzione
@@ -124,29 +117,17 @@ public class FunNode extends Node {
 				//Dal FP del padre sintattico sottraggo l'offset della funzione per trovare l'indirizzo
 				VMCommands.PUSH + " " + funEntry.getOffSet() + "\n"+ 
 				VMCommands.SUB + "\n" + 
-				
+
 				//Carico indirizzo della funzione ed eseguo il jump
 				VMCommands.LW + "\n"+ 
 				VMCommands.JS + "\n";
-			}
-		else{
-			code += 
-					VMCommands.LFP+"\n"+
-					lookupAL+
-					//Dal FP del padre sintattico sottraggo l'offset del parametro -1 per trovare AL
-					VMCommands.PUSH + " " + funEntry.getOffSet() + "\n"+ 
-					VMCommands.SUB + "\n" + 
-					
-					//Dal Fp del padre sintattico estraggo indirizzo della funzione
-					VMCommands.LFP+"\n"+
-					lookupAL+
-					VMCommands.PUSH + " " + (funEntry.getOffSet()-1) + "\n"+ 
-					VMCommands.SUB + "\n" + 
-					//Carico indirizzo della funzione ed eseguo il jump
-					VMCommands.LW + "\n"+
-					VMCommands.JS + "\n";		
-		}
-		
+
+
 		return code;
+	}
+
+	@Override
+	public NodeType getNodeType() {
+		return NodeType.FUN_NODE;
 	}
 }

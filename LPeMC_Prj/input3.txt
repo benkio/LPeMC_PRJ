@@ -1,0 +1,8 @@
+let 
+	fun prn: (int)->int (x) {x};
+	
+	fun test :int (v1: int , f1:(int)->int, v4:int){f1(v1)};
+	
+	fun test2: int (v2:int , f2 : (int,(int)->int,int)->int, v3 :int){f2(v2,prn,v3)};
+	
+in print(test2(10,test,11));

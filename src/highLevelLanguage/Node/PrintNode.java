@@ -29,4 +29,10 @@ public class PrintNode extends Node {
 		return exp.codeGen() + VMCommands.PRINT + "\n";
 	}
 
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -30,4 +30,10 @@ public class RestNode extends Node {
 				+ VMCommands.ADD + "\n" + VMCommands.LW + "\n";
 	}
 
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

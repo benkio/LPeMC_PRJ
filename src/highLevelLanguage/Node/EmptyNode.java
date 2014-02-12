@@ -24,4 +24,10 @@ public class EmptyNode extends Node {
 	return VMCommands.PUSH + " " + MiniFunLib.NULLPOINTER + "\n";
     }
 
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

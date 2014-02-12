@@ -51,4 +51,10 @@ public class LessEqualNode extends Node {
 		+ ContinueLabel + ": \n";
     }
 
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
