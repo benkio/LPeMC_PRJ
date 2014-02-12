@@ -1,15 +1,11 @@
 let 
-	var a : int = 10;
-	
-	fun prova:int (l:int,m:int)
-	{
-		var b : int = 100;
+		fun applica : int (c: int , d : int , f: (int, int)->int) {f(c,d)};
 		
-		fun arrow : (int,int)->int (c,d)
+		fun somma: int (a:int , b: int){a+b};
+		
+		fun test : int (x: int , y: int)
 		{
-			d
+			applica(10,10,somma)
 		};
-		
-		arrow(1,1)
-	};
-in print(prova(1,3));
+	
+in print(test(10,10));

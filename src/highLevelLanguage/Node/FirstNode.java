@@ -26,7 +26,7 @@ public class FirstNode extends Node {
     @Override
     public String codeGen() {
 	// TODO Auto-generated method stub
-	return firstBody.codeGen() + VMCommands.lw.name() + "\n";
+	return firstBody.codeGen() + VMCommands.LW + "\n";
     }
 
 }

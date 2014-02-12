@@ -5,50 +5,50 @@ import highLevelLanguage.utils.VMCommands;
 
 public class OrNode extends Node {
 
-    private Node left;
-    private Node right;
+	private Node left;
+	private Node right;
 
-    public OrNode(Node l, Node r) {
-	left = l;
-	right = r;
-    }
+	public OrNode(Node l, Node r) {
+		left = l;
+		right = r;
+	}
 
-    @Override
-    public String toPrint() {
-	// TODO Auto-generated method stub
-	return "<OrNode><OrNodeLeft>" + left.toPrint()
-		+ "</OrNodeLeft><OrNodeRight>" + right.toPrint()
-		+ "</OrNodeRight></OrNode>";
-    }
+	@Override
+	public String toPrint() {
 
-    @Override
-    public String typeCheck() {
-	// TODO Auto-generated method stub
-	if ((MiniFunLib.isCompatible(left, new BoolTypeNode()))
-		&& (MiniFunLib.isCompatible(right, new BoolTypeNode())))
-	    return MiniFunLib.BOOL;
+		return "<OrNode><OrNodeLeft>" + left.toPrint()
+				+ "</OrNodeLeft><OrNodeRight>" + right.toPrint()
+				+ "</OrNodeRight></OrNode>";
+	}
 
-	System.out.println("TypeCheck Error: Or operands are incompatible: "
-		+ left.typeCheck() + ", " + right.typeCheck()
-		+ ".Shutdown parser");
-	System.exit(0);
-	return "";
-    }
+	@Override
+	public String typeCheck() {
 
-    @Override
-    public String codeGen() {
-	String trueLabel = "TRUELabel" + MiniFunLib.getLabIndex();
-	String falseLabel = "FALSELabel" + MiniFunLib.getLabIndex();
+		if ((MiniFunLib.isCompatible(left, new BoolTypeNode()))
+				&& (MiniFunLib.isCompatible(right, new BoolTypeNode())))
+			return MiniFunLib.BOOL;
 
-	// TODO Auto-generated method stub
-	return left.codeGen() + VMCommands.push.name() + " " + MiniFunLib.TRUE
-		+ "\n" + VMCommands.beq.name() + " " + trueLabel + "\n"
-		+ right.codeGen() + VMCommands.push.name() + " "
-		+ MiniFunLib.TRUE + "\n" + VMCommands.beq.name() + " "
-		+ trueLabel + "\n" + VMCommands.push.name() + " "
-		+ MiniFunLib.FALSE + "\n" + VMCommands.b.name() + " "
-		+ falseLabel + "\n" + trueLabel + ": \n"
-		+ VMCommands.push.name() + " " + MiniFunLib.TRUE + "\n"
-		+ falseLabel + ": \n";
-    }
+		System.out.println("TypeCheck Error: Or operands are incompatible: "
+				+ left.typeCheck() + ", " + right.typeCheck()
+				+ ".Shutdown parser");
+		System.exit(0);
+		return "";
+	}
+
+	@Override
+	public String codeGen() {
+		String trueLabel = "TRUELabel" + MiniFunLib.getLabIndex();
+		String falseLabel = "FALSELabel" + MiniFunLib.getLabIndex();
+
+
+		return left.codeGen() + VMCommands.PUSH + " " + MiniFunLib.TRUE
+				+ "\n" + VMCommands.BEQ + " " + trueLabel + "\n"
+				+ right.codeGen() + VMCommands.PUSH + " "
+				+ MiniFunLib.TRUE + "\n" + VMCommands.BEQ + " "
+				+ trueLabel + "\n" + VMCommands.PUSH + " "
+				+ MiniFunLib.FALSE + "\n" + VMCommands.B + " "
+				+ falseLabel + "\n" + trueLabel + ": \n"
+				+ VMCommands.PUSH + " " + MiniFunLib.TRUE + "\n"
+				+ falseLabel + ": \n";
+	}
 }

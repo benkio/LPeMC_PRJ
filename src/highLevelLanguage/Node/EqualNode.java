@@ -44,10 +44,10 @@ public class EqualNode extends Node {
 	String EQLabel = "EQLabel" + MiniFunLib.getLabIndex();
 	String NEQLabel = "NEQLabel" + MiniFunLib.getLabIndex();
 
-	return left.codeGen() + right.codeGen() + VMCommands.beq.name() + " "
-		+ EQLabel + " \n" + VMCommands.push.name() + " "
-		+ MiniFunLib.FALSE + " \n" + VMCommands.b.name() + " "
-		+ NEQLabel + " \n" + EQLabel + " : \n" + VMCommands.push.name()
+	return left.codeGen() + right.codeGen() + VMCommands.BEQ + " "
+		+ EQLabel + " \n" + VMCommands.PUSH + " "
+		+ MiniFunLib.FALSE + " \n" + VMCommands.B + " "
+		+ NEQLabel + " \n" + EQLabel + " : \n" + VMCommands.PUSH
 		+ " " + MiniFunLib.TRUE + " \n" + NEQLabel + " : \n";
     }
 

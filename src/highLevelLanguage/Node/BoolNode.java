@@ -28,8 +28,8 @@ public class BoolNode extends Node {
     public String codeGen() {
 	// TODO Auto-generated method stub
 	if (value)
-	    return VMCommands.push.name() + " " + MiniFunLib.TRUE + " \n";
-	return VMCommands.push.name() + " " + MiniFunLib.FALSE + " \n";
+	    return VMCommands.PUSH + " " + MiniFunLib.TRUE + " \n";
+	return VMCommands.PUSH + " " + MiniFunLib.FALSE + " \n";
     }
 
 }

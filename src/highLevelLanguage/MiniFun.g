@@ -74,13 +74,27 @@ declist returns [ArrayList<Node> astList]
 		    (
 			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);} (COL fpt=type {pn.addType($fpt.ast);})? 
 			    {
-			        entry = new STentry(pn,parOffSet--);
+			    	if($fpt.ast instanceof ArrowTypeNode)
+			    	{
+			        	entry = new STentry(pn,parOffSet);
+			        	parOffSet-=2;
+			        }
+			        else{
+			        	entry = new STentry(pn,parOffSet--);
+			        }
 			        hm.put($fpi.text,entry);
 			        fn.addParam(pn);
 			  	}
 			    (COMMA pi=ID {pn = new ParamNode($pi.text);}  (COL pt=type{pn.addType($pt.ast);})? 
 			    {
-			        entry = new STentry(pn,parOffSet--);
+			        if($pt.ast instanceof ArrowTypeNode)
+			    	{
+			        	entry = new STentry(pn,parOffSet);
+			        	parOffSet-=2;
+			        }
+			        else{
+			        	entry = new STentry(pn,parOffSet--);
+			        }
 			        if (hm.put($pi.text,entry) != null){
 			        	System.out.println("Identifier "+$pi.text+" at line "+$pi.line+" already defined");
 			           	System.exit(0);
@@ -180,7 +194,13 @@ fatt	returns [Node ast]
 	   		System.out.println("Identifier "+$i.text+" at line "+$i.line+" is not defined");
 	      	System.exit(0);
 	    }
-	   	$ast = new VarNode(entry,nestingLevel-declNL);   
+
+		if(entry.getNode() instanceof DecFunNode){
+			$ast = new FunParNode(entry,nestingLevel-declNL);
+	   	}
+	   	else {
+	   		 $ast = new VarNode(entry,nestingLevel-declNL); 
+	   	}
 	} 
 	( 
 		LPAR 

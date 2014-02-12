@@ -18,16 +18,21 @@ public class DecFunNode extends Node {
 	private boolean isArrowType;
 	private int nPar;
 
-	public DecFunNode(String string, Node t) {
-		funName = string;
+	/**
+	 * Costruttore del nodo contenente la dichiarazione di una funzione
+	 * @param id ID della Funzione
+	 * @param t Nodo contenete o il tipo di ritorno o il tipo freccia
+	 */
+	public DecFunNode(String id, Node t) {
+		funName = id;
 		funParams = new ArrayList<Node>();
 		nPar=0;
-		
+
 		this.typeChecked = false;
 		this.typeString = "";
 		funLocalVariables = new ArrayList<Node>();
 		isArrowType=false;
-		
+
 		if(!(t instanceof ArrowTypeNode)){
 			funType = t;
 
@@ -39,11 +44,18 @@ public class DecFunNode extends Node {
 		}
 	}
 
+	/**
+	 * Getter per tipo ritorno della funzione
+	 * @return Node contenente tipo di ritorno della funzione
+	 */
 	public Node getFunType() {
 		return funType;
 	}
 
 	@Override
+	/**
+	 * Stampa AST del DecFunNode
+	 */
 	public String toPrint() {
 
 		String funParamsToPrint = "<FunParams>";
@@ -60,7 +72,7 @@ public class DecFunNode extends Node {
 
 		String arrowTypeToPrint="";
 		if(isArrowType) arrowTypeToPrint=atn.toPrint();
-		
+
 		return "<DecFunNode><FunName>" + funName + "</FunName>" +arrowTypeToPrint +"<FunType>"
 		+ funType.toPrint() + "</FunType>" + funParamsToPrint+funLocalVarToPrint
 		+ "<FunBody>" + funBody.toPrint() + "</FunBody></DecFunNode>";
@@ -70,13 +82,13 @@ public class DecFunNode extends Node {
 	public String typeCheck() {
 
 		if (!typeChecked) {
-			
+
 			if(isArrowType && atn.getNPar()!= this.nPar){
-				System.out.println("TypeCheck Error: n types and  n params are different "
-						+".Shutdown parser");
+				System.out.println("TypeCheck Error: types and params are different. Shutdown parser");
 				System.exit(0);
 			}
-			
+
+			//TODO Controllare 
 			for (Node localVariable : funLocalVariables)
 				localVariable.typeCheck();
 
@@ -91,15 +103,19 @@ public class DecFunNode extends Node {
 						+ funBody.typeCheck() + ".Shutdown parser");
 				System.exit(0);
 			}
-			
+
 
 		}
+
 		return typeString;
 	}
 
+
+	/**
+	 * Il Codegen del DecFunNode prevede tutte le operazioni da effettuare una volta che una funzione viene chiamarta
+	 */
 	@Override
 	public String codeGen() {
-		// TODO Auto-generated method stub
 
 		String labelFun = "labelFun" + MiniFunLib.getLabIndex();
 		String popParSequence = "";
@@ -107,39 +123,64 @@ public class DecFunNode extends Node {
 		String localVariableCodeGen = "";
 
 		for (int i = 0; i < funParams.size(); i++) {
-			popParSequence += VMCommands.pop.name() + "\n";
+			if(((ParamNode)this.funParams.get(i)).getType() instanceof ArrowTypeNode)
+				popParSequence += VMCommands.POP +"\n"+ VMCommands.POP + "\n";
+			else 
+				popParSequence += VMCommands.POP + "\n";
 		}
 
 		for (int i = 0; i < funLocalVariables.size(); i++) {
 			localVariableCodeGen += funLocalVariables.get(i).codeGen();
-			popLocalVariable += VMCommands.pop.name() + "\n";
+			popLocalVariable += VMCommands.POP + "\n";
 		}
 
-		// Preparo la parte alta dell'activation record
-		// Copio il frame pointer attuale nello stack
-		// Setto il return address del chiamante
-		// Aggiungo il body e lo calcolo
-		// Mi salvo il return value in un registo interno rv
-		// Mi salvo il return address a cui poi dovrò saltare
-		// Ripulisco l'access link i parametri
-		// Ripristino il return value e lo metto in cima allo stack
-		// Salto al chiamante
+		String code = labelFun + " :\n" + 
+				//Preparo parte bassa dell'activation Record
 
-		String code = labelFun + " :\n" + VMCommands.cfp.name() + "\n"
-				+ localVariableCodeGen + VMCommands.lra.name() + "\n"
-				+ funBody.codeGen() + VMCommands.srv.name() + "\n"
-				+ VMCommands.sra.name() + "\n" + VMCommands.pop.name() + "\n"
-				+ popParSequence + popLocalVariable + VMCommands.sfp.name()
-				+ "\n" + VMCommands.lrv.name() + "\n" + VMCommands.lra.name()
-				+ "\n" + VMCommands.js.name() + "\n";
+				//Il registro FP punterà al nuovo Activation Record
+				VMCommands.CFP + "\n"
+
+				//PUSH dei dati Locali
+				+ localVariableCodeGen +
+
+				//PUSH return address del chiamante
+				VMCommands.LRA + "\n"
+
+				//Corpo della funzione
+				+ funBody.codeGen() + 
+
+				//POP RV e salvo nel registro
+				VMCommands.SRV + "\n" + 
+
+				//POP RA e salvo nel registro
+				VMCommands.SRA + "\n" + 
+
+				//Rimuovo variabili locali
+				popLocalVariable+
+				//Rimuovo Access Link
+				VMCommands.POP + "\n"+ 
+				//Rimuovo Pametri
+				popParSequence + 
+
+				//Ripristino il Registro FP che punterà all'Activation Record del chiamante
+				VMCommands.SFP + "\n" + 
+
+				//PUSH valore di ritorno 
+				VMCommands.LRV + "\n" + 
+				//PUSH indirizzo di ritorno
+				VMCommands.LRA + "\n" + 
+
+				//Salto al Chiamante
+				VMCommands.JS + "\n";
 
 		MiniFunLib.addFunctionCode(code);
 
-		return VMCommands.push.name() + " " + labelFun + "\n";
+		return VMCommands.PUSH + " " + labelFun + "\n";
 	}
 
+
 	public void addParam(Node param) {
-		
+
 		if(isArrowType){
 			((ParamNode)param).addType(atn.getParType(nPar));
 			nPar++;
@@ -163,6 +204,6 @@ public class DecFunNode extends Node {
 
 	public void addLocalDeclarationList(ArrayList<Node> dec) {
 
-		funLocalVariables = dec;
+		this.funLocalVariables = dec;
 	}
 }

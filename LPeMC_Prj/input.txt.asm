@@ -1,23 +1,60 @@
-push 10
 push labelFun0
+push labelFun1
+push labelFun2
+lfp
+push 10
+push 10
+lfp
 lfp
 push 3
-push 1
-lfp
-lfp
-push 2
 sub
 lw
 js
 print
 halt
-labelFun1 :
+labelFun0 :
 cfp
 lra
+lfp
 lfp
 push -2
 sub
 lw
+lfp
+push -1
+sub
+lw
+lfp
+push -3
+sub
+lfp
+push -4
+sub
+lw
+js
+srv
+sra
+pop
+pop
+pop
+pop
+pop
+sfp
+lrv
+lra
+js
+labelFun1 :
+cfp
+lra
+lfp
+push -1
+sub
+lw
+lfp
+push -2
+sub
+lw
+add
 srv
 sra
 pop
@@ -27,24 +64,29 @@ sfp
 lrv
 lra
 js
-labelFun0 :
+labelFun2 :
 cfp
-push 100
-push labelFun1
 lra
 lfp
-push 1
-push 1
 lfp
-lfp
+lw
 push 2
+sub
+lw
+lfp
+lw
+push 10
+push 10
+lfp
+lw
+lfp
+lw
+push 1
 sub
 lw
 js
 srv
 sra
-pop
-pop
 pop
 pop
 pop

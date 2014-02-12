@@ -32,21 +32,13 @@ public class Test {
 	CommonTokenStream tokens = new CommonTokenStream(lexer);
 	MiniFunParser parser = new MiniFunParser(tokens);
 
-	// Print the AST
-
-	// System.out
-	// .println(new XmlFormatter((parser.prog()).toPrint()).getXML());
-
 	Node ast = parser.prog();
 
 	System.out.println(new XmlFormatter().format(ast.toPrint()));
 
-	System.out.println(ast.typeCheck());
+	//System.out.println(ast.typeCheck());
 
-	// System.out.println((parser.prog()).toPrint());
-	// Node ast = parser.prog();
-	// System.out.println(ast.typeCheck());
-	//
+
 	String asm = ast.codeGen();
 
 	FileWriter fstream = new FileWriter(args[0] + ".asm");

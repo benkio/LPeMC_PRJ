@@ -43,11 +43,11 @@ public class LessEqualNode extends Node {
 	String LEQLabel = "LEQLabel" + MiniFunLib.getLabIndex();
 	String ContinueLabel = "ContinueLabel" + MiniFunLib.getLabIndex();
 	// TODO Auto-generated method stub
-	return left.codeGen() + right.codeGen() + VMCommands.bless.name() + " "
-		+ LEQLabel + "\n " + VMCommands.push.name() + " "
-		+ MiniFunLib.FALSE + "\n " + VMCommands.b.name() + " "
+	return left.codeGen() + right.codeGen() + VMCommands.BLESS + " "
+		+ LEQLabel + "\n " + VMCommands.PUSH + " "
+		+ MiniFunLib.FALSE + "\n " + VMCommands.B + " "
 		+ ContinueLabel + "\n " + LEQLabel + ": \n"
-		+ VMCommands.push.name() + " " + MiniFunLib.TRUE + "\n "
+		+ VMCommands.PUSH + " " + MiniFunLib.TRUE + "\n "
 		+ ContinueLabel + ": \n";
     }
 
