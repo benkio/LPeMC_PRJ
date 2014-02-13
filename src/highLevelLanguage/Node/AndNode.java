@@ -41,15 +41,21 @@ public class AndNode extends Node {
 	String falseLabel = "FALSELabel" + MiniFunLib.getLabIndex();
 
 	// TODO Auto-generated method stub
-	return left.codeGen() + VMCommands.push.name() + " " + MiniFunLib.FALSE
-		+ "\n " + VMCommands.beq.name() + " " + falseLabel + "\n "
-		+ right.codeGen() + VMCommands.push.name() + " "
-		+ MiniFunLib.FALSE + "\n " + VMCommands.beq.name() + " "
-		+ falseLabel + "\n " + VMCommands.push.name() + " "
-		+ MiniFunLib.TRUE + "\n " + VMCommands.b.name() + " "
+	return left.codeGen() + VMCommands.PUSH + " " + MiniFunLib.FALSE
+		+ "\n " + VMCommands.BEQ + " " + falseLabel + "\n "
+		+ right.codeGen() + VMCommands.PUSH + " "
+		+ MiniFunLib.FALSE + "\n " + VMCommands.BEQ + " "
+		+ falseLabel + "\n " + VMCommands.PUSH + " "
+		+ MiniFunLib.TRUE + "\n " + VMCommands.B + " "
 		+ trueLabel + "\n " + falseLabel + ": \n"
-		+ VMCommands.push.name() + " " + MiniFunLib.FALSE + "\n "
+		+ VMCommands.PUSH + " " + MiniFunLib.FALSE + "\n "
 		+ trueLabel + ": \n";
     }
+
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

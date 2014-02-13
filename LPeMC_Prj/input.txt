@@ -1,15 +1,16 @@
 let 
-	var a : int = 10;
-	
-	fun prova:int (l:int,m:int)
-	{
-		var b : int = 100;
+	fun test : (int)->int (par) {
 		
-		fun arrow : (int,int)->int (c,d)
+		fun prn : ((int)->int,int)->int (f1,c) {f1(c)};
+		
+		fun nested: (int)->int (p) 
 		{
-			d
+			fun mult : (int)->int (d) { d*d};
+			
+			prn(mult,p)
 		};
 		
-		arrow(1,1)
-	};
-in print(prova(1,3));
+		nested(par)
+	}; 
+	
+in print(test(10));

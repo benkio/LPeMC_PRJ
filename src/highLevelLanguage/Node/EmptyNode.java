@@ -21,7 +21,13 @@ public class EmptyNode extends Node {
     @Override
     public String codeGen() {
 	// TODO Auto-generated method stub
-	return VMCommands.push.name() + " " + MiniFunLib.NULLPOINTER + "\n";
+	return VMCommands.PUSH + " " + MiniFunLib.NULLPOINTER + "\n";
     }
+
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

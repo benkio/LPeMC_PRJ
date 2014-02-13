@@ -18,6 +18,10 @@ public class ParamNode extends Node {
 		this.paramType= paramType;
 	}
 	
+	public Node getType(){
+		return this.paramType;
+	}
+	
 	@Override
 	public String toPrint() {
 		
@@ -40,6 +44,11 @@ public class ParamNode extends Node {
 	@Override
 	public String codeGen() {
 		return null;
+	}
+
+	@Override
+	public NodeType getNodeType() {
+		return NodeType.PARAM_NODE;
 	}
 
 }

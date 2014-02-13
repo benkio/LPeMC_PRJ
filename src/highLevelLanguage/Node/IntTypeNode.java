@@ -26,4 +26,9 @@ public class IntTypeNode extends Node {
 	return "";
     }
 
+	@Override
+	public NodeType getNodeType() {
+		return NodeType.INTTYPE_NODE;
+	}
+
 }

@@ -7,5 +7,6 @@ public abstract class Node {
 	abstract public String typeCheck();
 
 	abstract public String codeGen();
-
+	
+	abstract public NodeType getNodeType();
 }

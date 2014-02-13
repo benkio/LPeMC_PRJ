@@ -1,6 +1,10 @@
 grammar MiniFun;
 
-@header {
+@lexer::header{
+package highLevelLanguage;
+
+}
+@parser::header {
 package highLevelLanguage;
 
 import highLevelLanguage.Node.*;
@@ -8,7 +12,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 }
 
-@members {
+@parser::members {
     private ArrayList<HashMap<String,STentry>> symTable = new ArrayList<HashMap<String,STentry>>();    
     private int nestingLevel=0;             
 }
@@ -38,7 +42,7 @@ declist returns [ArrayList<Node> astList]
 	  	
 	  	(VAR i=ID COL t=type ASS e=exp SEMIC
 	   	{
-	   	DecVarNode vn = new DecVarNode($i.text,$t.ast,$e.ast);
+	   		DecVarNode vn = new DecVarNode($i.text,$t.ast,$e.ast);
 	    	STentry entry = new STentry(vn,offSet++);
 	    	HashMap<String,STentry> hm= symTable.get(nestingLevel);
 	    	
@@ -50,11 +54,13 @@ declist returns [ArrayList<Node> astList]
 	    	$astList.add(vn);
 	    }
 	  	|
-	   	FUN i=ID COL {DecFunNode fn = null;}
-	   	(
-	   	rt=type 
+	   	FUN i=ID {DecFunNode fn = null;} COL rt=type 	
 	   	{
-	   	fn = new DecFunNode($i.text,$rt.ast);
+	   		if($rt.ast.getNodeType()==NodeType.ARROWTYPE_NODE){
+	   			fn = new DecArrowFunNode($i.text,$rt.ast);}
+	   		else{
+		   		fn = new DecFunNode($i.text,$rt.ast);
+	   		}
 	    	STentry entry = new STentry(fn,offSet++);
 	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);
 	    	
@@ -70,65 +76,47 @@ declist returns [ArrayList<Node> astList]
 		        hm = new HashMap<String,STentry>();
 		        symTable.add(hm);
 		        nestingLevel++;
+		        int parCont=0;
 		 	} 
 		    (
-			    fpi=ID COL fpt=type 
+			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);} (COL fpt=type {pn.addType($fpt.ast); if($fpt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}})? 
 			    {
-			    	ParamNode pn = new ParamNode($fpi.text,$fpt.ast);
-			        entry = new STentry(pn,parOffSet--);
+			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
+			    		Node tp = ((ArrowTypeNode)$rt.ast).getParType(parCont);
+			    		
+			    		if(tp.getNodeType() == NodeType.ARROWTYPE_NODE){
+			    			parOffSet-=1;
+			    		}
+			    		System.out.println(parOffSet);
+			    		pn.addType(tp);
+			    	}
+			       	entry = new STentry(pn,parOffSet--);
 			        hm.put($fpi.text,entry);
 			        fn.addParam(pn);
+			        parCont++;
 			  	}
-			    (COMMA pi=ID COL pt=type 
+			    (COMMA pi=ID {pn = new ParamNode($pi.text);}  (COL pt=type{pn.addType($pt.ast); if($pt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}})? 
 			    {
-			    	pn = new ParamNode($pi.text,$pt.ast);
+			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
+			    		Node tp =((ArrowTypeNode) $rt.ast).getParType(parCont);
+			    		
+			    		if(tp.getNodeType() == NodeType.ARROWTYPE_NODE){
+			    			parOffSet-=1;
+			    		}
+			    		System.out.println(parOffSet);
+			    		pn.addType(tp);
+			    		parCont++;
+			    	}
+			    	
 			        entry = new STentry(pn,parOffSet--);
 			        if (hm.put($pi.text,entry) != null){
 			        	System.out.println("Identifier "+$pi.text+" at line "+$pi.line+" already defined");
-			           	System.exit(0);}
-			          	fn.addParam(pn);
+			           	System.exit(0);
+			        }
+			        fn.addParam(pn);
 			   	})*
 		   	)?  
-	    RPAR 
-	    |
-	    at=arrowType 
-	    { 
-	    	fn = new DecFunNode($i.text,$at.ast);
-	    	STentry entry = new STentry(fn,offSet++);
-	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);
-	    	
-	    	if (hm.put($i.text,entry) != null){
-	    		System.out.println("Identifier "+$i.text+" at line "+$i.line+" already defined");
-	      		System.exit(0);
-	      	}
-	    }
-	    LPAR 
-	    {
-	    	int parOffSet=-1;
-		    hm = new HashMap<String,STentry>();
-		    symTable.add(hm);
-		    nestingLevel++;
-	    	int parIndex=0;
-	    }
-	    (
-	    	fpi=ID
-	    	{
-	    		ParamNode pn = new ParamNode($fpi.text);
-			    entry = new STentry(pn,parOffSet--);
-			    hm.put($fpi.text,entry);
-			    fn.addParam(pn);
-	    	} 
-	    	(COMMA pi=ID
-	    	{
-	    		pn = new ParamNode($pi.text);
-			    entry = new STentry(pn,parOffSet--);
-			    hm.put($pi.text,entry);
-			    fn.addParam(pn);
-	    	}
-	    	)*
-	    )? 
-	    RPAR 
-	    )
+	    RPAR  
 	    CLPAR 
 	    (
 	    	(dec=declist)
@@ -220,7 +208,15 @@ fatt	returns [Node ast]
 	   		System.out.println("Identifier "+$i.text+" at line "+$i.line+" is not defined");
 	      	System.exit(0);
 	    }
-	   	$ast = new VarNode(entry,nestingLevel-declNL);   
+
+		NodeType nt= entry.getNode().getNodeType();
+		
+		if((nt == NodeType.DECFUN_NODE)||(nt==NodeType.DECARROWFUN_NODE)){
+			$ast = new FunParNode(entry,nestingLevel-declNL);
+	   	}
+	   	else {
+	   		$ast = new VarNode(entry,nestingLevel-declNL); 
+	   	}
 	} 
 	( 
 		LPAR 
@@ -230,7 +226,14 @@ fatt	returns [Node ast]
 			fp=exp {parList.add($fp.ast);}
 			(COMMA p=exp {parList.add($p.ast);})*
 		)? 
-		RPAR {$ast = new FunNode(entry,nestingLevel-declNL,parList);}
+		RPAR {
+			if(entry.getNode().getNodeType()==NodeType.PARAM_NODE){
+				$ast = new HigherOrderFunNode(entry,nestingLevel-declNL,parList);
+			}
+			else{
+				$ast = new FunNode(entry,nestingLevel-declNL,parList);
+			}
+		}
 	)?
 	| IF x=exp THEN CLPAR y=exp CRPAR 
 		ELSE CLPAR z=exp CRPAR 
@@ -253,45 +256,60 @@ fatt	returns [Node ast]
  	; 
  
 type	returns [Node ast]
-	: INTTYPE  {$ast= new IntTypeNode();}  
-  	| BOOLTYPE {$ast= new BoolTypeNode();}
+	: bt=baseType {$ast = $bt.ast;}
+  	| at=arrowType {$ast = $at.ast;}
   	;
+ 
+baseType returns [Node ast]
+	:	INTTYPE  {$ast= new IntTypeNode();}  
+  	| 	BOOLTYPE {$ast= new BoolTypeNode();}
+  	;
+  	
  
 arrowType returns [Node ast]
  	: 	LPAR{ArrowTypeNode atn= new ArrowTypeNode();} 
- 			((t1=type{atn.addParType($t1.ast); } (COMMA tn=type {atn.addParType($tn.ast);})*)? | at=arrowType) 
- 		RPAR ARROW rt=type
+ 			(
+ 				t1=type{atn.addParType($t1.ast);}
+ 				(
+ 					COMMA tn=type {atn.addParType($tn.ast);}
+ 				)*
+ 			)? 
+ 		RPAR ARROW rt=baseType
  		{ 
  			atn.addRetType($rt.ast); 
  			$ast=atn;
  		};
+ 
+ genericType returns[Node ast]
+ 	:	GENERICTYPE;
   		
 /*------------------------------------------------------------------
  * LEXER RULES
  *------------------------------------------------------------------*/
 
+GENERICTYPE	: 'A'..'Z';
 LET 		: 'let' ;
-IN		: 'in' ;
+IN			: 'in' ;
 SEMIC		: ';' ;
-COL		: ':' ;
+COL			: ':' ;
 DOUBLECOL	: '::' ;
 COMMA		: ',' ;
-ASS		: '=' ;
-EQ		: '==' ;
+ASS			: '=' ;
+EQ			: '==' ;
 LESSEQ 		: '<=';
 GREATEREQ	: '>=';		 
 PLUS		: '+' ;
 MINUS		: '-';
 ARROW		: '->';
-OR		: '||';
+OR			: '||';
 TIMES		: '*' ;
 DIVIDE		: '/';
-AND		: '&&';
-NAT		: (('1'..'9')('0'..'9')*) | '0';
+AND			: '&&';
+NAT			: (('1'..'9')('0'..'9')*) | '0';
 TRUE		: 'true' ;
 FALSE		: 'false' ;
 EMPTY   	: 'empty' ;
-NOT		: 'not';
+NOT			: 'not';
 VAR 		: 'var' ;
 FUN 		: 'fun' ;
 LPAR 		: '(' ;
@@ -300,7 +318,7 @@ CLPAR 		: '{' ;
 CRPAR		: '}' ;
 SLPAR 		: '[' ;
 SRPAR		: ']' ;
-IF 		: 'if' ;
+IF 			: 'if' ;
 THEN 		: 'then' ;
 ELSE 		: 'else' ;
 PRINT		: 'print' ;
@@ -309,7 +327,7 @@ REST    	: 'rest' ;
 INTTYPE 	: 'int' ;
 BOOLTYPE	: 'bool' ;
 
-ID 		: ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'0'..'9')* ;
+ID 			: ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'0'..'9')* ;
 
 WHITESP  	: ( '\t' | ' ' | '\r' | '\n' )+    { skip(); } ;
  

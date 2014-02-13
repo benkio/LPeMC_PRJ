@@ -26,4 +26,9 @@ public class BoolTypeNode extends Node {
 	return "";
     }
 
+	@Override
+	public NodeType getNodeType() {
+		return NodeType.BOOLTYPE_NODE;
+	}
+
 }

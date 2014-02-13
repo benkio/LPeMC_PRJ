@@ -54,4 +54,9 @@ public class ArrowTypeNode extends Node {
 		return this.parTypes.size();
 	}
 
+	@Override
+	public NodeType getNodeType() {
+		return NodeType.ARROWTYPE_NODE;
+	}
+
 }

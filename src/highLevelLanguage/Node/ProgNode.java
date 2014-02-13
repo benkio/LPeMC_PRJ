@@ -18,7 +18,6 @@ public class ProgNode extends Node {
 
 	@Override
 	public String toPrint() {
-		// TODO Auto-generated method stub
 
 		String decListPrint = "<DecList>";
 
@@ -28,12 +27,11 @@ public class ProgNode extends Node {
 		decListPrint += "</DecList>";
 
 		return "<ProgNode>" + decListPrint + "<ProgNodeExp>"
-				+ expression.toPrint() + "</ProgNodeExp></ProgNode>";
+		+ expression.toPrint() + "</ProgNodeExp></ProgNode>";
 	}
 
 	@Override
 	public String typeCheck() {
-		// TODO Auto-generated method stub
 		for (Node n : decList)
 			n.typeCheck();
 
@@ -42,14 +40,20 @@ public class ProgNode extends Node {
 
 	@Override
 	public String codeGen() {
-		// TODO Auto-generated method stub
+
 		String code = "";
 		for (Node n : decList)
 			code += n.codeGen();
 
-		code += expression.codeGen() + VMCommands.halt.name() + "\n"
+		code += expression.codeGen() + VMCommands.HALT + "\n"
 				+ MiniFunLib.getFunctionCode();
 		return code;
+	}
+
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

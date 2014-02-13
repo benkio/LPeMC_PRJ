@@ -43,12 +43,18 @@ public class GreatEqualNode extends Node {
 	String GEQLabel = "GEQLabel" + MiniFunLib.getLabIndex();
 	String ContinueLabel = "ContinueLabel" + MiniFunLib.getLabIndex();
 	// TODO Auto-generated method stub
-	return left.codeGen() + right.codeGen() + VMCommands.bgreat.name()
-		+ " " + GEQLabel + "\n " + VMCommands.push.name() + " "
-		+ MiniFunLib.FALSE + "\n " + VMCommands.b.name() + " "
+	return left.codeGen() + right.codeGen() + VMCommands.BGREAT
+		+ " " + GEQLabel + "\n " + VMCommands.PUSH + " "
+		+ MiniFunLib.FALSE + "\n " + VMCommands.B + " "
 		+ ContinueLabel + "\n " + GEQLabel + ": \n"
-		+ VMCommands.push.name() + " " + MiniFunLib.TRUE + "\n "
+		+ VMCommands.PUSH + " " + MiniFunLib.TRUE + "\n "
 		+ ContinueLabel + ": \n";
     }
+
+	@Override
+	public NodeType getNodeType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
