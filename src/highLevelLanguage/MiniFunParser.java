@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g 2014-02-12 18:09:31
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g 2014-02-12 21:18:18
 
 package highLevelLanguage;
 
@@ -1149,60 +1149,49 @@ public class MiniFunParser extends Parser {
 
 
     // $ANTLR start "type"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:241:1: type returns [Node ast] : ( INTTYPE | BOOLTYPE | at= arrowType );
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:241:1: type returns [Node ast] : (bt= baseType | at= arrowType );
     public final Node type() throws RecognitionException {
         Node ast = null;
+
+        Node bt = null;
 
         Node at = null;
 
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:242:2: ( INTTYPE | BOOLTYPE | at= arrowType )
-            int alt13=3;
-            switch ( input.LA(1) ) {
-            case INTTYPE:
-                {
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:242:2: (bt= baseType | at= arrowType )
+            int alt13=2;
+            int LA13_0 = input.LA(1);
+
+            if ( ((LA13_0>=INTTYPE && LA13_0<=BOOLTYPE)) ) {
                 alt13=1;
-                }
-                break;
-            case BOOLTYPE:
-                {
+            }
+            else if ( (LA13_0==LPAR) ) {
                 alt13=2;
-                }
-                break;
-            case LPAR:
-                {
-                alt13=3;
-                }
-                break;
-            default:
+            }
+            else {
                 NoViableAltException nvae =
                     new NoViableAltException("", 13, 0, input);
 
                 throw nvae;
             }
-
             switch (alt13) {
                 case 1 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:242:4: INTTYPE
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:242:4: bt= baseType
                     {
-                    match(input,INTTYPE,FOLLOW_INTTYPE_in_type1193); 
-                    ast = new IntTypeNode();
+                    pushFollow(FOLLOW_baseType_in_type1195);
+                    bt=baseType();
+
+                    state._fsp--;
+
+                    ast = bt;
 
                     }
                     break;
                 case 2 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:243:6: BOOLTYPE
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:243:6: at= arrowType
                     {
-                    match(input,BOOLTYPE,FOLLOW_BOOLTYPE_in_type1205); 
-                    ast = new BoolTypeNode();
-
-                    }
-                    break;
-                case 3 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:244:6: at= arrowType
-                    {
-                    pushFollow(FOLLOW_arrowType_in_type1216);
+                    pushFollow(FOLLOW_arrowType_in_type1206);
                     at=arrowType();
 
                     state._fsp--;
@@ -1225,13 +1214,13 @@ public class MiniFunParser extends Parser {
     // $ANTLR end "type"
 
 
-    // $ANTLR start "returnType"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:247:1: returnType returns [Node ast] : ( INTTYPE | BOOLTYPE );
-    public final Node returnType() throws RecognitionException {
+    // $ANTLR start "baseType"
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:246:1: baseType returns [Node ast] : ( INTTYPE | BOOLTYPE );
+    public final Node baseType() throws RecognitionException {
         Node ast = null;
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:248:2: ( INTTYPE | BOOLTYPE )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:247:2: ( INTTYPE | BOOLTYPE )
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -1249,17 +1238,17 @@ public class MiniFunParser extends Parser {
             }
             switch (alt14) {
                 case 1 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:248:4: INTTYPE
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:247:4: INTTYPE
                     {
-                    match(input,INTTYPE,FOLLOW_INTTYPE_in_returnType1236); 
+                    match(input,INTTYPE,FOLLOW_INTTYPE_in_baseType1226); 
                     ast = new IntTypeNode();
 
                     }
                     break;
                 case 2 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:249:7: BOOLTYPE
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:248:7: BOOLTYPE
                     {
-                    match(input,BOOLTYPE,FOLLOW_BOOLTYPE_in_returnType1249); 
+                    match(input,BOOLTYPE,FOLLOW_BOOLTYPE_in_baseType1239); 
                     ast = new BoolTypeNode();
 
                     }
@@ -1275,11 +1264,11 @@ public class MiniFunParser extends Parser {
         }
         return ast;
     }
-    // $ANTLR end "returnType"
+    // $ANTLR end "baseType"
 
 
     // $ANTLR start "arrowType"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:253:1: arrowType returns [Node ast] : LPAR (t1= type ( COMMA tn= type )* )? RPAR ARROW rt= returnType ;
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:252:1: arrowType returns [Node ast] : LPAR (t1= type ( COMMA tn= type )* )? RPAR ARROW rt= baseType ;
     public final Node arrowType() throws RecognitionException {
         Node ast = null;
 
@@ -1291,12 +1280,12 @@ public class MiniFunParser extends Parser {
 
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:254:3: ( LPAR (t1= type ( COMMA tn= type )* )? RPAR ARROW rt= returnType )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:254:6: LPAR (t1= type ( COMMA tn= type )* )? RPAR ARROW rt= returnType
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:253:3: ( LPAR (t1= type ( COMMA tn= type )* )? RPAR ARROW rt= baseType )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:253:6: LPAR (t1= type ( COMMA tn= type )* )? RPAR ARROW rt= baseType
             {
-            match(input,LPAR,FOLLOW_LPAR_in_arrowType1275); 
+            match(input,LPAR,FOLLOW_LPAR_in_arrowType1265); 
             ArrowTypeNode atn= new ArrowTypeNode();
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:255:5: (t1= type ( COMMA tn= type )* )?
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:254:5: (t1= type ( COMMA tn= type )* )?
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -1305,15 +1294,15 @@ public class MiniFunParser extends Parser {
             }
             switch (alt16) {
                 case 1 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:256:6: t1= type ( COMMA tn= type )*
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:255:6: t1= type ( COMMA tn= type )*
                     {
-                    pushFollow(FOLLOW_type_in_arrowType1292);
+                    pushFollow(FOLLOW_type_in_arrowType1282);
                     t1=type();
 
                     state._fsp--;
 
                     atn.addParType(t1);
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:257:6: ( COMMA tn= type )*
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:256:6: ( COMMA tn= type )*
                     loop15:
                     do {
                         int alt15=2;
@@ -1326,10 +1315,10 @@ public class MiniFunParser extends Parser {
 
                         switch (alt15) {
                     	case 1 :
-                    	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:258:7: COMMA tn= type
+                    	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:257:7: COMMA tn= type
                     	    {
-                    	    match(input,COMMA,FOLLOW_COMMA_in_arrowType1308); 
-                    	    pushFollow(FOLLOW_type_in_arrowType1312);
+                    	    match(input,COMMA,FOLLOW_COMMA_in_arrowType1298); 
+                    	    pushFollow(FOLLOW_type_in_arrowType1302);
                     	    tn=type();
 
                     	    state._fsp--;
@@ -1350,10 +1339,10 @@ public class MiniFunParser extends Parser {
 
             }
 
-            match(input,RPAR,FOLLOW_RPAR_in_arrowType1335); 
-            match(input,ARROW,FOLLOW_ARROW_in_arrowType1337); 
-            pushFollow(FOLLOW_returnType_in_arrowType1341);
-            rt=returnType();
+            match(input,RPAR,FOLLOW_RPAR_in_arrowType1325); 
+            match(input,ARROW,FOLLOW_ARROW_in_arrowType1327); 
+            pushFollow(FOLLOW_baseType_in_arrowType1331);
+            rt=baseType();
 
             state._fsp--;
 
@@ -1475,17 +1464,16 @@ public class MiniFunParser extends Parser {
     public static final BitSet FOLLOW_LPAR_in_fatt1162 = new BitSet(new long[]{0x000000F27C001100L});
     public static final BitSet FOLLOW_exp_in_fatt1166 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_RPAR_in_fatt1168 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTTYPE_in_type1193 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BOOLTYPE_in_type1205 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_arrowType_in_type1216 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTTYPE_in_returnType1236 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BOOLTYPE_in_returnType1249 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LPAR_in_arrowType1275 = new BitSet(new long[]{0x0000030000005000L});
-    public static final BitSet FOLLOW_type_in_arrowType1292 = new BitSet(new long[]{0x0000000000006000L});
-    public static final BitSet FOLLOW_COMMA_in_arrowType1308 = new BitSet(new long[]{0x0000030000001000L});
-    public static final BitSet FOLLOW_type_in_arrowType1312 = new BitSet(new long[]{0x0000000000006000L});
-    public static final BitSet FOLLOW_RPAR_in_arrowType1335 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_ARROW_in_arrowType1337 = new BitSet(new long[]{0x0000030000000000L});
-    public static final BitSet FOLLOW_returnType_in_arrowType1341 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_baseType_in_type1195 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_arrowType_in_type1206 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INTTYPE_in_baseType1226 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BOOLTYPE_in_baseType1239 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LPAR_in_arrowType1265 = new BitSet(new long[]{0x0000030000005000L});
+    public static final BitSet FOLLOW_type_in_arrowType1282 = new BitSet(new long[]{0x0000000000006000L});
+    public static final BitSet FOLLOW_COMMA_in_arrowType1298 = new BitSet(new long[]{0x0000030000001000L});
+    public static final BitSet FOLLOW_type_in_arrowType1302 = new BitSet(new long[]{0x0000000000006000L});
+    public static final BitSet FOLLOW_RPAR_in_arrowType1325 = new BitSet(new long[]{0x0000040000000000L});
+    public static final BitSet FOLLOW_ARROW_in_arrowType1327 = new BitSet(new long[]{0x0000030000000000L});
+    public static final BitSet FOLLOW_baseType_in_arrowType1331 = new BitSet(new long[]{0x0000000000000002L});
 
 }

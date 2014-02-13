@@ -1,7 +1,16 @@
 let 
-	fun uno: (int)->int (a) {a};
-	fun due: (int)->int (b) {b};
-
-	fun test: int (f1:()->int,d:int,f2:()->int, c:int) {f1(c)+f2(c)};
+	fun test : (int)->int (par) {
+		
+		fun prn : ((int)->int, int)->int (f1,c){f1(c)};
+		
+		fun nested: (int)->int (p) 
+		{
+			fun mult : (int)->int (d) { d*d};
+			
+			prn(mult,p)
+		};
+		
+		nested(par)
+	}; 
 	
-in print(test(uno,2,due,10));
+in print(test(10));

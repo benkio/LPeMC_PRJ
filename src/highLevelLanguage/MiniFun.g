@@ -54,10 +54,7 @@ declist returns [ArrayList<Node> astList]
 	    	$astList.add(vn);
 	    }
 	  	|
-	   	FUN i=ID COL {DecFunNode fn = null;}
-	   	
-	   	rt=type 
-	   	
+	   	FUN i=ID {DecFunNode fn = null;} COL rt=type 	
 	   	{
 	   		if($rt.ast.getNodeType()==NodeType.ARROWTYPE_NODE){
 	   			fn = new DecArrowFunNode($i.text,$rt.ast);}
@@ -198,7 +195,7 @@ fatt	returns [Node ast]
 			$ast = new FunParNode(entry,nestingLevel-declNL);
 	   	}
 	   	else {
-	   		 $ast = new VarNode(entry,nestingLevel-declNL); 
+	   		$ast = new VarNode(entry,nestingLevel-declNL); 
 	   	}
 	} 
 	( 
@@ -239,12 +236,11 @@ fatt	returns [Node ast]
  	; 
  
 type	returns [Node ast]
-	: INTTYPE  {$ast= new IntTypeNode();}  
-  	| BOOLTYPE {$ast= new BoolTypeNode();}
+	: bt=baseType {$ast = $bt.ast;}
   	| at=arrowType {$ast = $at.ast;}
   	;
  
-returnType returns [Node ast]
+baseType returns [Node ast]
 	:	INTTYPE  {$ast= new IntTypeNode();}  
   	| 	BOOLTYPE {$ast= new BoolTypeNode();}
   	;
@@ -258,16 +254,20 @@ arrowType returns [Node ast]
  					COMMA tn=type {atn.addParType($tn.ast);}
  				)*
  			)? 
- 		RPAR ARROW rt=returnType
+ 		RPAR ARROW rt=baseType
  		{ 
  			atn.addRetType($rt.ast); 
  			$ast=atn;
  		};
+ 
+ genericType returns[Node ast]
+ 	:	GENERICTYPE;
   		
 /*------------------------------------------------------------------
  * LEXER RULES
  *------------------------------------------------------------------*/
 
+GENERICTYPE	: 'A'..'Z';
 LET 		: 'let' ;
 IN			: 'in' ;
 SEMIC		: ';' ;

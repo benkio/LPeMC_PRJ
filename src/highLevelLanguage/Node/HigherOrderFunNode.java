@@ -67,6 +67,7 @@ public class HigherOrderFunNode extends FunNode {
 				//Dal FP del padre sintattico sottraggo l'offset-1  per trovare AL
 				VMCommands.PUSH + " " + (funEntry.getOffSet()-1) + "\n"+ 
 				VMCommands.SUB + "\n" + 
+				VMCommands.LW + "\n"+
 				
 				//Ricavo nuovamente il FP del padre sintattico
 				VMCommands.LFP+"\n"+
