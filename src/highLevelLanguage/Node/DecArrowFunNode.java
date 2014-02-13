@@ -56,11 +56,11 @@ public class DecArrowFunNode extends DecFunNode {
 		if (!typeChecked) {
 
 			if(atn.getNPar()!= this.nPar){
-				System.out.println("TypeCheck Error: types and params are different. Shutdown parser");
+				System.out.println("TypeCheck Error: Number of types and params are different. Shutdown parser");
 				System.exit(0);
 			}
 
-			//TODO Controllare 
+			
 			for (Node localVariable : funLocalVariables)
 				localVariable.typeCheck();
 
@@ -87,9 +87,7 @@ public class DecArrowFunNode extends DecFunNode {
 
 	@Override
 	public void addParam(ParamNode param) {
-		//param.addType(atn.getParType(nPar));
-		//nPar++;
-		
+		nPar++;
 		super.addParam(param);
 	}
 

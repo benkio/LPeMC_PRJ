@@ -36,7 +36,7 @@ public class Test {
 
 	System.out.println(new XmlFormatter().format(ast.toPrint()));
 
-	//System.out.println(ast.typeCheck());
+	System.out.println(ast.typeCheck());
 	
 	String asm = ast.codeGen();
 

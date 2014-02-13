@@ -25,7 +25,7 @@ public class ArrowTypeNode extends Node {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
 	public String codeGen() {
 		// TODO Auto-generated method stub

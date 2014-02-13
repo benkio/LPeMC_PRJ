@@ -37,6 +37,7 @@ public class FunNode extends Node {
 
 	@Override
 	public String typeCheck() {
+
 		if (funEntry.getNode().getNodeType() == NodeType.DECFUN_NODE) {
 			//Recupero parametri dalla dichiarazione della funzione
 			ArrayList<ParamNode> decFunNodeParams = ((DecFunNode) funEntry.getNode()).getParams();
@@ -45,7 +46,7 @@ public class FunNode extends Node {
 			if (decFunNodeParams.size() == funParams.size()) {
 
 				//Controllo ad uno ad un la compatibilità dei Parametri con la loro dichiarazione
-				for (int i = 0; i < funParams.size(); i++)
+				for (int i = 0; i < funParams.size(); i++){
 					if (!MiniFunLib.isCompatible(decFunNodeParams.get(i),funParams.get(i))) {
 						System.out.println("TypeCheck Error: decFunNodeParam and funParam are incompatible: "
 								+ decFunNodeParams.get(i).typeCheck()
@@ -54,7 +55,7 @@ public class FunNode extends Node {
 								+ ".Shutdown parser");
 						System.exit(0);
 					}
-
+				}
 				// Per evitare che si abbia l'ricorsione infinita della funzione.
 				if (((DecFunNode) funEntry.getNode()).isTypeChecked())
 					return funEntry.getNode().typeCheck();
@@ -71,7 +72,14 @@ public class FunNode extends Node {
 				System.exit(0);
 				return "";
 			}
-		} else {
+		} 
+		else if (funEntry.getNode().getNodeType() == NodeType.PARAM_NODE){
+			
+			ArrowTypeNode pType = ((ArrowTypeNode)((ParamNode)funEntry.getNode()).getType());
+			
+			return pType.getRetType().typeCheck();
+		}
+		else{
 			System.out.println("TypeCheck Error: Function node without DecFunNode"
 					+ ".Shutdown parser");
 			System.exit(0);
