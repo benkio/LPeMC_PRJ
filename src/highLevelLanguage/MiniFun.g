@@ -76,18 +76,38 @@ declist returns [ArrayList<Node> astList]
 		        hm = new HashMap<String,STentry>();
 		        symTable.add(hm);
 		        nestingLevel++;
+		        int parCont=0;
 		 	} 
 		    (
 			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);} (COL fpt=type {pn.addType($fpt.ast); if($fpt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}})? 
 			    {
-			    	System.out.println(parOffSet);
+			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
+			    		Node tp = ((ArrowTypeNode)$rt.ast).getParType(parCont);
+			    		
+			    		if(tp.getNodeType() == NodeType.ARROWTYPE_NODE){
+			    			parOffSet-=1;
+			    		}
+			    		System.out.println(parOffSet);
+			    		pn.addType(tp);
+			    	}
 			       	entry = new STentry(pn,parOffSet--);
 			        hm.put($fpi.text,entry);
 			        fn.addParam(pn);
+			        parCont++;
 			  	}
 			    (COMMA pi=ID {pn = new ParamNode($pi.text);}  (COL pt=type{pn.addType($pt.ast); if($pt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}})? 
 			    {
-			    	System.out.println(parOffSet);
+			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
+			    		Node tp =((ArrowTypeNode) $rt.ast).getParType(parCont);
+			    		
+			    		if(tp.getNodeType() == NodeType.ARROWTYPE_NODE){
+			    			parOffSet-=1;
+			    		}
+			    		System.out.println(parOffSet);
+			    		pn.addType(tp);
+			    		parCont++;
+			    	}
+			    	
 			        entry = new STentry(pn,parOffSet--);
 			        if (hm.put($pi.text,entry) != null){
 			        	System.out.println("Identifier "+$pi.text+" at line "+$pi.line+" already defined");

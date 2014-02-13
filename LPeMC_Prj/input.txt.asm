@@ -14,15 +14,15 @@ cfp
 lra
 lfp
 lfp
-push -2
+push -3
+sub
+lw
+lfp
+push -3
 sub
 lw
 lfp
 push -2
-sub
-lw
-lfp
-push -1
 sub
 lw
 js

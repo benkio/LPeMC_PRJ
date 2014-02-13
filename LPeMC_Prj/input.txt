@@ -1,7 +1,7 @@
 let 
 	fun test : (int)->int (par) {
 		
-		fun prn : ((int)->int, int)->int (f1,c){f1(c)};
+		fun prn : ((int)->int,int)->int (f1,c) {f1(c)};
 		
 		fun nested: (int)->int (p) 
 		{

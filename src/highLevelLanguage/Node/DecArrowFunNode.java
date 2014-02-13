@@ -87,8 +87,8 @@ public class DecArrowFunNode extends DecFunNode {
 
 	@Override
 	public void addParam(ParamNode param) {
-		param.addType(atn.getParType(nPar));
-		nPar++;
+		//param.addType(atn.getParType(nPar));
+		//nPar++;
 		
 		super.addParam(param);
 	}
