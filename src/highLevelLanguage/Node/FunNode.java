@@ -45,6 +45,7 @@ public class FunNode extends Node {
 			//Controllo di avere lo stesso numero di parametri 
 			if (decFunNodeParams.size() == funParams.size()) {
 
+				//TODO Controllare le funzioni passate come parametro
 				//Controllo ad uno ad un la compatibilità dei Parametri con la loro dichiarazione
 				for (int i = 0; i < funParams.size(); i++){
 					if (!MiniFunLib.isCompatible(decFunNodeParams.get(i),funParams.get(i))) {
@@ -73,12 +74,6 @@ public class FunNode extends Node {
 				return "";
 			}
 		} 
-		else if (funEntry.getNode().getNodeType() == NodeType.PARAM_NODE){
-			
-			ArrowTypeNode pType = ((ArrowTypeNode)((ParamNode)funEntry.getNode()).getType());
-			
-			return pType.getRetType().typeCheck();
-		}
 		else{
 			System.out.println("TypeCheck Error: Function node without DecFunNode"
 					+ ".Shutdown parser");

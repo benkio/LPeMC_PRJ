@@ -33,8 +33,11 @@ public class HigherOrderFunNode extends FunNode {
 
 	@Override
 	public String typeCheck() {
-		// TODO Auto-generated method stub
-		return super.typeCheck();
+
+		//return super.typeCheck();
+		//TODO Queste sono le funzioni che sono state dichiarate come parametro e poi vengono utilizzare all'interno del corpo della funzione
+		if (funEntry.getNode().getNodeType() == NodeType.PARAM_NODE){}
+		return "";
 	}
 
 	@Override
