@@ -5,48 +5,49 @@ import highLevelLanguage.utils.VMCommands;
 
 public class PlusNode extends Node {
 
-	/* From the factor of the plus operation */
-	private Node right;
-	private Node left;
+    /* From the factor of the plus operation */
+    private Node right;
+    private Node left;
 
-	public PlusNode(Node left, Node right) {
+    public PlusNode(Node left, Node right) {
 
-		this.left = left;
-		this.right = right;
-	}
+	this.left = left;
+	this.right = right;
+    }
 
-	@Override
-	public String toPrint() {
+    @Override
+    public String toPrint() {
 
-		return "<PlusNode><PlusNodeLeft>" + left.toPrint()
-				+ "</PlusNodeLeft><PlusNodeRight>" + right.toPrint()
-				+ "</PlusNodeRight></PlusNode>";
-	}
+	return "<PlusNode><PlusNodeLeft>" + left.toPrint()
+		+ "</PlusNodeLeft><PlusNodeRight>" + right.toPrint()
+		+ "</PlusNodeRight></PlusNode>";
+    }
 
-	@Override
-	public String typeCheck() {
+    @Override
+    public String typeCheck() {
 
-		if ((MiniFunLib.isCompatible(left, new IntTypeNode()))
-				&& (MiniFunLib.isCompatible(right, new IntTypeNode())))
-			return MiniFunLib.INT;
+	if ((MiniFunLib.isCompatible(left, new IntTypeNode()))
+		&& (MiniFunLib.isCompatible(right, new IntTypeNode())))
+	    return MiniFunLib.INT;
 
-		System.out.println("TypeCheck Error: Plus operands are incompatible: "
-				+ left.typeCheck() + ", " + right.typeCheck()
-				+ ".Shutdown parser");
-		System.exit(0);
-		return "";
-	}
+	System.out
+		.println("Plusnode TypeCheck Error: Plus operands are incompatible: "
+			+ left.typeCheck()
+			+ ", "
+			+ right.typeCheck()
+			+ ".Shutdown parser");
+	System.exit(0);
+	return "";
+    }
 
-	@Override
-	public String codeGen() {
-		// TODO Auto-generated method stub
-		return left.codeGen() + right.codeGen() + VMCommands.ADD + "\n";
-	}
+    @Override
+    public String codeGen() {
+	return left.codeGen() + right.codeGen() + VMCommands.ADD + "\n";
+    }
 
-	@Override
-	public NodeType getNodeType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public NodeType getNodeType() {
+	return NodeType.PLUS_NODE;
+    }
 
 }

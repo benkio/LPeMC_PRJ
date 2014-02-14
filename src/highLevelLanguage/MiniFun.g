@@ -40,7 +40,7 @@ declist returns [ArrayList<Node> astList]
 	   		int offSet=1;
 	   	}
 	  	
-	  	(VAR i=ID COL t=type ASS e=exp SEMIC
+	  	(VAR i=ID COL t=baseType ASS e=exp SEMIC
 	   	{
 	   		DecVarNode vn = new DecVarNode($i.text,$t.ast,$e.ast);
 	    	STentry entry = new STentry(vn,offSet++);

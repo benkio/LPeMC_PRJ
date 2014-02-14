@@ -4,36 +4,31 @@ import highLevelLanguage.utils.VMCommands;
 
 public class RestNode extends Node {
 
-	private static Node restBody;
+    private static Node restBody;
 
-	public RestNode(Node e) {
+    public RestNode(Node e) {
+	restBody = e;
+    }
 
-		restBody = e;
-	}
+    @Override
+    public String toPrint() {
+	return "<RestBody>" + restBody.toPrint() + "</RestBody>";
+    }
 
-	@Override
-	public String toPrint() {
+    @Override
+    public String typeCheck() {
+	return restBody.typeCheck();
+    }
 
-		return "<RestBody>" + restBody.toPrint() + "</RestBody>";
-	}
+    @Override
+    public String codeGen() {
+	return restBody.codeGen() + VMCommands.PUSH + " 1 \n" + VMCommands.ADD
+		+ "\n" + VMCommands.LW + "\n";
+    }
 
-	@Override
-	public String typeCheck() {
-
-		return restBody.typeCheck();
-	}
-
-	@Override
-	public String codeGen() {
-
-		return restBody.codeGen() + VMCommands.PUSH + " 1 \n"
-				+ VMCommands.ADD + "\n" + VMCommands.LW + "\n";
-	}
-
-	@Override
-	public NodeType getNodeType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public NodeType getNodeType() {
+	return NodeType.RESTLIST_NODE;
+    }
 
 }

@@ -1,116 +1,99 @@
 package highLevelLanguage.Node;
 
-import highLevelLanguage.utils.MiniFunLib;
-
 import java.util.ArrayList;
 
 public class DecArrowFunNode extends DecFunNode {
 
-	protected ArrowTypeNode atn;
-	protected int nPar;
+    public DecArrowFunNode(String id, Node atn) {
+	super(id, atn);
+    }
 
-	public DecArrowFunNode(String id, Node atn) {
-		super(id);
-		
-		this.atn=(ArrowTypeNode)atn;
-		this.nPar=0;
-		
-		super.funType= this.atn.getRetType();
-	}
+    @Override
+    public NodeType getNodeType() {
+	return NodeType.DECARROWFUN_NODE;
+    }
 
-	@Override
-	public NodeType getNodeType() {
+    @Override
+    public Node getFunType() {
+	return super.getFunType();
+    }
 
-		return NodeType.DECARROWFUN_NODE;
-	}
+    @Override
+    public String toPrint() {
+	return super.toPrint();
+	// String funParamsToPrint = "<FunParams>";
+	// for (Node p : funParams) {
+	// funParamsToPrint += p.toPrint();
+	// }
+	// funParamsToPrint += "</FunParams>";
+	//
+	// String funLocalVarToPrint = "<FunLocalVar>";
+	// for (Node p : funLocalVariables) {
+	// funLocalVarToPrint += p.toPrint();
+	// }
+	// funLocalVarToPrint += "</FunLocalVar>";
+	//
+	// return "<DecArrowFunNode><FunName>" + funName + "</FunName><FunType>"
+	// + funType.toPrint() + "</FunType>" + funParamsToPrint
+	// + funLocalVarToPrint + "<FunBody>" + funBody.toPrint()
+	// + "</FunBody></DecArrowFunNode>";
+    }
 
-	@Override
-	public Node getFunType() {
-		return super.getFunType();
-	}
+    @Override
+    public String typeCheck() {
+	return super.typeCheck();
+	// if (!typeChecked) {
 
-	@Override
-	public String toPrint() {
-		String funParamsToPrint = "<FunParams>";
-		for (Node p : funParams) {
-			funParamsToPrint += p.toPrint();
-		}
-		funParamsToPrint += "</FunParams>";
+	// // TODO cancellare solamente se sei sicuro che qui non c'è bisogno
+	// // di fare altro per
+	// // Considerare l'arrowtype
+	// for (Node localVariable : funLocalVariables)
+	// localVariable.typeCheck();
+	//
+	// if (MiniFunLib.isCompatible(funType, funBody)) {
+	// typeString = funBody.typeCheck();
+	// typeChecked = true;
+	// } else {
+	// System.out
+	// .println("TypeCheck Error: funtype and funBody are incompatible: "
+	// + funType.typeCheck()
+	// + ", "
+	// + funBody.typeCheck() + ".Shutdown parser");
+	// System.exit(0);
+	// }
+	// }
+	//
+	// return typeString;
+    }
 
-		String funLocalVarToPrint="<FunLocalVar>";
-		for (Node p : funLocalVariables) {
-			funLocalVarToPrint += p.toPrint();
-		}
-		funLocalVarToPrint += "</FunLocalVar>";
+    @Override
+    public String codeGen() {
+	return super.codeGen();
+    }
 
-		String arrowTypeToPrint="";
-		arrowTypeToPrint=atn.toPrint();
+    @Override
+    public void addParam(ParamNode param) {
+	super.addParam(param);
+    }
 
-		return "<DecArrowFunNode><FunName>" + funName + "</FunName>" +arrowTypeToPrint +"<FunType>"
-		+ funType.toPrint() + "</FunType>" + funParamsToPrint+funLocalVarToPrint
-		+ "<FunBody>" + funBody.toPrint() + "</FunBody></DecArrowFunNode>";
-	}
+    @Override
+    public void addExpValue(Node e) {
+	super.addExpValue(e);
+    }
 
-	@Override
-	public String typeCheck() {
-		if (!typeChecked) {
+    @Override
+    public ArrayList<ParamNode> getParams() {
+	return super.getParams();
+    }
 
-			if(atn.getNPar()!= this.nPar){
-				System.out.println("TypeCheck Error: Number of types and params are different. Shutdown parser");
-				System.exit(0);
-			}
+    @Override
+    public boolean isTypeChecked() {
+	return super.isTypeChecked();
+    }
 
-			
-			for (Node localVariable : funLocalVariables)
-				localVariable.typeCheck();
-
-			if (MiniFunLib.isCompatible(funType, funBody)) {
-				typeString = funBody.typeCheck();
-				typeChecked = true;
-			} else {
-				System.out
-				.println("TypeCheck Error: funtype and funBody are incompatible: "
-						+ funType.typeCheck()
-						+ ", "
-						+ funBody.typeCheck() + ".Shutdown parser");
-				System.exit(0);
-			}
-		}
-
-		return typeString;
-	}
-
-	@Override
-	public String codeGen() {
-		return super.codeGen();
-	}
-
-	@Override
-	public void addParam(ParamNode param) {
-		nPar++;
-		super.addParam(param);
-	}
-
-	@Override
-	public void addExpValue(Node e) {
-		super.addExpValue(e);
-	}
-
-	@Override
-	public ArrayList<ParamNode> getParams() {
-		return super.getParams();
-	}
-
-	@Override
-	public boolean isTypeChecked() {
-		return super.isTypeChecked();
-	}
-
-	@Override
-	public void addLocalDeclarationList(ArrayList<Node> dec) {
-		super.addLocalDeclarationList(dec);
-	}
-
-
+    @Override
+    public void addLocalDeclarationList(ArrayList<Node> dec) {
+	super.addLocalDeclarationList(dec);
+    }
 
 }

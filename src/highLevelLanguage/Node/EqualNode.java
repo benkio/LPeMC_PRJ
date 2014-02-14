@@ -10,14 +10,12 @@ public class EqualNode extends Node {
     private Node left;
 
     public EqualNode(Node left, Node right) {
-	// TODO Auto-generated constructor stub
 	this.left = left;
 	this.right = right;
     }
 
     @Override
     public String toPrint() {
-	// TODO Auto-generated method stub
 	return "<EqualNode><LeftEqualNode>" + left.toPrint()
 		+ "</LeftEqualNode><RightEqualNode>" + right.toPrint()
 		+ "</RightEqualNode></EqualNode>";
@@ -25,36 +23,36 @@ public class EqualNode extends Node {
 
     @Override
     public String typeCheck() {
-	// TODO Auto-generated method stub
 	if (MiniFunLib.isCompatible(left, right))
 	    return MiniFunLib.BOOL;
 	else if (MiniFunLib.isCompatible(right, left))
 	    return MiniFunLib.BOOL;
 
-	System.out.println("TypeCheck Error: Equal operands are incompatible: "
-		+ left.typeCheck() + ", " + right.typeCheck()
-		+ ".Shutdown parser");
+	System.out
+		.println("Equalnode TypeCheck Error: Equal operands are incompatible: "
+			+ left.typeCheck()
+			+ ", "
+			+ right.typeCheck()
+			+ ".Shutdown parser");
 	System.exit(0);
 	return "";
     }
 
     @Override
     public String codeGen() {
-	// TODO Auto-generated method stub
 	String EQLabel = "EQLabel" + MiniFunLib.getLabIndex();
 	String NEQLabel = "NEQLabel" + MiniFunLib.getLabIndex();
 
 	return left.codeGen() + right.codeGen() + VMCommands.BEQ + " "
-		+ EQLabel + " \n" + VMCommands.PUSH + " "
-		+ MiniFunLib.FALSE + " \n" + VMCommands.B + " "
-		+ NEQLabel + " \n" + EQLabel + " : \n" + VMCommands.PUSH
-		+ " " + MiniFunLib.TRUE + " \n" + NEQLabel + " : \n";
+		+ EQLabel + " \n" + VMCommands.PUSH + " " + MiniFunLib.FALSE
+		+ " \n" + VMCommands.B + " " + NEQLabel + " \n" + EQLabel
+		+ " : \n" + VMCommands.PUSH + " " + MiniFunLib.TRUE + " \n"
+		+ NEQLabel + " : \n";
     }
 
-	@Override
-	public NodeType getNodeType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public NodeType getNodeType() {
+	return NodeType.EQUAL_NODE;
+    }
 
 }

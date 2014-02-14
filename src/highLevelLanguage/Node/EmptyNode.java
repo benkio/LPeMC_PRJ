@@ -7,27 +7,22 @@ public class EmptyNode extends Node {
 
     @Override
     public String toPrint() {
-	// TODO Auto-generated method stub
 	return "<EmptyNode />";
     }
 
     @Override
     public String typeCheck() {
-	// TODO Auto-generated method stub
-	// return MiniFunLib.EMPTYTYPE;
 	return MiniFunLib.EMPTY;
     }
 
     @Override
     public String codeGen() {
-	// TODO Auto-generated method stub
 	return VMCommands.PUSH + " " + MiniFunLib.NULLPOINTER + "\n";
     }
 
-	@Override
-	public NodeType getNodeType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public NodeType getNodeType() {
+	return NodeType.EMPTY_NODE;
+    }
 
 }
