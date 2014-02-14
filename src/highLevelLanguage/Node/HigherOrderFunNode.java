@@ -1,6 +1,7 @@
 package highLevelLanguage.Node;
 
 import highLevelLanguage.STentry;
+import highLevelLanguage.utils.MiniFunLib;
 import highLevelLanguage.utils.VMCommands;
 
 import java.util.ArrayList;
@@ -33,13 +34,53 @@ public class HigherOrderFunNode extends FunNode {
 
     @Override
     public String typeCheck() {
-
-	// return super.typeCheck();
-	// TODO Queste sono le funzioni che sono state dichiarate come parametro
-	// e poi vengono utilizzare all'interno del corpo della funzione
 	if (funEntry.getNode().getNodeType() == NodeType.PARAM_NODE) {
+	    // Recupero parametri dalla dichiarazione della funzione
+	    ArrayList<Node> decFunNodeParams = ((ArrowTypeNode) ((ParamNode) funEntry
+		    .getNode()).getType()).getParTypes();
+
+	    // Controllo di avere lo stesso numero di parametri
+	    if (decFunNodeParams.size() == funParams.size()) {
+
+		// TODO Controllare le funzioni passate come parametro
+		// Controllo ad uno ad un la compatibilità dei Parametri con la
+		// loro dichiarazione
+		for (int i = 0; i < funParams.size(); i++) {
+		    if (!MiniFunLib.isCompatible(decFunNodeParams.get(i),
+			    funParams.get(i))) {
+			System.out
+				.println("Funnode TypeCheck Error: decFunNodeParam and funParam are incompatible: "
+					+ decFunNodeParams.get(i).typeCheck()
+					+ ", "
+					+ funParams.get(i).typeCheck()
+					+ ".Shutdown parser");
+			System.exit(0);
+		    }
+		}
+		// Per evitare che si abbia l'ricorsione infinita della
+		// funzione.
+		if (((DecFunNode) funEntry.getNode()).isTypeChecked())
+		    return funEntry.getNode().typeCheck();
+		else
+		    return ((DecFunNode) funEntry.getNode()).getFunType()
+			    .typeCheck();
+	    } else {
+
+		System.out
+			.println("Funnode TypeCheck Error: wrong function parameter number: "
+				+ decFunNodeParams.size()
+				+ ", "
+				+ funParams.size() + ".Shutdown parser");
+		System.exit(0);
+		return "";
+	    }
+	} else {
+	    System.out
+		    .println("Funnode TypeCheck Error: Function node without DecFunNode"
+			    + ".Shutdown parser");
+	    System.exit(0);
+	    return "";
 	}
-	return "";
     }
 
     @Override

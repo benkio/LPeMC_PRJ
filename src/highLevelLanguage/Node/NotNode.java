@@ -23,8 +23,9 @@ public class NotNode extends Node {
 	if (MiniFunLib.isCompatible(exp, new BoolTypeNode()))
 	    return MiniFunLib.BOOL;
 
-	System.out.println("TypeCheck Error: Not operand are incompatible: "
-		+ exp.typeCheck() + ".Shutdown parser");
+	System.out
+		.println("Notnode TypeCheck Error: Not operand are incompatible: "
+			+ exp.typeCheck() + ".Shutdown parser");
 	System.exit(0);
 	return "";
     }

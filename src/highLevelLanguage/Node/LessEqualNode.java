@@ -27,7 +27,7 @@ public class LessEqualNode extends Node {
 	    return MiniFunLib.BOOL;
 
 	System.out
-		.println("TypeCheck Error: LessEqual operands are incompatible: "
+		.println("Lessequalnode TypeCheck Error: LessEqual operands are incompatible: "
 			+ left.typeCheck()
 			+ ", "
 			+ right.typeCheck()

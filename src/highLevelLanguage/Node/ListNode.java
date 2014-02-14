@@ -26,9 +26,12 @@ public class ListNode extends Node {
 	    else
 		return first.typeCheck();
 
-	System.out.println("TypeCheck Error: List operands are incompatible: "
-		+ first.typeCheck() + ", " + rest.typeCheck()
-		+ ".Shutdown parser");
+	System.out
+		.println("Listnode TypeCheck Error: List operands are incompatible: "
+			+ first.typeCheck()
+			+ ", "
+			+ rest.typeCheck()
+			+ ".Shutdown parser");
 	System.exit(0);
 	return "";
 
