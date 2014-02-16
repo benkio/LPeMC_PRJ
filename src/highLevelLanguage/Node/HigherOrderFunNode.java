@@ -49,7 +49,7 @@ public class HigherOrderFunNode extends FunNode {
 		    if (!MiniFunLib.isCompatible(decFunNodeParams.get(i),
 			    funParams.get(i))) {
 			System.out
-				.println("Funnode TypeCheck Error: decFunNodeParam and funParam are incompatible: "
+				.println("HigherOrderFunNode TypeCheck Error: ParamNode arrowtype params and HigherOrder funcion params are incompatible: "
 					+ decFunNodeParams.get(i).typeCheck()
 					+ ", "
 					+ funParams.get(i).typeCheck()
@@ -59,15 +59,12 @@ public class HigherOrderFunNode extends FunNode {
 		}
 		// Per evitare che si abbia l'ricorsione infinita della
 		// funzione.
-		if (((DecFunNode) funEntry.getNode()).isTypeChecked())
-		    return funEntry.getNode().typeCheck();
-		else
-		    return ((DecFunNode) funEntry.getNode()).getFunType()
-			    .typeCheck();
+		return ((ParamNode) funEntry.getNode()).getType().typeCheck();
+
 	    } else {
 
 		System.out
-			.println("Funnode TypeCheck Error: wrong function parameter number: "
+			.println("HigherOrderFunNode TypeCheck Error: wrong function parameter number: "
 				+ decFunNodeParams.size()
 				+ ", "
 				+ funParams.size() + ".Shutdown parser");
@@ -76,7 +73,7 @@ public class HigherOrderFunNode extends FunNode {
 	    }
 	} else {
 	    System.out
-		    .println("Funnode TypeCheck Error: Function node without DecFunNode"
+		    .println("HigherOrderFunNode TypeCheck Error: higherOrderFunction node without paramNode"
 			    + ".Shutdown parser");
 	    System.exit(0);
 	    return "";

@@ -75,6 +75,20 @@ public class DecFunNode extends Node {
 
 	if (!typeChecked) {
 
+	    // Controllo che se è un caso in cui la dichiarazione che come tipo
+	    // ha un arrow type node
+	    // Allora il numero di parametri nel tipo corrisponda con quello nei
+	    // parametri della dichiarazioene.
+	    if (funType.getNodeType() == NodeType.ARROWTYPE_NODE) {
+		if (((ArrowTypeNode) funType).getParTypes().size() != funParams
+			.size()) {
+		    System.out
+			    .println(this.getClass().getName()
+				    + " TypeCheck Error: Number of arrowType params are wrong");
+		    System.exit(0);
+		}
+	    }
+
 	    // TODO Lo lascio perchè non si sa mai, ma potrebbe dare problemi
 	    // Nel caso del typechecking dell'arrowtype.
 	    for (Node localVariable : funLocalVariables)
@@ -86,7 +100,7 @@ public class DecFunNode extends Node {
 	    } else {
 		System.out
 			.println(this.getClass().getName()
-				+ "TypeCheck Error: funtype and funBody are incompatible: "
+				+ " TypeCheck Error: funtype and funBody are incompatible: "
 				+ funType.typeCheck() + ", "
 				+ funBody.typeCheck() + ".Shutdown parser");
 		System.exit(0);

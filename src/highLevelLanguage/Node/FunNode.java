@@ -39,7 +39,8 @@ public class FunNode extends Node {
     @Override
     public String typeCheck() {
 
-	if (funEntry.getNode().getNodeType() == NodeType.DECFUN_NODE) {
+	if (funEntry.getNode().getNodeType() == NodeType.DECFUN_NODE
+		|| funEntry.getNode().getNodeType() == NodeType.DECARROWFUN_NODE) {
 	    // Recupero parametri dalla dichiarazione della funzione
 	    ArrayList<ParamNode> decFunNodeParams = ((DecFunNode) funEntry
 		    .getNode()).getParams();
