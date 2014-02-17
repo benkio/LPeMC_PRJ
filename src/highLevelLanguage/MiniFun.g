@@ -56,11 +56,8 @@ declist returns [ArrayList<Node> astList]
 	  	|
 	   	FUN i=ID {DecFunNode fn = null;} COL rt=type 	
 	   	{
-	   		if($rt.ast.getNodeType()==NodeType.ARROWTYPE_NODE){
-	   			fn = new DecArrowFunNode($i.text,$rt.ast);}
-	   		else{
-		   		fn = new DecFunNode($i.text,$rt.ast);
-	   		}
+	   		fn = new DecFunNode($i.text,$rt.ast);
+	   		
 	    	STentry entry = new STentry(fn,offSet++);
 	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);
 	    	
@@ -212,7 +209,7 @@ fatt	returns [Node ast]
 
 		NodeType nt= entry.getNode().getNodeType();
 		
-		if((nt == NodeType.DECFUN_NODE)||(nt==NodeType.DECARROWFUN_NODE)){
+		if(nt == NodeType.DECFUN_NODE){
 			$ast = new FunParNode(entry,nestingLevel-declNL);
 	   	}
 	   	else {
