@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g 2014-02-13 17:01:22
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g 2014-02-17 15:56:30
 
 package highLevelLanguage;
 
@@ -132,7 +132,7 @@ public class MiniFunParser extends Parser {
 
 
     // $ANTLR start "declist"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:37:1: declist returns [ArrayList<Node> astList] : ( VAR i= ID COL t= type ASS e= exp SEMIC | FUN i= ID COL rt= type LPAR (fpi= ID ( COL fpt= type )? ( COMMA pi= ID ( COL pt= type )? )* )? RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC )* ;
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:37:1: declist returns [ArrayList<Node> astList] : ( VAR i= ID COL t= baseType ASS e= exp SEMIC | FUN i= ID COL rt= type LPAR (fpi= ID ( COL fpt= type )? ( COMMA pi= ID ( COL pt= type )? )* )? RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC )* ;
     public final ArrayList<Node> declist() throws RecognitionException {
         ArrayList<Node> astList = null;
 
@@ -153,14 +153,14 @@ public class MiniFunParser extends Parser {
 
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:38:3: ( ( VAR i= ID COL t= type ASS e= exp SEMIC | FUN i= ID COL rt= type LPAR (fpi= ID ( COL fpt= type )? ( COMMA pi= ID ( COL pt= type )? )* )? RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC )* )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:38:4: ( VAR i= ID COL t= type ASS e= exp SEMIC | FUN i= ID COL rt= type LPAR (fpi= ID ( COL fpt= type )? ( COMMA pi= ID ( COL pt= type )? )* )? RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC )*
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:38:3: ( ( VAR i= ID COL t= baseType ASS e= exp SEMIC | FUN i= ID COL rt= type LPAR (fpi= ID ( COL fpt= type )? ( COMMA pi= ID ( COL pt= type )? )* )? RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC )* )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:38:4: ( VAR i= ID COL t= baseType ASS e= exp SEMIC | FUN i= ID COL rt= type LPAR (fpi= ID ( COL fpt= type )? ( COMMA pi= ID ( COL pt= type )? )* )? RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC )*
             {
 
             			astList = new ArrayList<Node>();
             	   		int offSet=1;
             	   	
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:43:5: ( VAR i= ID COL t= type ASS e= exp SEMIC | FUN i= ID COL rt= type LPAR (fpi= ID ( COL fpt= type )? ( COMMA pi= ID ( COL pt= type )? )* )? RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC )*
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:43:5: ( VAR i= ID COL t= baseType ASS e= exp SEMIC | FUN i= ID COL rt= type LPAR (fpi= ID ( COL fpt= type )? ( COMMA pi= ID ( COL pt= type )? )* )? RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC )*
             loop5:
             do {
                 int alt5=3;
@@ -176,13 +176,13 @@ public class MiniFunParser extends Parser {
 
                 switch (alt5) {
             	case 1 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:43:6: VAR i= ID COL t= type ASS e= exp SEMIC
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:43:6: VAR i= ID COL t= baseType ASS e= exp SEMIC
             	    {
             	    match(input,VAR,FOLLOW_VAR_in_declist104); 
             	    i=(Token)match(input,ID,FOLLOW_ID_in_declist108); 
             	    match(input,COL,FOLLOW_COL_in_declist110); 
-            	    pushFollow(FOLLOW_type_in_declist114);
-            	    t=type();
+            	    pushFollow(FOLLOW_baseType_in_declist114);
+            	    t=baseType();
 
             	    state._fsp--;
 
@@ -284,7 +284,8 @@ public class MiniFunParser extends Parser {
             	            			    	if(rt.getNodeType() == NodeType.ARROWTYPE_NODE){
             	            			    		Node tp = ((ArrowTypeNode)rt).getParType(parCont);
             	            			    		
-            	            			    		if(tp.getNodeType() == NodeType.ARROWTYPE_NODE){
+            	            			    		
+            	            			    		if( tp!=null && tp.getNodeType() == NodeType.ARROWTYPE_NODE){
             	            			    			parOffSet-=1;
             	            			    		}
             	            			    		System.out.println(parOffSet);
@@ -295,7 +296,7 @@ public class MiniFunParser extends Parser {
             	            			        fn.addParam(pn);
             	            			        parCont++;
             	            			  	
-            	            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:98:8: ( COMMA pi= ID ( COL pt= type )? )*
+            	            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:99:8: ( COMMA pi= ID ( COL pt= type )? )*
             	            loop3:
             	            do {
             	                int alt3=2;
@@ -308,12 +309,12 @@ public class MiniFunParser extends Parser {
 
             	                switch (alt3) {
             	            	case 1 :
-            	            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:98:9: COMMA pi= ID ( COL pt= type )?
+            	            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:99:9: COMMA pi= ID ( COL pt= type )?
             	            	    {
             	            	    match(input,COMMA,FOLLOW_COMMA_in_declist231); 
             	            	    pi=(Token)match(input,ID,FOLLOW_ID_in_declist235); 
             	            	    pn = new ParamNode((pi!=null?pi.getText():null));
-            	            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:98:54: ( COL pt= type )?
+            	            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:99:54: ( COL pt= type )?
             	            	    int alt2=2;
             	            	    int LA2_0 = input.LA(1);
 
@@ -322,7 +323,7 @@ public class MiniFunParser extends Parser {
             	            	    }
             	            	    switch (alt2) {
             	            	        case 1 :
-            	            	            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:98:55: COL pt= type
+            	            	            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:99:55: COL pt= type
             	            	            {
             	            	            match(input,COL,FOLLOW_COL_in_declist241); 
             	            	            pushFollow(FOLLOW_type_in_declist245);
@@ -341,7 +342,7 @@ public class MiniFunParser extends Parser {
             	            	    			    	if(rt.getNodeType() == NodeType.ARROWTYPE_NODE){
             	            	    			    		Node tp =((ArrowTypeNode) rt).getParType(parCont);
             	            	    			    		
-            	            	    			    		if(tp.getNodeType() == NodeType.ARROWTYPE_NODE){
+            	            	    			    		if(tp!=null && tp.getNodeType() == NodeType.ARROWTYPE_NODE){
             	            	    			    			parOffSet-=1;
             	            	    			    		}
             	            	    			    		System.out.println(parOffSet);
@@ -373,11 +374,11 @@ public class MiniFunParser extends Parser {
 
             	    match(input,RPAR,FOLLOW_RPAR_in_declist278); 
             	    match(input,CLPAR,FOLLOW_CLPAR_in_declist287); 
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:121:6: ( (dec= declist ) e= exp )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:122:7: (dec= declist ) e= exp
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:122:6: ( (dec= declist ) e= exp )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:123:7: (dec= declist ) e= exp
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:122:7: (dec= declist )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:122:8: dec= declist
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:123:7: (dec= declist )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:123:8: dec= declist
             	    {
             	    pushFollow(FOLLOW_declist_in_declist306);
             	    dec=declist();
@@ -430,7 +431,7 @@ public class MiniFunParser extends Parser {
 
 
     // $ANTLR start "exp"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:136:1: exp returns [Node ast] : f= term ( ( EQ l= term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )* ;
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:137:1: exp returns [Node ast] : f= term ( ( EQ l= term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )* ;
     public final Node exp() throws RecognitionException {
         Node ast = null;
 
@@ -440,8 +441,8 @@ public class MiniFunParser extends Parser {
 
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:137:4: (f= term ( ( EQ l= term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )* )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:137:6: f= term ( ( EQ l= term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )*
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:138:4: (f= term ( ( EQ l= term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )* )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:138:6: f= term ( ( EQ l= term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )*
             {
             pushFollow(FOLLOW_term_in_exp388);
             f=term();
@@ -449,7 +450,7 @@ public class MiniFunParser extends Parser {
             state._fsp--;
 
             ast = f;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:138:7: ( ( EQ l= term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )*
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:139:7: ( ( EQ l= term ) | ( LESSEQ l= term ) | ( GREATEREQ l= term ) )*
             loop6:
             do {
                 int alt6=4;
@@ -474,10 +475,10 @@ public class MiniFunParser extends Parser {
 
                 switch (alt6) {
             	case 1 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:138:8: ( EQ l= term )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:139:8: ( EQ l= term )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:138:8: ( EQ l= term )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:139:8: EQ l= term
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:139:8: ( EQ l= term )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:140:8: EQ l= term
             	    {
             	    match(input,EQ,FOLLOW_EQ_in_exp408); 
             	    pushFollow(FOLLOW_term_in_exp412);
@@ -493,10 +494,10 @@ public class MiniFunParser extends Parser {
             	    }
             	    break;
             	case 2 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:142:9: ( LESSEQ l= term )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:143:9: ( LESSEQ l= term )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:142:9: ( LESSEQ l= term )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:143:9: LESSEQ l= term
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:143:9: ( LESSEQ l= term )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:144:9: LESSEQ l= term
             	    {
             	    match(input,LESSEQ,FOLLOW_LESSEQ_in_exp452); 
             	    pushFollow(FOLLOW_term_in_exp456);
@@ -512,10 +513,10 @@ public class MiniFunParser extends Parser {
             	    }
             	    break;
             	case 3 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:146:9: ( GREATEREQ l= term )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:147:9: ( GREATEREQ l= term )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:146:9: ( GREATEREQ l= term )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:146:11: GREATEREQ l= term
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:147:9: ( GREATEREQ l= term )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:147:11: GREATEREQ l= term
             	    {
             	    match(input,GREATEREQ,FOLLOW_GREATEREQ_in_exp487); 
             	    pushFollow(FOLLOW_term_in_exp491);
@@ -552,7 +553,7 @@ public class MiniFunParser extends Parser {
 
 
     // $ANTLR start "term"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:151:1: term returns [Node ast] : f= value ( ( PLUS l= value ) | ( MINUS l= value ) | ( OR l= value ) )* ;
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:152:1: term returns [Node ast] : f= value ( ( PLUS l= value ) | ( MINUS l= value ) | ( OR l= value ) )* ;
     public final Node term() throws RecognitionException {
         Node ast = null;
 
@@ -562,8 +563,8 @@ public class MiniFunParser extends Parser {
 
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:152:2: (f= value ( ( PLUS l= value ) | ( MINUS l= value ) | ( OR l= value ) )* )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:152:4: f= value ( ( PLUS l= value ) | ( MINUS l= value ) | ( OR l= value ) )*
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:153:2: (f= value ( ( PLUS l= value ) | ( MINUS l= value ) | ( OR l= value ) )* )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:153:4: f= value ( ( PLUS l= value ) | ( MINUS l= value ) | ( OR l= value ) )*
             {
             pushFollow(FOLLOW_value_in_term536);
             f=value();
@@ -571,7 +572,7 @@ public class MiniFunParser extends Parser {
             state._fsp--;
 
             ast = f;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:153:6: ( ( PLUS l= value ) | ( MINUS l= value ) | ( OR l= value ) )*
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:154:6: ( ( PLUS l= value ) | ( MINUS l= value ) | ( OR l= value ) )*
             loop7:
             do {
                 int alt7=4;
@@ -596,10 +597,10 @@ public class MiniFunParser extends Parser {
 
                 switch (alt7) {
             	case 1 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:154:5: ( PLUS l= value )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:155:5: ( PLUS l= value )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:154:5: ( PLUS l= value )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:155:5: PLUS l= value
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:155:5: ( PLUS l= value )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:156:5: PLUS l= value
             	    {
             	    match(input,PLUS,FOLLOW_PLUS_in_term557); 
             	    pushFollow(FOLLOW_value_in_term561);
@@ -615,10 +616,10 @@ public class MiniFunParser extends Parser {
             	    }
             	    break;
             	case 2 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:158:9: ( MINUS l= value )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:159:9: ( MINUS l= value )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:158:9: ( MINUS l= value )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:159:9: MINUS l= value
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:159:9: ( MINUS l= value )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:160:9: MINUS l= value
             	    {
             	    match(input,MINUS,FOLLOW_MINUS_in_term600); 
             	    pushFollow(FOLLOW_value_in_term604);
@@ -634,10 +635,10 @@ public class MiniFunParser extends Parser {
             	    }
             	    break;
             	case 3 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:162:9: ( OR l= value )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:163:9: ( OR l= value )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:162:9: ( OR l= value )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:163:9: OR l= value
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:163:9: ( OR l= value )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:164:9: OR l= value
             	    {
             	    match(input,OR,FOLLOW_OR_in_term643); 
             	    pushFollow(FOLLOW_value_in_term647);
@@ -674,7 +675,7 @@ public class MiniFunParser extends Parser {
 
 
     // $ANTLR start "value"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:169:1: value returns [Node ast] : f= fatt ( ( TIMES l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )* ;
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:170:1: value returns [Node ast] : f= fatt ( ( TIMES l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )* ;
     public final Node value() throws RecognitionException {
         Node ast = null;
 
@@ -684,8 +685,8 @@ public class MiniFunParser extends Parser {
 
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:170:3: (f= fatt ( ( TIMES l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )* )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:170:5: f= fatt ( ( TIMES l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )*
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:171:3: (f= fatt ( ( TIMES l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )* )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:171:5: f= fatt ( ( TIMES l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )*
             {
             pushFollow(FOLLOW_fatt_in_value693);
             f=fatt();
@@ -693,7 +694,7 @@ public class MiniFunParser extends Parser {
             state._fsp--;
 
             ast = f;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:171:6: ( ( TIMES l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )*
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:172:6: ( ( TIMES l= fatt ) | ( DIVIDE l= fatt ) | ( AND l= fatt ) )*
             loop8:
             do {
                 int alt8=4;
@@ -718,10 +719,10 @@ public class MiniFunParser extends Parser {
 
                 switch (alt8) {
             	case 1 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:172:7: ( TIMES l= fatt )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:173:7: ( TIMES l= fatt )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:172:7: ( TIMES l= fatt )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:173:8: TIMES l= fatt
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:173:7: ( TIMES l= fatt )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:174:8: TIMES l= fatt
             	    {
             	    match(input,TIMES,FOLLOW_TIMES_in_value719); 
             	    pushFollow(FOLLOW_fatt_in_value723);
@@ -737,10 +738,10 @@ public class MiniFunParser extends Parser {
             	    }
             	    break;
             	case 2 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:176:9: ( DIVIDE l= fatt )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:177:9: ( DIVIDE l= fatt )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:176:9: ( DIVIDE l= fatt )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:177:9: DIVIDE l= fatt
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:177:9: ( DIVIDE l= fatt )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:178:9: DIVIDE l= fatt
             	    {
             	    match(input,DIVIDE,FOLLOW_DIVIDE_in_value763); 
             	    pushFollow(FOLLOW_fatt_in_value767);
@@ -756,10 +757,10 @@ public class MiniFunParser extends Parser {
             	    }
             	    break;
             	case 3 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:180:9: ( AND l= fatt )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:181:9: ( AND l= fatt )
             	    {
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:180:9: ( AND l= fatt )
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:181:9: AND l= fatt
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:181:9: ( AND l= fatt )
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:182:9: AND l= fatt
             	    {
             	    match(input,AND,FOLLOW_AND_in_value806); 
             	    pushFollow(FOLLOW_fatt_in_value810);
@@ -796,7 +797,7 @@ public class MiniFunParser extends Parser {
 
 
     // $ANTLR start "fatt"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:186:1: fatt returns [Node ast] : (n= NAT | TRUE | FALSE | EMPTY | LPAR e= exp RPAR | i= ID ( LPAR (fp= exp ( COMMA p= exp )* )? RPAR )? | IF x= exp THEN CLPAR y= exp CRPAR ELSE CLPAR z= exp CRPAR | SLPAR e1= exp DOUBLECOL e2= exp SRPAR | FIRST LPAR e= exp RPAR | REST LPAR e= exp RPAR | PRINT LPAR e= exp RPAR | NOT LPAR e= exp RPAR );
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:187:1: fatt returns [Node ast] : (n= NAT | TRUE | FALSE | EMPTY | LPAR e= exp RPAR | i= ID ( LPAR (fp= exp ( COMMA p= exp )* )? RPAR )? | IF x= exp THEN CLPAR y= exp CRPAR ELSE CLPAR z= exp CRPAR | SLPAR e1= exp DOUBLECOL e2= exp SRPAR | FIRST LPAR e= exp RPAR | REST LPAR e= exp RPAR | PRINT LPAR e= exp RPAR | NOT LPAR e= exp RPAR );
     public final Node fatt() throws RecognitionException {
         Node ast = null;
 
@@ -820,7 +821,7 @@ public class MiniFunParser extends Parser {
 
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:187:2: (n= NAT | TRUE | FALSE | EMPTY | LPAR e= exp RPAR | i= ID ( LPAR (fp= exp ( COMMA p= exp )* )? RPAR )? | IF x= exp THEN CLPAR y= exp CRPAR ELSE CLPAR z= exp CRPAR | SLPAR e1= exp DOUBLECOL e2= exp SRPAR | FIRST LPAR e= exp RPAR | REST LPAR e= exp RPAR | PRINT LPAR e= exp RPAR | NOT LPAR e= exp RPAR )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:188:2: (n= NAT | TRUE | FALSE | EMPTY | LPAR e= exp RPAR | i= ID ( LPAR (fp= exp ( COMMA p= exp )* )? RPAR )? | IF x= exp THEN CLPAR y= exp CRPAR ELSE CLPAR z= exp CRPAR | SLPAR e1= exp DOUBLECOL e2= exp SRPAR | FIRST LPAR e= exp RPAR | REST LPAR e= exp RPAR | PRINT LPAR e= exp RPAR | NOT LPAR e= exp RPAR )
             int alt12=12;
             switch ( input.LA(1) ) {
             case NAT:
@@ -892,7 +893,7 @@ public class MiniFunParser extends Parser {
 
             switch (alt12) {
                 case 1 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:187:4: n= NAT
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:188:4: n= NAT
                     {
                     n=(Token)match(input,NAT,FOLLOW_NAT_in_fatt857); 
                     ast = new NatNode(Integer.parseInt((n!=null?n.getText():null)));
@@ -900,7 +901,7 @@ public class MiniFunParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:189:4: TRUE
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:190:4: TRUE
                     {
                     match(input,TRUE,FOLLOW_TRUE_in_fatt873); 
                     ast = new BoolNode(true);
@@ -908,7 +909,7 @@ public class MiniFunParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:191:4: FALSE
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:192:4: FALSE
                     {
                     match(input,FALSE,FOLLOW_FALSE_in_fatt888); 
                     ast = new BoolNode(false);
@@ -916,7 +917,7 @@ public class MiniFunParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:193:4: EMPTY
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:194:4: EMPTY
                     {
                     match(input,EMPTY,FOLLOW_EMPTY_in_fatt900); 
                     ast = new EmptyNode();
@@ -924,7 +925,7 @@ public class MiniFunParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:195:4: LPAR e= exp RPAR
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:196:4: LPAR e= exp RPAR
                     {
                     match(input,LPAR,FOLLOW_LPAR_in_fatt914); 
                     pushFollow(FOLLOW_exp_in_fatt918);
@@ -938,7 +939,7 @@ public class MiniFunParser extends Parser {
                     }
                     break;
                 case 6 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:197:4: i= ID ( LPAR (fp= exp ( COMMA p= exp )* )? RPAR )?
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:198:4: i= ID ( LPAR (fp= exp ( COMMA p= exp )* )? RPAR )?
                     {
                     i=(Token)match(input,ID,FOLLOW_ID_in_fatt935); 
 
@@ -964,7 +965,7 @@ public class MiniFunParser extends Parser {
                     	   		ast = new VarNode(entry,nestingLevel-declNL); 
                     	   	}
                     	
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:221:2: ( LPAR (fp= exp ( COMMA p= exp )* )? RPAR )?
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:222:2: ( LPAR (fp= exp ( COMMA p= exp )* )? RPAR )?
                     int alt11=2;
                     int LA11_0 = input.LA(1);
 
@@ -973,11 +974,11 @@ public class MiniFunParser extends Parser {
                     }
                     switch (alt11) {
                         case 1 :
-                            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:222:3: LPAR (fp= exp ( COMMA p= exp )* )? RPAR
+                            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:223:3: LPAR (fp= exp ( COMMA p= exp )* )? RPAR
                             {
                             match(input,LPAR,FOLLOW_LPAR_in_fatt947); 
                             ArrayList<Node> parList = new ArrayList<Node>();
-                            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:225:3: (fp= exp ( COMMA p= exp )* )?
+                            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:226:3: (fp= exp ( COMMA p= exp )* )?
                             int alt10=2;
                             int LA10_0 = input.LA(1);
 
@@ -986,7 +987,7 @@ public class MiniFunParser extends Parser {
                             }
                             switch (alt10) {
                                 case 1 :
-                                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:226:4: fp= exp ( COMMA p= exp )*
+                                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:227:4: fp= exp ( COMMA p= exp )*
                                     {
                                     pushFollow(FOLLOW_exp_in_fatt966);
                                     fp=exp();
@@ -994,7 +995,7 @@ public class MiniFunParser extends Parser {
                                     state._fsp--;
 
                                     parList.add(fp);
-                                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:227:4: ( COMMA p= exp )*
+                                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:228:4: ( COMMA p= exp )*
                                     loop9:
                                     do {
                                         int alt9=2;
@@ -1007,7 +1008,7 @@ public class MiniFunParser extends Parser {
 
                                         switch (alt9) {
                                     	case 1 :
-                                    	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:227:5: COMMA p= exp
+                                    	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:228:5: COMMA p= exp
                                     	    {
                                     	    match(input,COMMA,FOLLOW_COMMA_in_fatt974); 
                                     	    pushFollow(FOLLOW_exp_in_fatt978);
@@ -1050,7 +1051,7 @@ public class MiniFunParser extends Parser {
                     }
                     break;
                 case 7 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:238:4: IF x= exp THEN CLPAR y= exp CRPAR ELSE CLPAR z= exp CRPAR
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:239:4: IF x= exp THEN CLPAR y= exp CRPAR ELSE CLPAR z= exp CRPAR
                     {
                     match(input,IF,FOLLOW_IF_in_fatt1003); 
                     pushFollow(FOLLOW_exp_in_fatt1007);
@@ -1079,7 +1080,7 @@ public class MiniFunParser extends Parser {
                     }
                     break;
                 case 8 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:242:4: SLPAR e1= exp DOUBLECOL e2= exp SRPAR
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:243:4: SLPAR e1= exp DOUBLECOL e2= exp SRPAR
                     {
                     match(input,SLPAR,FOLLOW_SLPAR_in_fatt1044); 
                     pushFollow(FOLLOW_exp_in_fatt1048);
@@ -1099,7 +1100,7 @@ public class MiniFunParser extends Parser {
                     }
                     break;
                 case 9 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:245:4: FIRST LPAR e= exp RPAR
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:246:4: FIRST LPAR e= exp RPAR
                     {
                     match(input,FIRST,FOLLOW_FIRST_in_fatt1069); 
                     match(input,LPAR,FOLLOW_LPAR_in_fatt1071); 
@@ -1114,7 +1115,7 @@ public class MiniFunParser extends Parser {
                     }
                     break;
                 case 10 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:248:4: REST LPAR e= exp RPAR
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:249:4: REST LPAR e= exp RPAR
                     {
                     match(input,REST,FOLLOW_REST_in_fatt1094); 
                     match(input,LPAR,FOLLOW_LPAR_in_fatt1096); 
@@ -1129,7 +1130,7 @@ public class MiniFunParser extends Parser {
                     }
                     break;
                 case 11 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:251:4: PRINT LPAR e= exp RPAR
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:252:4: PRINT LPAR e= exp RPAR
                     {
                     match(input,PRINT,FOLLOW_PRINT_in_fatt1119); 
                     match(input,LPAR,FOLLOW_LPAR_in_fatt1121); 
@@ -1144,7 +1145,7 @@ public class MiniFunParser extends Parser {
                     }
                     break;
                 case 12 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:254:4: NOT LPAR e= exp RPAR
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:255:4: NOT LPAR e= exp RPAR
                     {
                     match(input,NOT,FOLLOW_NOT_in_fatt1144); 
                     match(input,LPAR,FOLLOW_LPAR_in_fatt1146); 
@@ -1173,7 +1174,7 @@ public class MiniFunParser extends Parser {
 
 
     // $ANTLR start "type"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:258:1: type returns [Node ast] : (bt= baseType | at= arrowType );
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:259:1: type returns [Node ast] : (bt= baseType | at= arrowType );
     public final Node type() throws RecognitionException {
         Node ast = null;
 
@@ -1183,7 +1184,7 @@ public class MiniFunParser extends Parser {
 
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:259:2: (bt= baseType | at= arrowType )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:260:2: (bt= baseType | at= arrowType )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -1201,7 +1202,7 @@ public class MiniFunParser extends Parser {
             }
             switch (alt13) {
                 case 1 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:259:4: bt= baseType
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:260:4: bt= baseType
                     {
                     pushFollow(FOLLOW_baseType_in_type1179);
                     bt=baseType();
@@ -1213,7 +1214,7 @@ public class MiniFunParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:260:6: at= arrowType
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:261:6: at= arrowType
                     {
                     pushFollow(FOLLOW_arrowType_in_type1190);
                     at=arrowType();
@@ -1239,12 +1240,12 @@ public class MiniFunParser extends Parser {
 
 
     // $ANTLR start "baseType"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:263:1: baseType returns [Node ast] : ( INTTYPE | BOOLTYPE );
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:264:1: baseType returns [Node ast] : ( INTTYPE | BOOLTYPE );
     public final Node baseType() throws RecognitionException {
         Node ast = null;
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:264:2: ( INTTYPE | BOOLTYPE )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:265:2: ( INTTYPE | BOOLTYPE )
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -1262,7 +1263,7 @@ public class MiniFunParser extends Parser {
             }
             switch (alt14) {
                 case 1 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:264:4: INTTYPE
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:265:4: INTTYPE
                     {
                     match(input,INTTYPE,FOLLOW_INTTYPE_in_baseType1210); 
                     ast = new IntTypeNode();
@@ -1270,7 +1271,7 @@ public class MiniFunParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:265:7: BOOLTYPE
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:266:7: BOOLTYPE
                     {
                     match(input,BOOLTYPE,FOLLOW_BOOLTYPE_in_baseType1223); 
                     ast = new BoolTypeNode();
@@ -1292,7 +1293,7 @@ public class MiniFunParser extends Parser {
 
 
     // $ANTLR start "arrowType"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:269:1: arrowType returns [Node ast] : LPAR (t1= type ( COMMA tn= type )* )? RPAR ARROW rt= baseType ;
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:270:1: arrowType returns [Node ast] : LPAR (t1= type ( COMMA tn= type )* )? RPAR ARROW rt= baseType ;
     public final Node arrowType() throws RecognitionException {
         Node ast = null;
 
@@ -1304,12 +1305,12 @@ public class MiniFunParser extends Parser {
 
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:270:3: ( LPAR (t1= type ( COMMA tn= type )* )? RPAR ARROW rt= baseType )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:270:6: LPAR (t1= type ( COMMA tn= type )* )? RPAR ARROW rt= baseType
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:271:3: ( LPAR (t1= type ( COMMA tn= type )* )? RPAR ARROW rt= baseType )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:271:6: LPAR (t1= type ( COMMA tn= type )* )? RPAR ARROW rt= baseType
             {
             match(input,LPAR,FOLLOW_LPAR_in_arrowType1249); 
             ArrowTypeNode atn= new ArrowTypeNode();
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:271:5: (t1= type ( COMMA tn= type )* )?
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:272:5: (t1= type ( COMMA tn= type )* )?
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -1318,7 +1319,7 @@ public class MiniFunParser extends Parser {
             }
             switch (alt16) {
                 case 1 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:272:6: t1= type ( COMMA tn= type )*
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:273:6: t1= type ( COMMA tn= type )*
                     {
                     pushFollow(FOLLOW_type_in_arrowType1266);
                     t1=type();
@@ -1326,7 +1327,7 @@ public class MiniFunParser extends Parser {
                     state._fsp--;
 
                     atn.addParType(t1);
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:273:6: ( COMMA tn= type )*
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:274:6: ( COMMA tn= type )*
                     loop15:
                     do {
                         int alt15=2;
@@ -1339,7 +1340,7 @@ public class MiniFunParser extends Parser {
 
                         switch (alt15) {
                     	case 1 :
-                    	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:274:7: COMMA tn= type
+                    	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:275:7: COMMA tn= type
                     	    {
                     	    match(input,COMMA,FOLLOW_COMMA_in_arrowType1282); 
                     	    pushFollow(FOLLOW_type_in_arrowType1286);
@@ -1390,13 +1391,13 @@ public class MiniFunParser extends Parser {
 
 
     // $ANTLR start "genericType"
-    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:283:2: genericType returns [Node ast] : GENERICTYPE ;
+    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:284:2: genericType returns [Node ast] : GENERICTYPE ;
     public final Node genericType() throws RecognitionException {
         Node ast = null;
 
         try {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:284:3: ( GENERICTYPE )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:284:5: GENERICTYPE
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:285:3: ( GENERICTYPE )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:285:5: GENERICTYPE
             {
             match(input,GENERICTYPE,FOLLOW_GENERICTYPE_in_genericType1335); 
 
@@ -1425,8 +1426,8 @@ public class MiniFunParser extends Parser {
     public static final BitSet FOLLOW_SEMIC_in_prog74 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_VAR_in_declist104 = new BitSet(new long[]{0x0000000000000100L});
     public static final BitSet FOLLOW_ID_in_declist108 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_COL_in_declist110 = new BitSet(new long[]{0x0000030000001000L});
-    public static final BitSet FOLLOW_type_in_declist114 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_COL_in_declist110 = new BitSet(new long[]{0x0000030000000000L});
+    public static final BitSet FOLLOW_baseType_in_declist114 = new BitSet(new long[]{0x0000000000000400L});
     public static final BitSet FOLLOW_ASS_in_declist116 = new BitSet(new long[]{0x000000F27C001100L});
     public static final BitSet FOLLOW_exp_in_declist120 = new BitSet(new long[]{0x0000000000000040L});
     public static final BitSet FOLLOW_SEMIC_in_declist122 = new BitSet(new long[]{0x0000000000000882L});

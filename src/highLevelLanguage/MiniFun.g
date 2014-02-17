@@ -84,7 +84,8 @@ declist returns [ArrayList<Node> astList]
 			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
 			    		Node tp = ((ArrowTypeNode)$rt.ast).getParType(parCont);
 			    		
-			    		if(tp.getNodeType() == NodeType.ARROWTYPE_NODE){
+			    		
+			    		if( tp!=null && tp.getNodeType() == NodeType.ARROWTYPE_NODE){
 			    			parOffSet-=1;
 			    		}
 			    		System.out.println(parOffSet);
@@ -100,7 +101,7 @@ declist returns [ArrayList<Node> astList]
 			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
 			    		Node tp =((ArrowTypeNode) $rt.ast).getParType(parCont);
 			    		
-			    		if(tp.getNodeType() == NodeType.ARROWTYPE_NODE){
+			    		if(tp!=null && tp.getNodeType() == NodeType.ARROWTYPE_NODE){
 			    			parOffSet-=1;
 			    		}
 			    		System.out.println(parOffSet);

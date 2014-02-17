@@ -42,7 +42,7 @@ public class HigherOrderFunNode extends FunNode {
 	    // Controllo di avere lo stesso numero di parametri
 	    if (decFunNodeParams.size() == funParams.size()) {
 
-		// TODO Controllare le funzioni passate come parametro
+		
 		// Controllo ad uno ad un la compatibilità dei Parametri con la
 		// loro dichiarazione
 		for (int i = 0; i < funParams.size(); i++) {
@@ -57,8 +57,7 @@ public class HigherOrderFunNode extends FunNode {
 			System.exit(0);
 		    }
 		}
-		// Per evitare che si abbia l'ricorsione infinita della
-		// funzione.
+
 		return ((ParamNode) funEntry.getNode()).getType().typeCheck();
 
 	    } else {
