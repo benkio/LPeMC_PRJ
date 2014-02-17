@@ -5,43 +5,45 @@ import highLevelLanguage.utils.VMCommands;
 
 public class DivNode extends Node {
 
-	private Node left;
-	private Node right;
+    private Node left;
+    private Node right;
 
-	public DivNode(Node l, Node r) {
-		left = l;
-		right = r;
-	}
+    public DivNode(Node l, Node r) {
+	left = l;
+	right = r;
+    }
 
-	@Override
-	public String toPrint() {
-		return "<DivNode><DivNodeLeft>" + left.toPrint()
-				+ "</DivNodeLeft><DivNodeRight>" + right.toPrint()
-				+ "</DivNodeRight></DivNode>";
-	}
+    @Override
+    public String toPrint() {
+	return "<DivNode><DivNodeLeft>" + left.toPrint()
+		+ "</DivNodeLeft><DivNodeRight>" + right.toPrint()
+		+ "</DivNodeRight></DivNode>";
+    }
 
-	@Override
-	public String typeCheck() {
-		if ((MiniFunLib.isCompatible(left, new IntTypeNode()))
-				&& (MiniFunLib.isCompatible(right, new IntTypeNode())))
-			return MiniFunLib.INT;
+    @Override
+    public String typeCheck() {
+	if ((MiniFunLib.isCompatible(left, new IntTypeNode()))
+		&& (MiniFunLib.isCompatible(right, new IntTypeNode())))
+	    return MiniFunLib.INT;
 
-		System.out.println("TypeCheck Error: Div operands are incompatible: "
-				+ left.typeCheck() + ", " + right.typeCheck()
-				+ ".Shutdown parser");
-		System.exit(0);
-		return "";
-	}
+	System.out
+		.println("Divnode TypeCheck Error: Div operands are incompatible: "
+			+ left.typeCheck()
+			+ ", "
+			+ right.typeCheck()
+			+ ".Shutdown parser");
+	System.exit(0);
+	return "";
+    }
 
-	@Override
-	public String codeGen() {
-		return left.codeGen() + right.codeGen() + VMCommands.DIV + "\n";
-	}
+    @Override
+    public String codeGen() {
+	return left.codeGen() + right.codeGen() + VMCommands.DIV + "\n";
+    }
 
-	@Override
-	public NodeType getNodeType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public NodeType getNodeType() {
+	return NodeType.DIV_NODE;
+    }
 
 }

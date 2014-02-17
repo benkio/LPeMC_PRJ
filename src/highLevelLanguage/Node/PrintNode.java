@@ -4,35 +4,30 @@ import highLevelLanguage.utils.VMCommands;
 
 public class PrintNode extends Node {
 
-	private Node exp;
+    private Node exp;
 
-	public PrintNode(Node exp) {
+    public PrintNode(Node exp) {
+	this.exp = exp;
+    }
 
-		this.exp = exp;
-	}
+    @Override
+    public String toPrint() {
+	return "<PrintNode>" + exp.toPrint() + "</PrintNode>";
+    }
 
-	@Override
-	public String toPrint() {
+    @Override
+    public String typeCheck() {
+	return exp.typeCheck();
+    }
 
-		return "<PrintNode>" + exp.toPrint() + "</PrintNode>";
-	}
+    @Override
+    public String codeGen() {
+	return exp.codeGen() + VMCommands.PRINT + "\n";
+    }
 
-	@Override
-	public String typeCheck() {
-
-		return exp.typeCheck();
-	}
-
-	@Override
-	public String codeGen() {
-
-		return exp.codeGen() + VMCommands.PRINT + "\n";
-	}
-
-	@Override
-	public NodeType getNodeType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public NodeType getNodeType() {
+	return NodeType.PRINT_NODE;
+    }
 
 }

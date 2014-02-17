@@ -30,25 +30,30 @@ public class FunNode extends Node {
 		// ATTENZIONE SI POTREBBE ANDARE IN LOOP!!!! FUNZIONE CHE CHIAMA SE
 		// STESSA E QUINDI NON SI FINISCE? PER QUESTO INSERISCO L'OFFSET E NON
 		// RICHIAMO LA FUNZIONE.
-		return "<FunNode><FunDiffNesting>" + diffNesting + "</FunDiffNesting>"
-		+ "<FunSTEntryOffset>" + funEntry.getOffSet()
-		+ "</FunSTEntryOffset>" + funParamsToPrint + "</FunNode>";
+		return "<" + this.getClass().getName() + "><FunDiffNesting>"
+		+ diffNesting + "</FunDiffNesting>" + "<FunSTEntryOffset>"
+		+ funEntry.getOffSet() + "</FunSTEntryOffset>"
+		+ funParamsToPrint + "</" + this.getClass().getName() + ">";
 	}
 
 	@Override
 	public String typeCheck() {
 
 		if (funEntry.getNode().getNodeType() == NodeType.DECFUN_NODE) {
-			//Recupero parametri dalla dichiarazione della funzione
-			ArrayList<ParamNode> decFunNodeParams = ((DecFunNode) funEntry.getNode()).getParams();
+			// Recupero parametri dalla dichiarazione della funzione
+			ArrayList<ParamNode> decFunNodeParams = ((DecFunNode) funEntry
+					.getNode()).getParams();
 
-			//Controllo di avere lo stesso numero di parametri 
+			// Controllo di avere lo stesso numero di parametri
 			if (decFunNodeParams.size() == funParams.size()) {
 
-				//Controllo ad uno ad un la compatibilità dei Parametri con la loro dichiarazione
-				for (int i = 0; i < funParams.size(); i++){
-					if (!MiniFunLib.isCompatible(decFunNodeParams.get(i),funParams.get(i))) {
-						System.out.println("TypeCheck Error: decFunNodeParam and funParam are incompatible: "
+				// Controllo ad uno ad un la compatibilità dei Parametri con la
+				// loro dichiarazione
+				for (int i = 0; i < funParams.size(); i++) {
+					if (!MiniFunLib.isCompatible(decFunNodeParams.get(i),
+							funParams.get(i))) {
+						System.out
+						.println("Funnode TypeCheck Error: decFunNodeParam and funParam are incompatible: "
 								+ decFunNodeParams.get(i).typeCheck()
 								+ ", "
 								+ funParams.get(i).typeCheck()
@@ -56,31 +61,26 @@ public class FunNode extends Node {
 						System.exit(0);
 					}
 				}
-				// Per evitare che si abbia l'ricorsione infinita della funzione.
+				// Per evitare che si abbia l'ricorsione infinita della
+				// funzione.
 				if (((DecFunNode) funEntry.getNode()).isTypeChecked())
 					return funEntry.getNode().typeCheck();
 				else
-					return ((DecFunNode) funEntry.getNode()).getFunType().typeCheck();
-			}
-			else{
+					return ((DecFunNode) funEntry.getNode()).getFunType()
+							.typeCheck();
+			} else {
 
-				System.out.println("TypeCheck Error: wrong function parameter number: "
+				System.out
+				.println("Funnode TypeCheck Error: wrong function parameter number: "
 						+ decFunNodeParams.size()
 						+ ", "
-						+ funParams.size()
-						+ ".Shutdown parser");
+						+ funParams.size() + ".Shutdown parser");
 				System.exit(0);
 				return "";
 			}
-		} 
-		else if (funEntry.getNode().getNodeType() == NodeType.PARAM_NODE){
-			
-			ArrowTypeNode pType = ((ArrowTypeNode)((ParamNode)funEntry.getNode()).getType());
-			
-			return pType.getRetType().typeCheck();
-		}
-		else{
-			System.out.println("TypeCheck Error: Function node without DecFunNode"
+		} else {
+			System.out
+			.println("Funnode TypeCheck Error: Function node without DecFunNode"
 					+ ".Shutdown parser");
 			System.exit(0);
 			return "";
@@ -97,39 +97,49 @@ public class FunNode extends Node {
 		String parCode = "";
 		String lookupAL = "";
 
-		//Codice per PUSH parametri. I parametri vengono caricati al contrario
+		// Codice per PUSH parametri. I parametri vengono caricati al contrario
 		for (int i = funParams.size() - 1; i >= 0; i--) {
 			parCode += (funParams.get(i)).codeGen();
 		}
 
-		// Scorro access link per recuperare AL del padre sintattico della funzione da chiamare
+		// Scorro access link per recuperare AL del padre sintattico della
+		// funzione da chiamare
 		for (int i = 0; i < diffNesting; i++)
 			lookupAL += VMCommands.LW + "\n";
 
-		String code= 	
-				//PUSH Control Link (Riferimento al record di attivazione del Chiamante)
-				VMCommands.LFP + "\n" + 
+		String code =
+				// PUSH Control Link (Riferimento al record di attivazione del
+				// Chiamante)
+				VMCommands.LFP
+				+ "\n"
+				+
 
-				//PUSH dei Parametri
-				parCode+
+		// PUSH dei Parametri
+		parCode
+		+
 
-				VMCommands.LFP + "\n"+ 
-				lookupAL+ // Cerca l'activation Record del padre sintattico della funzione.
+		VMCommands.LFP
+		+ "\n"
+		+ lookupAL
+		+ // Cerca l'activation Record del padre sintattico della
+		// funzione.
 
-				// Ora devo cercare la locazione di memoria su cui fare il jump per eseguire il corpo della funzione
+		// Ora devo cercare la locazione di memoria su cui fare il jump
+		// per eseguire il corpo della funzione
 
-				// Scorro Access link fino ad arrivare all Activation Record del padre sintattico dove è definita la funzione da chiamare
-				VMCommands.LFP + "\n" + 
-				lookupAL +
+		// Scorro Access link fino ad arrivare all Activation Record del
+		// padre sintattico dove è definita la funzione da chiamare
+		VMCommands.LFP + "\n"
+		+ lookupAL
+		+
 
-				//Dal FP del padre sintattico sottraggo l'offset della funzione per trovare l'indirizzo
-				VMCommands.PUSH + " " + funEntry.getOffSet() + "\n"+ 
-				VMCommands.SUB + "\n" + 
+		// Dal FP del padre sintattico sottraggo l'offset della funzione
+		// per trovare l'indirizzo
+		VMCommands.PUSH + " " + funEntry.getOffSet() + "\n"
+		+ VMCommands.SUB + "\n" +
 
-				//Carico indirizzo della funzione ed eseguo il jump
-				VMCommands.LW + "\n"+ 
-				VMCommands.JS + "\n";
-
+		// Carico indirizzo della funzione ed eseguo il jump
+		VMCommands.LW + "\n" + VMCommands.JS + "\n";
 
 		return code;
 	}

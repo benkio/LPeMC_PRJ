@@ -15,7 +15,6 @@ public class GreatEqualNode extends Node {
 
     @Override
     public String toPrint() {
-	// TODO Auto-generated method stub
 	return "<GreatEqualNode><GreatEqualNodeLeft>" + left.toPrint()
 		+ "</GreatEqualNodeLeft><GreatEqualNodeRight>"
 		+ right.toPrint() + "</GreatEqualNodeRight></GreatEqualNode>";
@@ -23,7 +22,6 @@ public class GreatEqualNode extends Node {
 
     @Override
     public String typeCheck() {
-	// TODO Auto-generated method stub
 	if ((MiniFunLib.isCompatible(left, new IntTypeNode()))
 		&& (MiniFunLib.isCompatible(right, new IntTypeNode())))
 	    return MiniFunLib.BOOL;
@@ -42,19 +40,17 @@ public class GreatEqualNode extends Node {
     public String codeGen() {
 	String GEQLabel = "GEQLabel" + MiniFunLib.getLabIndex();
 	String ContinueLabel = "ContinueLabel" + MiniFunLib.getLabIndex();
-	// TODO Auto-generated method stub
-	return left.codeGen() + right.codeGen() + VMCommands.BGREAT
-		+ " " + GEQLabel + "\n " + VMCommands.PUSH + " "
-		+ MiniFunLib.FALSE + "\n " + VMCommands.B + " "
-		+ ContinueLabel + "\n " + GEQLabel + ": \n"
-		+ VMCommands.PUSH + " " + MiniFunLib.TRUE + "\n "
+
+	return left.codeGen() + right.codeGen() + VMCommands.BGREAT + " "
+		+ GEQLabel + "\n " + VMCommands.PUSH + " " + MiniFunLib.FALSE
+		+ "\n " + VMCommands.B + " " + ContinueLabel + "\n " + GEQLabel
+		+ ": \n" + VMCommands.PUSH + " " + MiniFunLib.TRUE + "\n "
 		+ ContinueLabel + ": \n";
     }
 
-	@Override
-	public NodeType getNodeType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public NodeType getNodeType() {
+	return NodeType.GREATEQUAL_NODE;
+    }
 
 }

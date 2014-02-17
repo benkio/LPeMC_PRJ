@@ -15,29 +15,30 @@ public class DecFunNode extends Node {
 	protected boolean typeChecked;
 	protected String typeString;
 
-
 	/**
 	 * Costruttore del nodo contenente la dichiarazione di una funzione
-	 * @param id ID della Funzione
-	 * @param t Nodo contenete o il tipo di ritorno o il tipo freccia
+	 * 
+	 * @param id
+	 *            ID della Funzione
+	 * @param t
+	 *            Nodo contenete o il tipo di ritorno o il tipo freccia
 	 */
 	public DecFunNode(String id, Node t) {
 		this(id);
-		
 		funType = t;
 	}
-	
-	protected DecFunNode(String id){
+
+	protected DecFunNode(String id) {
 		funName = id;
 		funParams = new ArrayList<ParamNode>();
-
-		this.typeChecked = false;
-		this.typeString = "";
+		typeChecked = false;
+		typeString = "";
 		funLocalVariables = new ArrayList<Node>();
 	}
 
 	/**
 	 * Getter per tipo ritorno della funzione
+	 * 
 	 * @return Node contenente tipo di ritorno della funzione
 	 */
 	public Node getFunType() {
@@ -56,15 +57,17 @@ public class DecFunNode extends Node {
 		}
 		funParamsToPrint += "</FunParams>";
 
-		String funLocalVarToPrint="<FunLocalVar>";
+		String funLocalVarToPrint = "<FunLocalVar>";
 		for (Node p : funLocalVariables) {
 			funLocalVarToPrint += p.toPrint();
 		}
 		funLocalVarToPrint += "</FunLocalVar>";
 
-		return "<DecFunNode><FunName>" + funName + "</FunName>" +"<FunType>"
-		+ funType.toPrint() + "</FunType>" + funParamsToPrint+funLocalVarToPrint
-		+ "<FunBody>" + funBody.toPrint() + "</FunBody></DecFunNode>";
+		return "<" + this.getClass().getName() + "><FunName>" + funName
+				+ "</FunName>" + "<FunType>" + funType.toPrint() + "</FunType>"
+				+ funParamsToPrint + funLocalVarToPrint + "<FunBody>"
+				+ funBody.toPrint() + "</FunBody></"
+				+ this.getClass().getName() + ">";
 	}
 
 	@Override
@@ -72,7 +75,21 @@ public class DecFunNode extends Node {
 
 		if (!typeChecked) {
 
-			//TODO Controllare 
+			// Controllo che se è un caso in cui la dichiarazione che come tipo
+			// ha un arrow type node
+			// Allora il numero di parametri nel tipo corrisponda con quello nei
+			// parametri della dichiarazioene.
+			if (funType.getNodeType() == NodeType.ARROWTYPE_NODE) {
+				if (((ArrowTypeNode) funType).getParTypes().size() != funParams
+						.size()) {
+					System.out
+					.println(this.getClass().getName()
+							+ " TypeCheck Error: Number of arrowType params are wrong");
+					System.exit(0);
+				}
+			}
+
+
 			for (Node localVariable : funLocalVariables)
 				localVariable.typeCheck();
 
@@ -81,22 +98,21 @@ public class DecFunNode extends Node {
 				typeChecked = true;
 			} else {
 				System.out
-				.println("TypeCheck Error: funtype and funBody are incompatible: "
-						+ funType.typeCheck()
-						+ ", "
+				.println(this.getClass().getName()
+						+ " TypeCheck Error: funtype and funBody are incompatible: "
+						+ funType.typeCheck() + ", "
 						+ funBody.typeCheck() + ".Shutdown parser");
 				System.exit(0);
 			}
-
 
 		}
 
 		return typeString;
 	}
 
-
 	/**
-	 * Il Codegen del DecFunNode prevede tutte le operazioni da effettuare una volta che una funzione viene chiamarta
+	 * Il Codegen del DecFunNode prevede tutte le operazioni da effettuare una
+	 * volta che una funzione viene chiamarta
 	 */
 	@Override
 	public String codeGen() {
@@ -108,10 +124,10 @@ public class DecFunNode extends Node {
 
 		for (int i = 0; i < funParams.size(); i++) {
 			NodeType nt = this.funParams.get(i).getType().getNodeType();
-			
-			if(nt == NodeType.ARROWTYPE_NODE)
-				popParSequence += VMCommands.POP +"\n"+ VMCommands.POP + "\n";
-			else 
+
+			if (nt == NodeType.ARROWTYPE_NODE)
+				popParSequence += VMCommands.POP + "\n" + VMCommands.POP + "\n";
+			else
 				popParSequence += VMCommands.POP + "\n";
 		}
 
@@ -120,50 +136,50 @@ public class DecFunNode extends Node {
 			popLocalVariable += VMCommands.POP + "\n";
 		}
 
-		String code = labelFun + " :\n" + 
-				//Preparo parte bassa dell'activation Record
+		String code = labelFun + " :\n" +
+				// Preparo parte bassa dell'activation Record
 
-				//Il registro FP punterà al nuovo Activation Record
-				VMCommands.CFP + "\n"
+		// Il registro FP punterà al nuovo Activation Record
+		VMCommands.CFP + "\n"
 
-				//PUSH dei dati Locali
-				+ localVariableCodeGen +
+		// PUSH dei dati Locali
+		+ localVariableCodeGen +
 
-				//PUSH return address del chiamante
-				VMCommands.LRA + "\n"
+		// PUSH return address del chiamante
+		VMCommands.LRA + "\n"
 
-				//Corpo della funzione
-				+ funBody.codeGen() + 
+		// Corpo della funzione
+		+ funBody.codeGen() +
 
-				//POP RV e salvo nel registro
-				VMCommands.SRV + "\n" + 
+		// POP RV e salvo nel registro
+		VMCommands.SRV + "\n" +
 
-				//POP RA e salvo nel registro
-				VMCommands.SRA + "\n" + 
+		// POP RA e salvo nel registro
+		VMCommands.SRA + "\n" +
 
-				//Rimuovo variabili locali
-				popLocalVariable+
-				//Rimuovo Access Link
-				VMCommands.POP + "\n"+ 
-				//Rimuovo Pametri
-				popParSequence + 
+		// Rimuovo variabili locali
+		popLocalVariable +
+		// Rimuovo Access Link
+		VMCommands.POP + "\n" +
+		// Rimuovo Pametri
+		popParSequence +
 
-				//Ripristino il Registro FP che punterà all'Activation Record del chiamante
-				VMCommands.SFP + "\n" + 
+		// Ripristino il Registro FP che punterà all'Activation Record
+		// del chiamante
+		VMCommands.SFP + "\n" +
 
-				//PUSH valore di ritorno 
-				VMCommands.LRV + "\n" + 
-				//PUSH indirizzo di ritorno
-				VMCommands.LRA + "\n" + 
+		// PUSH valore di ritorno
+		VMCommands.LRV + "\n" +
+		// PUSH indirizzo di ritorno
+		VMCommands.LRA + "\n" +
 
-				//Salto al Chiamante
-				VMCommands.JS + "\n";
+		// Salto al Chiamante
+		VMCommands.JS + "\n";
 
 		MiniFunLib.addFunctionCode(code);
 
 		return VMCommands.PUSH + " " + labelFun + "\n";
 	}
-
 
 	public void addParam(ParamNode param) {
 

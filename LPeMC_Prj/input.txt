@@ -1,16 +1,29 @@
 let 
-	fun test : (int)->int (par) {
+	fun test : (int,int)->int (par,b) {
+	
+		fun prn : ((int)->bool,int)->bool (f1,c) {f1(c)};
 		
-		fun prn : ((int)->int,int)->int (f1,c) {f1(c)};
-		
-		fun nested: (int)->int (p) 
+		fun nested: (int,int)->int (p,f) 
 		{
-			fun mult : (int)->int (d) { d*d};
+			fun mult : (int)->bool (d) { 
+					if (d*d>=100) 
+					then 
+					{
+						true
+						
+					}
+					else
+					{
+						false
+					}
+				};
 			
-			prn(mult,p)
+			if (not( prn(mult,p))) 
+			then { f+p }
+			else { f*p }
 		};
 		
-		nested(par)
+		nested(par,b)
 	}; 
 	
-in print(test(10));
+in print(test(10,10));

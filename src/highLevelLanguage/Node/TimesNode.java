@@ -5,47 +5,45 @@ import highLevelLanguage.utils.VMCommands;
 
 public class TimesNode extends Node {
 
-	private Node left;
-	private Node right;
+    private Node left;
+    private Node right;
 
-	public TimesNode(Node left, Node right) {
+    public TimesNode(Node left, Node right) {
+	this.left = left;
+	this.right = right;
+    }
 
-		this.left = left;
-		this.right = right;
-	}
+    @Override
+    public String toPrint() {
+	return "<TimesNode><TimesNodeLeft>" + left.toPrint()
+		+ "</TimesNodeLeft><TimesNodeRight>" + right.toPrint()
+		+ "</TimesNodeRight></TimesNode>";
+    }
 
-	@Override
-	public String toPrint() {
+    @Override
+    public String typeCheck() {
+	if ((MiniFunLib.isCompatible(left, new IntTypeNode()))
+		&& (MiniFunLib.isCompatible(right, new IntTypeNode())))
+	    return MiniFunLib.INT;
 
-		return "<TimesNode><TimesNodeLeft>" + left.toPrint()
-				+ "</TimesNodeLeft><TimesNodeRight>" + right.toPrint()
-				+ "</TimesNodeRight></TimesNode>";
-	}
+	System.out
+		.println("Timesnode TypeCheck Error: Times operands are incompatible: "
+			+ left.typeCheck()
+			+ ", "
+			+ right.typeCheck()
+			+ ".Shutdown parser");
+	System.exit(0);
+	return "";
+    }
 
-	@Override
-	public String typeCheck() {
+    @Override
+    public String codeGen() {
+	return left.codeGen() + right.codeGen() + VMCommands.MULT + "\n";
+    }
 
-		if ((MiniFunLib.isCompatible(left, new IntTypeNode()))
-				&& (MiniFunLib.isCompatible(right, new IntTypeNode())))
-			return MiniFunLib.INT;
-
-		System.out.println("TypeCheck Error: Times operands are incompatible: "
-				+ left.typeCheck() + ", " + right.typeCheck()
-				+ ".Shutdown parser");
-		System.exit(0);
-		return "";
-	}
-
-	@Override
-	public String codeGen() {
-
-		return left.codeGen() + right.codeGen() + VMCommands.MULT + "\n";
-	}
-
-	@Override
-	public NodeType getNodeType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public NodeType getNodeType() {
+	return NodeType.TIMES_NODE;
+    }
 
 }
