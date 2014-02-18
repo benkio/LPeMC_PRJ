@@ -54,7 +54,8 @@ declist returns [ArrayList<Node> astList]
 	    	$astList.add(vn);
 	    }
 	  	|
-	   	FUN i=ID {DecFunNode fn = null;} COL rt=type 	
+	   	FUN i=ID {DecFunNode fn = null;} (LAPAR pt=parametricType RANPAR {STentry entry = new STentry($pt.ast,-1);HashMap<String,STentry> hm= symTable.get(nestingLevel);})? 
+	   	COL rt=type 	
 	   	{
 	   		fn = new DecFunNode($i.text,$rt.ast);
 	   		
@@ -217,6 +218,7 @@ fatt	returns [Node ast]
 	   	}
 	} 
 	( 
+		(LAPAR (baseType | parametricType) RANPAR)?
 		LPAR 
 		{ArrayList<Node> parList = new ArrayList<Node>();}
 		
@@ -278,14 +280,14 @@ arrowType returns [Node ast]
  			$ast=atn;
  		};
  
- genericType returns[Node ast]
- 	:	GENERICTYPE;
+ parametricType returns[Node ast]
+ 	:	pt=PARAMETRICTYPE {$ast= new ParametricTypeNode($pt.text);};
   		
 /*------------------------------------------------------------------
  * LEXER RULES
  *------------------------------------------------------------------*/
 
-GENERICTYPE	: 'A'..'Z';
+PARAMETRICTYPE	: 'A'..'Z';
 LET 		: 'let' ;
 IN			: 'in' ;
 SEMIC		: ';' ;
@@ -294,6 +296,8 @@ DOUBLECOL	: '::' ;
 COMMA		: ',' ;
 ASS			: '=' ;
 EQ			: '==' ;
+LAPAR		: '<';
+RANPAR		: '>';
 LESSEQ 		: '<=';
 GREATEREQ	: '>=';		 
 PLUS		: '+' ;
