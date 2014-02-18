@@ -54,8 +54,8 @@ declist returns [ArrayList<Node> astList]
 	    	$astList.add(vn);
 	    }
 	  	|
-	   	FUN i=ID {DecFunNode fn = null;} (LAPAR pt=parametricType RANPAR {STentry entry = new STentry($pt.ast,-1);HashMap<String,STentry> hm= symTable.get(nestingLevel);})? 
-	   	COL rt=type 	
+	   	FUN i=ID {DecFunNode fn = null;} ( pt=genericParamType {STentry entry = new STentry($pt.ast,-1);HashMap<String,STentry> hm= symTable.get(nestingLevel);})? 
+	   	COL (rt=baseType 	
 	   	{
 	   		fn = new DecFunNode($i.text,$rt.ast);
 	   		
@@ -77,7 +77,7 @@ declist returns [ArrayList<Node> astList]
 		        int parCont=0;
 		 	} 
 		    (
-			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);} (COL fpt=type {pn.addType($fpt.ast); if($fpt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}})? 
+			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);} (gpt=genericType {paramNode.addGenericType($gpt.ast);} | COL fpt=type {pn.addType($fpt.ast); if($fpt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}})
 			    {
 			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
 			    		Node tp = ((ArrowTypeNode)$rt.ast).getParType(parCont);
@@ -94,7 +94,7 @@ declist returns [ArrayList<Node> astList]
 			        fn.addParam(pn);
 			        parCont++;
 			  	}
-			    (COMMA pi=ID {pn = new ParamNode($pi.text);}  (COL pt=type{pn.addType($pt.ast); if($pt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}})? 
+			    (COMMA pi=ID {pn = new ParamNode($pi.text);} (gpt=genericType {paramNode.addGenericType($gpt.ast);} | COL pt=type{pn.addType($pt.ast); if($pt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}})
 			    {
 			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
 			    		Node tp =((ArrowTypeNode) $rt.ast).getParType(parCont);
@@ -114,7 +114,68 @@ declist returns [ArrayList<Node> astList]
 			        }
 			        fn.addParam(pn);
 			   	})*
-		   	)?  
+		   	)?
+		   	 | rt=arrowType 	
+	   	{
+	   		fn = new DecFunNode($i.text,$rt.ast);
+	   		
+	    	STentry entry = new STentry(fn,offSet++);
+	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);
+	    	
+	    	if (hm.put($i.text,entry) != null){
+	    		System.out.println("Identifier "+$i.text+" at line "+$i.line+" already defined");
+	      		System.exit(0);
+	      	}
+	  	}
+	  	LPAR 
+		   	{
+		   		
+		        int parOffSet=-1;
+		        hm = new HashMap<String,STentry>();
+		        symTable.add(hm);
+		        nestingLevel++;
+		        int parCont=0;
+		 	} 
+		    (
+			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);} (gpt=genericType {paramNode.addGenericType($gpt.ast);})?
+			    {
+			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
+			    		Node tp = ((ArrowTypeNode)$rt.ast).getParType(parCont);
+			    		
+			    		
+			    		if( tp!=null && tp.getNodeType() == NodeType.ARROWTYPE_NODE){
+			    			parOffSet-=1;
+			    		}
+			    		System.out.println(parOffSet);
+			    		pn.addType(tp);
+			    	}
+			       	entry = new STentry(pn,parOffSet--);
+			        hm.put($fpi.text,entry);
+			        fn.addParam(pn);
+			        parCont++;
+			  	}
+			    (COMMA pi=ID {pn = new ParamNode($pi.text);} (gpt=genericType {paramNode.addGenericType($gpt.ast);}) ?
+			    {
+			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
+			    		Node tp =((ArrowTypeNode) $rt.ast).getParType(parCont);
+			    		
+			    		if(tp!=null && tp.getNodeType() == NodeType.ARROWTYPE_NODE){
+			    			parOffSet-=1;
+			    		}
+			    		System.out.println(parOffSet);
+			    		pn.addType(tp);
+			    		parCont++;
+			    	}
+			    	
+			        entry = new STentry(pn,parOffSet--);
+			        if (hm.put($pi.text,entry) != null){
+			        	System.out.println("Identifier "+$pi.text+" at line "+$pi.line+" already defined");
+			           	System.exit(0);
+			        }
+			        fn.addParam(pn);
+			   	})*
+		   	)?
+		   	 )
 	    RPAR  
 	    CLPAR 
 	    (
@@ -217,8 +278,8 @@ fatt	returns [Node ast]
 	   		$ast = new VarNode(entry,nestingLevel-declNL); 
 	   	}
 	} 
-	( 
-		(LAPAR (baseType | parametricType) RANPAR)?
+	 (concreteGenericType)?
+	 ( 
 		LPAR 
 		{ArrayList<Node> parList = new ArrayList<Node>();}
 		
@@ -255,23 +316,31 @@ fatt	returns [Node ast]
 		{$ast= new NotNode($e.ast);}  	
  	; 
  
+
+/*
+*	ESEMPI DI ARROWTYPE PER GIUSTIFICARE LA SCELTA
+*	l<X>:(int,bool,(int,<X>)->int, ()-><X>, list[int], list[X])->int
+* 	ATTENZIONE <int> lo facciamo corrispondere ad un int
+*/
+
 type	returns [Node ast]
 	: bt=baseType {$ast = $bt.ast;}
   	| at=arrowType {$ast = $at.ast;}
+	| lt=listType {$ast = $lt.ast; }
   	;
  
 baseType returns [Node ast]
-	:	INTTYPE  {$ast= new IntTypeNode();}  
-  	| 	BOOLTYPE {$ast= new BoolTypeNode();}
+	: INTTYPE  {$ast= new IntTypeNode();}  
+  	| BOOLTYPE {$ast= new BoolTypeNode();}
   	;
   	
  
 arrowType returns [Node ast]
  	: 	LPAR{ArrowTypeNode atn= new ArrowTypeNode();} 
  			(
- 				t1=type{atn.addParType($t1.ast);}
+ 				(t1=type| t1=genericType ) {atn.addParType($t1.ast);}
  				(
- 					COMMA tn=type {atn.addParType($tn.ast);}
+ 					COMMA (tn=type | tn=genericType ) {atn.addParType($tn.ast);} 
  				)*
  			)? 
  		RPAR ARROW rt=baseType
@@ -279,16 +348,26 @@ arrowType returns [Node ast]
  			atn.addRetType($rt.ast); 
  			$ast=atn;
  		};
- 
- parametricType returns[Node ast]
- 	:	pt=PARAMETRICTYPE {$ast= new ParametricTypeNode($pt.text);};
   		
+genericType returns[Node ast] 
+		:	gpt=genericParamType { $ast = $gpt.ast; }
+		|	cgt=concreteGenericType { $ast = $cgt.ast; };
+
+genericParamType returns [Node ast]
+		:	LANPAR i=ID RANPAR { $ast = new genericTypeNode($i.text); };
+
+concreteGenericType returns [Node ast]
+		:	 LANPAR bt=baseType RANPAR { $ast = $bt.ast; };		
+
+listType returns [Node ast]
+	: LIST SLPAR bt=baseType SRPAR { $ast = new genericListParamTypeNode($bt.ast); }
+	| LIST SLPAR i=ID SRPAR { $ast = new concreteListParamTypeNode($i.text);};
 /*------------------------------------------------------------------
  * LEXER RULES
  *------------------------------------------------------------------*/
 
-PARAMETRICTYPE	: 'A'..'Z';
 LET 		: 'let' ;
+LIST		: 'list';
 IN			: 'in' ;
 SEMIC		: ';' ;
 COL			: ':' ;
@@ -296,7 +375,7 @@ DOUBLECOL	: '::' ;
 COMMA		: ',' ;
 ASS			: '=' ;
 EQ			: '==' ;
-LAPAR		: '<';
+LANPAR		: '<';
 RANPAR		: '>';
 LESSEQ 		: '<=';
 GREATEREQ	: '>=';		 
