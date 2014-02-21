@@ -54,11 +54,16 @@ declist returns [ArrayList<Node> astList]
 	    	$astList.add(vn);
 	    }
 	  	|
-	   	FUN i=ID {DecFunNode fn = null;} ( pt=genericParamType {STentry entry = new STentry($pt.ast,-1);HashMap<String,STentry> hm= symTable.get(nestingLevel);})? 
+	   	FUN i=ID {DecFunNode fn = null;} 
+	   	(
+	   	 pt=genericParamType 
+	   	 {
+	   	 	STentry entry = new STentry($pt.ast,-1);
+	   	 	HashMap<String,STentry> hm= symTable.get(nestingLevel);}
+	   	 )? 
 	   	COL (rt=baseType 	
 	   	{
-	   		fn = new DecFunNode($i.text,$rt.ast);
-	   		
+	   		fn = new DecFunNode($i.text,$rt.ast,$pt.ast);
 	    	STentry entry = new STentry(fn,offSet++);
 	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);
 	    	
@@ -77,7 +82,11 @@ declist returns [ArrayList<Node> astList]
 		        int parCont=0;
 		 	} 
 		    (
-			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);} (gpt=genericType {paramNode.addGenericType($gpt.ast);} | COL fpt=type {pn.addType($fpt.ast); if($fpt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}})
+			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);}
+			     (
+			    	 gpt=genericType {pn.addGenericType($gpt.ast);} 
+			    	 | COL fpt=type {pn.addType($fpt.ast); if($fpt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}}
+			     )
 			    {
 			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
 			    		Node tp = ((ArrowTypeNode)$rt.ast).getParType(parCont);
@@ -94,7 +103,7 @@ declist returns [ArrayList<Node> astList]
 			        fn.addParam(pn);
 			        parCont++;
 			  	}
-			    (COMMA pi=ID {pn = new ParamNode($pi.text);} (gpt=genericType {paramNode.addGenericType($gpt.ast);} | COL pt=type{pn.addType($pt.ast); if($pt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}})
+			    (COMMA pi=ID {pn = new ParamNode($pi.text);} (gpt=genericType {pn.addGenericType($gpt.ast);} | COL pt=type{pn.addType($pt.ast); if($pt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}})
 			    {
 			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
 			    		Node tp =((ArrowTypeNode) $rt.ast).getParType(parCont);
@@ -117,7 +126,7 @@ declist returns [ArrayList<Node> astList]
 		   	)?
 		   	 | rt=arrowType 	
 	   	{
-	   		fn = new DecFunNode($i.text,$rt.ast);
+	   		fn = new DecFunNode($i.text,$rt.ast, $pt.ast);
 	   		
 	    	STentry entry = new STentry(fn,offSet++);
 	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);
@@ -137,7 +146,7 @@ declist returns [ArrayList<Node> astList]
 		        int parCont=0;
 		 	} 
 		    (
-			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);} (gpt=genericType {paramNode.addGenericType($gpt.ast);})?
+			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);} (gpt=genericType {pn.addGenericType($gpt.ast);})?
 			    {
 			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
 			    		Node tp = ((ArrowTypeNode)$rt.ast).getParType(parCont);
@@ -154,7 +163,7 @@ declist returns [ArrayList<Node> astList]
 			        fn.addParam(pn);
 			        parCont++;
 			  	}
-			    (COMMA pi=ID {pn = new ParamNode($pi.text);} (gpt=genericType {paramNode.addGenericType($gpt.ast);}) ?
+			    (COMMA pi=ID {pn = new ParamNode($pi.text);} (gpt=genericType {pn.addGenericType($gpt.ast);}) ?
 			    {
 			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
 			    		Node tp =((ArrowTypeNode) $rt.ast).getParType(parCont);
@@ -258,6 +267,7 @@ fatt	returns [Node ast]
 	{
 	  	HashMap<String,STentry> hm;
 	   	STentry entry=null;
+	   	Node genericType = null;
 	   	int declNL;
 	   	for(declNL=nestingLevel; declNL>=0; declNL--){
 	   		hm = symTable.get(declNL);
@@ -278,7 +288,7 @@ fatt	returns [Node ast]
 	   		$ast = new VarNode(entry,nestingLevel-declNL); 
 	   	}
 	} 
-	 (concreteGenericType)?
+	 (cgt=concreteGenericType { genericType = $cgt.ast; })?
 	 ( 
 		LPAR 
 		{ArrayList<Node> parList = new ArrayList<Node>();}
@@ -289,11 +299,12 @@ fatt	returns [Node ast]
 		)? 
 		RPAR {
 			if(entry.getNode().getNodeType()==NodeType.PARAM_NODE){
-				$ast = new HigherOrderFunNode(entry,nestingLevel-declNL,parList);
+				$ast = new HigherOrderFunNode(entry,nestingLevel-declNL,parList, genericType );
 			}
 			else{
-				$ast = new FunNode(entry,nestingLevel-declNL,parList);
+				$ast = new FunNode(entry,nestingLevel-declNL,parList, genericType);
 			}
+
 		}
 	)?
 	| IF x=exp THEN CLPAR y=exp CRPAR 
@@ -360,8 +371,8 @@ concreteGenericType returns [Node ast]
 		:	 LANPAR bt=baseType RANPAR { $ast = $bt.ast; };		
 
 listType returns [Node ast]
-	: LIST SLPAR bt=baseType SRPAR { $ast = new genericListParamTypeNode($bt.ast); }
-	| LIST SLPAR i=ID SRPAR { $ast = new concreteListParamTypeNode($i.text);};
+	: LIST SLPAR bt=baseType SRPAR { $ast = new concreteListParamTypeNode($bt.ast); }
+	| LIST SLPAR i=ID SRPAR { $ast = new genericListParamTypeNode($i.text);};
 /*------------------------------------------------------------------
  * LEXER RULES
  *------------------------------------------------------------------*/

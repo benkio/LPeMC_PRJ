@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class HigherOrderFunNode extends FunNode {
 
     public HigherOrderFunNode(STentry entry, int diffNesting,
-	    ArrayList<Node> params) {
-	super(entry, diffNesting, params);
+	    ArrayList<Node> params, Node genericType) {
+	super(entry, diffNesting, params, genericType);
     }
 
     @Override
@@ -42,7 +42,6 @@ public class HigherOrderFunNode extends FunNode {
 	    // Controllo di avere lo stesso numero di parametri
 	    if (decFunNodeParams.size() == funParams.size()) {
 
-		
 		// Controllo ad uno ad un la compatibilità dei Parametri con la
 		// loro dichiarazione
 		for (int i = 0; i < funParams.size(); i++) {
