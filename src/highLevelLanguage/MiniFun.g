@@ -84,7 +84,7 @@ declist returns [ArrayList<Node> astList]
 		    (
 			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);}
 			     (
-			    	 gpt=genericType {pn.addGenericType($gpt.ast);} 
+			    	 gpt=genericParamType {pn.addGenericType($gpt.ast);} 
 			    	 | COL fpt=type {pn.addType($fpt.ast); if($fpt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}}
 			     )
 			    {
@@ -103,7 +103,7 @@ declist returns [ArrayList<Node> astList]
 			        fn.addParam(pn);
 			        parCont++;
 			  	}
-			    (COMMA pi=ID {pn = new ParamNode($pi.text);} (gpt=genericType {pn.addGenericType($gpt.ast);} | COL pt=type{pn.addType($pt.ast); if($pt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}})
+			    (COMMA pi=ID {pn = new ParamNode($pi.text);} (gpt=genericParamType {pn.addGenericType($gpt.ast);} | COL pt=type{pn.addType($pt.ast); if($pt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}})
 			    {
 			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
 			    		Node tp =((ArrowTypeNode) $rt.ast).getParType(parCont);
@@ -146,7 +146,7 @@ declist returns [ArrayList<Node> astList]
 		        int parCont=0;
 		 	} 
 		    (
-			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);} (gpt=genericType {pn.addGenericType($gpt.ast);})?
+			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);} (gpt=genericParamType {pn.addGenericType($gpt.ast);})?
 			    {
 			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
 			    		Node tp = ((ArrowTypeNode)$rt.ast).getParType(parCont);
@@ -163,7 +163,7 @@ declist returns [ArrayList<Node> astList]
 			        fn.addParam(pn);
 			        parCont++;
 			  	}
-			    (COMMA pi=ID {pn = new ParamNode($pi.text);} (gpt=genericType {pn.addGenericType($gpt.ast);}) ?
+			    (COMMA pi=ID {pn = new ParamNode($pi.text);} (gpt=genericParamType {pn.addGenericType($gpt.ast);}) ?
 			    {
 			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
 			    		Node tp =((ArrowTypeNode) $rt.ast).getParType(parCont);
@@ -349,9 +349,9 @@ baseType returns [Node ast]
 arrowType returns [Node ast]
  	: 	LPAR{ArrowTypeNode atn= new ArrowTypeNode();} 
  			(
- 				(t1=type| t1=genericType ) {atn.addParType($t1.ast);}
+ 				(t1=type| t1=genericParamType ) {atn.addParType($t1.ast);}
  				(
- 					COMMA (tn=type | tn=genericType ) {atn.addParType($tn.ast);} 
+ 					COMMA (tn=type | tn=genericParamType ) {atn.addParType($tn.ast);} 
  				)*
  			)? 
  		RPAR ARROW rt=baseType
@@ -359,20 +359,23 @@ arrowType returns [Node ast]
  			atn.addRetType($rt.ast); 
  			$ast=atn;
  		};
-  		
-genericType returns[Node ast] 
-		:	gpt=genericParamType { $ast = $gpt.ast; }
-		|	cgt=concreteGenericType { $ast = $cgt.ast; };
-
+ 		
 genericParamType returns [Node ast]
-		:	LANPAR i=ID RANPAR { $ast = new genericTypeNode($i.text); };
+		:	LANPAR {genericTypeNode genericType = null;} 
+			(i=ID {
+				 if (genericType == null) genericType = new genericTypeNode($i.text); else genericType.addType($i.text); 
+				}
+			)+  RANPAR{ $ast = genericType;};
 
 concreteGenericType returns [Node ast]
-		:	 LANPAR bt=baseType RANPAR { $ast = $bt.ast; };		
+		:	 LANPAR { concreteGenericType genericType = null; }
+			(bt=baseType {if (genericType == null) genericType = new concreteGenericType($bt.ast); else genericType.addType($bt.ast); }
+			)+ RANPAR { $ast = genericType;}; 		
 
 listType returns [Node ast]
-	: LIST SLPAR bt=baseType SRPAR { $ast = new concreteListParamTypeNode($bt.ast); }
-	| LIST SLPAR i=ID SRPAR { $ast = new genericListParamTypeNode($i.text);};
+	: LIST SLPAR (	(bt=baseType { $ast = new concreteListParamTypeNode($bt.ast); })
+			| (i=ID  {$ast = new genericListParamTypeNode($i.text); })
+	) SRPAR;
 /*------------------------------------------------------------------
  * LEXER RULES
  *------------------------------------------------------------------*/

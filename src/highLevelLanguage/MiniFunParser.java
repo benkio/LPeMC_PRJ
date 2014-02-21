@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g 2014-02-21 16:48:28
+// $ANTLR 3.5.1 /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g 2014-02-21 19:06:50
 
 package highLevelLanguage;
 
@@ -140,7 +140,7 @@ public class MiniFunParser extends Parser {
 
 
 	// $ANTLR start "declist"
-	// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:37:1: declist returns [ArrayList<Node> astList] : ( VAR i= ID COL t= baseType ASS e= exp SEMIC | FUN i= ID (pt= genericParamType )? COL (rt= baseType LPAR (fpi= ID (gpt= genericType | COL fpt= type ) ( COMMA pi= ID (gpt= genericType | COL pt= type ) )* )? |rt= arrowType LPAR (fpi= ID (gpt= genericType )? ( COMMA pi= ID (gpt= genericType )? )* )? ) RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC )* ;
+	// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:37:1: declist returns [ArrayList<Node> astList] : ( VAR i= ID COL t= baseType ASS e= exp SEMIC | FUN i= ID (pt= genericParamType )? COL (rt= baseType LPAR (fpi= ID (gpt= genericParamType | COL fpt= type ) ( COMMA pi= ID (gpt= genericParamType | COL pt= type ) )* )? |rt= arrowType LPAR (fpi= ID (gpt= genericParamType )? ( COMMA pi= ID (gpt= genericParamType )? )* )? ) RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC )* ;
 	public final ArrayList<Node> declist() throws RecognitionException {
 		ArrayList<Node> astList = null;
 
@@ -157,14 +157,14 @@ public class MiniFunParser extends Parser {
 		ArrayList<Node> dec =null;
 
 		try {
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:38:3: ( ( VAR i= ID COL t= baseType ASS e= exp SEMIC | FUN i= ID (pt= genericParamType )? COL (rt= baseType LPAR (fpi= ID (gpt= genericType | COL fpt= type ) ( COMMA pi= ID (gpt= genericType | COL pt= type ) )* )? |rt= arrowType LPAR (fpi= ID (gpt= genericType )? ( COMMA pi= ID (gpt= genericType )? )* )? ) RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC )* )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:38:4: ( VAR i= ID COL t= baseType ASS e= exp SEMIC | FUN i= ID (pt= genericParamType )? COL (rt= baseType LPAR (fpi= ID (gpt= genericType | COL fpt= type ) ( COMMA pi= ID (gpt= genericType | COL pt= type ) )* )? |rt= arrowType LPAR (fpi= ID (gpt= genericType )? ( COMMA pi= ID (gpt= genericType )? )* )? ) RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC )*
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:38:3: ( ( VAR i= ID COL t= baseType ASS e= exp SEMIC | FUN i= ID (pt= genericParamType )? COL (rt= baseType LPAR (fpi= ID (gpt= genericParamType | COL fpt= type ) ( COMMA pi= ID (gpt= genericParamType | COL pt= type ) )* )? |rt= arrowType LPAR (fpi= ID (gpt= genericParamType )? ( COMMA pi= ID (gpt= genericParamType )? )* )? ) RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC )* )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:38:4: ( VAR i= ID COL t= baseType ASS e= exp SEMIC | FUN i= ID (pt= genericParamType )? COL (rt= baseType LPAR (fpi= ID (gpt= genericParamType | COL fpt= type ) ( COMMA pi= ID (gpt= genericParamType | COL pt= type ) )* )? |rt= arrowType LPAR (fpi= ID (gpt= genericParamType )? ( COMMA pi= ID (gpt= genericParamType )? )* )? ) RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC )*
 			{
 
 						astList = new ArrayList<Node>();
 				   		int offSet=1;
 				   	
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:43:5: ( VAR i= ID COL t= baseType ASS e= exp SEMIC | FUN i= ID (pt= genericParamType )? COL (rt= baseType LPAR (fpi= ID (gpt= genericType | COL fpt= type ) ( COMMA pi= ID (gpt= genericType | COL pt= type ) )* )? |rt= arrowType LPAR (fpi= ID (gpt= genericType )? ( COMMA pi= ID (gpt= genericType )? )* )? ) RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC )*
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:43:5: ( VAR i= ID COL t= baseType ASS e= exp SEMIC | FUN i= ID (pt= genericParamType )? COL (rt= baseType LPAR (fpi= ID (gpt= genericParamType | COL fpt= type ) ( COMMA pi= ID (gpt= genericParamType | COL pt= type ) )* )? |rt= arrowType LPAR (fpi= ID (gpt= genericParamType )? ( COMMA pi= ID (gpt= genericParamType )? )* )? ) RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC )*
 			loop11:
 			while (true) {
 				int alt11=3;
@@ -208,7 +208,7 @@ public class MiniFunParser extends Parser {
 					}
 					break;
 				case 2 :
-					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:57:6: FUN i= ID (pt= genericParamType )? COL (rt= baseType LPAR (fpi= ID (gpt= genericType | COL fpt= type ) ( COMMA pi= ID (gpt= genericType | COL pt= type ) )* )? |rt= arrowType LPAR (fpi= ID (gpt= genericType )? ( COMMA pi= ID (gpt= genericType )? )* )? ) RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:57:6: FUN i= ID (pt= genericParamType )? COL (rt= baseType LPAR (fpi= ID (gpt= genericParamType | COL fpt= type ) ( COMMA pi= ID (gpt= genericParamType | COL pt= type ) )* )? |rt= arrowType LPAR (fpi= ID (gpt= genericParamType )? ( COMMA pi= ID (gpt= genericParamType )? )* )? ) RPAR CLPAR ( (dec= declist ) e= exp ) CRPAR SEMIC
 					{
 					match(input,FUN,FOLLOW_FUN_in_declist142); 
 					i=(Token)match(input,ID,FOLLOW_ID_in_declist146); 
@@ -236,7 +236,7 @@ public class MiniFunParser extends Parser {
 					}
 
 					match(input,COL,FOLLOW_COL_in_declist192); 
-					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:64:10: (rt= baseType LPAR (fpi= ID (gpt= genericType | COL fpt= type ) ( COMMA pi= ID (gpt= genericType | COL pt= type ) )* )? |rt= arrowType LPAR (fpi= ID (gpt= genericType )? ( COMMA pi= ID (gpt= genericType )? )* )? )
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:64:10: (rt= baseType LPAR (fpi= ID (gpt= genericParamType | COL fpt= type ) ( COMMA pi= ID (gpt= genericParamType | COL pt= type ) )* )? |rt= arrowType LPAR (fpi= ID (gpt= genericParamType )? ( COMMA pi= ID (gpt= genericParamType )? )* )? )
 					int alt10=2;
 					int LA10_0 = input.LA(1);
 					if ( (LA10_0==BOOLTYPE||LA10_0==INTTYPE) ) {
@@ -254,7 +254,7 @@ public class MiniFunParser extends Parser {
 
 					switch (alt10) {
 						case 1 :
-							// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:64:11: rt= baseType LPAR (fpi= ID (gpt= genericType | COL fpt= type ) ( COMMA pi= ID (gpt= genericType | COL pt= type ) )* )?
+							// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:64:11: rt= baseType LPAR (fpi= ID (gpt= genericParamType | COL fpt= type ) ( COMMA pi= ID (gpt= genericParamType | COL pt= type ) )* )?
 							{
 							pushFollow(FOLLOW_baseType_in_declist197);
 							rt=baseType();
@@ -279,7 +279,7 @@ public class MiniFunParser extends Parser {
 									        nestingLevel++;
 									        int parCont=0;
 									 	
-							// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:84:7: (fpi= ID (gpt= genericType | COL fpt= type ) ( COMMA pi= ID (gpt= genericType | COL pt= type ) )* )?
+							// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:84:7: (fpi= ID (gpt= genericParamType | COL fpt= type ) ( COMMA pi= ID (gpt= genericParamType | COL pt= type ) )* )?
 							int alt5=2;
 							int LA5_0 = input.LA(1);
 							if ( (LA5_0==ID) ) {
@@ -287,11 +287,11 @@ public class MiniFunParser extends Parser {
 							}
 							switch (alt5) {
 								case 1 :
-									// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:85:8: fpi= ID (gpt= genericType | COL fpt= type ) ( COMMA pi= ID (gpt= genericType | COL pt= type ) )*
+									// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:85:8: fpi= ID (gpt= genericParamType | COL fpt= type ) ( COMMA pi= ID (gpt= genericParamType | COL pt= type ) )*
 									{
 									fpi=(Token)match(input,ID,FOLLOW_ID_in_declist241); 
 									ParamNode pn = new ParamNode((fpi!=null?fpi.getText():null));
-									// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:86:9: (gpt= genericType | COL fpt= type )
+									// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:86:9: (gpt= genericParamType | COL fpt= type )
 									int alt2=2;
 									int LA2_0 = input.LA(1);
 									if ( (LA2_0==LANPAR) ) {
@@ -309,10 +309,10 @@ public class MiniFunParser extends Parser {
 
 									switch (alt2) {
 										case 1 :
-											// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:87:10: gpt= genericType
+											// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:87:10: gpt= genericParamType
 											{
-											pushFollow(FOLLOW_genericType_in_declist266);
-											gpt=genericType();
+											pushFollow(FOLLOW_genericParamType_in_declist266);
+											gpt=genericParamType();
 											state._fsp--;
 
 											pn.addGenericType(gpt);
@@ -348,7 +348,7 @@ public class MiniFunParser extends Parser {
 												        fn.addParam(pn);
 												        parCont++;
 												  	
-									// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:106:8: ( COMMA pi= ID (gpt= genericType | COL pt= type ) )*
+									// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:106:8: ( COMMA pi= ID (gpt= genericParamType | COL pt= type ) )*
 									loop4:
 									while (true) {
 										int alt4=2;
@@ -359,12 +359,12 @@ public class MiniFunParser extends Parser {
 
 										switch (alt4) {
 										case 1 :
-											// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:106:9: COMMA pi= ID (gpt= genericType | COL pt= type )
+											// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:106:9: COMMA pi= ID (gpt= genericParamType | COL pt= type )
 											{
 											match(input,COMMA,FOLLOW_COMMA_in_declist317); 
 											pi=(Token)match(input,ID,FOLLOW_ID_in_declist321); 
 											pn = new ParamNode((pi!=null?pi.getText():null));
-											// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:106:53: (gpt= genericType | COL pt= type )
+											// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:106:53: (gpt= genericParamType | COL pt= type )
 											int alt3=2;
 											int LA3_0 = input.LA(1);
 											if ( (LA3_0==LANPAR) ) {
@@ -382,17 +382,17 @@ public class MiniFunParser extends Parser {
 
 											switch (alt3) {
 												case 1 :
-													// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:106:54: gpt= genericType
+													// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:106:54: gpt= genericParamType
 													{
-													pushFollow(FOLLOW_genericType_in_declist328);
-													gpt=genericType();
+													pushFollow(FOLLOW_genericParamType_in_declist328);
+													gpt=genericParamType();
 													state._fsp--;
 
 													pn.addGenericType(gpt);
 													}
 													break;
 												case 2 :
-													// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:106:103: COL pt= type
+													// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:106:108: COL pt= type
 													{
 													match(input,COL,FOLLOW_COL_in_declist334); 
 													pushFollow(FOLLOW_type_in_declist338);
@@ -440,7 +440,7 @@ public class MiniFunParser extends Parser {
 							}
 							break;
 						case 2 :
-							// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:127:10: rt= arrowType LPAR (fpi= ID (gpt= genericType )? ( COMMA pi= ID (gpt= genericType )? )* )?
+							// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:127:10: rt= arrowType LPAR (fpi= ID (gpt= genericParamType )? ( COMMA pi= ID (gpt= genericParamType )? )* )?
 							{
 							pushFollow(FOLLOW_arrowType_in_declist373);
 							rt=arrowType();
@@ -466,7 +466,7 @@ public class MiniFunParser extends Parser {
 									        nestingLevel++;
 									        int parCont=0;
 									 	
-							// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:148:7: (fpi= ID (gpt= genericType )? ( COMMA pi= ID (gpt= genericType )? )* )?
+							// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:148:7: (fpi= ID (gpt= genericParamType )? ( COMMA pi= ID (gpt= genericParamType )? )* )?
 							int alt9=2;
 							int LA9_0 = input.LA(1);
 							if ( (LA9_0==ID) ) {
@@ -474,11 +474,11 @@ public class MiniFunParser extends Parser {
 							}
 							switch (alt9) {
 								case 1 :
-									// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:149:8: fpi= ID (gpt= genericType )? ( COMMA pi= ID (gpt= genericType )? )*
+									// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:149:8: fpi= ID (gpt= genericParamType )? ( COMMA pi= ID (gpt= genericParamType )? )*
 									{
 									fpi=(Token)match(input,ID,FOLLOW_ID_in_declist417); 
 									ParamNode pn = new ParamNode((fpi!=null?fpi.getText():null));
-									// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:149:58: (gpt= genericType )?
+									// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:149:58: (gpt= genericParamType )?
 									int alt6=2;
 									int LA6_0 = input.LA(1);
 									if ( (LA6_0==LANPAR) ) {
@@ -486,10 +486,10 @@ public class MiniFunParser extends Parser {
 									}
 									switch (alt6) {
 										case 1 :
-											// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:149:59: gpt= genericType
+											// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:149:59: gpt= genericParamType
 											{
-											pushFollow(FOLLOW_genericType_in_declist424);
-											gpt=genericType();
+											pushFollow(FOLLOW_genericParamType_in_declist424);
+											gpt=genericParamType();
 											state._fsp--;
 
 											pn.addGenericType(gpt);
@@ -514,7 +514,7 @@ public class MiniFunParser extends Parser {
 												        fn.addParam(pn);
 												        parCont++;
 												  	
-									// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:166:8: ( COMMA pi= ID (gpt= genericType )? )*
+									// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:166:8: ( COMMA pi= ID (gpt= genericParamType )? )*
 									loop8:
 									while (true) {
 										int alt8=2;
@@ -525,12 +525,12 @@ public class MiniFunParser extends Parser {
 
 										switch (alt8) {
 										case 1 :
-											// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:166:9: COMMA pi= ID (gpt= genericType )?
+											// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:166:9: COMMA pi= ID (gpt= genericParamType )?
 											{
 											match(input,COMMA,FOLLOW_COMMA_in_declist447); 
 											pi=(Token)match(input,ID,FOLLOW_ID_in_declist451); 
 											pn = new ParamNode((pi!=null?pi.getText():null));
-											// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:166:53: (gpt= genericType )?
+											// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:166:53: (gpt= genericParamType )?
 											int alt7=2;
 											int LA7_0 = input.LA(1);
 											if ( (LA7_0==LANPAR) ) {
@@ -538,10 +538,10 @@ public class MiniFunParser extends Parser {
 											}
 											switch (alt7) {
 												case 1 :
-													// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:166:54: gpt= genericType
+													// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:166:54: gpt= genericParamType
 													{
-													pushFollow(FOLLOW_genericType_in_declist458);
-													gpt=genericType();
+													pushFollow(FOLLOW_genericParamType_in_declist458);
+													gpt=genericParamType();
 													state._fsp--;
 
 													pn.addGenericType(gpt);
@@ -1470,7 +1470,7 @@ public class MiniFunParser extends Parser {
 
 
 	// $ANTLR start "arrowType"
-	// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:349:1: arrowType returns [Node ast] : LPAR ( (t1= type |t1= genericType ) ( COMMA (tn= type |tn= genericType ) )* )? RPAR ARROW rt= baseType ;
+	// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:349:1: arrowType returns [Node ast] : LPAR ( (t1= type |t1= genericParamType ) ( COMMA (tn= type |tn= genericParamType ) )* )? RPAR ARROW rt= baseType ;
 	public final Node arrowType() throws RecognitionException {
 		Node ast = null;
 
@@ -1480,12 +1480,12 @@ public class MiniFunParser extends Parser {
 		Node rt =null;
 
 		try {
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:350:3: ( LPAR ( (t1= type |t1= genericType ) ( COMMA (tn= type |tn= genericType ) )* )? RPAR ARROW rt= baseType )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:350:6: LPAR ( (t1= type |t1= genericType ) ( COMMA (tn= type |tn= genericType ) )* )? RPAR ARROW rt= baseType
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:350:3: ( LPAR ( (t1= type |t1= genericParamType ) ( COMMA (tn= type |tn= genericParamType ) )* )? RPAR ARROW rt= baseType )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:350:6: LPAR ( (t1= type |t1= genericParamType ) ( COMMA (tn= type |tn= genericParamType ) )* )? RPAR ARROW rt= baseType
 			{
 			match(input,LPAR,FOLLOW_LPAR_in_arrowType1494); 
 			ArrowTypeNode atn= new ArrowTypeNode();
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:351:5: ( (t1= type |t1= genericType ) ( COMMA (tn= type |tn= genericType ) )* )?
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:351:5: ( (t1= type |t1= genericParamType ) ( COMMA (tn= type |tn= genericParamType ) )* )?
 			int alt25=2;
 			int LA25_0 = input.LA(1);
 			if ( (LA25_0==BOOLTYPE||(LA25_0 >= INTTYPE && LA25_0 <= LANPAR)||(LA25_0 >= LIST && LA25_0 <= LPAR)) ) {
@@ -1493,9 +1493,9 @@ public class MiniFunParser extends Parser {
 			}
 			switch (alt25) {
 				case 1 :
-					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:352:6: (t1= type |t1= genericType ) ( COMMA (tn= type |tn= genericType ) )*
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:352:6: (t1= type |t1= genericParamType ) ( COMMA (tn= type |tn= genericParamType ) )*
 					{
-					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:352:6: (t1= type |t1= genericType )
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:352:6: (t1= type |t1= genericParamType )
 					int alt22=2;
 					int LA22_0 = input.LA(1);
 					if ( (LA22_0==BOOLTYPE||LA22_0==INTTYPE||(LA22_0 >= LIST && LA22_0 <= LPAR)) ) {
@@ -1522,10 +1522,10 @@ public class MiniFunParser extends Parser {
 							}
 							break;
 						case 2 :
-							// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:352:16: t1= genericType
+							// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:352:16: t1= genericParamType
 							{
-							pushFollow(FOLLOW_genericType_in_arrowType1517);
-							t1=genericType();
+							pushFollow(FOLLOW_genericParamType_in_arrowType1517);
+							t1=genericParamType();
 							state._fsp--;
 
 							}
@@ -1534,7 +1534,7 @@ public class MiniFunParser extends Parser {
 					}
 
 					atn.addParType(t1);
-					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:353:6: ( COMMA (tn= type |tn= genericType ) )*
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:353:6: ( COMMA (tn= type |tn= genericParamType ) )*
 					loop24:
 					while (true) {
 						int alt24=2;
@@ -1545,10 +1545,10 @@ public class MiniFunParser extends Parser {
 
 						switch (alt24) {
 						case 1 :
-							// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:354:7: COMMA (tn= type |tn= genericType )
+							// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:354:7: COMMA (tn= type |tn= genericParamType )
 							{
 							match(input,COMMA,FOLLOW_COMMA_in_arrowType1536); 
-							// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:354:13: (tn= type |tn= genericType )
+							// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:354:13: (tn= type |tn= genericParamType )
 							int alt23=2;
 							int LA23_0 = input.LA(1);
 							if ( (LA23_0==BOOLTYPE||LA23_0==INTTYPE||(LA23_0 >= LIST && LA23_0 <= LPAR)) ) {
@@ -1575,10 +1575,10 @@ public class MiniFunParser extends Parser {
 									}
 									break;
 								case 2 :
-									// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:354:24: tn= genericType
+									// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:354:24: tn= genericParamType
 									{
-									pushFollow(FOLLOW_genericType_in_arrowType1547);
-									tn=genericType();
+									pushFollow(FOLLOW_genericParamType_in_arrowType1547);
+									tn=genericParamType();
 									state._fsp--;
 
 									}
@@ -1626,87 +1626,8 @@ public class MiniFunParser extends Parser {
 
 
 
-	// $ANTLR start "genericType"
-	// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:363:1: genericType returns [Node ast] : (gpt= genericParamType |cgt= concreteGenericType );
-	public final Node genericType() throws RecognitionException {
-		Node ast = null;
-
-
-		Node gpt =null;
-		Node cgt =null;
-
-		try {
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:364:3: (gpt= genericParamType |cgt= concreteGenericType )
-			int alt26=2;
-			int LA26_0 = input.LA(1);
-			if ( (LA26_0==LANPAR) ) {
-				int LA26_1 = input.LA(2);
-				if ( (LA26_1==ID) ) {
-					alt26=1;
-				}
-				else if ( (LA26_1==BOOLTYPE||LA26_1==INTTYPE) ) {
-					alt26=2;
-				}
-
-				else {
-					int nvaeMark = input.mark();
-					try {
-						input.consume();
-						NoViableAltException nvae =
-							new NoViableAltException("", 26, 1, input);
-						throw nvae;
-					} finally {
-						input.rewind(nvaeMark);
-					}
-				}
-
-			}
-
-			else {
-				NoViableAltException nvae =
-					new NoViableAltException("", 26, 0, input);
-				throw nvae;
-			}
-
-			switch (alt26) {
-				case 1 :
-					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:364:5: gpt= genericParamType
-					{
-					pushFollow(FOLLOW_genericParamType_in_genericType1604);
-					gpt=genericParamType();
-					state._fsp--;
-
-					 ast = gpt; 
-					}
-					break;
-				case 2 :
-					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:365:5: cgt= concreteGenericType
-					{
-					pushFollow(FOLLOW_concreteGenericType_in_genericType1614);
-					cgt=concreteGenericType();
-					state._fsp--;
-
-					 ast = cgt; 
-					}
-					break;
-
-			}
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-		}
-		finally {
-			// do for sure before leaving
-		}
-		return ast;
-	}
-	// $ANTLR end "genericType"
-
-
-
 	// $ANTLR start "genericParamType"
-	// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:367:1: genericParamType returns [Node ast] : LANPAR i= ID RANPAR ;
+	// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:363:1: genericParamType returns [Node ast] : LANPAR (i= ID )+ RANPAR ;
 	public final Node genericParamType() throws RecognitionException {
 		Node ast = null;
 
@@ -1714,13 +1635,42 @@ public class MiniFunParser extends Parser {
 		Token i=null;
 
 		try {
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:368:3: ( LANPAR i= ID RANPAR )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:368:5: LANPAR i= ID RANPAR
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:364:3: ( LANPAR (i= ID )+ RANPAR )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:364:5: LANPAR (i= ID )+ RANPAR
 			{
-			match(input,LANPAR,FOLLOW_LANPAR_in_genericParamType1630); 
-			i=(Token)match(input,ID,FOLLOW_ID_in_genericParamType1634); 
-			match(input,RANPAR,FOLLOW_RANPAR_in_genericParamType1636); 
-			 ast = new genericTypeNode((i!=null?i.getText():null)); 
+			match(input,LANPAR,FOLLOW_LANPAR_in_genericParamType1601); 
+			genericTypeNode genericType = null;
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:365:4: (i= ID )+
+			int cnt26=0;
+			loop26:
+			while (true) {
+				int alt26=2;
+				int LA26_0 = input.LA(1);
+				if ( (LA26_0==ID) ) {
+					alt26=1;
+				}
+
+				switch (alt26) {
+				case 1 :
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:365:5: i= ID
+					{
+					i=(Token)match(input,ID,FOLLOW_ID_in_genericParamType1612); 
+
+									 if (genericType == null) genericType = new genericTypeNode((i!=null?i.getText():null)); else genericType.addType((i!=null?i.getText():null)); 
+									
+					}
+					break;
+
+				default :
+					if ( cnt26 >= 1 ) break loop26;
+					EarlyExitException eee = new EarlyExitException(26, input);
+					throw eee;
+				}
+				cnt26++;
+			}
+
+			match(input,RANPAR,FOLLOW_RANPAR_in_genericParamType1623); 
+			 ast = genericType;
 			}
 
 		}
@@ -1738,7 +1688,7 @@ public class MiniFunParser extends Parser {
 
 
 	// $ANTLR start "concreteGenericType"
-	// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:370:1: concreteGenericType returns [Node ast] : LANPAR bt= baseType RANPAR ;
+	// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:370:1: concreteGenericType returns [Node ast] : LANPAR (bt= baseType )+ RANPAR ;
 	public final Node concreteGenericType() throws RecognitionException {
 		Node ast = null;
 
@@ -1746,16 +1696,43 @@ public class MiniFunParser extends Parser {
 		Node bt =null;
 
 		try {
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:371:3: ( LANPAR bt= baseType RANPAR )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:371:6: LANPAR bt= baseType RANPAR
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:371:3: ( LANPAR (bt= baseType )+ RANPAR )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:371:6: LANPAR (bt= baseType )+ RANPAR
 			{
-			match(input,LANPAR,FOLLOW_LANPAR_in_concreteGenericType1653); 
-			pushFollow(FOLLOW_baseType_in_concreteGenericType1657);
-			bt=baseType();
-			state._fsp--;
+			match(input,LANPAR,FOLLOW_LANPAR_in_concreteGenericType1639); 
+			 concreteGenericType genericType = null; 
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:372:4: (bt= baseType )+
+			int cnt27=0;
+			loop27:
+			while (true) {
+				int alt27=2;
+				int LA27_0 = input.LA(1);
+				if ( (LA27_0==BOOLTYPE||LA27_0==INTTYPE) ) {
+					alt27=1;
+				}
+
+				switch (alt27) {
+				case 1 :
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:372:5: bt= baseType
+					{
+					pushFollow(FOLLOW_baseType_in_concreteGenericType1649);
+					bt=baseType();
+					state._fsp--;
+
+					if (genericType == null) genericType = new concreteGenericType(bt); else genericType.addType(bt); 
+					}
+					break;
+
+				default :
+					if ( cnt27 >= 1 ) break loop27;
+					EarlyExitException eee = new EarlyExitException(27, input);
+					throw eee;
+				}
+				cnt27++;
+			}
 
 			match(input,RANPAR,FOLLOW_RANPAR_in_concreteGenericType1659); 
-			 ast = bt; 
+			 ast = genericType;
 			}
 
 		}
@@ -1773,7 +1750,7 @@ public class MiniFunParser extends Parser {
 
 
 	// $ANTLR start "listType"
-	// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:373:1: listType returns [Node ast] : ( LIST SLPAR bt= baseType SRPAR | LIST SLPAR i= ID SRPAR );
+	// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:375:1: listType returns [Node ast] : LIST SLPAR ( (bt= baseType ) | (i= ID ) ) SRPAR ;
 	public final Node listType() throws RecognitionException {
 		Node ast = null;
 
@@ -1782,82 +1759,61 @@ public class MiniFunParser extends Parser {
 		Node bt =null;
 
 		try {
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:374:2: ( LIST SLPAR bt= baseType SRPAR | LIST SLPAR i= ID SRPAR )
-			int alt27=2;
-			int LA27_0 = input.LA(1);
-			if ( (LA27_0==LIST) ) {
-				int LA27_1 = input.LA(2);
-				if ( (LA27_1==SLPAR) ) {
-					int LA27_2 = input.LA(3);
-					if ( (LA27_2==ID) ) {
-						alt27=2;
-					}
-					else if ( (LA27_2==BOOLTYPE||LA27_2==INTTYPE) ) {
-						alt27=1;
-					}
-
-					else {
-						int nvaeMark = input.mark();
-						try {
-							for (int nvaeConsume = 0; nvaeConsume < 3 - 1; nvaeConsume++) {
-								input.consume();
-							}
-							NoViableAltException nvae =
-								new NoViableAltException("", 27, 2, input);
-							throw nvae;
-						} finally {
-							input.rewind(nvaeMark);
-						}
-					}
-
-				}
-
-				else {
-					int nvaeMark = input.mark();
-					try {
-						input.consume();
-						NoViableAltException nvae =
-							new NoViableAltException("", 27, 1, input);
-						throw nvae;
-					} finally {
-						input.rewind(nvaeMark);
-					}
-				}
-
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:376:2: ( LIST SLPAR ( (bt= baseType ) | (i= ID ) ) SRPAR )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:376:4: LIST SLPAR ( (bt= baseType ) | (i= ID ) ) SRPAR
+			{
+			match(input,LIST,FOLLOW_LIST_in_listType1677); 
+			match(input,SLPAR,FOLLOW_SLPAR_in_listType1679); 
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:376:15: ( (bt= baseType ) | (i= ID ) )
+			int alt28=2;
+			int LA28_0 = input.LA(1);
+			if ( (LA28_0==BOOLTYPE||LA28_0==INTTYPE) ) {
+				alt28=1;
+			}
+			else if ( (LA28_0==ID) ) {
+				alt28=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 27, 0, input);
+					new NoViableAltException("", 28, 0, input);
 				throw nvae;
 			}
 
-			switch (alt27) {
+			switch (alt28) {
 				case 1 :
-					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:374:4: LIST SLPAR bt= baseType SRPAR
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:376:17: (bt= baseType )
 					{
-					match(input,LIST,FOLLOW_LIST_in_listType1676); 
-					match(input,SLPAR,FOLLOW_SLPAR_in_listType1678); 
-					pushFollow(FOLLOW_baseType_in_listType1682);
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:376:17: (bt= baseType )
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:376:18: bt= baseType
+					{
+					pushFollow(FOLLOW_baseType_in_listType1686);
 					bt=baseType();
 					state._fsp--;
 
-					match(input,SRPAR,FOLLOW_SRPAR_in_listType1684); 
 					 ast = new concreteListParamTypeNode(bt); 
+					}
+
 					}
 					break;
 				case 2 :
-					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:375:4: LIST SLPAR i= ID SRPAR
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:377:6: (i= ID )
 					{
-					match(input,LIST,FOLLOW_LIST_in_listType1691); 
-					match(input,SLPAR,FOLLOW_SLPAR_in_listType1693); 
-					i=(Token)match(input,ID,FOLLOW_ID_in_listType1697); 
-					match(input,SRPAR,FOLLOW_SRPAR_in_listType1699); 
-					 ast = new genericListParamTypeNode((i!=null?i.getText():null));
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:377:6: (i= ID )
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:377:7: i= ID
+					{
+					i=(Token)match(input,ID,FOLLOW_ID_in_listType1699); 
+					ast = new genericListParamTypeNode((i!=null?i.getText():null)); 
+					}
+
 					}
 					break;
 
 			}
+
+			match(input,SRPAR,FOLLOW_SRPAR_in_listType1708); 
+			}
+
 		}
 		catch (RecognitionException re) {
 			reportError(re);
@@ -1893,21 +1849,21 @@ public class MiniFunParser extends Parser {
 	public static final BitSet FOLLOW_baseType_in_declist197 = new BitSet(new long[]{0x0000000040000000L});
 	public static final BitSet FOLLOW_LPAR_in_declist212 = new BitSet(new long[]{0x0000008000400000L});
 	public static final BitSet FOLLOW_ID_in_declist241 = new BitSet(new long[]{0x0000000004000200L});
-	public static final BitSet FOLLOW_genericType_in_declist266 = new BitSet(new long[]{0x0000008000000400L});
+	public static final BitSet FOLLOW_genericParamType_in_declist266 = new BitSet(new long[]{0x0000008000000400L});
 	public static final BitSet FOLLOW_COL_in_declist282 = new BitSet(new long[]{0x0000000062000080L});
 	public static final BitSet FOLLOW_type_in_declist286 = new BitSet(new long[]{0x0000008000000400L});
 	public static final BitSet FOLLOW_COMMA_in_declist317 = new BitSet(new long[]{0x0000000000400000L});
 	public static final BitSet FOLLOW_ID_in_declist321 = new BitSet(new long[]{0x0000000004000200L});
-	public static final BitSet FOLLOW_genericType_in_declist328 = new BitSet(new long[]{0x0000008000000400L});
+	public static final BitSet FOLLOW_genericParamType_in_declist328 = new BitSet(new long[]{0x0000008000000400L});
 	public static final BitSet FOLLOW_COL_in_declist334 = new BitSet(new long[]{0x0000000062000080L});
 	public static final BitSet FOLLOW_type_in_declist338 = new BitSet(new long[]{0x0000008000000400L});
 	public static final BitSet FOLLOW_arrowType_in_declist373 = new BitSet(new long[]{0x0000000040000000L});
 	public static final BitSet FOLLOW_LPAR_in_declist388 = new BitSet(new long[]{0x0000008000400000L});
 	public static final BitSet FOLLOW_ID_in_declist417 = new BitSet(new long[]{0x0000008004000400L});
-	public static final BitSet FOLLOW_genericType_in_declist424 = new BitSet(new long[]{0x0000008000000400L});
+	public static final BitSet FOLLOW_genericParamType_in_declist424 = new BitSet(new long[]{0x0000008000000400L});
 	public static final BitSet FOLLOW_COMMA_in_declist447 = new BitSet(new long[]{0x0000000000400000L});
 	public static final BitSet FOLLOW_ID_in_declist451 = new BitSet(new long[]{0x0000008004000400L});
-	public static final BitSet FOLLOW_genericType_in_declist458 = new BitSet(new long[]{0x0000008000000400L});
+	public static final BitSet FOLLOW_genericParamType_in_declist458 = new BitSet(new long[]{0x0000008000000400L});
 	public static final BitSet FOLLOW_RPAR_in_declist499 = new BitSet(new long[]{0x0000000000000100L});
 	public static final BitSet FOLLOW_CLPAR_in_declist508 = new BitSet(new long[]{0x0000625340DC8000L});
 	public static final BitSet FOLLOW_declist_in_declist527 = new BitSet(new long[]{0x0000225340CC8000L});
@@ -1987,27 +1943,22 @@ public class MiniFunParser extends Parser {
 	public static final BitSet FOLLOW_BOOLTYPE_in_baseType1468 = new BitSet(new long[]{0x0000000000000002L});
 	public static final BitSet FOLLOW_LPAR_in_arrowType1494 = new BitSet(new long[]{0x0000008066000080L});
 	public static final BitSet FOLLOW_type_in_arrowType1512 = new BitSet(new long[]{0x0000008000000400L});
-	public static final BitSet FOLLOW_genericType_in_arrowType1517 = new BitSet(new long[]{0x0000008000000400L});
+	public static final BitSet FOLLOW_genericParamType_in_arrowType1517 = new BitSet(new long[]{0x0000008000000400L});
 	public static final BitSet FOLLOW_COMMA_in_arrowType1536 = new BitSet(new long[]{0x0000000066000080L});
 	public static final BitSet FOLLOW_type_in_arrowType1541 = new BitSet(new long[]{0x0000008000000400L});
-	public static final BitSet FOLLOW_genericType_in_arrowType1547 = new BitSet(new long[]{0x0000008000000400L});
+	public static final BitSet FOLLOW_genericParamType_in_arrowType1547 = new BitSet(new long[]{0x0000008000000400L});
 	public static final BitSet FOLLOW_RPAR_in_arrowType1573 = new BitSet(new long[]{0x0000000000000020L});
 	public static final BitSet FOLLOW_ARROW_in_arrowType1575 = new BitSet(new long[]{0x0000000002000080L});
 	public static final BitSet FOLLOW_baseType_in_arrowType1579 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_genericParamType_in_genericType1604 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_concreteGenericType_in_genericType1614 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LANPAR_in_genericParamType1630 = new BitSet(new long[]{0x0000000000400000L});
-	public static final BitSet FOLLOW_ID_in_genericParamType1634 = new BitSet(new long[]{0x0000002000000000L});
-	public static final BitSet FOLLOW_RANPAR_in_genericParamType1636 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LANPAR_in_concreteGenericType1653 = new BitSet(new long[]{0x0000000002000080L});
-	public static final BitSet FOLLOW_baseType_in_concreteGenericType1657 = new BitSet(new long[]{0x0000002000000000L});
+	public static final BitSet FOLLOW_LANPAR_in_genericParamType1601 = new BitSet(new long[]{0x0000000000400000L});
+	public static final BitSet FOLLOW_ID_in_genericParamType1612 = new BitSet(new long[]{0x0000002000400000L});
+	public static final BitSet FOLLOW_RANPAR_in_genericParamType1623 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LANPAR_in_concreteGenericType1639 = new BitSet(new long[]{0x0000000002000080L});
+	public static final BitSet FOLLOW_baseType_in_concreteGenericType1649 = new BitSet(new long[]{0x0000002002000080L});
 	public static final BitSet FOLLOW_RANPAR_in_concreteGenericType1659 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LIST_in_listType1676 = new BitSet(new long[]{0x0000020000000000L});
-	public static final BitSet FOLLOW_SLPAR_in_listType1678 = new BitSet(new long[]{0x0000000002000080L});
-	public static final BitSet FOLLOW_baseType_in_listType1682 = new BitSet(new long[]{0x0000040000000000L});
-	public static final BitSet FOLLOW_SRPAR_in_listType1684 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LIST_in_listType1691 = new BitSet(new long[]{0x0000020000000000L});
-	public static final BitSet FOLLOW_SLPAR_in_listType1693 = new BitSet(new long[]{0x0000000000400000L});
-	public static final BitSet FOLLOW_ID_in_listType1697 = new BitSet(new long[]{0x0000040000000000L});
-	public static final BitSet FOLLOW_SRPAR_in_listType1699 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LIST_in_listType1677 = new BitSet(new long[]{0x0000020000000000L});
+	public static final BitSet FOLLOW_SLPAR_in_listType1679 = new BitSet(new long[]{0x0000000002400080L});
+	public static final BitSet FOLLOW_baseType_in_listType1686 = new BitSet(new long[]{0x0000040000000000L});
+	public static final BitSet FOLLOW_ID_in_listType1699 = new BitSet(new long[]{0x0000040000000000L});
+	public static final BitSet FOLLOW_SRPAR_in_listType1708 = new BitSet(new long[]{0x0000000000000002L});
 }
