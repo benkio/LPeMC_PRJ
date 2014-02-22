@@ -54,16 +54,16 @@ declist returns [ArrayList<Node> astList]
 	    	$astList.add(vn);
 	    }
 	  	|
-	   	FUN i=ID {DecFunNode fn = null;} 
+	   	FUN i=ID {
+	   		DecFunNode fn = null;
+	   		GenericTypeNode genericType = null;
+	   	} 
 	   	(
-	   	 pt=genericParamType 
-	   	 {
-	   	 	STentry entry = new STentry($pt.ast,-1);
-	   	 	HashMap<String,STentry> hm= symTable.get(nestingLevel);}
+	   	 pt=genericParamType { genericType = (GenericTypeNode) $pt.ast; } 
 	   	 )? 
 	   	COL (rt=baseType 	
 	   	{
-	   		fn = new DecFunNode($i.text,$rt.ast,$pt.ast);
+	   		fn = new DecFunNode($i.text,$rt.ast,genericType);
 	    	STentry entry = new STentry(fn,offSet++);
 	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);
 	    	
@@ -79,43 +79,36 @@ declist returns [ArrayList<Node> astList]
 		        hm = new HashMap<String,STentry>();
 		        symTable.add(hm);
 		        nestingLevel++;
-		        int parCont=0;
+		        
+		        if (genericType !=null)
+		        {
+		        	for (int j = 0; j<genericType.getGenericTypeIDs().size() ; j++){
+		        		STentry genericEntry = new STentry(genericType.getGenericTypeID(j),0);
+		        		if (hm.put(genericType.getGenericTypeID(j).getID(),genericEntry) != null){
+				    		System.out.println("Identifier "+genericType.getGenericTypeID(j).getID() +" at line "+$i.line+" already defined, generic type ID match");
+				      		System.exit(0);
+				      	}
+		        	}
+		        }
+		        
+		        
 		 	} 
-		    (
+		    	(
 			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);}
 			     (
-			    	 gpt=genericParamType {pn.addGenericType($gpt.ast);} 
+			    	 gpt=genericParamType {pn.addType($gpt.ast);} 
 			    	 | COL fpt=type {pn.addType($fpt.ast); if($fpt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}}
 			     )
 			    {
-			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
-			    		Node tp = ((ArrowTypeNode)$rt.ast).getParType(parCont);
-			    		
-			    		
-			    		if( tp!=null && tp.getNodeType() == NodeType.ARROWTYPE_NODE){
-			    			parOffSet-=1;
-			    		}
-			    		System.out.println(parOffSet);
-			    		pn.addType(tp);
-			    	}
 			       	entry = new STentry(pn,parOffSet--);
 			        hm.put($fpi.text,entry);
 			        fn.addParam(pn);
-			        parCont++;
-			  	}
-			    (COMMA pi=ID {pn = new ParamNode($pi.text);} (gpt=genericParamType {pn.addGenericType($gpt.ast);} | COL pt=type{pn.addType($pt.ast); if($pt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}})
+   			    }
+			    (COMMA pi=ID {pn = new ParamNode($pi.text);} 
+			    (
+			    	gpt=genericParamType {pn.addType($gpt.ast);}
+			     	| COL pt=type{pn.addType($pt.ast); if($pt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){parOffSet-=1;}})
 			    {
-			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
-			    		Node tp =((ArrowTypeNode) $rt.ast).getParType(parCont);
-			    		
-			    		if(tp!=null && tp.getNodeType() == NodeType.ARROWTYPE_NODE){
-			    			parOffSet-=1;
-			    		}
-			    		System.out.println(parOffSet);
-			    		pn.addType(tp);
-			    		parCont++;
-			    	}
-			    	
 			        entry = new STentry(pn,parOffSet--);
 			        if (hm.put($pi.text,entry) != null){
 			        	System.out.println("Identifier "+$pi.text+" at line "+$pi.line+" already defined");
@@ -124,9 +117,9 @@ declist returns [ArrayList<Node> astList]
 			        fn.addParam(pn);
 			   	})*
 		   	)?
-		   	 | rt=arrowType 	
+		| rt=arrowType 	
 	   	{
-	   		fn = new DecFunNode($i.text,$rt.ast, $pt.ast);
+	   	fn = new DecFunNode($i.text,$rt.ast, genericType);
 	   		
 	    	STentry entry = new STentry(fn,offSet++);
 	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);
@@ -144,20 +137,32 @@ declist returns [ArrayList<Node> astList]
 		        symTable.add(hm);
 		        nestingLevel++;
 		        int parCont=0;
+		        
+		        if (genericType !=null)
+		        {
+		        	for (int j = 0; j<genericType.getGenericTypeIDs().size() ; j++){
+		        		STentry genericEntry = new STentry(genericType.getGenericTypeID(j),0);
+		        		if (hm.put(genericType.getGenericTypeID(j).getID(),genericEntry) != null){
+				    		System.out.println("Identifier "+genericType.getGenericTypeID(j).getID()+" at line "+$i.line+" already defined, generic type ID match");
+				      		System.exit(0);
+				      	}
+		        	}
+		        }
+		        
 		 	} 
 		    (
-			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);} (gpt=genericParamType {pn.addGenericType($gpt.ast);})?
+			    fpi=ID {ParamNode pn = new ParamNode($fpi.text);} (gpt=genericParamType {pn.addType($gpt.ast);})?
 			    {
-			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
-			    		Node tp = ((ArrowTypeNode)$rt.ast).getParType(parCont);
-			    		
-			    		
-			    		if( tp!=null && tp.getNodeType() == NodeType.ARROWTYPE_NODE){
-			    			parOffSet-=1;
-			    		}
-			    		System.out.println(parOffSet);
-			    		pn.addType(tp);
-			    	}
+		    		Node tp = ((ArrowTypeNode)$rt.ast).getParType(parCont);
+		    		
+		    		
+		    		if( tp!=null && tp.getNodeType() == NodeType.ARROWTYPE_NODE){
+		    			parOffSet-=1;
+		    		}
+		    		System.out.println(parOffSet);
+		    		
+		    		if (pn.getType() == null) pn.addType(tp);
+
 			       	entry = new STentry(pn,parOffSet--);
 			        hm.put($fpi.text,entry);
 			        fn.addParam(pn);
@@ -165,17 +170,16 @@ declist returns [ArrayList<Node> astList]
 			  	}
 			    (COMMA pi=ID {pn = new ParamNode($pi.text);} (gpt=genericParamType {pn.addGenericType($gpt.ast);}) ?
 			    {
-			    	if($rt.ast.getNodeType() == NodeType.ARROWTYPE_NODE){
-			    		Node tp =((ArrowTypeNode) $rt.ast).getParType(parCont);
-			    		
-			    		if(tp!=null && tp.getNodeType() == NodeType.ARROWTYPE_NODE){
-			    			parOffSet-=1;
-			    		}
-			    		System.out.println(parOffSet);
-			    		pn.addType(tp);
-			    		parCont++;
-			    	}
-			    	
+
+		    		tp =((ArrowTypeNode) $rt.ast).getParType(parCont);
+		    		
+		    		if(tp!=null && tp.getNodeType() == NodeType.ARROWTYPE_NODE){
+		    			parOffSet-=1;
+		    		}
+		    		System.out.println(parOffSet);
+		    		if (pn.getType() == null) pn.addType(tp);
+		    		parCont++;
+		    	
 			        entry = new STentry(pn,parOffSet--);
 			        if (hm.put($pi.text,entry) != null){
 			        	System.out.println("Identifier "+$pi.text+" at line "+$pi.line+" already defined");
@@ -361,20 +365,22 @@ arrowType returns [Node ast]
  		};
  		
 genericParamType returns [Node ast]
-		:	LANPAR {genericTypeNode genericType = null;} 
+		:	LANPAR {GenericTypeNode genericType = new GenericTypeNode();} 
 			(i=ID {
-				 if (genericType == null) genericType = new genericTypeNode($i.text); else genericType.addType($i.text); 
+				   genericType.addType($i.text); 
 				}
 			)+  RANPAR{ $ast = genericType;};
 
 concreteGenericType returns [Node ast]
-		:	 LANPAR { concreteGenericType genericType = null; }
-			(bt=baseType {if (genericType == null) genericType = new concreteGenericType($bt.ast); else genericType.addType($bt.ast); }
+		:	 LANPAR { ConcreteGenericTypeNode genericType = new ConcreteGenericTypeNode(); }
+			(bt=baseType	{
+					genericType.addType($bt.ast);
+				 	}
 			)+ RANPAR { $ast = genericType;}; 		
 
 listType returns [Node ast]
-	: LIST SLPAR (	(bt=baseType { $ast = new concreteListParamTypeNode($bt.ast); })
-			| (i=ID  {$ast = new genericListParamTypeNode($i.text); })
+	: LIST SLPAR (	(bt=baseType { $ast = new ConcreteListParamTypeNode($bt.ast); })
+			| (i=ID  {$ast = new GenericListParamTypeNode($i.text); })
 	) SRPAR;
 /*------------------------------------------------------------------
  * LEXER RULES
