@@ -2,16 +2,16 @@ package highLevelLanguage.Node;
 
 public class GenericListParamTypeNode extends Node {
 
-    private String genericTypeID;
+    private Node genericTypeID;
 
-    public GenericListParamTypeNode(String id) {
-	this.genericTypeID = id;
+    public GenericListParamTypeNode(Node i) {
+	this.genericTypeID = i;
     }
 
     @Override
     public String toPrint() {
-	// TODO Auto-generated method stub
-	return null;
+	return "<GenericListParamTypeNode>" + genericTypeID.toPrint()
+		+ "</GenericListParamTypeNode>";
     }
 
     @Override

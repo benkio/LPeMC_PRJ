@@ -6,14 +6,22 @@ public class ConcreteGenericTypeNode extends Node {
 
     private ArrayList<Node> types;
 
-    public ConcreteGenericTypeNode() {
+    public ConcreteGenericTypeNode(Node bt) {
 	this.types = new ArrayList<>();
+	types.add(bt);
     }
 
     @Override
     public String toPrint() {
-	// TODO Auto-generated method stub
-	return null;
+	String typesToString = "";
+	for (int i = 0; i < types.size(); i++) {
+	    typesToString += "<ConcreteGenericTypeNode" + i + ">"
+		    + types.get(i).toPrint() + "</ConcreteGenericTypeNode" + i
+		    + "> ";
+	}
+
+	return "<ConcreteGenericTypeNode> " + typesToString
+		+ "</ConcreteGenericTypeNode> ";
     }
 
     @Override

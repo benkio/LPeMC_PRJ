@@ -10,8 +10,8 @@ public class ConcreteListParamTypeNode extends ListTypeNode {
 
     @Override
     public String toPrint() {
-	// TODO Auto-generated method stub
-	return null;
+	return "<ConcreteListParamTypeNode>" + baseType.toPrint()
+		+ "</ConcreteListParamTypeNode>";
     }
 
     @Override

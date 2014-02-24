@@ -1,6 +1,6 @@
 push labelFun0
 lfp
-push 10
+push 0 
 push 10
 lfp
 lfp
@@ -14,55 +14,10 @@ labelFun1 :
 cfp
 lra
 lfp
-lfp
-push -3
+lw
+push 2
 sub
 lw
-lfp
-push -3
-sub
-lw
-lfp
-push -2
-sub
-lw
-js
-srv
-sra
-pop
-pop
-pop
-pop
-sfp
-lrv
-lra
-js
-labelFun3 :
-cfp
-lra
-lfp
-push -1
-sub
-lw
-lfp
-push -1
-sub
-lw
-mult
-push 100
-bgreat GEQLabel6
- push 0
- b ContinueLabel7
- GEQLabel6: 
-push 1
- ContinueLabel7: 
-push 0 
-beq ELSELabel4 
-push 1 
-b ENDIFLabel5 
-ELSELabel4 : 
-push 0 
-ENDIFLabel5 : 
 srv
 sra
 pop
@@ -73,10 +28,26 @@ lra
 js
 labelFun2 :
 cfp
-push labelFun3
+lfp
+lw
+push -1
+sub
+lw
+lfp
+push -1
+sub
+lw
+lfp
+lw
+push 2
+sub
+lw
+push 2
+div
+sub
+add
 lra
 lfp
-lfp
 push -1
 sub
 lw
@@ -84,48 +55,11 @@ lfp
 push 1
 sub
 lw
-lfp
-lfp
-lw
-lfp
-lw
-push 1
+push 2
+div
 sub
-lw
-js
-push 0
- beq NotLabel10
- push 0
- b FALSELabel11
- NotLabel10: 
-push 1
- FALSELabel11: 
-push 0 
-beq ELSELabel8 
-lfp
-push -2
-sub
-lw
-lfp
-push -1
-sub
-lw
-add
-b ENDIFLabel9 
-ELSELabel8 : 
-lfp
-push -2
-sub
-lw
-lfp
-push -1
-sub
-lw
-mult
-ENDIFLabel9 : 
 srv
 sra
-pop
 pop
 pop
 pop
@@ -135,26 +69,97 @@ lra
 js
 labelFun0 :
 cfp
-push labelFun1
-push labelFun2
-lra
-lfp
-lfp
-push -2
-sub
-lw
 lfp
 push -1
 sub
 lw
+push 2
+div
+push 4
+mult
 lfp
+push -1
+sub
+lw
+push 2
+mult
+push labelFun1
+push labelFun2
+lra
+lfp
+push -2
+sub
+lw
+push 1 
+beq EQLabel7 
+push 0 
+b NEQLabel8 
+EQLabel7 : 
+push 1 
+NEQLabel8 : 
+push 0
+ beq FALSELabel6
+ lfp
+lfp
+push 1
+sub
+lw
+lfp
+lfp
+push 4
+sub
+lw
+js
+lfp
+push -1
+sub
+lw
+push 1
+sub
+bless LEQLabel9
+ push 0
+ b ContinueLabel10
+ LEQLabel9: 
+push 1
+ ContinueLabel10: 
+push 0
+ beq FALSELabel6
+ push 1
+ b TRUELabel5
+ FALSELabel6: 
+push 0
+ TRUELabel5: 
+push 0 
+beq ELSELabel3 
+lfp
+push 1
+lfp
+lfp
+push 3
+sub
+lw
+js
+lfp
+push 1
+sub
+lw
+sub
+b ENDIFLabel4 
+ELSELabel3 : 
+lfp
+push 1
+sub
+lw
 lfp
 push 2
 sub
 lw
-js
+add
+ENDIFLabel4 : 
 srv
 sra
+pop
+pop
 pop
 pop
 pop

@@ -11,16 +11,22 @@ import java.util.ArrayList;
  */
 public class GenericTypeNode extends Node {
 
-    private ArrayList<IDGenericTypeNode> genTypeIDs;
+    private ArrayList<String> genTypeIDs;
 
-    public GenericTypeNode() {
-	this.genTypeIDs = new ArrayList<>();
+    public GenericTypeNode(String id) {
+	this.genTypeIDs = new ArrayList<String>();
+	genTypeIDs.add(id);
     }
 
     @Override
     public String toPrint() {
-	// TODO Auto-generated method stub
-	return null;
+	String genTypeIDsToPrint = "";
+	for (int i = 0; i < genTypeIDs.size(); i++) {
+	    genTypeIDsToPrint += "<GenericTypeID>" + genTypeIDs.get(i)
+		    + "</GenericTypeID>";
+	}
+
+	return "<GenericTypeNode>" + genTypeIDsToPrint + "</GenericTypeNode>";
     }
 
     @Override
@@ -37,20 +43,24 @@ public class GenericTypeNode extends Node {
 
     @Override
     public NodeType getNodeType() {
-	// TODO Auto-generated method stub
-	return null;
+	return NodeType.GENERICTYPE_NODE;
     }
 
     public void addType(String id) {
-	this.genTypeIDs.add(new IDGenericTypeNode(id));
 
+	for (int i = 0; i < genTypeIDs.size(); i++)
+	    if (genTypeIDs.get(i).equals(id)) {
+		System.out.print("Generic Template already defined");
+	    }
+
+	this.genTypeIDs.add(id);
     }
 
-    public IDGenericTypeNode getGenericTypeID(int id) {
+    public String getGenericTypeID(int id) {
 	return genTypeIDs.get(id);
     }
 
-    public ArrayList<IDGenericTypeNode> getGenericTypeIDs() {
+    public ArrayList<String> getGenericTypeIDs() {
 	return genTypeIDs;
     }
 

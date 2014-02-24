@@ -5,4 +5,4 @@ let
 	
 	fun test2: int (v2:int , f2 : (int,(int)->int,int)->int, v3 :int){f2(v2,prn,v3)};
 	
-in print(test2(10,test,11));
+in print(test2(10,test,6));

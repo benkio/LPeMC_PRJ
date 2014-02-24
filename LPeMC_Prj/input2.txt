@@ -16,4 +16,4 @@ let fun prova:int (l:int, check:bool)
 		then {	arrow(1)-x	}
 		else {	x+y	}
 	};
-in print(prova(10,true));
+in print(prova(10,false));

@@ -33,10 +33,15 @@ public class FunNode extends Node {
 	// ATTENZIONE SI POTREBBE ANDARE IN LOOP!!!! FUNZIONE CHE CHIAMA SE
 	// STESSA E QUINDI NON SI FINISCE? PER QUESTO INSERISCO L'OFFSET E NON
 	// RICHIAMO LA FUNZIONE.
-	return "<" + this.getClass().getName() + "><FunDiffNesting>"
-		+ diffNesting + "</FunDiffNesting>" + "<FunSTEntryOffset>"
-		+ funEntry.getOffSet() + "</FunSTEntryOffset>"
-		+ funParamsToPrint + "</" + this.getClass().getName() + ">";
+	return "<"
+		+ this.getClass().getName()
+		+ ">"
+		+ (funGenericType != null ? "<FunGenericType>"
+			+ funGenericType.toPrint() + "</FunGenericType>" : "")
+		+ "<FunDiffNesting>" + diffNesting + "</FunDiffNesting>"
+		+ "<FunSTEntryOffset>" + funEntry.getOffSet()
+		+ "</FunSTEntryOffset>" + funParamsToPrint + "</"
+		+ this.getClass().getName() + ">";
     }
 
     @Override
