@@ -1,34 +1,32 @@
 package highLevelLanguage.Node;
 
-public class ConcreteListParamTypeNode extends ListTypeNode {
+public class ConcreteListParamTypeNode extends Node {
 
-	private Node baseType;
+    private Node baseType;
 
-	public ConcreteListParamTypeNode(Node baseType) {
-		this.baseType = baseType;
-	}
+    public ConcreteListParamTypeNode(Node baseType) {
+	this.baseType = baseType;
+    }
 
-	@Override
-	public String toPrint() {
-		return "<ConcreteListParamTypeNode>" + baseType.toPrint()
-				+ "</ConcreteListParamTypeNode>";
-	}
+    @Override
+    public String toPrint() {
+	return "<ConcreteListParamTypeNode>" + baseType.toPrint()
+		+ "</ConcreteListParamTypeNode>";
+    }
 
-	@Override
-	public String typeCheck() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public String typeCheck() {
+	return baseType.typeCheck();
+    }
 
-	@Override
-	public String codeGen() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public String codeGen() {
+	return "";
+    }
 
-	@Override
-	public NodeType getNodeType() {
-		return NodeType.CONCRETELISTPARAMTYPE_NODE;
-	}
+    @Override
+    public NodeType getNodeType() {
+	return NodeType.CONCRETELISTPARAMTYPE_NODE;
+    }
 
 }

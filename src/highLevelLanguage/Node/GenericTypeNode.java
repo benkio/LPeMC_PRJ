@@ -9,56 +9,51 @@ package highLevelLanguage.Node;
  */
 public class GenericTypeNode extends Node {
 
-	//private ArrayList<String> genTypeIDs;
-	
-	private String id;
-	private Node type;
-	
-	public GenericTypeNode(String id) {
-		this.id=id;
-	}
+    // private ArrayList<String> genTypeIDs;
 
-	@Override
-	public String toPrint() {
-		return "<GenericTypeNode>"+this.id.toUpperCase()+"</GenericTypeNode>";
-	}
+    private String id;
+    private Node type;
 
-	@Override
-	public String typeCheck() {
-		if(this.type!= null){
-			return this.type.typeCheck();
-		}
-		//TODO
-		return"";
-	}
+    public GenericTypeNode(String id) {
+	this.id = id;
+	this.type = new EmptyNode();
+    }
 
-	public Node getType() {
-		return type;
-	}
+    @Override
+    public String toPrint() {
+	return "<GenericTypeNode>" + this.id.toUpperCase()
+		+ "</GenericTypeNode>";
+    }
 
-	public String getId() {
-		return id;
-	}
+    @Override
+    public String typeCheck() {
+	return this.type.typeCheck();
+    }
 
-	public void setType(Node type) {
-		this.type = type;
-	}
+    public Node getType() {
+	return type;
+    }
 
-	@Override
-	public String codeGen() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getId() {
+	return id;
+    }
 
-	@Override
-	public NodeType getNodeType() {
-		return NodeType.GENERICTYPE_NODE;
-	}
+    public void setType(Node type) {
+	this.type = type;
+    }
 
+    @Override
+    public String codeGen() {
+	return "";
+    }
 
+    @Override
+    public NodeType getNodeType() {
+	return NodeType.GENERICTYPE_NODE;
+    }
 
-	public String getGenericTypeID() {
-		return this.id;
-	}
+    public String getGenericTypeID() {
+	return this.id;
+    }
 
 }
