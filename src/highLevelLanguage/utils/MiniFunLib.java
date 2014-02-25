@@ -33,12 +33,11 @@ public class MiniFunLib {
 	 * solo il tipo di ritorno dell'arrowtype con quello del baseType. es:
 	 * fun : ()->int { 1 }
 	 * 
-	 * Aggiungo la possibiltà di controllare 2 arrowtype tra di loro quando
+	 * Aggiungo la possibilt�� di controllare 2 arrowtype tra di loro quando
 	 * capita, si veda il typecheck dell'arrowtype con parametro.
 	 */
 
-	if (n1.getNodeType() == NodeType.ARROWTYPE_NODE
-		&& n2.getNodeType() == NodeType.ARROWTYPE_NODE) {
+	if (n1.getNodeType() == NodeType.ARROWTYPE_NODE && n2.getNodeType() == NodeType.ARROWTYPE_NODE) {
 	    return ((ArrowTypeNode) n1).typeCheck(
 		    ((ArrowTypeNode) n2).getParTypes()).equals(
 		    ((ArrowTypeNode) n2).getRetType().typeCheck());

@@ -56,16 +56,16 @@ declist returns [ArrayList<Node> astList]
 	  	|
 	   	FUN i=ID {
 	   		DecFunNode fn = null;
-	   		GenericTypeNode genericType = null;
+	   		ArrayList<GenericTypeNode> generics=null;
 	   	} 
 	   	( LANPAR
-	   	 
-	   	  pt=genericType { genericType = (GenericTypeNode) $pt.ast; } 
+	   	  gt=genericType { generics=$gt.ast; } 
 	   	 
 	   	 RANPAR)?
 	   	COL (rt=baseType 	
 	   	{
-	   		fn = new DecFunNode($i.text,$rt.ast,genericType);
+	   		fn = new DecFunNode($i.text,$rt.ast);
+	   		fn.addFunGenerics(generics);
 	    	STentry entry = new STentry(fn,offSet++);
 	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);
 	    	
@@ -119,7 +119,8 @@ declist returns [ArrayList<Node> astList]
 		   	)?
 		| rt=arrowType 	
 	   	{
-	   	fn = new DecFunNode($i.text,$rt.ast, genericType);
+	   	fn = new DecFunNode($i.text,$rt.ast);
+	   	fn.addFunGenerics(generics);
 	   		
 	    	STentry entry = new STentry(fn,offSet++);
 	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);
@@ -271,7 +272,7 @@ fatt	returns [Node ast]
 	{
 	  	HashMap<String,STentry> hm;
 	   	STentry entry=null;
-	   	Node genericType = null;
+	   	ArrayList<Node> genericType = null;
 	   	int declNL;
 	   	for(declNL=nestingLevel; declNL>=0; declNL--){
 	   		hm = symTable.get(declNL);
@@ -365,20 +366,24 @@ arrowType returns [Node ast]
  			$ast=atn;
  		};
  		
-concreteGenericType returns [Node ast]
-	:	bt=baseType {ConcreteGenericTypeNode generic = new ConcreteGenericTypeNode($bt.ast);}
-		(COMMA bt1=baseType { generic.addType($bt1.ast); })*
+concreteGenericType returns [ArrayList<Node> ast]
+	:	
+		bt=baseType {ArrayList<Node> generic = new ArrayList<Node>(); generic.add($bt.ast);}
+		(COMMA bt1=baseType {generic.add($bt1.ast);})*
 		{ $ast = generic; };
 
-genericType returns [Node ast]
-	:	i=ID { GenericTypeNode generic = new GenericTypeNode( $i.text );  }
-		( COMMA f=ID { generic.addType( $f.text ); } )* 
-		{ $ast = generic;  };
+genericType returns [ArrayList<GenericTypeNode> ast]
+	:	{ArrayList<GenericTypeNode> generics = new ArrayList<GenericTypeNode>();}	
+		
+		i=ID {  generics.add(new GenericTypeNode( $i.text ));  }
+		( COMMA f=ID { generics.add(new GenericTypeNode( $f.text )); } )* 
+		{ $ast = generics;  };
 		
 listType returns [Node ast]
-	: LIST SLPAR { Node generic = null; } (
-		bt=concreteGenericType { generic = new ConcreteListParamTypeNode($bt.ast); }
-	| 	i=genericType  {generic = new GenericListParamTypeNode($i.ast); }
+	: LIST SLPAR { Node generic = null; } 
+	(
+	bt=baseType { generic = new ConcreteListParamTypeNode($bt.ast); }
+	| i=ID {generic = new GenericListParamTypeNode(new GenericTypeNode( $i.text )); }
 	) SRPAR { $ast = generic; };
 /*------------------------------------------------------------------
  * LEXER RULES

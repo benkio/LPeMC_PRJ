@@ -3,65 +3,62 @@
  */
 package highLevelLanguage.Node;
 
-import java.util.ArrayList;
-
 /**
  * @author benkio
  * 
  */
 public class GenericTypeNode extends Node {
 
-    private ArrayList<String> genTypeIDs;
-
-    public GenericTypeNode(String id) {
-	this.genTypeIDs = new ArrayList<String>();
-	genTypeIDs.add(id);
-    }
-
-    @Override
-    public String toPrint() {
-	String genTypeIDsToPrint = "";
-	for (int i = 0; i < genTypeIDs.size(); i++) {
-	    genTypeIDsToPrint += "<GenericTypeID>" + genTypeIDs.get(i)
-		    + "</GenericTypeID>";
+	//private ArrayList<String> genTypeIDs;
+	
+	private String id;
+	private Node type;
+	
+	public GenericTypeNode(String id) {
+		this.id=id;
 	}
 
-	return "<GenericTypeNode>" + genTypeIDsToPrint + "</GenericTypeNode>";
-    }
+	@Override
+	public String toPrint() {
+		return "<GenericTypeNode>"+this.id.toUpperCase()+"</GenericTypeNode>";
+	}
 
-    @Override
-    public String typeCheck() {
-	// TODO Auto-generated method stub
-	return null;
-    }
+	@Override
+	public String typeCheck() {
+		if(this.type!= null){
+			return this.type.typeCheck();
+		}
+		//TODO
+		return"";
+	}
 
-    @Override
-    public String codeGen() {
-	// TODO Auto-generated method stub
-	return null;
-    }
+	public Node getType() {
+		return type;
+	}
 
-    @Override
-    public NodeType getNodeType() {
-	return NodeType.GENERICTYPE_NODE;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public void addType(String id) {
+	public void setType(Node type) {
+		this.type = type;
+	}
 
-	for (int i = 0; i < genTypeIDs.size(); i++)
-	    if (genTypeIDs.get(i).equals(id)) {
-		System.out.print("Generic Template already defined");
-	    }
+	@Override
+	public String codeGen() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-	this.genTypeIDs.add(id);
-    }
+	@Override
+	public NodeType getNodeType() {
+		return NodeType.GENERICTYPE_NODE;
+	}
 
-    public String getGenericTypeID(int id) {
-	return genTypeIDs.get(id);
-    }
 
-    public ArrayList<String> getGenericTypeIDs() {
-	return genTypeIDs;
-    }
+
+	public String getGenericTypeID() {
+		return this.id;
+	}
 
 }

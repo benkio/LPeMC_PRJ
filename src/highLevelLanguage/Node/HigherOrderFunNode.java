@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class HigherOrderFunNode extends FunNode {
 
     public HigherOrderFunNode(STentry entry, int diffNesting,
-	    ArrayList<Node> params, Node genericType) {
+	    ArrayList<Node> params, ArrayList<Node> genericType) {
 	super(entry, diffNesting, params, genericType);
     }
 
