@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g 2014-02-25 17:11:08
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g 2014-02-27 17:22:03
 
 package highLevelLanguage;
 
@@ -67,15 +67,15 @@ public class MiniFunLexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "/Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g"; }
+    public String getGrammarFileName() { return "/Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g"; }
 
     // $ANTLR start "LET"
     public final void mLET() throws RecognitionException {
         try {
             int _type = LET;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:392:7: ( 'let' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:392:9: 'let'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:448:7: ( 'let' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:448:9: 'let'
             {
             match("let"); 
 
@@ -95,8 +95,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = LIST;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:393:7: ( 'list' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:393:9: 'list'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:449:7: ( 'list' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:449:9: 'list'
             {
             match("list"); 
 
@@ -116,8 +116,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = IN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:394:5: ( 'in' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:394:7: 'in'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:450:5: ( 'in' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:450:7: 'in'
             {
             match("in"); 
 
@@ -137,8 +137,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = SEMIC;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:395:8: ( ';' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:395:10: ';'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:451:8: ( ';' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:451:10: ';'
             {
             match(';'); 
 
@@ -157,8 +157,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = COL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:396:6: ( ':' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:396:8: ':'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:452:6: ( ':' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:452:8: ':'
             {
             match(':'); 
 
@@ -177,8 +177,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = DOUBLECOL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:397:11: ( '::' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:397:13: '::'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:453:11: ( '::' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:453:13: '::'
             {
             match("::"); 
 
@@ -198,8 +198,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = COMMA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:398:8: ( ',' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:398:10: ','
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:454:8: ( ',' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:454:10: ','
             {
             match(','); 
 
@@ -218,8 +218,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = ASS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:399:7: ( '=' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:399:9: '='
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:455:7: ( '=' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:455:9: '='
             {
             match('='); 
 
@@ -238,8 +238,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:400:6: ( '==' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:400:8: '=='
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:456:6: ( '==' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:456:8: '=='
             {
             match("=="); 
 
@@ -259,8 +259,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = LANPAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:401:9: ( '<' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:401:11: '<'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:457:9: ( '<' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:457:11: '<'
             {
             match('<'); 
 
@@ -279,8 +279,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = RANPAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:402:9: ( '>' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:402:11: '>'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:458:9: ( '>' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:458:11: '>'
             {
             match('>'); 
 
@@ -299,8 +299,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = LESSEQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:403:10: ( '<=' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:403:12: '<='
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:459:10: ( '<=' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:459:12: '<='
             {
             match("<="); 
 
@@ -320,8 +320,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = GREATEREQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:404:11: ( '>=' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:404:13: '>='
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:460:11: ( '>=' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:460:13: '>='
             {
             match(">="); 
 
@@ -341,8 +341,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:405:7: ( '+' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:405:9: '+'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:461:7: ( '+' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:461:9: '+'
             {
             match('+'); 
 
@@ -361,8 +361,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:406:8: ( '-' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:406:10: '-'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:462:8: ( '-' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:462:10: '-'
             {
             match('-'); 
 
@@ -381,8 +381,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = ARROW;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:407:8: ( '->' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:407:10: '->'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:463:8: ( '->' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:463:10: '->'
             {
             match("->"); 
 
@@ -402,8 +402,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:408:6: ( '||' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:408:8: '||'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:464:6: ( '||' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:464:8: '||'
             {
             match("||"); 
 
@@ -423,8 +423,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = TIMES;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:409:8: ( '*' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:409:10: '*'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:465:8: ( '*' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:465:10: '*'
             {
             match('*'); 
 
@@ -443,8 +443,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = DIVIDE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:410:9: ( '/' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:410:11: '/'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:466:9: ( '/' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:466:11: '/'
             {
             match('/'); 
 
@@ -463,8 +463,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:411:7: ( '&&' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:411:9: '&&'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:467:7: ( '&&' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:467:9: '&&'
             {
             match("&&"); 
 
@@ -484,7 +484,7 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = NAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:412:7: ( ( ( '1' .. '9' ) ( '0' .. '9' )* ) | '0' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:468:7: ( ( ( '1' .. '9' ) ( '0' .. '9' )* ) | '0' )
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -502,19 +502,19 @@ public class MiniFunLexer extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:412:9: ( ( '1' .. '9' ) ( '0' .. '9' )* )
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:468:9: ( ( '1' .. '9' ) ( '0' .. '9' )* )
                     {
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:412:9: ( ( '1' .. '9' ) ( '0' .. '9' )* )
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:412:10: ( '1' .. '9' ) ( '0' .. '9' )*
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:468:9: ( ( '1' .. '9' ) ( '0' .. '9' )* )
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:468:10: ( '1' .. '9' ) ( '0' .. '9' )*
                     {
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:412:10: ( '1' .. '9' )
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:412:11: '1' .. '9'
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:468:10: ( '1' .. '9' )
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:468:11: '1' .. '9'
                     {
                     matchRange('1','9'); 
 
                     }
 
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:412:20: ( '0' .. '9' )*
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:468:20: ( '0' .. '9' )*
                     loop1:
                     do {
                         int alt1=2;
@@ -527,7 +527,7 @@ public class MiniFunLexer extends Lexer {
 
                         switch (alt1) {
                     	case 1 :
-                    	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:412:21: '0' .. '9'
+                    	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:468:21: '0' .. '9'
                     	    {
                     	    matchRange('0','9'); 
 
@@ -546,7 +546,7 @@ public class MiniFunLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:412:35: '0'
+                    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:468:35: '0'
                     {
                     match('0'); 
 
@@ -567,8 +567,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = TRUE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:413:7: ( 'true' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:413:9: 'true'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:469:7: ( 'true' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:469:9: 'true'
             {
             match("true"); 
 
@@ -588,8 +588,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = FALSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:414:8: ( 'false' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:414:10: 'false'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:470:8: ( 'false' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:470:10: 'false'
             {
             match("false"); 
 
@@ -609,8 +609,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = EMPTY;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:415:10: ( 'empty' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:415:12: 'empty'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:471:10: ( 'empty' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:471:12: 'empty'
             {
             match("empty"); 
 
@@ -630,8 +630,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = NOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:416:7: ( 'not' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:416:9: 'not'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:472:7: ( 'not' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:472:9: 'not'
             {
             match("not"); 
 
@@ -651,8 +651,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = VAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:417:7: ( 'var' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:417:9: 'var'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:473:7: ( 'var' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:473:9: 'var'
             {
             match("var"); 
 
@@ -672,8 +672,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = FUN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:418:7: ( 'fun' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:418:9: 'fun'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:474:7: ( 'fun' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:474:9: 'fun'
             {
             match("fun"); 
 
@@ -693,8 +693,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = LPAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:419:8: ( '(' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:419:10: '('
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:475:8: ( '(' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:475:10: '('
             {
             match('('); 
 
@@ -713,8 +713,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = RPAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:420:7: ( ')' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:420:9: ')'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:476:7: ( ')' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:476:9: ')'
             {
             match(')'); 
 
@@ -733,8 +733,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = CLPAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:421:9: ( '{' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:421:11: '{'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:477:9: ( '{' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:477:11: '{'
             {
             match('{'); 
 
@@ -753,8 +753,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = CRPAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:422:8: ( '}' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:422:10: '}'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:478:8: ( '}' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:478:10: '}'
             {
             match('}'); 
 
@@ -773,8 +773,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = SLPAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:423:9: ( '[' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:423:11: '['
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:479:9: ( '[' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:479:11: '['
             {
             match('['); 
 
@@ -793,8 +793,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = SRPAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:424:8: ( ']' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:424:10: ']'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:480:8: ( ']' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:480:10: ']'
             {
             match(']'); 
 
@@ -813,8 +813,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = IF;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:425:7: ( 'if' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:425:9: 'if'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:481:7: ( 'if' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:481:9: 'if'
             {
             match("if"); 
 
@@ -834,8 +834,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = THEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:426:8: ( 'then' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:426:10: 'then'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:482:8: ( 'then' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:482:10: 'then'
             {
             match("then"); 
 
@@ -855,8 +855,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = ELSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:427:8: ( 'else' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:427:10: 'else'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:483:8: ( 'else' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:483:10: 'else'
             {
             match("else"); 
 
@@ -876,8 +876,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = PRINT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:428:8: ( 'print' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:428:10: 'print'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:484:8: ( 'print' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:484:10: 'print'
             {
             match("print"); 
 
@@ -897,8 +897,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = FIRST;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:429:10: ( 'first' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:429:12: 'first'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:485:10: ( 'first' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:485:12: 'first'
             {
             match("first"); 
 
@@ -918,8 +918,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = REST;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:430:10: ( 'rest' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:430:12: 'rest'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:486:10: ( 'rest' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:486:12: 'rest'
             {
             match("rest"); 
 
@@ -939,8 +939,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = INTTYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:431:10: ( 'int' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:431:12: 'int'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:487:10: ( 'int' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:487:12: 'int'
             {
             match("int"); 
 
@@ -960,8 +960,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = BOOLTYPE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:432:10: ( 'bool' )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:432:12: 'bool'
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:488:10: ( 'bool' )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:488:12: 'bool'
             {
             match("bool"); 
 
@@ -981,8 +981,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:434:7: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:434:9: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:490:7: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:490:9: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -993,7 +993,7 @@ public class MiniFunLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:434:28: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:490:28: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
             loop3:
             do {
                 int alt3=2;
@@ -1006,7 +1006,7 @@ public class MiniFunLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -1042,10 +1042,10 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = WHITESP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:436:11: ( ( '\\t' | ' ' | '\\r' | '\\n' )+ )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:436:13: ( '\\t' | ' ' | '\\r' | '\\n' )+
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:492:11: ( ( '\\t' | ' ' | '\\r' | '\\n' )+ )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:492:13: ( '\\t' | ' ' | '\\r' | '\\n' )+
             {
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:436:13: ( '\\t' | ' ' | '\\r' | '\\n' )+
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:492:13: ( '\\t' | ' ' | '\\r' | '\\n' )+
             int cnt4=0;
             loop4:
             do {
@@ -1059,7 +1059,7 @@ public class MiniFunLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:
+            	    // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:
             	    {
             	    if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
             	        input.consume();
@@ -1100,8 +1100,8 @@ public class MiniFunLexer extends Lexer {
         try {
             int _type = ERR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:438:10: ( . )
-            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:438:12: .
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:494:10: ( . )
+            // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:494:12: .
             {
             matchAny(); 
              System.out.println("Invalid char: "+getText()); 
@@ -1117,313 +1117,313 @@ public class MiniFunLexer extends Lexer {
     // $ANTLR end "ERR"
 
     public void mTokens() throws RecognitionException {
-        // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:8: ( LET | LIST | IN | SEMIC | COL | DOUBLECOL | COMMA | ASS | EQ | LANPAR | RANPAR | LESSEQ | GREATEREQ | PLUS | MINUS | ARROW | OR | TIMES | DIVIDE | AND | NAT | TRUE | FALSE | EMPTY | NOT | VAR | FUN | LPAR | RPAR | CLPAR | CRPAR | SLPAR | SRPAR | IF | THEN | ELSE | PRINT | FIRST | REST | INTTYPE | BOOLTYPE | ID | WHITESP | ERR )
+        // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:8: ( LET | LIST | IN | SEMIC | COL | DOUBLECOL | COMMA | ASS | EQ | LANPAR | RANPAR | LESSEQ | GREATEREQ | PLUS | MINUS | ARROW | OR | TIMES | DIVIDE | AND | NAT | TRUE | FALSE | EMPTY | NOT | VAR | FUN | LPAR | RPAR | CLPAR | CRPAR | SLPAR | SRPAR | IF | THEN | ELSE | PRINT | FIRST | REST | INTTYPE | BOOLTYPE | ID | WHITESP | ERR )
         int alt5=44;
         alt5 = dfa5.predict(input);
         switch (alt5) {
             case 1 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:10: LET
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:10: LET
                 {
                 mLET(); 
 
                 }
                 break;
             case 2 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:14: LIST
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:14: LIST
                 {
                 mLIST(); 
 
                 }
                 break;
             case 3 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:19: IN
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:19: IN
                 {
                 mIN(); 
 
                 }
                 break;
             case 4 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:22: SEMIC
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:22: SEMIC
                 {
                 mSEMIC(); 
 
                 }
                 break;
             case 5 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:28: COL
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:28: COL
                 {
                 mCOL(); 
 
                 }
                 break;
             case 6 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:32: DOUBLECOL
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:32: DOUBLECOL
                 {
                 mDOUBLECOL(); 
 
                 }
                 break;
             case 7 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:42: COMMA
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:42: COMMA
                 {
                 mCOMMA(); 
 
                 }
                 break;
             case 8 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:48: ASS
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:48: ASS
                 {
                 mASS(); 
 
                 }
                 break;
             case 9 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:52: EQ
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:52: EQ
                 {
                 mEQ(); 
 
                 }
                 break;
             case 10 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:55: LANPAR
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:55: LANPAR
                 {
                 mLANPAR(); 
 
                 }
                 break;
             case 11 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:62: RANPAR
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:62: RANPAR
                 {
                 mRANPAR(); 
 
                 }
                 break;
             case 12 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:69: LESSEQ
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:69: LESSEQ
                 {
                 mLESSEQ(); 
 
                 }
                 break;
             case 13 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:76: GREATEREQ
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:76: GREATEREQ
                 {
                 mGREATEREQ(); 
 
                 }
                 break;
             case 14 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:86: PLUS
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:86: PLUS
                 {
                 mPLUS(); 
 
                 }
                 break;
             case 15 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:91: MINUS
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:91: MINUS
                 {
                 mMINUS(); 
 
                 }
                 break;
             case 16 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:97: ARROW
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:97: ARROW
                 {
                 mARROW(); 
 
                 }
                 break;
             case 17 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:103: OR
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:103: OR
                 {
                 mOR(); 
 
                 }
                 break;
             case 18 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:106: TIMES
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:106: TIMES
                 {
                 mTIMES(); 
 
                 }
                 break;
             case 19 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:112: DIVIDE
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:112: DIVIDE
                 {
                 mDIVIDE(); 
 
                 }
                 break;
             case 20 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:119: AND
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:119: AND
                 {
                 mAND(); 
 
                 }
                 break;
             case 21 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:123: NAT
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:123: NAT
                 {
                 mNAT(); 
 
                 }
                 break;
             case 22 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:127: TRUE
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:127: TRUE
                 {
                 mTRUE(); 
 
                 }
                 break;
             case 23 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:132: FALSE
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:132: FALSE
                 {
                 mFALSE(); 
 
                 }
                 break;
             case 24 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:138: EMPTY
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:138: EMPTY
                 {
                 mEMPTY(); 
 
                 }
                 break;
             case 25 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:144: NOT
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:144: NOT
                 {
                 mNOT(); 
 
                 }
                 break;
             case 26 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:148: VAR
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:148: VAR
                 {
                 mVAR(); 
 
                 }
                 break;
             case 27 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:152: FUN
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:152: FUN
                 {
                 mFUN(); 
 
                 }
                 break;
             case 28 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:156: LPAR
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:156: LPAR
                 {
                 mLPAR(); 
 
                 }
                 break;
             case 29 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:161: RPAR
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:161: RPAR
                 {
                 mRPAR(); 
 
                 }
                 break;
             case 30 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:166: CLPAR
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:166: CLPAR
                 {
                 mCLPAR(); 
 
                 }
                 break;
             case 31 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:172: CRPAR
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:172: CRPAR
                 {
                 mCRPAR(); 
 
                 }
                 break;
             case 32 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:178: SLPAR
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:178: SLPAR
                 {
                 mSLPAR(); 
 
                 }
                 break;
             case 33 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:184: SRPAR
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:184: SRPAR
                 {
                 mSRPAR(); 
 
                 }
                 break;
             case 34 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:190: IF
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:190: IF
                 {
                 mIF(); 
 
                 }
                 break;
             case 35 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:193: THEN
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:193: THEN
                 {
                 mTHEN(); 
 
                 }
                 break;
             case 36 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:198: ELSE
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:198: ELSE
                 {
                 mELSE(); 
 
                 }
                 break;
             case 37 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:203: PRINT
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:203: PRINT
                 {
                 mPRINT(); 
 
                 }
                 break;
             case 38 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:209: FIRST
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:209: FIRST
                 {
                 mFIRST(); 
 
                 }
                 break;
             case 39 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:215: REST
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:215: REST
                 {
                 mREST(); 
 
                 }
                 break;
             case 40 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:220: INTTYPE
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:220: INTTYPE
                 {
                 mINTTYPE(); 
 
                 }
                 break;
             case 41 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:228: BOOLTYPE
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:228: BOOLTYPE
                 {
                 mBOOLTYPE(); 
 
                 }
                 break;
             case 42 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:237: ID
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:237: ID
                 {
                 mID(); 
 
                 }
                 break;
             case 43 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:240: WHITESP
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:240: WHITESP
                 {
                 mWHITESP(); 
 
                 }
                 break;
             case 44 :
-                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/src/highLevelLanguage/MiniFun.g:1:248: ERR
+                // /Users/Thomas/Dropbox/Universita/Magistrale/Primo Anno/LPeMC/Esercitazioni/Minifun/LPeMC_PRJ/LPeMC_Prj/bin/highLevelLanguage/MiniFun.g:1:248: ERR
                 {
                 mERR(); 
 

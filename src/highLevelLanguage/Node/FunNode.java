@@ -64,7 +64,7 @@ public class FunNode extends Node {
 		    System.exit(0);
 		}
 
-		ArrayList<GenericTypeNode> genNode = dec.generics;
+		ArrayList<GenericTypeNode> genNode = dec.getFunGenerics();
 
 		if (genNode.size() == this.funGenericType.size()) {
 		    for (int cont = 0; cont < genNode.size(); cont++) {

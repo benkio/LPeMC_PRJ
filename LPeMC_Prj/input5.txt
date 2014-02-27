@@ -1,0 +1,21 @@
+let
+	fun prova <X,Y,Z> : (list[X], int,(Y,list[bool])->int)->bool (a,b,f)
+	{
+		if (b >= 4) then {
+			f(b,first(a))
+		}
+		else 
+		{
+			f(true,a)
+		}
+	};
+	fun test : (bool, list[bool])->bool (a,b)
+	{
+		if (a) then{
+			first(b)
+		}
+		else{
+			rest(a)
+		}
+	};  
+in prova<bool,int,bool> ([ [true :: false] :: empty ],3,test);
