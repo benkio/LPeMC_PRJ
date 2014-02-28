@@ -51,9 +51,4 @@ public class GenericTypeNode extends Node {
     public NodeType getNodeType() {
 	return NodeType.GENERICTYPE_NODE;
     }
-
-    public String getGenericTypeID() {
-	return this.id;
-    }
-
 }
