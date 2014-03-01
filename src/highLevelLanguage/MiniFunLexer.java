@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g 2014-02-28 17:55:32
+// $ANTLR 3.5.1 /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g 2014-03-01 13:33:42
 
 package highLevelLanguage;
 
@@ -77,8 +77,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = LET;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:438:7: ( 'let' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:438:9: 'let'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:445:7: ( 'let' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:445:9: 'let'
 			{
 			match("let"); 
 
@@ -93,34 +93,13 @@ public class MiniFunLexer extends Lexer {
 	}
 	// $ANTLR end "LET"
 
-	// $ANTLR start "LIST"
-	public final void mLIST() throws RecognitionException {
-		try {
-			int _type = LIST;
-			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:439:7: ( 'list' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:439:9: 'list'
-			{
-			match("list"); 
-
-			}
-
-			state.type = _type;
-			state.channel = _channel;
-		}
-		finally {
-			// do for sure before leaving
-		}
-	}
-	// $ANTLR end "LIST"
-
 	// $ANTLR start "IN"
 	public final void mIN() throws RecognitionException {
 		try {
 			int _type = IN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:440:5: ( 'in' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:440:7: 'in'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:446:5: ( 'in' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:446:7: 'in'
 			{
 			match("in"); 
 
@@ -140,8 +119,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = SEMIC;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:441:8: ( ';' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:441:10: ';'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:447:8: ( ';' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:447:10: ';'
 			{
 			match(';'); 
 			}
@@ -160,8 +139,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = COL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:442:6: ( ':' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:442:8: ':'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:448:6: ( ':' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:448:8: ':'
 			{
 			match(':'); 
 			}
@@ -180,8 +159,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = DOUBLECOL;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:443:11: ( '::' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:443:13: '::'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:449:11: ( '::' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:449:13: '::'
 			{
 			match("::"); 
 
@@ -201,8 +180,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = COMMA;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:444:8: ( ',' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:444:10: ','
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:450:8: ( ',' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:450:10: ','
 			{
 			match(','); 
 			}
@@ -221,8 +200,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = ASS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:445:6: ( '=' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:445:8: '='
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:451:6: ( '=' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:451:8: '='
 			{
 			match('='); 
 			}
@@ -241,8 +220,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = EQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:446:5: ( '==' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:446:7: '=='
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:452:5: ( '==' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:452:7: '=='
 			{
 			match("=="); 
 
@@ -262,8 +241,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = LANPAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:447:9: ( '<' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:447:11: '<'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:453:9: ( '<' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:453:11: '<'
 			{
 			match('<'); 
 			}
@@ -282,8 +261,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = RANPAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:448:9: ( '>' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:448:11: '>'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:454:9: ( '>' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:454:11: '>'
 			{
 			match('>'); 
 			}
@@ -302,8 +281,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = LESSEQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:449:10: ( '<=' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:449:12: '<='
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:455:10: ( '<=' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:455:12: '<='
 			{
 			match("<="); 
 
@@ -323,8 +302,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = GREATEREQ;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:450:11: ( '>=' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:450:13: '>='
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:456:11: ( '>=' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:456:13: '>='
 			{
 			match(">="); 
 
@@ -344,8 +323,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = PLUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:451:7: ( '+' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:451:9: '+'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:457:7: ( '+' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:457:9: '+'
 			{
 			match('+'); 
 			}
@@ -364,8 +343,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = MINUS;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:452:8: ( '-' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:452:10: '-'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:458:8: ( '-' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:458:10: '-'
 			{
 			match('-'); 
 			}
@@ -384,8 +363,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = ARROW;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:453:8: ( '->' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:453:10: '->'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:459:8: ( '->' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:459:10: '->'
 			{
 			match("->"); 
 
@@ -405,8 +384,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = OR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:454:5: ( '||' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:454:7: '||'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:460:5: ( '||' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:460:7: '||'
 			{
 			match("||"); 
 
@@ -426,8 +405,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = TIMES;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:455:8: ( '*' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:455:10: '*'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:461:8: ( '*' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:461:10: '*'
 			{
 			match('*'); 
 			}
@@ -446,8 +425,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = DIVIDE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:456:9: ( '/' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:456:11: '/'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:462:9: ( '/' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:462:11: '/'
 			{
 			match('/'); 
 			}
@@ -466,8 +445,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = AND;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:457:6: ( '&&' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:457:8: '&&'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:463:6: ( '&&' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:463:8: '&&'
 			{
 			match("&&"); 
 
@@ -487,7 +466,7 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = NAT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:458:6: ( ( ( '1' .. '9' ) ( '0' .. '9' )* ) | '0' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:464:6: ( ( ( '1' .. '9' ) ( '0' .. '9' )* ) | '0' )
 			int alt2=2;
 			int LA2_0 = input.LA(1);
 			if ( ((LA2_0 >= '1' && LA2_0 <= '9')) ) {
@@ -505,10 +484,10 @@ public class MiniFunLexer extends Lexer {
 
 			switch (alt2) {
 				case 1 :
-					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:458:8: ( ( '1' .. '9' ) ( '0' .. '9' )* )
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:464:8: ( ( '1' .. '9' ) ( '0' .. '9' )* )
 					{
-					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:458:8: ( ( '1' .. '9' ) ( '0' .. '9' )* )
-					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:458:9: ( '1' .. '9' ) ( '0' .. '9' )*
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:464:8: ( ( '1' .. '9' ) ( '0' .. '9' )* )
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:464:9: ( '1' .. '9' ) ( '0' .. '9' )*
 					{
 					if ( (input.LA(1) >= '1' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -518,7 +497,7 @@ public class MiniFunLexer extends Lexer {
 						recover(mse);
 						throw mse;
 					}
-					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:458:19: ( '0' .. '9' )*
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:464:19: ( '0' .. '9' )*
 					loop1:
 					while (true) {
 						int alt1=2;
@@ -552,7 +531,7 @@ public class MiniFunLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:458:34: '0'
+					// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:464:34: '0'
 					{
 					match('0'); 
 					}
@@ -573,8 +552,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = TRUE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:459:7: ( 'true' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:459:9: 'true'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:465:7: ( 'true' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:465:9: 'true'
 			{
 			match("true"); 
 
@@ -594,8 +573,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = FALSE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:460:8: ( 'false' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:460:10: 'false'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:466:8: ( 'false' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:466:10: 'false'
 			{
 			match("false"); 
 
@@ -615,8 +594,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = EMPTY;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:461:10: ( 'empty' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:461:12: 'empty'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:467:10: ( 'empty' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:467:12: 'empty'
 			{
 			match("empty"); 
 
@@ -636,8 +615,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = NOT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:462:6: ( 'not' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:462:8: 'not'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:468:6: ( 'not' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:468:8: 'not'
 			{
 			match("not"); 
 
@@ -657,8 +636,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = VAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:463:7: ( 'var' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:463:9: 'var'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:469:7: ( 'var' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:469:9: 'var'
 			{
 			match("var"); 
 
@@ -678,8 +657,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = FUN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:464:7: ( 'fun' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:464:9: 'fun'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:470:7: ( 'fun' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:470:9: 'fun'
 			{
 			match("fun"); 
 
@@ -699,8 +678,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = LPAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:465:8: ( '(' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:465:10: '('
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:471:8: ( '(' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:471:10: '('
 			{
 			match('('); 
 			}
@@ -719,8 +698,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = RPAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:466:7: ( ')' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:466:9: ')'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:472:7: ( ')' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:472:9: ')'
 			{
 			match(')'); 
 			}
@@ -739,8 +718,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = CLPAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:467:9: ( '{' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:467:11: '{'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:473:9: ( '{' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:473:11: '{'
 			{
 			match('{'); 
 			}
@@ -759,8 +738,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = CRPAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:468:8: ( '}' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:468:10: '}'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:474:8: ( '}' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:474:10: '}'
 			{
 			match('}'); 
 			}
@@ -779,8 +758,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = SLPAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:469:9: ( '[' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:469:11: '['
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:475:9: ( '[' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:475:11: '['
 			{
 			match('['); 
 			}
@@ -799,8 +778,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = SRPAR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:470:8: ( ']' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:470:10: ']'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:476:8: ( ']' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:476:10: ']'
 			{
 			match(']'); 
 			}
@@ -819,8 +798,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = IF;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:471:6: ( 'if' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:471:8: 'if'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:477:6: ( 'if' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:477:8: 'if'
 			{
 			match("if"); 
 
@@ -840,8 +819,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = THEN;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:472:8: ( 'then' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:472:10: 'then'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:478:8: ( 'then' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:478:10: 'then'
 			{
 			match("then"); 
 
@@ -861,8 +840,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = ELSE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:473:8: ( 'else' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:473:10: 'else'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:479:8: ( 'else' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:479:10: 'else'
 			{
 			match("else"); 
 
@@ -882,8 +861,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = PRINT;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:474:8: ( 'print' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:474:10: 'print'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:480:8: ( 'print' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:480:10: 'print'
 			{
 			match("print"); 
 
@@ -903,8 +882,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = FIRST;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:475:10: ( 'first' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:475:12: 'first'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:481:10: ( 'first' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:481:12: 'first'
 			{
 			match("first"); 
 
@@ -924,8 +903,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = REST;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:476:10: ( 'rest' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:476:12: 'rest'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:482:10: ( 'rest' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:482:12: 'rest'
 			{
 			match("rest"); 
 
@@ -945,8 +924,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = INTTYPE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:477:10: ( 'int' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:477:12: 'int'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:483:10: ( 'int' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:483:12: 'int'
 			{
 			match("int"); 
 
@@ -966,8 +945,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = BOOLTYPE;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:478:10: ( 'bool' )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:478:12: 'bool'
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:484:10: ( 'bool' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:484:12: 'bool'
 			{
 			match("bool"); 
 
@@ -982,13 +961,34 @@ public class MiniFunLexer extends Lexer {
 	}
 	// $ANTLR end "BOOLTYPE"
 
+	// $ANTLR start "LIST"
+	public final void mLIST() throws RecognitionException {
+		try {
+			int _type = LIST;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:485:7: ( 'list' )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:485:9: 'list'
+			{
+			match("list"); 
+
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "LIST"
+
 	// $ANTLR start "ID"
 	public final void mID() throws RecognitionException {
 		try {
 			int _type = ID;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:480:6: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:480:8: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:487:6: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:487:8: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
 			{
 			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 				input.consume();
@@ -998,7 +998,7 @@ public class MiniFunLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:480:27: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:487:27: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
 			loop3:
 			while (true) {
 				int alt3=2;
@@ -1043,10 +1043,10 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = WHITESP;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:482:11: ( ( '\\t' | ' ' | '\\r' | '\\n' )+ )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:482:13: ( '\\t' | ' ' | '\\r' | '\\n' )+
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:489:11: ( ( '\\t' | ' ' | '\\r' | '\\n' )+ )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:489:13: ( '\\t' | ' ' | '\\r' | '\\n' )+
 			{
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:482:13: ( '\\t' | ' ' | '\\r' | '\\n' )+
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:489:13: ( '\\t' | ' ' | '\\r' | '\\n' )+
 			int cnt4=0;
 			loop4:
 			while (true) {
@@ -1096,8 +1096,8 @@ public class MiniFunLexer extends Lexer {
 		try {
 			int _type = ERR;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:484:10: ( . )
-			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:484:12: .
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:491:10: ( . )
+			// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:491:12: .
 			{
 			matchAny(); 
 			 System.out.println("Invalid char: "+getText()); 
@@ -1114,7 +1114,7 @@ public class MiniFunLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:8: ( LET | LIST | IN | SEMIC | COL | DOUBLECOL | COMMA | ASS | EQ | LANPAR | RANPAR | LESSEQ | GREATEREQ | PLUS | MINUS | ARROW | OR | TIMES | DIVIDE | AND | NAT | TRUE | FALSE | EMPTY | NOT | VAR | FUN | LPAR | RPAR | CLPAR | CRPAR | SLPAR | SRPAR | IF | THEN | ELSE | PRINT | FIRST | REST | INTTYPE | BOOLTYPE | ID | WHITESP | ERR )
+		// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:8: ( LET | IN | SEMIC | COL | DOUBLECOL | COMMA | ASS | EQ | LANPAR | RANPAR | LESSEQ | GREATEREQ | PLUS | MINUS | ARROW | OR | TIMES | DIVIDE | AND | NAT | TRUE | FALSE | EMPTY | NOT | VAR | FUN | LPAR | RPAR | CLPAR | CRPAR | SLPAR | SRPAR | IF | THEN | ELSE | PRINT | FIRST | REST | INTTYPE | BOOLTYPE | LIST | ID | WHITESP | ERR )
 		int alt5=44;
 		alt5 = dfa5.predict(input);
 		switch (alt5) {
@@ -1126,282 +1126,282 @@ public class MiniFunLexer extends Lexer {
 				}
 				break;
 			case 2 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:14: LIST
-				{
-				mLIST(); 
-
-				}
-				break;
-			case 3 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:19: IN
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:14: IN
 				{
 				mIN(); 
 
 				}
 				break;
-			case 4 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:22: SEMIC
+			case 3 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:17: SEMIC
 				{
 				mSEMIC(); 
 
 				}
 				break;
-			case 5 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:28: COL
+			case 4 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:23: COL
 				{
 				mCOL(); 
 
 				}
 				break;
-			case 6 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:32: DOUBLECOL
+			case 5 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:27: DOUBLECOL
 				{
 				mDOUBLECOL(); 
 
 				}
 				break;
-			case 7 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:42: COMMA
+			case 6 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:37: COMMA
 				{
 				mCOMMA(); 
 
 				}
 				break;
-			case 8 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:48: ASS
+			case 7 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:43: ASS
 				{
 				mASS(); 
 
 				}
 				break;
-			case 9 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:52: EQ
+			case 8 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:47: EQ
 				{
 				mEQ(); 
 
 				}
 				break;
-			case 10 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:55: LANPAR
+			case 9 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:50: LANPAR
 				{
 				mLANPAR(); 
 
 				}
 				break;
-			case 11 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:62: RANPAR
+			case 10 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:57: RANPAR
 				{
 				mRANPAR(); 
 
 				}
 				break;
-			case 12 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:69: LESSEQ
+			case 11 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:64: LESSEQ
 				{
 				mLESSEQ(); 
 
 				}
 				break;
-			case 13 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:76: GREATEREQ
+			case 12 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:71: GREATEREQ
 				{
 				mGREATEREQ(); 
 
 				}
 				break;
-			case 14 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:86: PLUS
+			case 13 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:81: PLUS
 				{
 				mPLUS(); 
 
 				}
 				break;
-			case 15 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:91: MINUS
+			case 14 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:86: MINUS
 				{
 				mMINUS(); 
 
 				}
 				break;
-			case 16 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:97: ARROW
+			case 15 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:92: ARROW
 				{
 				mARROW(); 
 
 				}
 				break;
-			case 17 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:103: OR
+			case 16 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:98: OR
 				{
 				mOR(); 
 
 				}
 				break;
-			case 18 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:106: TIMES
+			case 17 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:101: TIMES
 				{
 				mTIMES(); 
 
 				}
 				break;
-			case 19 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:112: DIVIDE
+			case 18 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:107: DIVIDE
 				{
 				mDIVIDE(); 
 
 				}
 				break;
-			case 20 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:119: AND
+			case 19 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:114: AND
 				{
 				mAND(); 
 
 				}
 				break;
-			case 21 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:123: NAT
+			case 20 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:118: NAT
 				{
 				mNAT(); 
 
 				}
 				break;
-			case 22 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:127: TRUE
+			case 21 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:122: TRUE
 				{
 				mTRUE(); 
 
 				}
 				break;
-			case 23 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:132: FALSE
+			case 22 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:127: FALSE
 				{
 				mFALSE(); 
 
 				}
 				break;
-			case 24 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:138: EMPTY
+			case 23 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:133: EMPTY
 				{
 				mEMPTY(); 
 
 				}
 				break;
-			case 25 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:144: NOT
+			case 24 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:139: NOT
 				{
 				mNOT(); 
 
 				}
 				break;
-			case 26 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:148: VAR
+			case 25 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:143: VAR
 				{
 				mVAR(); 
 
 				}
 				break;
-			case 27 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:152: FUN
+			case 26 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:147: FUN
 				{
 				mFUN(); 
 
 				}
 				break;
-			case 28 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:156: LPAR
+			case 27 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:151: LPAR
 				{
 				mLPAR(); 
 
 				}
 				break;
-			case 29 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:161: RPAR
+			case 28 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:156: RPAR
 				{
 				mRPAR(); 
 
 				}
 				break;
-			case 30 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:166: CLPAR
+			case 29 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:161: CLPAR
 				{
 				mCLPAR(); 
 
 				}
 				break;
-			case 31 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:172: CRPAR
+			case 30 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:167: CRPAR
 				{
 				mCRPAR(); 
 
 				}
 				break;
-			case 32 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:178: SLPAR
+			case 31 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:173: SLPAR
 				{
 				mSLPAR(); 
 
 				}
 				break;
-			case 33 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:184: SRPAR
+			case 32 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:179: SRPAR
 				{
 				mSRPAR(); 
 
 				}
 				break;
-			case 34 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:190: IF
+			case 33 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:185: IF
 				{
 				mIF(); 
 
 				}
 				break;
-			case 35 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:193: THEN
+			case 34 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:188: THEN
 				{
 				mTHEN(); 
 
 				}
 				break;
-			case 36 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:198: ELSE
+			case 35 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:193: ELSE
 				{
 				mELSE(); 
 
 				}
 				break;
-			case 37 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:203: PRINT
+			case 36 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:198: PRINT
 				{
 				mPRINT(); 
 
 				}
 				break;
-			case 38 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:209: FIRST
+			case 37 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:204: FIRST
 				{
 				mFIRST(); 
 
 				}
 				break;
-			case 39 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:215: REST
+			case 38 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:210: REST
 				{
 				mREST(); 
 
 				}
 				break;
-			case 40 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:220: INTTYPE
+			case 39 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:215: INTTYPE
 				{
 				mINTTYPE(); 
 
 				}
 				break;
-			case 41 :
-				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:228: BOOLTYPE
+			case 40 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:223: BOOLTYPE
 				{
 				mBOOLTYPE(); 
+
+				}
+				break;
+			case 41 :
+				// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:1:232: LIST
+				{
+				mLIST(); 
 
 				}
 				break;
@@ -1458,13 +1458,13 @@ public class MiniFunLexer extends Lexer {
 		"\1\164\1\154\1\uffff\1\172\1\uffff\2\172\1\145\1\uffff\1\164\1\171\1\172"+
 		"\2\uffff\1\164\2\172\3\uffff\3\172\1\uffff\1\172\6\uffff";
 	static final String DFA5_acceptS =
-		"\3\uffff\1\4\1\uffff\1\7\3\uffff\1\16\2\uffff\1\22\1\23\1\uffff\2\25\5"+
-		"\uffff\1\34\1\35\1\36\1\37\1\40\1\41\3\uffff\1\52\1\53\1\54\2\uffff\1"+
-		"\52\2\uffff\1\4\1\6\1\5\1\7\1\11\1\10\1\14\1\12\1\15\1\13\1\16\1\20\1"+
-		"\17\1\21\1\22\1\23\1\24\1\25\11\uffff\1\34\1\35\1\36\1\37\1\40\1\41\3"+
-		"\uffff\1\53\3\uffff\1\3\1\42\14\uffff\1\1\1\uffff\1\50\3\uffff\1\33\3"+
-		"\uffff\1\31\1\32\3\uffff\1\2\1\26\1\43\3\uffff\1\44\1\uffff\1\47\1\51"+
-		"\1\27\1\46\1\30\1\45";
+		"\3\uffff\1\3\1\uffff\1\6\3\uffff\1\15\2\uffff\1\21\1\22\1\uffff\2\24\5"+
+		"\uffff\1\33\1\34\1\35\1\36\1\37\1\40\3\uffff\1\52\1\53\1\54\2\uffff\1"+
+		"\52\2\uffff\1\3\1\5\1\4\1\6\1\10\1\7\1\13\1\11\1\14\1\12\1\15\1\17\1\16"+
+		"\1\20\1\21\1\22\1\23\1\24\11\uffff\1\33\1\34\1\35\1\36\1\37\1\40\3\uffff"+
+		"\1\53\3\uffff\1\2\1\41\14\uffff\1\1\1\uffff\1\47\3\uffff\1\32\3\uffff"+
+		"\1\30\1\31\3\uffff\1\51\1\25\1\42\3\uffff\1\43\1\uffff\1\46\1\50\1\26"+
+		"\1\45\1\27\1\44";
 	static final String DFA5_specialS =
 		"\1\0\171\uffff}>";
 	static final String[] DFA5_transitionS = {
@@ -1626,7 +1626,7 @@ public class MiniFunLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "1:1: Tokens : ( LET | LIST | IN | SEMIC | COL | DOUBLECOL | COMMA | ASS | EQ | LANPAR | RANPAR | LESSEQ | GREATEREQ | PLUS | MINUS | ARROW | OR | TIMES | DIVIDE | AND | NAT | TRUE | FALSE | EMPTY | NOT | VAR | FUN | LPAR | RPAR | CLPAR | CRPAR | SLPAR | SRPAR | IF | THEN | ELSE | PRINT | FIRST | REST | INTTYPE | BOOLTYPE | ID | WHITESP | ERR );";
+			return "1:1: Tokens : ( LET | IN | SEMIC | COL | DOUBLECOL | COMMA | ASS | EQ | LANPAR | RANPAR | LESSEQ | GREATEREQ | PLUS | MINUS | ARROW | OR | TIMES | DIVIDE | AND | NAT | TRUE | FALSE | EMPTY | NOT | VAR | FUN | LPAR | RPAR | CLPAR | CRPAR | SLPAR | SRPAR | IF | THEN | ELSE | PRINT | FIRST | REST | INTTYPE | BOOLTYPE | LIST | ID | WHITESP | ERR );";
 		}
 		@Override
 		public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {

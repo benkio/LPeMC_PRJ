@@ -57,18 +57,46 @@ declist returns [ArrayList<Node> astList]
   	{
    		DecFunNode fn = null;
    		ArrayList<GenericTypeNode> generics=null;
+   		HashMap<String,STentry> hmNew = new HashMap<String,STentry>(); 
+   		HashMap<String,STentry> hm = symTable.get(nestingLevel);
+   		nestingLevel++;
+   		symTable.add(hmNew);
    	} 
    	( LANPAR gt=genericType 
    	{
    		generics=$gt.ast;
+   		
    	} 
-   	RANPAR)? COL (rt=baseType 	
+   	RANPAR)?
    	{
-	   	fn = new DecFunNode($i.text,$rt.ast);
+   		if (generics !=null)
+	        {
+	        	for (int j = 0; j<generics.size() ; j++){
+	        		STentry genericEntry = new STentry(generics.get(j),0);
+	        		if (hmNew.put(generics.get(j).getId(),genericEntry) != null){
+	 		    		System.out.println("Identifier "+generics.get(j).getId() +" at line "+$i.line+" already defined, generic type ID match");
+	 		      		System.exit(0);
+	 		      	}
+	        	}
+	        }
+   	}
+   	COL ( (rt=baseType 
+   	{
+   		fn = new DecFunNode($i.text,$rt.ast); 
+   	} 
+   	| grt=ID 
+   	{ 
+		if (hmNew.get( $grt.text) != null)
+			fn = new DecFunNode($i.text,hmNew.get( $grt.text ).getNode() );
+		else{
+			System.out.println("Identifier "+ $grt.text +" Not recognized in arrowType, generic type ID match");
+			System.exit(0);
+		}
+   	}
+   	)
+   	{
 	   	fn.addFunGenerics(generics);
 	    	STentry entry = new STentry(fn,offSet++);
-	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);
-	    	
 	    	if (hm.put($i.text,entry) != null){
 	    		System.out.println("Identifier "+$i.text+" at line "+$i.line+" already defined");
 	      		System.exit(0);
@@ -77,21 +105,6 @@ declist returns [ArrayList<Node> astList]
   	LPAR 
 	{   		
 	        int parOffSet=-1;
-	        hm = new HashMap<String,STentry>();
-	        symTable.add(hm);
-	        nestingLevel++;
-	        
-	        if (generics !=null)
-	        {
-	        	for (int j = 0; j<generics.size() ; j++){
-	        		STentry genericEntry = new STentry(generics.get(j),0);
-	        		if (hm.put(generics.get(j).getId(),genericEntry) != null){
-	 		    		System.out.println("Identifier "+generics.get(j).getId() +" at line "+$i.line+" already defined, generic type ID match");
-	 		      		System.exit(0);
-	 		      	}
-	        	}
-	        }
-	        
 	} 
 	( fpi=ID 
 	{
@@ -103,8 +116,8 @@ declist returns [ArrayList<Node> astList]
 			parOffSet-=1;
 		}
 		if($fpt.ast.getNodeType() == NodeType.GENERICTYPE_NODE) {
-			if (hm.get( ( (GenericTypeNode)  $fpt.ast).getId()) != null)
-				pn.addType( hm.get( ( (GenericTypeNode) $fpt.ast).getId()).getNode() );	
+			if (hmNew.get( ( (GenericTypeNode)  $fpt.ast).getId()) != null)
+				pn.addType( hmNew.get( ( (GenericTypeNode) $fpt.ast).getId()).getNode() );	
 			else{
 				System.out.println("Identifier "+ $fpi.text +" at line "+$fpi.line+" Not recognized, generic type ID match");
 				System.exit(0);
@@ -116,7 +129,7 @@ declist returns [ArrayList<Node> astList]
 	)
 	{
 		entry = new STentry(pn,parOffSet--);
-		hm.put($fpt.text,entry);
+		hmNew.put($fpt.text,entry);
 		fn.addParam(pn);
 	}
 	(COMMA pi=ID 
@@ -129,7 +142,7 @@ declist returns [ArrayList<Node> astList]
 			parOffSet-=1;
 		}
 		if($pt.ast.getNodeType() == NodeType.GENERICTYPE_NODE){
-			if (hm.get( ( (GenericTypeNode) $pt.ast).getId()) != null)
+			if (hmNew.get( ( (GenericTypeNode) $pt.ast).getId()) != null)
 				pn.addType( hm.get( ( (GenericTypeNode) $pt.ast).getId()).getNode() );
 			else{
 				System.out.println("Identifier "+ $pt.text +" at line "+$pi.line+" Not recognized, generic type ID match");
@@ -142,7 +155,7 @@ declist returns [ArrayList<Node> astList]
 	)
 	{
 	        entry = new STentry(pn,parOffSet--);
-	        if (hm.put($pi.text,entry) != null){
+	        if (hmNew.put($pi.text,entry) != null){
 	        	System.out.println("Identifier "+$pi.text+" at line "+$pi.line+" already defined");
 	           	System.exit(0);
 	        }
@@ -152,8 +165,7 @@ declist returns [ArrayList<Node> astList]
    	{
 	   	fn = new DecFunNode($i.text,$rt.ast);
 	   	fn.addFunGenerics(generics);
-	    	STentry entry = new STentry(fn,offSet++);
-	    	HashMap<String,STentry> hm=symTable.get(nestingLevel);		    	
+	    	STentry entry = new STentry(fn,offSet++);    	
 	    	if (hm.put($i.text,entry) != null){
 	    		System.out.println("Identifier "+$i.text+" at line "+$i.line+" already defined");
 	      		System.exit(0);
@@ -162,21 +174,7 @@ declist returns [ArrayList<Node> astList]
   	LPAR 
 	{		   		
 	        int parOffSet=-1;
-	        hm = new HashMap<String,STentry>();
-	        symTable.add(hm);
-	        nestingLevel++;
 	        int parCont=0;
-	        
-	        if (generics !=null)
-	        {
-	        	for (int j = 0; j<generics.size() ; j++){
-	        		STentry genericEntry = new STentry(generics.get(j),0);
-	        		if (hm.put(generics.get(j).getId(),genericEntry) != null){
-			    		System.out.println("Identifier "+ generics.get(j).getId() +" at line "+$i.line+" already defined, generic type ID match");
-			      		System.exit(0);
-			      	}
-	        	}
-	        }
 	} 
 	(fpi=ID 
 	{
@@ -188,7 +186,7 @@ declist returns [ArrayList<Node> astList]
     		System.out.println(parOffSet);	    		
 		pn.addType(tp);
 	       	entry = new STentry(pn,parOffSet--);
-	        hm.put($fpi.text,entry);
+	        hmNew.put($fpi.text,entry);
 	        fn.addParam(pn);
 	        parCont++;
 	}
@@ -203,7 +201,7 @@ declist returns [ArrayList<Node> astList]
     		pn.addType(tp);
     		parCont++;
 	        entry = new STentry(pn,parOffSet--);
-	        if (hm.put($pi.text,entry) != null){
+	        if (hmNew.put($pi.text,entry) != null){
 	        	System.out.println("Identifier "+$pi.text+" at line "+$pi.line +" already defined");
 	           	System.exit(0);
 	        }
@@ -360,9 +358,18 @@ arrowType returns [Node ast]
 		else atn.addParType($tn.ast);
  	} 
  	)* )? 
- 	RPAR ARROW rt=baseType
+ 	RPAR ARROW rt=type
  	{ 
-		atn.addRetType($rt.ast); 
+ 	
+ 		if($rt.ast.getNodeType() == NodeType.GENERICTYPE_NODE) {
+			if (hm.get( ( (GenericTypeNode) $rt.ast).getId()) != null)
+			 atn.addRetType( hm.get( ( (GenericTypeNode) $rt.ast).getId()).getNode() );
+			else{
+				System.out.println("Identifier "+ $rt.text +" Not recognized in arrowType, generic type ID match");
+				System.exit(0);
+			}
+		}
+		else atn.addRetType($rt.ast);
 		$ast=atn;
  	};
  		
@@ -418,13 +425,13 @@ linkedGenericType returns [ArrayList <Node> ast]
 	)* { $ast = generics; };
 		
 listType returns [Node ast]
-	: LIST SLPAR { Node generic = null; } 
-	( bt=baseType {	generic = new ConcreteListParamTypeNode($bt.ast); }
+	: LIST SLPAR { Node generic = new EmptyNode(); } 
+	( bt=baseType {	generic = $bt.ast; }
 	| i=ID
 	{
 		HashMap<String,STentry> hm= symTable.get(nestingLevel);
 		if (hm.get($i.text) != null)
-			generic = new GenericListParamTypeNode(hm.get($i.text).getNode());
+			generic = hm.get($i.text).getNode();
 		else{
 			System.out.println("Identifier "+ $i.text +" Not recognized "+ $i.line +", generic type ID match");
 			System.exit(0);
@@ -436,7 +443,6 @@ listType returns [Node ast]
  *------------------------------------------------------------------*/
 
 LET 		: 'let' ;
-LIST		: 'list';
 IN		: 'in' ;
 SEMIC		: ';' ;
 COL		: ':' ;
@@ -475,7 +481,8 @@ PRINT		: 'print' ;
 FIRST   	: 'first' ; 
 REST    	: 'rest' ; 
 INTTYPE 	: 'int' ;
-BOOLTYPE	: 'bool' ;
+BOOLTYPE	: 'bool';
+LIST		: 'list';
 
 ID 		: ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'0'..'9')* ;
 
