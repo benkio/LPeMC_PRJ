@@ -129,7 +129,7 @@ declist returns [ArrayList<Node> astList]
 	)
 	{
 		entry = new STentry(pn,parOffSet--);
-		hmNew.put($fpt.text,entry);
+		hmNew.put($fpi.text,entry);
 		fn.addParam(pn);
 	}
 	(COMMA pi=ID 

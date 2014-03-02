@@ -1,21 +1,31 @@
 let
-	fun prova <X,Y,Z> : (list[X], int,(Y,list[bool])->int)->bool (a,b,f)
+	fun getFlag<X>: (list[X],int)->X (array,index)
 	{
-		if (b >= 4) then {
-			f(b,first(a))
+		if (index==0) then{
+			first(array)
+		}
+		else{
+			getFlag<X>(rest(array),index-1)
+		}
+		
+	}; 
+	fun prova : (list[bool], int,(list[bool],int)->bool)->bool (flags,index,return)
+	{
+		if (getFlag<bool>(flags,index)) then {
+			return(flags,index+1)
 		}
 		else 
 		{
-			f(true,a)
+			return(flags,0)
 		}
 	};
-	fun test : (bool, list[bool])->bool (a,b)
+	fun test : (list[bool],int)->bool (array,i)
 	{
-		if (a) then{
-			first(b)
+		if (getFlag<bool>(array,i) == empty) then{
+			false
 		}
 		else{
-			rest(a)
+			true
 		}
-	};  
-in prova<bool,int,bool> ([ [true :: false] :: empty ],3,test);
+	}; 
+in print(prova([ true :: [false :: empty ]],5,test));

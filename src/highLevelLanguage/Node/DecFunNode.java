@@ -108,8 +108,8 @@ public class DecFunNode extends Node {
 	    if (hasGeneric) {
 		for (int cont = 0; cont < this.funParams.size(); cont++) {
 		    if (funParams.get(cont).getType().getNodeType() == NodeType.GENERICTYPE_NODE) {
+			boolean notfound = true;
 			for (int cont2 = 0; cont2 < this.generics.size(); cont2++) {
-			    boolean notfound = true;
 			    if (((GenericTypeNode) funParams.get(cont)
 				    .getType()).getId().equals(
 				    generics.get(cont2).getId())) {

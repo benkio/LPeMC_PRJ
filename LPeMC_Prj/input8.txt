@@ -1,0 +1,6 @@
+let
+	fun ListSum<X> : (list[X])->int (parameter){
+		if (parameter == empty) then{0} else{
+			first(parameter) + ListSum<X>(rest(parameter))}
+	};
+in print( ListSum<int>([3::[4::[5::empty]]])); 
