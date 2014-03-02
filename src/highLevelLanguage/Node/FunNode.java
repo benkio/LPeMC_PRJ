@@ -67,13 +67,18 @@ public class FunNode extends Node {
 		ArrayList<GenericTypeNode> genNode = dec.getFunGenerics();
 
 		if (genNode.size() == this.funGenericType.size()) {
-		    for (int cont = 0; cont < genNode.size(); cont++) {
-			genNode.get(cont)
-				.setType(this.funGenericType.get(cont));
-		    }
+		    // Metto questo if perchè se io ho già instanziato i
+		    // parametri per quel decfun node non ho bisogno di
+		    // reinstanziarli e rifare typecheck. LOOP
+		    if (!dec.genericInst) {
+			for (int cont = 0; cont < genNode.size(); cont++) {
+			    genNode.get(cont).setType(
+				    this.funGenericType.get(cont));
+			}
 
-		    dec.setGenericInst(true);
-		    dec.typeCheck();
+			dec.setGenericInst(true);
+			dec.typeCheck();
+		    }
 		} else {
 		    System.out
 			    .println("Type Check Error: Numero di generici errato tra chiamata e definizione di funzione");

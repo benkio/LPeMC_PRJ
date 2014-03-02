@@ -1,12 +1,12 @@
 let
-	fun ComparaLunghezzaListe<X> : (list[X],list[X])->list[X] (listaA, listaB){
+	fun ComparaLunghezzaListe<X> : (list[X],list[X])->X (listaA, listaB){
 		fun lunghezzaLista<X> : (list[X])->int (lista){
 			if (lista == empty) then{0}
-			else { lunghezzaLista<X>(rest(lista)) }
+			else { 1+lunghezzaLista<X>(rest(lista)) }
 		};
 		
-		if ( lunghezzaLista<X>(listaA) == lunghezzaLista<X>(listaB) ) 
+		if ( lunghezzaLista<X>(listaA) >= lunghezzaLista<X>(listaB) ) 
 		then {lunghezzaLista<X>(listaA)}
-		else { 0 }	
+		else { lunghezzaLista<X>(listaB) }	
 	};
-in ComparaLunghezzaListe<int>([1:: [0 :: empty] ], [1 :: [2 :: empty]]);
+in print (ComparaLunghezzaListe<int>([1 :: empty], [1 :: [2 ::[3 ::empty]]]));
