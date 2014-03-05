@@ -1,0 +1,19 @@
+let
+	var a:int = 5;
+	fun returnLast<X>:int(c:list[X]){
+		if (rest(c) == empty) then{
+			first(c)
+		}
+		else{
+			returnLast<X>(rest(c))
+		}
+	};
+	fun length<X>:(list[X])->int (l){
+		if (l==empty) then {0}
+		else {1+length<X>(rest(l))}
+	};
+	fun firstOrLast<X>:(list[X])->X (b){
+		if (length<X>(b) >= a) then { first(b) }
+		else { returnLast<X>(b) }
+	};
+in print(firstOrLast<int>([1::[2::[3::[4::empty]]]]));

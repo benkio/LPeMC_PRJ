@@ -1,0 +1,6 @@
+let
+	fun length<X>:(list[X])->int (l){
+	 if (l==empty) then {0}
+	  else {1+length<X>(rest(l))}
+	};
+in print(length<bool>([true :: empty]));

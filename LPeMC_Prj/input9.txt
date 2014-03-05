@@ -1,0 +1,11 @@
+let
+ fun add:int(a:int, b:int){ a+b };
+ fun addList:int(list1:list[int], list2:list[int]){
+ 	if ((list1 == empty) && (list2 == empty)) then {
+		0
+ 	}
+ 	else {
+ 		add(first(list1),first(list2)) + addList(rest(list1),rest(list2))
+ 	}
+ };
+in print(addList([1::[2::[3::[4::empty]]]], [4::[3::[2::[1::empty]]]]));
