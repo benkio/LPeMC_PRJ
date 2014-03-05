@@ -1,4 +1,4 @@
-// $ANTLR 3.5.1 /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g 2014-03-01 13:33:41
+// $ANTLR 3.5.1 /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g 2014-03-02 16:03:42
 
 package highLevelLanguage;
 
@@ -378,7 +378,7 @@ public class MiniFunParser extends Parser {
 
 
 											entry = new STentry(pn,parOffSet--);
-											hmNew.put((fpt!=null?input.toString(fpt.start,fpt.stop):null),entry);
+											hmNew.put((fpi!=null?fpi.getText():null),entry);
 											fn.addParam(pn);
 										
 									// /home/benkio/workspace/LPeMC Lab Project/src/highLevelLanguage/MiniFun.g:135:2: ( COMMA pi= ID ( COL pt= type ) )*
